@@ -1,0 +1,91 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+
+}
+
+.user-detail-container {
+    width: 60%;
+    margin: 20px auto;
+    padding: 25px;
+    background-color: transparent;
+    border-radius: 8px;
+}
+
+.user-detail {
+    display: flex;
+    align-items: center;
+}
+
+.user-avatar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+.user-avatar img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.user-info {
+    flex: 1;
+}
+
+.user-info h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.user-info p {
+    font-size: 16px;
+    color:rgb(202, 202, 202);
+    margin-bottom: 12px;
+}
+
+.light .user-info p {
+    font-size: 16px;
+    color:rgb(0, 0, 0);
+    margin-bottom: 12px;
+}
+.detail_applicant{
+    margin:1%;
+}
+
+.details{
+background-color: #1F293E;
+padding: 10px;
+border-radius: 8px;
+}
+
+.light .details{
+background-color: #C3CFF4;
+padding: 10px;
+border-radius: 8px;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+    .user-detail {
+        flex-direction: column;
+    }
+
+    .user-detail-container {
+        width: 100%;
+    }
+
+
+    .user-avatar img {
+        margin-right: 0;
+        margin-bottom: 20px;
+    }
+}

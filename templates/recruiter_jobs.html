@@ -1,0 +1,330 @@
+{% extends "recruiter_base.html" %}
+{% load static %}
+
+
+{%block content%}
+
+<link rel="stylesheet" href="{% static 'all_jobs.css' %}">
+
+{% block title%}<title>All Jobs</title> {% endblock %}
+
+<style>
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1001;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    background-color: #202e49;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    max-width: 400px;
+    text-align: center;
+}
+
+.modal-content {
+    margin-bottom: 20px;
+}
+
+
+
+#confirmButton, #cancelButton {
+
+  border-radius: 10px;
+  padding: 8px;
+  color : white;
+  background-color: #0f1625;
+} 
+
+
+
+.search_job{
+
+  background-color: #151E2F; 
+  color: white; 
+  border: none; 
+  padding: 8px 12px;
+  border-radius: 5px;
+  font-size: 12px; 
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+
+
+.notification-container {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 999; /* Ensure the notification appears above other content */
+}
+
+#notification {
+  height: 100px;
+  width: 40%;
+  border-radius: 8px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction : column;
+  justify-content: center;
+  padding-bottom :  20px;
+  align-items: center;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); 
+}
+
+.notification-success {
+  background-color: rgba(5, 113, 50, 0.8);
+  color: white;
+}
+.notification-warning{
+  background-color: rgb(255, 255, 177);
+  color: rgb(41, 38, 38);
+
+}
+
+.notification-error {
+  background-color: rgba(255, 0, 0, 0.8); 
+  color: white;
+}
+
+#notification p {
+  text-align: center;
+  letter-spacing: 1px;
+  margin: 0; 
+}
+
+
+
+</style>
+
+
+{% if messages %}
+<div id="notification-container" class="notification-container">
+    {% for message in messages %}
+    <div id="notification" class="notification-{% if message.tags %}{{ message.tags }}{% endif %}">
+
+        {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+            <h3 class="error">{{ message }}</h3>
+        {% elif message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}
+            <h3 class="warning">{{ message }}</h3>
+            <p>Please try again </p>
+        {% elif message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+            <h3 class="success">{{ message }}</h3>
+            <p>Manage Your Jobs</p>
+        {% else %}
+            <h3 class="info">{{ message }}</h3>
+        {% endif %}
+
+    </div>
+    {% endfor %}
+    </div>
+{% endif %}
+
+
+<div class="app-content">
+    <div class="app-content-header">
+      <h1 class="app-content-headerText">My Jobs ({{ jobs.count }})</h1>
+             </div>
+    <div class="app-content-actions">
+      <input class="search-bar" placeholder="Search..." type="text">
+      <div class="filter-button-wrapper" >
+        <div style="display:flex;"> 
+          <a href="{% url 'create_job' %}">  <button class="action-button" style="">Add Job</button> </a>
+        <button class="action-button filter jsFilter"><span>Filter</span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-filter"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg></button>
+      </div>
+        <div class="filter-menu">
+          <label>Status</label>
+          <form method = "post"> 
+         {% csrf_token %} 
+          <select name='status'>
+            {% comment %} <option>Status</option> {% endcomment %}
+            <option>All</option>                     
+            <option>Active</option>   
+            <option>Disabled</option>
+          </select>
+          <div class="filter-menu-buttons">
+           <button class="filter-button reset">
+              Reset
+            </button> 
+            <button class="filter-button apply">
+              Apply
+            </button>
+        </form>
+          </div>
+        </div>
+
+
+        
+      </div>
+    </div>
+
+    <div class="products-area-wrapper tableView">
+      <div class="products-header">
+        <div class="product-cell price">
+          Job For
+        </div>
+        <div class="product-cell category">Experience</div>
+        <div class="product-cell price">Status</div>
+
+
+          <div class="product-cell price">Shortlisted</div>
+        <div class="product-cell price">View Applicants</div>
+
+                  
+        <div class="product-cell stock">Posted On</div>
+      </div>
+
+      {% for job in jobs %}
+      <div class="products-row">
+        <button class="cell-more-button">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-more-vertical"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg>
+        </button>
+          <div class="product-cell price">
+            {% for work in job.job.all|slice:":1"  %}
+            <span>{{ work.work }} ({{ job.job.count }}) </span>
+          {% endfor %}
+          </div>
+        <div class="product-cell category"><span class="cell-label">Experience:</span>{{ job.experience}} Yrs</div>
+        <div class="product-cell price">
+
+        
+          <div class="product-cell status-cell">
+            <span class="cell-label">Status:</span>
+            {% if job.status %}
+                <span class="status active">
+                    <a href="#" class="status_link" data-url="{% url 'status_change' job.recruiterId %}">Active</a>
+                </span>
+            {% else %}
+                <span class="status disabled">
+                    <a href="#" class="status_link" data-url="{% url 'status_change' job.recruiterId %}">Disabled</a>
+                </span>
+            {% endif %}
+        </div>
+        
+        </div>
+        <div class="product-cell price">
+            <span class="cell-label">Shortlisted </span>
+          <a href="{% url 'selected_applicants' job.recruiterId  %}"><button id="deleteButton{{ job.id }}" class="view_button">{{job.selected_applicants.count}}</button></a>  
+        </div>
+        <div class="product-cell price"><span class="cell-label">View Applicants</span> <a href="{% url 'view_requirements' job.recruiterId %}"><button  class="view_button"> View </button>  </a> </div>
+        <div class="product-cell stock"><span class="cell-label">Posted On:</span>{{ job.posted_on }}</div>
+
+      </div>
+      {% endfor %}
+
+    </div>
+  </div>
+
+
+
+
+
+  <div id="confirmationModal" class="modal">
+    <div class="modal-content">
+        <p>Are you sure you want to change the status?</p>
+        <div class="modal-buttons">
+            <button id="confirmButton">Confirm</button>
+            <button id="cancelButton">Cancel</button>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+      const modal = document.getElementById('confirmationModal');
+      const confirmButton = document.getElementById('confirmButton');
+      const cancelButton = document.getElementById('cancelButton');
+      const statusLinks = document.querySelectorAll('.status_link');
+
+      let selectedUrl = '';
+
+      // Function to show the modal and set the selected URL
+      function showModal(url) {
+          selectedUrl = url;
+          modal.style.display = 'block';
+      }
+
+      // Function to hide the modal
+      function hideModal() {
+          modal.style.display = 'none';
+      }
+
+      // Event listener for status links
+      statusLinks.forEach(link => {
+          link.addEventListener('click', function(event) {
+              event.preventDefault();
+              showModal(link.getAttribute('data-url'));
+          });
+      });
+
+      // Event listener for confirm button
+      confirmButton.addEventListener('click', function() {
+          window.location.href = selectedUrl;
+      });
+
+      // Event listener for cancel button
+      cancelButton.addEventListener('click', function() {
+          hideModal();
+      });
+
+      // Close the modal if the user clicks outside of it
+      window.addEventListener('click', function(event) {
+          if (event.target == modal) {
+              hideModal();
+          }
+      });
+  });
+</script>
+
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", function() {
+        // Find the "Applicants" link within the sidebar
+        var applicantsLink = document.querySelector('.sidebar-list-item a[href="{% url 'all_jobs' %}"]');
+    
+        // Check if the link is found
+        if (applicantsLink) {
+            // Remove the 'active' class from all sidebar list items
+            var sidebarListItems = document.querySelectorAll('.sidebar-list-item');
+            sidebarListItems.forEach(function(item) {
+                item.classList.remove('active');
+            });
+    
+            // Add the 'active' class to the parent list item of the "Applicants" link
+            var parentListItem = applicantsLink.closest('.sidebar-list-item');
+            if (parentListItem) {
+                parentListItem.classList.add('active');
+            }
+        }
+
+      
+        document.querySelector(".jsFilter").addEventListener("click", function () {
+          document.querySelector(".filter-menu").classList.toggle("active");
+        });
+    });
+    
+</script>
+
+<script>
+
+  setTimeout(function() {
+      var notificationContainer = document.getElementById('notification-container');
+      notificationContainer.style.display = 'none';
+  }, 3000);
+</script>
+{%endblock%}

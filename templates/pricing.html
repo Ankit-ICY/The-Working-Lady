@@ -1,0 +1,345 @@
+{% extends 'recruiter_base.html' %}
+
+
+{% block content %}
+
+{% comment %} <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700|Open+Sans:300,400,700" /> {% endcomment %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik:400,400i,500,500i" />
+
+
+<style>
+    body {
+        font-family: Rubik;
+    }
+    
+    .main-head {
+        background: #1D283C;
+        box-shadow: 0px 1px 10px -6px rgba(0, 0, 0, .15);
+        padding: 1rem;
+        margin-bottom: 0;
+        margin-top: 5rem;
+        color: #fff;
+        font-weight: 500;
+        text-transform: uppercase;
+        border-radius: 4px;
+        font-size: 16px;
+    }
+    
+    .pricing-table {
+        background: #fff;
+        box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+                padding: 2rem;
+        border-radius: 4px;
+        transition: .3s;
+    }
+    
+    .pricing-table:hover {
+        box-shadow: 0px 1px 10px -4px rgba(0, 0, 0, .15);
+    }
+    
+    .pricing-table .pricing-label {
+        border-radius: 2px;
+        padding: .25rem .5rem;
+        margin-bottom: 1rem;
+        display: inline-block;
+        font-size: 12px;
+        font-weight: 500;
+    }
+    
+    .pricing-table h2 {
+        color: #3b3b3b;
+        font-size: 24px;
+        font-weight: 500;
+    }
+    
+    .pricing-table h5 {
+        color: #B3B3B3;
+        font-size: 14px;
+        font-weight: 400;
+    }
+    
+    .pricing-table .pricing-features {
+        margin-top: 2rem;
+    }
+    
+    .pricing-table .pricing-features .feature {
+        font-size: 14px;
+        margin: .5rem 0;
+        color: #B3B3B3;
+    }
+    
+    .pricing-table .pricing-features .feature span {
+        display: inline-block;
+        float: right;
+        color: #3b3b3b;
+        font-weight: 500;
+    }
+    
+    .pricing-table 	.price-tag {
+        margin-top: 2rem;
+        text-align: center;
+        font-weight: 500;
+    }
+    
+    .pricing-table .price-tag .symbol {
+        font-size: 24px;
+    }
+    
+    .pricing-table .price-tag .amount {
+        letter-spacing: -2px;
+        font-size: 64px;
+    }
+    
+    .pricing-table .price-tag .after {
+        color: #3b3b3b;
+        font-weight: 500;
+    }
+    
+    .pricing-table .price-button {
+        display: block;
+        color: #fff;
+        margin-top: 2rem;
+        padding: .75rem;
+        border-radius: 2px;
+        text-align: center;
+        font-weight: 500;
+        transition: .3s;
+    }
+    
+    .pricing-table .price-button:hover {
+        text-decoration: none;
+    }
+    
+    .purple .pricing-label {
+        background: #cad2ff;
+        color: #627afe;
+    }
+    
+    .purple .price-tag {
+        color: #627afe;
+    }
+    
+    .purple .price-button {
+        background: #627afe;
+    }
+    
+    .purple .price-button:hover {
+        background: #546dfe;
+    }
+    
+    .turquoise .pricing-label {
+        background: #b9edee;
+        color: #44cdd2;
+    }
+    
+    .turquoise .price-tag {
+        color: #44cdd2;
+    }
+    
+    .turquoise .price-button {
+        background: #44cdd2;
+    }
+    
+    .turquoise .price-button:hover {
+        background: #2dbcc4;
+    }
+    
+    .red .pricing-label {
+        background: #ffc4c4;
+        color: #ff5e5e;
+    }
+    
+    .red .price-tag {
+        color: #ff5e5e;
+    }
+    
+    .red .price-button {
+        background: #ff5e5e;
+    }
+    
+    .red .price-button:hover {
+        background: #f23c3c;
+    }
+
+    
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: var(--app-bg);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  
+  .sidebar ul{
+      margin-top : 16px;
+  
+  }
+  
+  
+  .sidebar-list-item a {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 10px 16px;
+    color: var(--sidebar-link);
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 24px;
+  }
+  
+  
+
+  
+  
+  /* For screens smaller than 768px */
+  @media screen and (max-width: 768px) {
+    .app-container {
+      flex-direction: column; /* Stack items vertically */
+    }
+  
+    .sidebar {
+      position: static;
+      width: 100%; 
+    }
+  
+    .app-content {
+      margin-left: 0; 
+      width: 100%; 
+      margin-top: 10%;
+    }
+  }
+  
+  /* Optional: Additional responsive styles for smaller screens */
+  @media screen and (max-width: 520px) {
+    .app-container {
+      flex-direction: column; /* Stack items vertically */
+    }
+  
+    .sidebar {
+      position: static;
+      width: 100%; 
+    }
+  
+    .app-content {
+      margin-left: 0; 
+      width: 100%; 
+      margin-top: 10%;
+    }
+  }
+  
+  
+</style>
+
+<div class="app-content">
+    <div class="container">
+        <div class="row">
+           <div class="col-md-12 mb-5">
+              <h2 class="main-head">Listed are the pricing offerred by TWL</h2>
+           </div>
+           <!-- Purple Table -->
+           <div class="col-md-4">
+              <div class="pricing-table purple">
+                 <!-- Table Head -->
+                 <div class="pricing-label">Fixed Price</div>
+                 <h2>BasicPack </h2>
+                 <h5>Made for starters</h5>
+                 <!-- Features -->
+                 <div class="pricing-features">
+                    <div class="feature">Calls<span>5</span></div>
+                    <div class="feature">Trustworthy Candidates<span>Assured</span></div>
+                    <div class="feature">Skilled Employees<span>Not Assured</span></div>
+                    <div class="feature">Working Support<span>Not Assured</span></div>
+                    <div class="feature">Support<span>Only Mail</span></div>
+                 </div>
+                 <!-- Price -->
+                 <div class="price-tag">
+                    <span class="symbol">$</span>
+                    <span class="amount">7.99</span>
+                    <span class="after">/5 calls</span>
+                 </div>
+                 <!-- Button -->
+                 <a class="price-button" href="{% url 'payment' %}">Get Started</a>
+              </div>
+           </div>
+           <!-- Turquoise Table -->
+           <div class="col-md-4">
+              <div class="pricing-table turquoise">
+                 <!-- Table Head -->
+                 <div class="pricing-label">Fixed Price</div>
+                 <h2>Standard Pack</h2>
+                 <h5>Made for experienced users</h5>
+                 <!-- Features -->
+                 <div class="pricing-features">
+                    <div class="feature">Calls<span>10 </span></div>
+                    <div class="feature">Trustworthy Candidates<span>Assured</span></div>
+                    <div class="feature">Skilled Employees<span>Assured</span></div>
+                    <div class="feature">Working Support<span>Not Assured</span></div>
+                    <div class="feature">Support<span>Mail/Phone</span></div>
+                 </div>
+                 <!-- Price -->
+                 <div class="price-tag">
+                    <span class="symbol">$</span>
+                    <span class="amount">9.99</span>
+                    <span class="after">/10 Calls</span>
+                 </div>
+                 <!-- Button -->
+                 <a class="price-button" href="{% url 'payment' %}">Get Started</a>
+              </div>
+           </div>
+           <!-- Red Table -->
+           <div class="col-md-4">
+              <div class="pricing-table red">
+                 <!-- Table Head -->
+                 <div class="pricing-label">Fixed Price</div>
+                 <h2>Unlimited Pack</h2>
+                 <h5>Made for professionals/agencies</h5>
+                 <!-- Features -->
+                 <div class="pricing-features">
+                    <div class="feature">Calls<span>Unlimited</span></div>
+                    <div class="feature">Trustworthy Candidates<span>Assured</span></div>
+                    <div class="feature">Skilled Employees<span>Assured</span></div>
+                    <div class="feature">Working Support<span>Assured</span></div>
+                    <div class="feature">Support<span>7/24</span></div>
+                 </div>
+                 <!-- Price -->
+                 <div class="price-tag">
+                    <span class="symbol">$</span>
+                    <span class="amount">12.99</span>
+                    <span class="after">/unlimited</span>
+                 </div>
+                 <!-- Button -->
+                 <a class="price-button" href="{% url 'payment' %}">Get Started</a>
+              </div>
+           </div>
+        </div>
+     </div>
+</div>
+
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", function() {
+        // Find the "Applicants" link within the sidebar
+        var applicantsLink = document.querySelector('.sidebar-list-item a[href="{% url 'pricing' %}"]');
+    
+        // Check if the link is found
+        if (applicantsLink) {
+            // Remove the 'active' class from all sidebar list items
+            var sidebarListItems = document.querySelectorAll('.sidebar-list-item');
+            sidebarListItems.forEach(function(item) {
+                item.classList.remove('active');
+            });
+    
+            // Add the 'active' class to the parent list item of the "Applicants" link
+            var parentListItem = applicantsLink.closest('.sidebar-list-item');
+            if (parentListItem) {
+                parentListItem.classList.add('active');
+            }
+        }
+    });
+    
+</script>
+
+
+{% endblock %}

@@ -1,0 +1,98 @@
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+
+
+.app-content-header{
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 4%;
+}
+.dark .app-content-header p {
+    font-size: 15px;
+    color: #6c94dc;
+}
+
+.light .app-content-header p {
+    font-size: 15px;
+    color: black;
+}
+.light .job-table {
+    font-size: 15px;
+    background-color: #C3CFF4;
+
+
+    span{
+        color :black;
+    }
+
+    th{
+        background-color: #F3F6FD;
+    }
+
+
+}
+
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.job-table-container {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+.job-table {
+    width: 80%;    
+    border-collapse: separate; 
+
+    background-color: #151E2F;
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.job-table th,
+.job-table td {
+    padding: 20px;
+    text-align: center;
+    
+}
+
+.job-table th {
+    background-color: #1D283C;
+    color: #000000;
+}
+
+
+
+
+.assign-link {
+    color: #fff;
+    background-color: #233352;
+    border: none;
+    border-radius: 3px;
+    padding: 7px;
+    font-size: 12px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.assign-link:hover {
+    background-color: #0056b3;
+}
+
+.job-table tbody tr {
+    margin-bottom: 40px; /* Adjust the value as needed */
+}
+

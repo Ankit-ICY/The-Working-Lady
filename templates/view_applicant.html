@@ -1,0 +1,72 @@
+{% extends 'recruiter_base.html'%}
+
+
+{% block title %}<title> {{applicant.full_name}} </title> {% endblock %}
+{% load static %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'view_applicant.css' %}">
+
+
+    <div class="app-content"> 
+    <div class="user-detail-container">
+        <div class="user-detail">
+           
+            <div class="user-info">
+                <div class="user-avatar">
+                    <img src="{{applicant.photo.url}}" alt="User Avatar">
+                    <h1 class="app-content-headerText">{{ applicant.full_name }}</h1>
+                </div>
+
+                <div class="details"> 
+                    <h1 class="app-content-headerText">Details</h1>
+
+                <p class="user_detail"> <strong> Email :</strong>  <span class="detail_applicant">{{ applicant.email|default:"N/A" }}</span> </p>
+                <p class="user_detail"> <strong> Phone : </strong> <span class="detail_applicant"><a style="color:white;" href="{% url 'pricing' %}">Get our plan</a></span> </p>
+                <p class="user_detail"> <strong>Alternate Phone :</strong> <span class="detail_applicant">{{ applicant.phone_number2|default:"N/A" }}</span> </p>
+                <p class="user_detail"> <strong> Address :</strong><span class="detail_applicant"> {{ applicant.address|default:"N/A" }}</span> </p>
+            </div>
+                <br>
+
+                <div class="details"> 
+                    <h1 class="app-content-headerText">Additional</h1>
+                <p class="user_detail"> <strong>Location :</strong><span class="detail_applicant"> {{ applicant.location|default:"N/A" }}</span> </p>
+                <p class="user_detail"> <strong>Language :</strong> <span class="detail_applicant">{{ applicant.language|default:"N/A" }}</span> </p>
+                <p class="user_detail"> <strong> Age:</strong><span class="detail_applicant"> {{ applicant.age|default:"N/A" }}</span> </p>
+                <p class="user_detail"> <strong> Gender:</strong> <span class="detail_applicant">{{ applicant.gender|default:"N/A" }}</span> </p>
+                <p class="user_detail"> <strong>Religion:  </strong><span class="detail_applicant">{{ applicant.religion|default:"N/A" }}</span> </p>
+
+                </div>
+                <br>
+
+                <div class="details"> 
+                <h1 class="app-content-headerText">Applicant Description</h1>
+                <p class="user_detail"> <strong> Description:</strong> <span class="detail_applicant">{{ applicant.description|default:"N/A" }}</span> </p>
+                </div>
+                <br>
+
+                <div class="details"> 
+                <h1 class="app-content-headerText">Job Related</h1>
+                <p class="user_detail"> <strong> Experience:</strong> 
+                    {% for work in applicant.job.all %}
+                    <span class="detail_applicant">{{ work.work}},</span> 
+                    {% endfor %}
+                </p>
+
+                <p class="user_detail"> <strong> Experience:</strong> <span class="detail_applicant">{{ applicant.experience|default:"N/A" }} Yrs</span> </p>
+                <p class="user_detail"> <strong> Expected Salary:</strong> <span class="detail_applicant">{{ applicant.expected_salary|default:"N/A" }}</span> </p>
+                <p class="user_detail"> <strong> Last Salary:</strong> <span class="detail_applicant">{{ applicant.last_salary|default:"N/A" }}</span> </p>
+                <p class="user_detail"> <strong> Qualification: </strong><span class="detail_applicant">{{ applicant.qualification|default:"N/A" }}</span> </p>
+                <p class="user_detail"> <strong>Job Duration:  </strong><span class="detail_applicant">{{ applicant.job_duration|default:"N/A" }}</span> </p>
+                <p class="user_detail"> <strong>Preferred Location: </strong><span class="detail_applicant"> {{ applicant.preferred_location|default:"N/A" }}</span> </p>
+                <p class="user_detail"> <strong> Work Place: </strong><span class="detail_applicant">{{ applicant.work_place|default:"N/A" }}</span> </p>
+                </div>
+                <!-- Add other fields as needed -->
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,430 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf8" />
+    <meta name="viewport" content="width=device-width, initial-scal=1.0" />
+    <link rel="stylesheet" href="{% static 'create_job.css' %}">
+
+  </head>
+
+  <body>
+
+
+
+    {% if message %}
+    <div id="notification-container" class="notification-container">
+      <div id="notification" class="notification-success">
+        {% if request.user %}
+          <h3>Welcome Back {{request.user}}</h3>
+        {% else %}
+          <h3>Welcome Recruiter</h3>
+        {% endif %}
+          <h4 class="success">{{ message }}</h4>
+      </div>
+      </div>
+
+
+    {% endif %}
+
+
+
+    <div class="formbold-main-wrapper">
+      
+        <div class="formbold-form-wrapper">
+          <img src="/static/collections/logo-no-background.png"  class="twl-logo"/>
+                
+          <form method="POST">
+            {% csrf_token %}
+            <div class="formbold-form-title">              
+              <h2 class="">Post a job</h2>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt.
+              </p>
+            </div>
+      
+
+            <h2 class="job-details" > Recruiter Details</h2>
+
+            <div class="formbold-input-flex">
+              <div>
+                <label for="firstname" class="formbold-form-label">
+                  Full Name
+                </label>
+                {% if full_name %}
+                <input
+                  type="text"
+                  name="full_name"
+                  value="{{full_name}}"
+                  id="firstname"
+                  maxlength="50"
+                  class="formbold-form-input"
+                  placeholder="Enter your full name"
+                />
+
+                {% else %}
+                <input
+                  type="text"
+                  name="full_name"
+                  id="firstname"
+                  maxlength="50"
+                  class="formbold-form-input"
+                  placeholder="Enter your full name"
+                />
+
+                {% endif %}
+              </div>
+              <div>
+                <label for="email" class="formbold-form-label"> Email </label>
+                {% if email %}
+                <input
+                  type="email"
+                  name="email"
+                  value="{{email}}"
+                  id="email"
+                  class="formbold-form-input"
+                  placeholder="Enter your email"
+
+                />
+                {%else%}
+                <input
+                type="email"
+                name="email"
+                id="email"
+                class="formbold-form-input"
+                placeholder="Enter your email"
+              />
+
+                {%endif%}
+              </div>
+          
+            </div>
+      
+            <div class="formbold-input-flex">
+                <div>
+                {% if phone_number %}
+                    <label for="phone" class="formbold-form-label"> Phone number </label>
+                    <input
+                      type="text"
+                      name="phone_number"
+                      id="phone"
+                      maxlength="14"
+                      value="{{ phone_number }}"
+                      class="formbold-form-input"
+                  placeholder="Enter your phone number"
+                    />
+                  {%else %}
+                    <label for="phone" class="formbold-form-label"> Phone number </label>
+                    <input
+                      type="text"
+                      name="phone_number"
+                      id="phone"
+                      maxlength="14"
+                      class="formbold-form-input"
+                  placeholder="Enter your phone number"
+                    />
+
+                    {% endif %}
+                  </div>
+              <div>
+                <label for="phone" class="formbold-form-label"> Additional number <span>(optional)</span></label>
+                <input
+                  type="text"
+                  name="phone_number2"
+                  id="phone"
+                  maxlength="14"
+                  class="formbold-form-input"
+                  placeholder="Additional Number"
+
+                />
+              </div>
+            </div>
+      
+            <div class="formbold-mb-3">
+              <label for="address" class="formbold-form-label">
+                Street Address
+              </label>
+              <textarea
+                type="text"
+                name="address"
+                maxlength="99"
+                id="address"
+                class="formbold-form-input"
+                placeholder="Street Address"
+
+              ></textarea>
+
+            </div>
+      
+            <div class="formbold-mb-3">
+              <label for="address2" class="formbold-form-label">
+                Location/City
+              </label>
+              <input
+                type="text"
+                name="location"
+                id="location"
+                maxlength="50"
+                class="formbold-form-input"
+                placeholder="Location/city"
+              />
+            </div>
+      
+            <div class="formbold-input-flex">
+              <div>
+                <label for="state" class="formbold-form-label"> State/Prvince </label>
+                <input
+                  type="text"
+                  name="state"
+                  id="state"
+                  
+                  class="formbold-form-input"
+                  placeholder="Enter your state"
+                />
+              </div>
+              <div>
+                <label for="country" class="formbold-form-label"> Country </label>
+                <input
+                  type="text"
+                  name="country"
+                  id="country"
+                  value="India"
+                  class="formbold-form-input"
+                  placeholder="Enter your country"
+
+                />
+              </div>
+            </div>
+
+
+            <h2 class="job-details" > Job Details</h2>
+            
+            <div class="job-checkbox">
+                <label for="preffered_location" class="formbold-form-label">
+                    Select work you want : 
+                  </label>
+                <label class="checkbox-label">
+                  <input type="checkbox" name="job[]" value="Cooking" class="checkbox-input">
+                  Cooking
+              </label>
+          
+              <label class="checkbox-label">
+                  <input type="checkbox" name="job[]" value="Cleaning" class="checkbox-input">
+                  Cleaning
+              </label>
+          
+              <label class="checkbox-label">
+                  <input type="checkbox" name="job[]" value="Babysitting" class="checkbox-input">
+                  Babysitting
+              </label>
+          
+              <label class="checkbox-label">
+                  <input type="checkbox" name="job[]" value="Newborn Care" class="checkbox-input">
+                  Newborn Care
+              </label>
+          
+              <label class="checkbox-label">
+                  <input type="checkbox" name="job[]" value="Elder Care" class="checkbox-input">
+                  Mainly Elder Care
+              </label>
+          
+              <label class="checkbox-label">
+                  <input type="checkbox" name="job[]" value="Patient Care" class="checkbox-input">
+                  Patient Care
+              </label>
+          
+              <label class="checkbox-label">
+                  <input type="checkbox" name="job[]" value="Driver" class="checkbox-input">
+                  Driver
+              </label>
+          
+              <label class="checkbox-label">
+                  <input type="checkbox" name="job[]" value="Nursing" class="checkbox-input">
+                  Nursing
+              </label>
+  
+          </div>
+
+            <div class="formbold-mb-3" >
+                <label for="preffered_location" class="formbold-form-label">
+                  Preffered Location 
+                </label>
+                <input
+                  required
+                  type="text"
+                  name="preffered_location"
+                  id="provided_salary"
+                  maxlength="49"
+                  class="formbold-form-input"
+                  placeholder="Any preffered location"
+
+                />
+              </div>
+
+
+            <div class="formbold-input-group">
+                <label class="formbold-form-label">
+                  Urgency
+                </label>
+
+                <select class="formbold-form-select" name="urgency" id="occupation" required>
+                  <option value="Very Urgent">Very Urgent</option>
+                  <option value="In 2-3 Working days">In 2-3 Working days</option>
+                  <option value="In a week">In a week</option>
+                  <option value="In a month">In a month</option>
+                </select>
+              </div>
+
+            <div class="formbold-input-group">
+                <label class="formbold-form-label">
+                  What are your job timings
+                </label>
+
+                <select class="formbold-form-select" name="requirement" id="occupation" required>
+                  <option value="24 Hrs/ Live-in HouseHelp">24 Hrs/ Live-in HouseHelp</option>
+                  <option value="12 Hrs HouseHelp">12 Hrs HouseHelp</option>
+                  <option value="10 Hrs HouseHelp">10 Hrs HouseHelp</option>
+                  <option value="8 Hrs HouseHelp">8 Hrs HouseHelp</option>
+                  <option value="5 Hrs HouseHelp">5 Hrs HouseHelp</option>
+                </select>
+              </div>
+
+
+              <div class="formbold-mb-3" >
+                <label for="timing" class="formbold-form-label">
+                  Time Range(in case req. is not for 24hrs)
+                </label>
+                <input
+                  required
+                  type="text"
+                  name="timing"
+                  id="timing"
+                  class="formbold-form-input"
+                  placeholder="Specify the time range of work"
+
+                />
+              </div>
+
+
+      
+              <div class="formbold-input-radio-wrapper">
+                <label for="ans" class="formbold-form-label">
+                What experience do you expect
+                </label>
+        
+                <div class="formbold-radio-flex">
+                  <div class="formbold-radio-group">
+                    <label class="formbold-radio-label">
+                      <input
+                        class="formbold-input-radio"
+                        type="radio"
+                        name="experience"
+                        id="experience"
+                        value="1"
+                      />
+                      1 Yr
+                      <span class="formbold-radio-checkmark"></span>
+                    </label>
+                  </div>
+        
+                  <div class="formbold-radio-group">
+                    <label class="formbold-radio-label">
+                      <input
+                        class="formbold-input-radio"
+                        type="radio"
+                        name="experience"
+                        id="experience"
+                        value="2"
+                      />
+                      2 Yr
+                      <span class="formbold-radio-checkmark"></span>
+                    </label>
+                  </div>
+
+        
+                  <div class="formbold-radio-groups">
+                    <label class="formbold-radio-label">
+                      <input
+                        class="formbold-input-radio"
+                        type="radio"
+                        value="3"
+                        name="experience"
+                        id="experience"
+                      />
+                      3 yr or more 
+                      <span class="formbold-radio-checkmark"></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="formbold-mb-3" >
+                <label for="salary" class="formbold-form-label">
+                  Salary Offered
+                </label>
+                <input
+                  required
+                  type="text"
+                  name="provided_salary"
+                  maxlength="10"
+
+                  id="provided_salary"
+                  class="formbold-form-input"
+                  placeholder="Salary Offered"
+
+                />
+              </div>
+        
+        
+              <div>
+                <label for="message" class="formbold-form-label">
+                  Any description for the job
+                </label>
+                <textarea
+                  rows="6"
+                  name="description"
+                  id="message"
+                  maxlength="199"
+                  placeholder="Any additionals"
+                  class="formbold-form-input"
+                ></textarea>
+              </div>
+
+              <h2 class="job-details">Admin Info</h2>
+
+
+              <div class="formbold-input-group">
+                <label class="formbold-form-label">
+                  Source 
+                </label>
+                <select class="formbold-form-select" name="source" id="occupation" required>
+                  <option value="Facebook">Facebook</option>
+                  <option value="Website Form">Website Form</option>
+                  <option value="Personal Reference">Personal Reference</option>
+                  <option value="Clients Reference">Clients Reference</option>
+                  <option value="">3rd Party Reference</option>
+
+                </select>
+              </div>
+
+
+              <button class="formbold-btn" type="submit">Post Job</button>
+
+          </form>
+        </div>
+      </div>
+    
+
+  
+
+      <script>
+
+        setTimeout(function() {
+            var notificationContainer = document.getElementById('notification-container');
+            notificationContainer.style.display = 'none';
+        }, 3000);
+      </script>
+
+  </body>
+</html>

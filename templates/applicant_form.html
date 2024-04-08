@@ -1,0 +1,507 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'applicant_form.css' %}">
+    <link rel="icon" href="/static/collections/working Lady logog.jpg" type="image/x-icon">
+
+    <title>Applicant Form</title>
+    <style>
+        .highlighted {
+            background-color: #007bff !important; /* Custom color for highlighted state */
+            color: #fff !important; /* Custom text color for highlighted state */
+        }
+    </style>
+</head>
+<body>
+    <!-- MultiStep Form -->
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <form id="msform" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <!-- progressbar -->
+                <ul id="progressbar">
+                    <li class="active">Language</li>
+                    <li>Personals</li>
+                    <li>Details</li>
+                    <li>Work Place</li> 
+
+                    <li>Job</li>
+                    <li>Additionals</li>
+                    <li>About</li>
+                    <li>Photo</li>
+                    <li>Document</li>
+                </ul>
+                <!-- fieldsets -->
+                <fieldset >
+                  <h2 class="fs-title">Language/भाषा</h2>  
+                    <h3 class="fs-subtitle">Select your preferred language/अपनी पसंदीदा भाषा चुनें</h3>
+                    <label for="language_en">English</label>
+                    <input type="radio" id="language_en" name="language" value="English">
+                    <label for="language_hi">हिन्दी</label>
+                    <input type="radio" id="language_hi" name="language" value="Hindi">
+                    <input type="button" name="next" class="next action-button" value="Next" />
+                </fieldset>
+                <fieldset id="number_fieldset">
+                    <h2 class="fs-title" id="name_title">Name</h2>
+                    <input type="text" name="full_name" placeholder="Enter your name" maxlength="49"/>
+                    <h2 class="fs-title" >Number</h2>
+                    <input type="text" name="phone_number" placeholder="Enter your number" maxlength="15"/>
+                    <h2 class="fs-title" >Additional Number</h2>
+                    <input type="text" name="phone_number2" placeholder="Enter your number" maxlength="15"/>
+                    <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                    <input type="button" name="next" class="next action-button" value="Next"/>
+                </fieldset>
+                <fieldset id="qualification_fieldset">
+                    <h2 class="fs-title" id="qualification_title">Qualification</h2>
+                    <h3 class="fs-subtitle" id="qualification_subtitle">Select Your Qualification</h3>
+                    <select name="qualification" id="qualification_select">
+                        <option value="">Select Qualification</option>
+                        <option value="Below 10th">Below 10th (10वीं से नीचे)</option>
+                        <option value="10th Pass">10th Pass (१०वीं पास)</option>
+                        <option value="12th Pass">12th Pass (१२वीं पास)</option>
+                        <option value="Graduate">Graduate (ग्रेजुएट)</option>
+                    </select>
+                    <h2 class="fs-title" id="age_title">Age</h2>
+                    <input type="number" name="age" id="age_input" placeholder="Enter Your Age" maxlength="3"/>
+                    <h2 class="fs-title" id="location_title">Location</h2>
+                    <input type="text" name="location" id="location_input" placeholder="Enter your location" maxlength="59"/>
+                    <h2 class="fs-title" id="gender_title">Gender</h2>
+                    <select name="gender" id="gender_select">
+                        <option value="">Select Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <h2 class="fs-title" id="religion_title">Religion</h2>
+                    <select name="religion" id="religion_select">
+                        <option value="">Select Religion</option>
+                        <option value="Hindu">Hindu</option>
+                        <option value="Muslim">Muslim</option>
+                        <option value="Christian">Christian</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                    <input type="button" name="next" class="next action-button" value="Next"/>
+                </fieldset>
+                
+                
+                <fieldset>  
+                    <div class="option-container" id="selectOption">
+                        <label class="option-box" for="home">
+                            <input type="radio" id="home" name="block_option" value="HouseHelp" onchange="selectOption('Home')">
+                            Home
+                        </label>
+                        <label class="option-box" for="office">
+                            <input type="radio" id="office" name="block_option" value="Office Work" onchange="selectOption('Office')">
+                            Office
+                        </label>
+                        <label class="option-box" for="driver">
+                            <input type="radio" id="driver" name="block_option" value="Driver" onchange="selectOption('Driver')">
+                            Driver
+                        </label>
+                        <label class="option-box" for="anything">
+                            <input type="radio" id="anything" name="block_option" value="Any" onchange="selectOption('Anything')">
+                            Any Place
+                        </label>
+                    </div>
+                    <div style="display: flex; justify-content: center;">  
+                    <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                    <input type="button" name="next" class="next action-button" value="Next"/>
+                </div>
+                </fieldset>
+                
+     
+
+                <!-- Job Title Fieldset -->
+                <fieldset id="job_title_fieldset">
+                    <h2 class="fs-title" id="job_title">Job Title</h2>
+                    <h3 class="fs-subtitle" id="job_subtitle">Select Your Job Titles</h3>
+                    <ul class="unstyled centered">
+                        <li>
+                            <input class="styled-checkbox" id="job1" type="checkbox" name="selected_jobs[]" value="Cooking">
+                            <label for="job1">Cooking (कुकिंग)</label>
+                        </li>
+                        <li>
+                            <input class="styled-checkbox" id="job2" type="checkbox" name="selected_jobs[]" value="Cleaning">
+                            <label for="job2">Cleaning (क्लीनिंग)</label>
+                        </li>
+                        <li>
+                            <input class="styled-checkbox" id="job3" type="checkbox" name="selected_jobs[]" value="Babycare">
+                            <label for="job3">Babycare (बेबीकेयर)</label>
+                        </li>
+                        <li>
+                            <input class="styled-checkbox" id="job4" type="checkbox" name="selected_jobs[]" value="Newborn Care/Nanny/Japa Maid">
+                            <label for="job4">Newborn Care/Nanny/Japa Maid (नवजात बच्चे की देखभाल / मालिश / दाया)</label>
+                        </li>
+                        <li>
+                            <input class="styled-checkbox" id="job5" type="checkbox" name="selected_jobs[]" value="Patient Care">
+                            <label for="job5">Patient Care (पेशेंट केयर)</label>
+                        </li>
+                        <li>
+                            <input class="styled-checkbox" id="job6" type="checkbox" name="selected_jobs[]" value="Elder Care">
+                            <label for="job6">Elder Care (वृद्ध की देखभाल)</label>
+                        </li>
+                        <li>
+                            <input class="styled-checkbox" id="job7" type="checkbox" name="selected_jobs[]" value="Nursing">
+                            <label for="job7">Nursing (नर्सिंग)</label>
+                        </li>
+                        <li>
+                            <input class="styled-checkbox" id="job8" type="checkbox" name="selected_jobs[]" value="Driver">
+                            <label for="job8">Driving (ड्राइविंग)</label>
+                        </li>
+                    </ul>
+                
+                    <h2 class="fs-title" id="experience_title">Experience</h2>
+                    <h3 class="fs-subtitle" id="experience_subtitle">Enter Your Experience</h3>
+                    <input type="number" id="experience_input" maxlength="3" name="experience" placeholder="Enter your Experience"/>
+                
+                    <h2 class="fs-title" id="job_location_title">Preferred Job Location</h2>
+                    <h3 class="fs-subtitle" id="job_location_subtitle">Enter Your Preferred Job Location</h3>
+                    <input type="text" id="job_location_input" maxlength="49" name="job_location" placeholder="Enter your Preferred Job Location"/>
+                
+                    <h2 class="fs-title" id="duration_title">Duration of Work</h2>
+                    <h3 class="fs-subtitle" id="duration_subtitle">Select Duration</h3>
+                    <select name="duration" id="duration_select">
+                        <option value="">Select Duration</option>
+                        <option value="Less than 5 Hrs">Less than 5 Hrs (5 घंटे से कम)</option>
+                        <option value="8-10 Hrs">8-10 Hrs (8-10 घंटे)</option>
+                        <option value="10-12 Hrs">10-12 Hrs (10-12 घंटे)</option>
+                        <option value="24 Hrs">24 Hrs (24 घंटे/ फुल टाइम वर्क)</option>
+                    </select>
+                
+                    <h2 class="fs-title" id="last_salary_title">Last Salary</h2>
+                    <h3 class="fs-subtitle" id="last_salary_subtitle">Select Last Salary</h3>
+                    <select name="last_salary" id="last_salary_select">
+                        <option value="">Select Last Salary</option>
+                        <option value="5-6,000/-">5-6,000/-</option>
+                        <option value="6-8,000/-">6-8,000/-</option>
+                        <option value="8-10,000/-">8-10,000/-</option>
+                        <option value="10-12,000/-">10-12,000/-</option>
+                        <option value="12-14,000/-">12-14,000/-</option>
+                        <option value="14-15,000/- (for 24 hrs)">14-15,000/- (for 24 hrs)</option>
+                        <option value="16,000/-">16,000/-</option>
+                        <option value="More than 16000/-">More than 16000/-</option>
+                    </select>
+                
+                    <h2 class="fs-title" id="expected_salary_title">Expected Salary</h2>
+                    <h3 class="fs-subtitle" id="expected_salary_subtitle">Select Expected Salary</h3>
+                    <select name="expected_salary" id="expected_salary_select">
+                        <option value="">Select Expected Salary</option>
+                        <option value="5-6,000/-">5-6,000/-</option>
+                        <option value="6-8,000/-">6-8,000/-</option>
+                        <option value="8-10,000/-">8-10,000/-</option>
+                        <option value="10-12,000/-">10-12,000/-</option>
+                        <option value="12-14,000/-">12-14,000/-</option>
+                        <option value="14-15,000/- (for 24 hrs)">14-15,000/- (for 24 hrs)</option>
+                        <option value="16,000/-">16,000/-</option>
+                        <option value="More than 16000/-">More than 16000/-</option>
+                    </select>
+                
+                    <input type="button" id="previous" name="previous" class="previous action-button-previous" value="Previous"/>
+                    <input type="button" id="next" name="next" class="next action-button" value="Next"/>
+                </fieldset>
+                
+
+                
+
+             
+
+                <!-- Gender Fieldset -->
+          
+
+                <fieldset id="additional_documents_fieldset">
+
+                    <h2 class="fs-title">Permanent Address</h2>
+                    <h3 class="fs-subtitle">Enter Your Permanent Address</h3>
+                    <textarea name="permanent_address" placeholder="Enter your permanent address"></textarea>
+                
+                    <h2 class="fs-title">Additional Documents</h2>
+                    <h3 class="fs-subtitle">Select Additional Documents</h3>
+                    <select name="additional_documents" id="additional_documents_select">
+                        <option value="">Select Document</option>
+                        <option value="Aadhar Card">Aadhar Card (आधार कार्ड)</option>
+                        <option value="Pan Card">Pan Card (पैन कार्ड)</option>
+                        <option value="Voter's ID">Voter's ID (मतदाता पहचान पत्र)</option>
+                        <option value="Ration Card">Ration Card (राशन पत्रिका)</option>
+                        <option value="Driving Licence">Driving Licence (ड्राइविंग लाइसेंस)</option>
+                        <option value="Electricity bill">Electricity bill (बिजली का बिल)</option>
+                        <option value="Passport">Passport (पासपोर्ट)</option>
+                        <option value="Birth Certificate">Birth Certificate (जन्म प्रमाणपत्र)</option>
+                        <option value="Any Other">Any Other (अन्य)</option>
+                    </select>
+                
+                    <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                    <input type="button" name="next" class="next action-button" value="Next"/>
+                </fieldset>
+                
+                
+
+                <!-- Description Fieldset -->
+                <fieldset id="description_fieldset">
+                    <h2 class="fs-title">Description</h2>
+                    <h3 class="fs-subtitle">Enter About Yourself</h3>
+                    <textarea id="description" name="description" rows="4" cols="50" maxlength="199" placeholder="write about yourself"></textarea>
+
+                    <!-- <input type="text" name="description" placeholder="Enter about Yourself"/> -->
+                    <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                    <input type="button" name="next" class="next action-button" value="Next"/>
+                </fieldset>
+
+                <!-- Personal Photo Fieldset -->
+                <fieldset id="photo_fieldset">
+                    <h2 class="fs-title">Personal Photo</h2>
+                    <h3 class="fs-subtitle">Add Your Photo</h3>
+                    <img src="/static/collections/dummy profile.png" alt="Profile Image" class="profile-image"/>
+                    <input type="file" name="photo" placeholder="Add Your Photo"/>
+                    <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                    <input type="button" name="next" class="next action-button" value="Next"/>
+                </fieldset>
+
+                <!-- Additional Documents Fieldset -->
+                <fieldset id="documents_fieldset">
+                    <h2 class="fs-title">Additional Documents</h2>
+                    <h3 class="fs-subtitle">Add Your Additional Documents</h3>
+                    <input type="file" name="resume" placeholder="Add Additional Documents"/>
+                    <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                    <input type="submit" name="submit" class="submit action-button" value="Submit"/>
+                </fieldset>
+
+    
+                
+                <!-- Add more fieldsets for other questions -->
+            </form>
+
+    
+        </div>
+    </div>
+
+    <!-- Add jQuery library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- Custom JavaScript for dynamic form handling -->
+    <script>
+
+
+        $(document).ready(function () {
+            // Hide all fieldsets except the first one initially
+            $('#msform fieldset').not(':first').hide();
+
+            // Handle next button click
+            $('.next').click(function () {
+                var currentFieldset = $(this).closest('fieldset');
+                var nextFieldset = currentFieldset.next('fieldset');
+
+                // Show the next fieldset
+                currentFieldset.hide();
+                nextFieldset.show();
+
+                // Update progressbar (optional)
+                $('#progressbar li').eq($('fieldset').index(nextFieldset)).addClass('active');
+
+                // Scroll to top of form (optional)
+                $('html, body').animate({
+                    scrollTop: $('#msform').offset().top
+                }, 'slow');
+            });
+
+            // Handle previous button click (optional)
+            $('.previous').click(function () {
+                var currentFieldset = $(this).closest('fieldset');
+                var prevFieldset = currentFieldset.prev('fieldset');
+
+                // Show the previous fieldset
+                currentFieldset.hide();
+                prevFieldset.show();
+
+                // Update progressbar (optional)
+                $('#progressbar li').eq($('fieldset').index(currentFieldset)).removeClass('active');
+
+                // Scroll to top of form (optional)
+                $('html, body').animate({
+                    scrollTop: $('#msform').offset().top
+                }, 'slow');
+            });
+
+            // Handle language selection
+            $('input[type="radio"][name="language"]').change(function () {
+                var selectedLanguage = $(this).val();
+                // Example: Update text in next fieldset based on selected language
+
+                $('fieldset input[name="next"]').val(selectedLanguage === 'Hindi' ? 'आगे' : 'Next');
+                $('fieldset input[name="previous"]').val(selectedLanguage === 'Hindi' ? 'पिछला' : 'Previous');
+                $('fieldset input[name="sumbit"]').val(selectedLanguage === 'Hindi' ? 'जमा करें' : 'Submit');
+
+                if (selectedLanguage === 'Hindi') {
+                    $('#number_fieldset h2#name_title').text('नाम');
+                    $('#number_fieldset input[name="full_name"]').attr('placeholder', 'अपना नाम डालें');
+                    $('#number_fieldset h2').eq(1).text('नंबर');
+                    $('#number_fieldset input[name="phone_number"]').attr('placeholder', 'अपना नंबर डालें');
+                    $('#number_fieldset h2').eq(2).text('अतिरिक्त नंबर');
+                    $('#number_fieldset input[name="phone_number2"]').attr('placeholder', 'अपना अतिरिक्त नंबर डालें');
+                    $('#number_fieldset input[name="previous"]').val('पिछला');
+                    $('#number_fieldset input[name="next"]').val('आगे');
+                    $('#name_fieldset h2.fs-title').eq(0).text('योग्यता');
+                    $('#qualification_title').text('योग्यता');
+                    $('#qualification_subtitle').text('अपनी योग्यता का चयन करें');
+                    $('#qualification_select option[value=""]').text('योग्यता चयन करें');
+                    $('#qualification_select option[value="Below 10th"]').text('10वीं से नीचे');
+                    $('#qualification_select option[value="10th Pass"]').text('१०वीं पास');
+                    $('#qualification_select option[value="12th Pass"]').text('१२वीं पास');
+                    $('#qualification_select option[value="Graduate"]').text('ग्रेजुएट');
+                    $('#age_title').text('आयु');
+                    $('#age_input').attr('placeholder', 'अपनी आयु दर्ज करें');
+                    $('#location_title').text('स्थान');
+                    $('#location_input').attr('placeholder', 'अपना स्थान दर्ज करें');
+                    $('#gender_title').text('लिंग');
+                    $('#gender_select option[value=""]').text('लिंग चयन करें');
+                    $('#gender_select option[value="Male"]').text('पुरुष');
+                    $('#gender_select option[value="Female"]').text('महिला');
+                    $('#gender_select option[value="Other"]').text('अन्य');
+                    $('#religion_title').text('धर्म');
+                    $('#religion_select option[value=""]').text('धर्म चयन करें');
+                    $('#religion_select option[value="Hindu"]').text('हिंदू');
+                    $('#religion_select option[value="Muslim"]').text('मुस्लिम');
+                    $('#religion_select option[value="Christian"]').text('ईसाई');
+                    $('#religion_select option[value="Other"]').text('अन्य');
+                    $('#job_title').text('नौकरी का शीर्षक');
+                    $('#job_subtitle').text('अपना नौकरी का शीर्षक चुनें');
+                    $('#experience_title').text('अनुभव');
+                    $('#experience_subtitle').text('अपना अनुभव दर्ज करें');
+                    $('#job_location_title').text('पसंदीदा नौकरी स्थान');
+                    $('#job_location_subtitle').text('अपना पसंदीदा नौकरी स्थान दर्ज करें');
+                    $('#duration_title').text('काम की अवधि');
+                    $('#duration_subtitle').text('अवधि का चयन करें');
+                    $('#last_salary_title').text('पिछला वेतन');
+                    $('#last_salary_subtitle').text('पिछला वेतन चुनें');
+                    $('#expected_salary_title').text('अपेक्षित वेतन');
+                    $('#expected_salary_subtitle').text('अपेक्षित वेतन चुनें');
+                    $('#job_title_fieldset input[name="experience"]').attr('placeholder', 'Enter Your Experience (अपना अनुभव दर्ज करें)');
+                    $('#job_title_fieldset input[name="job_location"]').attr('placeholder', 'Enter Your Preferred Job Location (अपना पसंदीदा नौकरी स्थान दर्ज करें)');
+                    $('#job_title_fieldset select[name="duration"]').attr('placeholder', 'Select Duration (अवधि चुनें)');
+                    $('#job_title_fieldset select[name="last_salary"]').attr('placeholder', 'Select Last Salary (अंतिम वेतन चुनें)');
+                    $('#job_title_fieldset select[name="expected_salary"]').attr('placeholder', 'Select Expected Salary (अपेक्षित वेतन चुनें)');
+
+// Permanent Address
+$('#additional_documents_fieldset h2.fs-title').eq(0).text('स्थायी पता');
+$('#additional_documents_fieldset h3.fs-subtitle').eq(0).text('अपना स्थायी पता दर्ज करें');
+$('#additional_documents_fieldset textarea[name="permanent_address"]').attr('placeholder', 'अपना स्थायी पता डालें');
+
+// Additional Documents
+$('#additional_documents_fieldset h2.fs-title').eq(1).text('अतिरिक्त दस्तावेज़');
+$('#additional_documents_fieldset h3.fs-subtitle').eq(1).text('अतिरिक्त दस्तावेज़ चुनें');
+$('#additional_documents_fieldset select[name="additional_documents"]').attr('placeholder', 'दस्तावेज़ चुनें');
+
+
+// Description Fieldset
+$('#description_fieldset h2.fs-title').text('विवरण');
+$('#description_fieldset h3.fs-subtitle').text('अपने बारे में लिखें');
+$('#description_fieldset textarea[name="description"]').attr('placeholder', 'अपने बारे में लिखें');
+
+// Photo Fieldset
+$('#photo_fieldset h2.fs-title').text('व्यक्तिगत फोटो');
+$('#photo_fieldset h3.fs-subtitle').text('अपनी फोटो जोड़ें');
+$('#photo_fieldset input[type="file"]').attr('placeholder', 'अपनी फोटो जोड़ें');
+
+// Additional Documents Fieldset
+$('#documents_fieldset h2.fs-title').text('अतिरिक्त दस्तावेज़');
+$('#documents_fieldset h3.fs-subtitle').text('अपने अतिरिक्त दस्तावेज़ जोड़ें');
+$('#documents_fieldset input[type="file"]').attr('placeholder', 'अतिरिक्त दस्तावेज़ जोड़ें');
+
+                    
+                    
+                }
+                else if (selectedLanguage === 'English') {
+                    $('#number_fieldset h2#name_title').text('Name');
+                    $('#number_fieldset input[name="full_name"]').attr('placeholder', 'Enter your name');
+                    $('#number_fieldset h2').eq(1).text('Number');
+                    $('#number_fieldset input[name="phone_number"]').attr('placeholder', 'Enter your number');
+                    $('#number_fieldset h2').eq(2).text('Additional Number');
+                    $('#number_fieldset input[name="phone_number2"]').attr('placeholder', 'Enter your additional number');
+                    $('#number_fieldset input[name="previous"]').val('Previous');
+                    $('#number_fieldset input[name="next"]').val('Next');
+                    $('#qualification_subtitle').text('Select Your Qualification');
+                    $('#qualification_select option[value=""]').text('Select Qualification');
+                    $('#qualification_select option[value="Below 10th"]').text('Below 10th');
+                    $('#qualification_select option[value="10th Pass"]').text('10th Pass');
+                    $('#qualification_select option[value="12th Pass"]').text('12th Pass');
+                    $('#qualification_select option[value="Graduate"]').text('Graduate');
+                    $('#age_title').text('Age');
+                    $('#age_input').attr('placeholder', 'Enter Your Age');
+                    $('#location_title').text('Location');
+                    $('#location_input').attr('placeholder', 'Enter your location');
+                    $('#gender_title').text('Gender');
+                    $('#gender_select option[value=""]').text('Select Gender');
+                    $('#gender_select option[value="Male"]').text('Male');
+                    $('#gender_select option[value="Female"]').text('Female');
+                    $('#gender_select option[value="Other"]').text('Other');
+                    $('#religion_title').text('Religion');
+                    $('#religion_select option[value=""]').text('Select Religion');
+                    $('#religion_select option[value="Hindu"]').text('Hindu');
+                    $('#religion_select option[value="Muslim"]').text('Muslim');
+                    $('#religion_select option[value="Christian"]').text('Christian');
+                    $('#religion_select option[value="Other"]').text('Other');
+
+                    $('#job_title').text('Job Title');
+$('#job_subtitle').text('Select Your Job Titles');
+$('#experience_title').text('Experience');
+$('#experience_subtitle').text('Enter Your Experience');
+$('#job_location_title').text('Preferred Job Location');
+$('#job_location_subtitle').text('Enter Your Preferred Job Location');
+$('#duration_title').text('Duration of Work');
+$('#duration_subtitle').text('Select Duration');
+$('#last_salary_title').text('Last Salary');
+$('#last_salary_subtitle').text('Select Last Salary');
+$('#expected_salary_title').text('Expected Salary');
+$('#expected_salary_subtitle').text('Select Expected Salary');
+$('#job_title_fieldset input[name="experience"]').attr('placeholder', 'Enter Your Experience');
+$('#job_title_fieldset input[name="job_location"]').attr('placeholder', 'Enter Your Preferred Job Location');
+$('#job_title_fieldset select[name="duration"]').attr('placeholder', 'Select Duration');
+$('#job_title_fieldset select[name="last_salary"]').attr('placeholder', 'Select Last Salary');
+$('#job_title_fieldset select[name="expected_salary"]').attr('placeholder', 'Select Expected Salary');
+$('#additional_documents_fieldset h2.fs-title').eq(0).text('Permanent Address');
+$('#additional_documents_fieldset h3.fs-subtitle').eq(0).text('Enter Your Permanent Address');
+$('#additional_documents_fieldset textarea[name="permanent_address"]').attr('placeholder', 'Enter your permanent address');
+
+$('#additional_documents_fieldset h2.fs-title').eq(1).text('Additional Documents');
+$('#additional_documents_fieldset h3.fs-subtitle').eq(1).text('Select Additional Documents');
+$('#additional_documents_fieldset select[name="additional_documents"]').attr('placeholder', 'Select Document');
+// Description Fieldset
+$('#description_fieldset h2.fs-title').text('Description');
+$('#description_fieldset h3.fs-subtitle').text('Enter About Yourself');
+$('#description_fieldset textarea[name="description"]').attr('placeholder', 'Write about yourself');
+
+// Photo Fieldset
+$('#photo_fieldset h2.fs-title').text('Personal Photo');
+$('#photo_fieldset h3.fs-subtitle').text('Add Your Photo');
+$('#photo_fieldset input[type="file"]').attr('placeholder', 'Add Your Photo');
+
+// Additional Documents Fieldset
+$('#documents_fieldset h2.fs-title').text('Additional Documents');
+$('#documents_fieldset h3.fs-subtitle').text('Add Your Additional Documents');
+$('#documents_fieldset input[type="file"]').attr('placeholder', 'Add Additional Documents');
+
+                } 
+            });
+        });
+    </script>
+
+
+    <script>
+        // Function to handle selection of option
+        function selectOption(value) {
+            // Remove the 'highlighted' class from all option boxes
+            const optionBoxes = document.querySelectorAll('.option-box');
+            optionBoxes.forEach(box => box.classList.remove('highlighted'));
+
+            // Highlight the clicked option box
+            const selectedBox = document.querySelector(`[for="${value.toLowerCase()}"]`);
+            selectedBox.classList.add('highlighted');
+
+    
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,393 @@
+
+/*custom font*/
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+/*basic reset*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    height: 100%;
+    background: #eee;
+}
+
+body {
+    font-family: Montserrat, arial, verdana;
+    background: #101827;
+}
+
+#msform {
+    position: relative;
+    height: 200vh;
+    /* margin-top: 30px; */
+}
+
+#msform fieldset {
+    background: #151E2F;
+    border: 0 none;
+    border-radius: 8px;
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+    padding: 20px 30px;
+    box-sizing: border-box;
+    width: 40%;
+    color : rgb(169, 165, 165);
+    position: relative;
+}
+
+/*Hide all except first fieldset*/
+#msform fieldset:not(:first-of-type) {
+    display: none;
+}
+
+/*inputs*/
+#msform input, #msform textarea {
+    padding: 15px;
+    background: #35496f;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 7%;
+    font-family: montserrat;
+    color: #ffffff;
+    font-size: 13px;
+}
+
+#msform input:focus, #msform textarea:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    border: 1px solid #2098ce;
+    outline-width: 0;
+    transition: All 0.5s ease-in;
+    -webkit-transition: All 0.5s ease-in;
+    -moz-transition: All 0.5s ease-in;
+    -o-transition: All 0.5s ease-in;
+}
+
+/*buttons*/
+#msform .action-button {
+    width: 100px;
+    background: #2098ce;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 25px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 5px;
+}
+
+#msform .action-button:hover, #msform .action-button:focus {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #2098ce;
+}
+
+#msform .action-button-previous {
+    width: 100px;
+    background: #aCbEd0;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 25px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 5px;
+}
+
+#msform .action-button-previous:hover, #msform .action-button-previous:focus {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #aCbEd0;
+}
+
+/*headings*/
+.fs-title {
+    font-size: 20px;
+    /* text-transform: uppercase; */
+    color : rgb(201, 196, 196);
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+.fs-subtitle {
+    font-weight: normal;
+    font-size: 13px;
+    color : rgb(201, 196, 196);
+
+    margin-bottom: 20px;
+}
+/* progressbar */
+#progressbar {
+    margin-bottom: 30px;
+    overflow: hidden;
+    /* CSS counters to number the steps */
+    counter-reset: step;
+    display: flex;
+    justify-content: space-between; /* Adds gap between li items */
+}
+
+#progressbar li {
+    list-style-type: none;
+    color: #f3f0f0;
+    text-transform: uppercase;
+    font-size: 9px;
+    width: calc(100% / 9); /* Divide the width equally among 12 steps */
+    position: relative;
+    letter-spacing: 1px;
+    text-align: center;
+    margin-right: 5px; /* Adjust the gap between li items */
+}
+
+#progressbar li:before {
+    content: counter(step);
+    counter-increment: step;
+    width: 24px;
+    height: 24px;
+    line-height: 26px;
+    display: block;
+    font-size: 12px;
+    color: #333;
+    background: white;
+    border-radius: 25px;
+    margin: 0 auto 10px auto;
+}
+
+/* progressbar connectors */
+#progressbar li:after {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: white;
+    position: absolute;
+    left: -50%;
+    top: 9px;
+    z-index: -1; /* put it behind the numbers */
+}
+
+#progressbar li:first-child:after {
+    /* connector not needed before the first step */
+    content: none;
+}
+
+/* marking active/completed steps blue */
+/* The number of the step and the connector before it = blue */
+#progressbar li.active:before, #progressbar li.active:after {
+    background: #2098ce;
+    color: white;
+}
+
+
+
+.profile-image {
+    max-width: 30%;
+    height: auto;
+    display: block;
+    margin-left: 34%;
+    margin-bottom:8%;
+}
+
+.image-container {
+    position: relative;
+    width: 200px; /* Set the desired width for the image container */
+    height: 200px; /* Set the desired height for the image container */
+    overflow: hidden;
+    margin-bottom: 10px; /* Adjust as needed */
+}
+
+.image-container img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    background-color: #ccc; /* Set the desired background color */
+}
+
+
+#msform fieldset {
+
+    background: #1D283C;
+    border: 0 none;
+    border-radius: 8px;
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+    padding: 20px 30px;
+    box-sizing: border-box;
+    width: 40%;
+    margin: 5% 30%;
+
+    position: relative;
+}
+    
+/* Style for the select dropdown */
+#job_title_select {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+/* Style for the options within the select dropdown */
+#job_title_select option {
+    font-size: 16px;
+    background-color: #fff;
+    color: #333;
+}
+
+/* Style for the selected option */
+#job_title_select option:checked {
+    background-color: #e0e0e0; /* Change the background color when an option is selected */
+}
+    
+
+
+/* Style for select element */
+#msform select {
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: montserrat;
+  color: #ffffff;
+  font-size: 13px;
+  margin-bottom: 7%;
+  background-color: #35496f;/* Optional: You can customize the background color */
+}
+
+/* Style for options inside select */
+#msform select option {
+  padding: 10px; /* Adjust padding as needed */
+  font-size: 13px; /* Adjust font size as needed */
+  background-color: #fff; /* Optional: You can customize the background color */
+  color: #2C3E50; /* Optional: You can customize the text color */
+}
+
+/* Optional: Hover styles for options inside select */
+#msform select option:hover {
+  background-color: #f0f0f0; /* Customize the hover background color */
+}
+
+
+.styled-checkbox {
+  position: absolute; 
+  opacity: 0; 
+  & + label {
+    position: relative;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  
+  & + label:before {
+    content: '';
+    margin-right: 10px;
+    display: inline-block;
+    vertical-align: text-top;
+    width: 20px;
+    height: 20px;
+    background: white;
+  }
+
+  &:hover + label:before {
+    background: #101827;
+  }
+  
+  &:focus + label:before {
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.12);
+  }
+
+  &:checked + label:before {
+    background: #101827;
+  }
+  
+  &:disabled + label {
+    color: #b8b8b8;
+    cursor: auto;
+  }
+
+  &:disabled + label:before {
+    box-shadow: none;
+    background: #ddd;
+  }
+
+  &:checked + label:after {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 9px;
+    background: white;
+    width: 2px;
+    height: 2px;
+    box-shadow: 
+      2px 0 0 white,
+      4px 0 0 white,
+      4px -2px 0 white,
+      4px -4px 0 white,
+      4px -6px 0 white,
+      4px -8px 0 white;
+    transform: rotate(45deg);
+  }
+}
+
+
+
+.unstyled {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+li {
+  margin: 20px 0;   
+}
+
+.centered {
+
+ margin-bottom: 7%;
+}
+
+
+*::placeholder {
+    color: #ffffff; /* Replace #999 with your desired color code */
+}
+
+
+.option-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid */
+    gap: 10px;
+}
+
+/* Style for each option box */
+.option-box {
+    height: 150px;
+    background-color: #35496f;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: flex;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect */
+.option-box:hover {
+    background-color: #e0e0e0;
+}
+
+/* Hide the default input appearance */
+input[name="block_option"] {
+    display: none;
+}

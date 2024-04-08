@@ -1,0 +1,257 @@
+{% extends 'recruiter_base.html' %}
+
+
+{% block content %}
+
+
+<style>
+
+
+    @import url(https://unpkg.com/@webpixels/css@1.1.5/dist/index.css);
+
+    @import url("https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.4.0/font/bootstrap-icons.min.css");
+
+    
+    .sidebar ul{
+      margin-top : 16px;
+  
+  }
+  
+  
+  .sidebar-list-item a {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 10px 16px;
+    color: var(--sidebar-link);
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 24px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  }
+
+  .container-fluid{
+    border-radius: 10px;
+  }
+  
+#head-container{
+    background-color: #1c2941;
+    color: white;
+    padding: 15px;
+    height: 150px;
+    h1{
+
+        color: white;
+    }
+}
+</style>
+
+<div class="app-content">
+<div class="h-screen flex-grow-1 overflow-y-lg-auto" >
+    <!-- Header -->
+    <header class="bg-surface-primary border-bottom pt-6">
+        <div class="container-fluid" id="head-container">
+            <div class="mb-npx">
+                <div class="row align-items-center">
+                    <div class="col-sm-6 col-12 mb-4 mb-sm-0">
+                        <!-- Title -->
+                        <h1 class="h2 mb-0 ls-tight">Dashboard</h1>
+                        <!-- <p> Hello {{ request.user}}, Welcome to your personal dashboard</p> -->
+                    </div>
+                    <!-- Actions -->
+                    <div class="col-sm-6 col-12 text-sm-end">
+                        <div class="mx-n1">
+                            <a href="{% url 'all_jobs' %}" class="btn d-inline-flex btn-sm btn-outline-white mx-1">
+                                <span class=" pe-2">
+                                    <i class="bi bi-eye"></i>
+                                </span>
+                                <span>View Jobs</span>
+                            </a>
+                            <a href="{% url 'create_job' %}" class="btn d-inline-flex btn-sm btn-neutral border-base mx-1">
+                                <span class=" pe-2">
+                                    <i class="bi bi-plus"></i>
+                                </span>
+                         <span>Post Job</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Nav -->
+             <p style="margin-top: 4%;"> Hello  {{request.user}}, Welcome to your personal Dashboard</p>
+            </div>
+        </div>
+    </header>
+    <!-- Main -->
+    <main class="py-6 bg-surface-secondary">
+        <div class="container-fluid">
+            <!-- Card stats -->
+            <div class="row g-6 mb-6">
+                <div class="col-xl-3 col-sm-6 col-12">
+                    <div class="card shadow border-0">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <span class="h6 font-semibold text-muted text-sm d-block mb-2">Total Bookings</span>
+                                    <span class="h3 font-bold mb-0">0</span>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="icon icon-shape bg-tertiary text-white text-lg rounded-circle">
+                                        <i class="bi bi-credit-card"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-2 mb-0 text-sm">
+                                <span class="badge badge-pill bg-soft-success text-success me-2">
+                                    <i class="bi bi-arrow-up me-1"></i>0
+                                </span>
+                                <span class="text-nowrap text-xs text-muted">This month</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-sm-6 col-12">
+                    <div class="card shadow border-0">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <span class="h6 font-semibold text-muted text-sm d-block mb-2">Total Applicants</span>
+                                    <span class="h3 font-bold mb-0">{{applicants_count}}</span>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="icon icon-shape bg-primary text-white text-lg rounded-circle">
+                                        <i class="bi bi-people"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-2 mb-0 text-sm">
+                                <span class="badge badge-pill bg-soft-success text-success me-2">
+                                    <i class="bi bi-arrow-up me-1"></i>0
+                                </span>
+                                <span class="text-nowrap text-xs text-muted">This month</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-sm-6 col-12">
+                    <div class="card shadow border-0">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <span class="h6 font-semibold text-muted text-sm d-block mb-2">Total Job Post</span>
+
+                                    <span class="h3 font-bold mb-0">{{ job_count}}</span>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="icon icon-shape bg-info text-white text-lg rounded-circle">
+                                        <i class="bi bi-clock-history"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-2 mb-0 text-sm">
+                                <span class="badge badge-pill bg-soft-success text-success me-2">
+                                    <i class="bi bi-arrow-up me-1"></i>2
+                                </span>
+                                <span class="text-nowrap text-xs text-muted">This month</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-sm-6 col-12">
+                    <div class="card shadow border-0">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <span class="h6 font-semibold text-muted text-sm d-block mb-2">Total Shortlisted</span>
+                                    <span class="h3 font-bold mb-0">{{shortlisted}}</span>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="icon icon-shape bg-warning text-white text-lg rounded-circle">
+                                        <i class="bi bi-minecart-loaded"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mt-2 mb-0 text-sm">
+                                <span class="badge badge-pill bg-soft-success text-success me-2">
+                                    <i class="bi bi-arrow-up me-1"></i>2
+                                </span>
+                                <span class="text-nowrap text-xs text-muted">This month</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card shadow border-0 mb-7">
+                <div class="card-header">
+                    <h5 class="mb-0">Applications</h5>
+                </div>
+                <div class="table-responsive">
+                    <table class="table table-hover table-nowrap">
+                        <thead class="thead-light">
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Experience</th>
+                                <th scope="col">Work</th>
+                                <th scope="col">Asked Salary </th>
+                                <th scope="col">Status</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            {% for a in applicants|slice:":5" %}
+                            <tr>
+                                <td>
+                                    {% if a.photo %}
+                                    <img alt="..." src="{{a.photo.url}}" class="avatar avatar-sm rounded-circle me-2">
+
+                                    {%else %}
+                                    <img alt="..." src="/static/collections/dummy profile.png" class="avatar avatar-sm rounded-circle me-2">
+
+                                    {%endif %}
+                                    <a class="text-heading font-semibold" href="#">
+                                        {{a.full_name}}
+                                    </a>
+                                </td>
+                                <td>
+                                    {{a.experience}}
+                                </td>
+                                <td>
+                                    <a class="text-heading font-semibold" href="#">
+                                        {{a.work_place}}
+                                    </a>
+                                </td>
+                                <td>
+                                    {{a.expected_salary}}
+                                </td>
+                                <td>
+                                    <span class="badge badge-lg badge-dot">
+                                        <i class="bg-success"></i>Active
+                                    </span>
+                                </td>
+                                <td class="text-end">
+                                    <a href="{% url 'applicant_view' a.applicant_id %}" class="btn btn-sm btn-neutral">View</a>
+                                    <button type="button" class="btn btn-sm btn-square btn-neutral text-danger-hover">
+                                        <i class="bi bi-heart-fill"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                     
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-footer border-0 py-5">
+                    <span class="text-muted text-sm">Showing  5 applicants out of {{applicants_count}}. <a href="{% url 'view-applicants'%}"> View all</a> </span>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+</div>
+
+
+
+
+
+{% endblock %}

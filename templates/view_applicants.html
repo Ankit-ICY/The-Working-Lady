@@ -1,0 +1,296 @@
+{% extends "recruiter_base.html" %}
+{% load static %}
+
+{% block title%}<title>All Applicants</title> {% endblock %}
+
+{%block content%}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="{% static 'applicants_view.css' %}">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css"> 
+<style>
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--app-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+.sidebar ul{
+    margin-top : 16px;
+
+}
+
+
+.sidebar-list-item a {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 10px 16px;
+  color: var(--sidebar-link);
+  text-decoration: none;
+  font-size: 14px;
+  line-height: 24px;
+}
+
+
+{% comment %} .app-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  margin: 0 auto;
+}
+
+.sidebar {
+  position: fixed; 
+  width: 200px;
+  background-color: var(--sidebar);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+}
+
+.app-content {
+  margin-left: 200px; 
+  width: calc(100% - 200px); 
+  padding: 16px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+} {% endcomment %}
+
+
+
+/* For screens smaller than 768px */
+@media screen and (max-width: 768px) {
+  .app-container {
+    flex-direction: column; /* Stack items vertically */
+  }
+
+  .sidebar {
+    position: static;
+    width: 100%; 
+  }
+
+  .app-content {
+    margin-left: 0; 
+    width: 100%; 
+    margin-top: 10%;
+  }
+}
+
+/* Optional: Additional responsive styles for smaller screens */
+@media screen and (max-width: 520px) {
+  .app-container {
+    flex-direction: column; /* Stack items vertically */
+  }
+
+  .sidebar {
+    position: static;
+    width: 100%; 
+  }
+
+  .app-content {
+    margin-left: 0; 
+    width: 100%; 
+    margin-top: 10%;
+  }
+}
+
+
+
+</style>
+<div class ="app-content" > 
+        <div class="container py-2" >
+            <div class="h1 text-right text-dark" id="pageHeaderTitle">Applicants</div>
+            
+
+            <div class="app-content-header">
+            {% if message and not filter  %} 
+                <h2 class="app-content-headerText"><span style="color : rgb(190, 186, 186);"> {{message}} ({{applicants.count}}) </span></h2>
+            
+                {% elif message and filter %}
+                <h2 class="app-content-headerText"><span style="color : rgb(190, 186, 186);"> {{message}}  </span></h2>
+
+            {%else %}
+            <h1 class="app-content-headerText">All Applicants  ({{applicants.count}})</h1>
+
+            {% endif %}
+             
+              </div>
+              {% if filter %} 
+
+              <a href="{% url 'view-applicants' %}" >  <button class="search_job" style="margin : 2%;"> All Applicants </button> </a> 
+
+              {% else %}
+            <div class="app-content-actions">
+                <form method="post" style="display: flex;"> 
+                    {% csrf_token %}
+                <input  class="search-bar" placeholder="Search..." type="text" name ="search_job" />
+        
+                <button class="search_job"> Search</button>
+
+                </form>
+                <div class="app-content-actions-wrapper">
+                  <div class="filter-button-wrapper">
+                    <button class="action-button filter jsFilter"><span>Filter</span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-filter"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg></button>
+
+                    <div class="filter-menu">
+                      <label>Category</label>
+                      <form method = "post"> 
+                     {% csrf_token %} 
+                      <select name='category'>
+                        <option>All Categories</option>
+                        {% for cat in categories %}
+                        <option>{{cat.category}}</option>                     
+                        {% endfor %}
+                      </select>
+                      <select name="experience">
+                        <option>Experience(In yrs)</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        
+                      </select> 
+                      <div class="filter-menu-buttons">
+                       <button class="filter-button reset">
+                          Reset
+                        </button> 
+                        <button class="filter-button apply">
+                          Apply
+                        </button>
+                    </form>
+                      </div>
+                    </div>
+                                        
+                  </div>
+            
+                </div>
+              </div>
+
+
+              {% endif %}
+    
+            
+              {% for a in applicants%}
+            
+              <article class="postcard dark red" id="cards" >
+                <a class="postcard__img_link" href="#">
+                    {% if a.photo %}
+                    <img class="postcard__img" src="{{ a.photo.url }}" alt=""/>
+
+                    {% else %}
+                    <img class="postcard__img" src="/static/collections/dummy profile.png" alt=""/>
+
+                    {% endif %}
+
+                </a>
+                <div class="postcard__text t-dark">
+                    <h1 class="postcard__title blue"><a href="{% url 'applicant_view' a.applicant_id %}">{{ a.full_name}}</a></h1>
+               
+                    <span>
+                        <strong>Works:</strong>
+                        {% for j in a.job.all %}
+                            <span style="color: rgb(139, 0, 0);">{{ j.work }}</span>{% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                    </span>
+                    
+                    <div class="postcard__bar"></div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-4 col-md-6 mb-3">
+                                <span><strong>Experience:</strong> {{ a.experience }} Yrs</span>
+                            </div>
+                            <div class="col-lg-4 col-md-6 mb-3">
+                                <span><strong>Location:</strong> {{ a.location }}</span>
+                            </div>
+                            <div class="col-lg-4 col-md-6 mb-3">
+                                <span><strong>Age:</strong> {{ a.age }}</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-4 col-md-6 mb-3">
+                                <span><strong>Job Duration :</strong> {{ a.job_duration }}</span>
+                            </div>
+                            <div class="col-lg-4 col-md-6 mb-3">
+                                <span><strong>Work Place:</strong> {{ a.work_place.category }}</span>
+                            </div>
+                            <div class="col-lg-4 col-md-6 mb-3">
+                                <span><strong>Religion:</strong> {{ a.religion }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+
+                    <div class="postcard__preview-txt">{{ a.description }}</div>
+                    <ul class="postcard__tagbox">
+                      
+                      {% if a.resume %}
+                          {% comment %} <a href="{{ a.resume.url }}"> {% endcomment %}
+                              <li class="tag__item"><i class="fas fa-tag mr-2"></i>No Resume</li>
+                          {% comment %} </a> {% endcomment %}
+                      {% else %}
+                        <li class="tag__item"><i class="fas fa-tag mr-2"></i>No Resume</li>
+                      {% endif %}
+                        <li class="tag__item"><i class="fas fa-clock mr-2">
+                          <a href="{% url 'applicant_view' a.applicant_id %}"></i>Preview  </li></a>
+
+                          {% if deselect %}
+
+                          <li class="tag__item play blue">
+                            <a href="{% url 'deselect_applicants' a.applicant_id deselect %}"><i class="fas fa-play mr-2"></i>Deselect</a>
+                          </li>
+                          {% else %}
+                        <li class="tag__item play blue">
+                            <a href="{% url 'select_applicants' a.applicant_id %}"><i class="fas fa-play mr-2"></i>Select</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </article>
+
+            {% endfor %}
+          
+        </div>
+      </div>
+
+
+
+        <script>
+
+            document.addEventListener("DOMContentLoaded", function() {
+                // Find the "Applicants" link within the sidebar
+                var applicantsLink = document.querySelector('.sidebar-list-item a[href="{% url 'view-applicants' %}"]');
+            
+                // Check if the link is found
+                if (applicantsLink) {
+                    // Remove the 'active' class from all sidebar list items
+                    var sidebarListItems = document.querySelectorAll('.sidebar-list-item');
+                    sidebarListItems.forEach(function(item) {
+                        item.classList.remove('active');
+                    });
+            
+                    // Add the 'active' class to the parent list item of the "Applicants" link
+                    var parentListItem = applicantsLink.closest('.sidebar-list-item');
+                    if (parentListItem) {
+                        parentListItem.classList.add('active');
+                    }
+                }
+            });
+
+
+            document.querySelector(".jsFilter").addEventListener("click", function () {
+                document.querySelector(".filter-menu").classList.toggle("active");
+              });
+              
+          
+     
+            </script>
+              
+            
+        </script>
+
+{%endblock%}
