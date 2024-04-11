@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .models import Recruiter, User_Recruiter
+from .models import Recruiter, User_Recruiter, Price
 from django.shortcuts import get_object_or_404
 from django.db.models import Count, Q
 from django.http import HttpResponse
@@ -104,11 +104,9 @@ def view_applicants(request):
 
                     if string:
                         jobs.append(string.strip())
-                    print(jobs)
 
                 elif ',' in search_job:
                     jobs = [job.strip() for job in search_job.split(',')]
-                    print(jobs)
 
                 elif  ' ' in search_job:
                     jobs = [job.strip() for job in search_job.split(' ')]
@@ -393,7 +391,6 @@ def payment_success_view(request):
        'razorpay_payment_id': payment_id,
        'razorpay_signature': signature
    }
-   print(params_dict)
    try:
        razorpay_client.utility.verify_payment_signature(params_dict)
        # Payment signature verification successful
@@ -406,3 +403,9 @@ def payment_success_view(request):
 
 def pricing(request):
     return render(request, 'pricing.html')
+
+
+def checkout(request,id):
+    pack = Price.objects.get(price_id = id)
+    context = {'pack' : pack}
+    return render(request , 'checkout.html', context )

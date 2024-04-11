@@ -31,19 +31,15 @@ def applicant_form(request):
             expected_salary =  request.POST.get('expected_salary')
             resume = request.FILES.get('resume')
 
-            print(jobs)
             selected_jobs = Work.objects.filter(work__in=jobs)
-            for job in selected_jobs:
-                print(job.work)
+           
             place = Work_Category.objects.get(category=work_place)
-            print(place)
             if not selected_jobs.exists():
                 raise ValueError('No matching jobs found.')
 
             obj = Applicants.objects.create(full_name=full_name, location=location, experience= experience, description =description, age= age, gender=gender,phone_number= phone_number, language=language,photo= photo,resume = resume
                                 ,phone_number2=phone_number2 , qualification=qualification,last_salary = last_salary, 
                                 job_duration= duration,preffered_location= job_location, expected_salary= expected_salary ,religion= religion,document = additional_documents , address=address, work_place=place)
-            print("yhn tk succeed")
             obj.job.add(*selected_jobs)
             obj.save()
 

@@ -35,3 +35,17 @@ class Recruiter(models.Model):
 
     def __str__(self) -> str:
         return self.full_name   
+    
+
+
+
+class Price(models.Model):
+    price_id = models.AutoField(primary_key=True,unique=True)
+    user_for = models.CharField(max_length=30)
+    price = models.CharField(max_length=30)
+    pack = models.CharField(max_length=30)
+    maid_type = models.CharField(max_length=50)
+    working_hours = models.CharField(max_length=50)
+    support = models.CharField(max_length=20)
+
+

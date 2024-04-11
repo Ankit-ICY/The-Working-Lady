@@ -227,6 +227,12 @@ body {
       margin-top: 10%;
     }
   }
+
+  .price-points{
+    list-style-type:disc;
+     margin-top: 10px;
+    color : rgb(91, 1, 1);
+  }
   
   
 </style>
@@ -236,30 +242,43 @@ body {
         <div class="row">
            <div class="col-md-12 mb-5">
               <h2 class="main-head">Listed are the pricing offerred by TWL</h2>
+              <ul class="price-points">
+                    <li> You need to pay us a "one-time" placement fee for hiring you a maid. </li>
+                    <li> You need to pay a registration fee of 1000/- Rs. to us when you confirm and select the maid which covers candidate’stravelling charges and other handling charges.</li>
+                    <li>Final Charges to be paid after joining of the maid and a satisfactory trial period of 2 days </li>
+                    <li> The monthly salary of the maid needs to be given directly to the maid.</li>
+                    <li> 3 months replacement period - If the maid chooses to leave or you let the maid go, we will replace the maid for FREE. No questions asked!</li>
+                    <li>Experienced, document-verified - maids whom we’ve personally met and shortlisted </li>
+                    <li>Only those maids who pass our quality tests are listed </li>
+                    <li>Excellent customer service	</li>
+               </ul>
+    
            </div>
+
+    
            <!-- Purple Table -->
            <div class="col-md-4">
               <div class="pricing-table purple">
                  <!-- Table Head -->
                  <div class="pricing-label">Fixed Price</div>
                  <h2>BasicPack </h2>
-                 <h5>Made for starters</h5>
+                 <h5>For part-time maids</h5>
                  <!-- Features -->
                  <div class="pricing-features">
-                    <div class="feature">Calls<span>5</span></div>
+                    <!-- <div class="feature">Calls<span>5</span></div> -->
                     <div class="feature">Trustworthy Candidates<span>Assured</span></div>
-                    <div class="feature">Skilled Employees<span>Not Assured</span></div>
-                    <div class="feature">Working Support<span>Not Assured</span></div>
+                    <div class="feature">Maid Type<span>Part Time Maid</span></div>
+                    <div class="feature">Working hours<span>1-2 Hours/day</span></div>
                     <div class="feature">Support<span>Only Mail</span></div>
                  </div>
                  <!-- Price -->
                  <div class="price-tag">
-                    <span class="symbol">$</span>
-                    <span class="amount">7.99</span>
-                    <span class="after">/5 calls</span>
+                    <span class="symbol">Rs</span>
+                    <span class="amount">5000</span>
+                    {% comment %} <span class="after"></span> {% endcomment %}
                  </div>
                  <!-- Button -->
-                 <a class="price-button" href="{% url 'payment' %}">Get Started</a>
+                 <a class="price-button" href="{% url 'checkout' 1 %}">Get Started</a>
               </div>
            </div>
            <!-- Turquoise Table -->
@@ -268,23 +287,23 @@ body {
                  <!-- Table Head -->
                  <div class="pricing-label">Fixed Price</div>
                  <h2>Standard Pack</h2>
-                 <h5>Made for experienced users</h5>
+                 <h5>For Experienced full time maids </h5>
                  <!-- Features -->
                  <div class="pricing-features">
-                    <div class="feature">Calls<span>10 </span></div>
+                    <!-- <div class="feature">Calls<span>10 </span></div> -->
                     <div class="feature">Trustworthy Candidates<span>Assured</span></div>
-                    <div class="feature">Skilled Employees<span>Assured</span></div>
-                    <div class="feature">Working Support<span>Not Assured</span></div>
+                    <div class="feature">Maid Type<span>Experienced full time maid</span></div>
+                    <div class="feature">Working hours<span>4/8/10/24 hrs</span></div>
                     <div class="feature">Support<span>Mail/Phone</span></div>
                  </div>
                  <!-- Price -->
                  <div class="price-tag">
-                    <span class="symbol">$</span>
-                    <span class="amount">9.99</span>
-                    <span class="after">/10 Calls</span>
+                    <span class="symbol">One Month Salary</span>
+                    <span class="amount"></span>
+                    <span class="after">of Maid</span>
                  </div>
                  <!-- Button -->
-                 <a class="price-button" href="{% url 'payment' %}">Get Started</a>
+                 <a class="price-button" href="{% url 'checkout' 3 %}">Get Started</a>
               </div>
            </div>
            <!-- Red Table -->
@@ -293,23 +312,23 @@ body {
                  <!-- Table Head -->
                  <div class="pricing-label">Fixed Price</div>
                  <h2>Unlimited Pack</h2>
-                 <h5>Made for professionals/agencies</h5>
+                 <h5> For Fresher 24hrs maid</h5>
                  <!-- Features -->
                  <div class="pricing-features">
-                    <div class="feature">Calls<span>Unlimited</span></div>
+                    <!-- <div class="feature">Calls<span>Unlimited</span></div> -->
                     <div class="feature">Trustworthy Candidates<span>Assured</span></div>
-                    <div class="feature">Skilled Employees<span>Assured</span></div>
-                    <div class="feature">Working Support<span>Assured</span></div>
+                    <div class="feature">Maid Type <span>Fresher 24 hours maid </span></div>
+                    <div class="feature">Working hours<span>24hrs</span></div>
                     <div class="feature">Support<span>7/24</span></div>
                  </div>
                  <!-- Price -->
                  <div class="price-tag">
-                    <span class="symbol">$</span>
-                    <span class="amount">12.99</span>
-                    <span class="after">/unlimited</span>
+                    <span class="symbol">Rs</span>
+                    <span class="amount">15000</span>
+                    {% comment %} <span class="after">/unlimited</span> {% endcomment %}
                  </div>
                  <!-- Button -->
-                 <a class="price-button" href="{% url 'payment' %}">Get Started</a>
+                 <a class="price-button" href="{% url 'checkout' 2 %}">Get Started</a>
               </div>
            </div>
         </div>
