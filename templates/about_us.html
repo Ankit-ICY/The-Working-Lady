@@ -1,4 +1,4 @@
-{% load static %}
+<!-- {% load static %} -->
 <!DOCTYPE html>
 
 <html lang="en">
@@ -7,24 +7,289 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.2/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="{% static 'about.css' %}">
+    <!-- <link rel="stylesheet" href="{% static 'about.css' %}"> -->
     <title>About Us</title>
   
+
+    <style>
+        
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700,400italic);
+.product-navbar {
+height: 40px;
+width: 100%;
+background: #1a3d4f;
+border-bottom: 1px solid #2D5C74;
+font-family: "Open Sans", sans-serif;
+font-size: 14px;
+line-height: 1.42857143;
+color: #333;
+}
+.product-navbar .product-navbar-centered {
+max-width: 90vw;
+height: 20px;
+margin: 0 5vw;
+}
+.product-navbar .product-navbar-centered ul {
+margin: 0;
+padding: 0;
+}
+.product-navbar .product-navbar-centered ul li {
+float: left;
+list-style: none;
+margin-right: 30px;
+padding-top: 9px;
+}
+.product-navbar .product-navbar-centered ul li a {
+color: #bac2ce;
+font-size: 12px;
+font-weight: 700;
+text-decoration: none;
+text-transform: uppercase;
+text-shadow: none !important;
+}
+
+.hero {
+background: #2D5C74;
+padding-left: 0;
+padding-right: 0;
+}
+.hero .container {
+margin: 0 5vw;
+padding: 0 0vw;
+max-width: 90vw;
+}
+.hero .navbar-brand {
+color: #fff;
+}
+.hero .navbar-brand img {
+margin-right: 7px;
+margin-top: -7px;
+}
+
+#about-main {
+font-family: "Open Sans", sans-serif;
+margin: 0 auto;
+}
+#about-main .row {
+margin-left: 0;
+margin-right: 0;
+}
+#about-main .jumbotron {
+width: 100%;
+height: 530px;
+background: #507887;
+position: relative;
+margin: 0;
+z-index: 3;
+border-radius: 0px;
+}
+#about-main .jumbotron .img-layer-container {
+position: relative;
+max-width: 1100px;
+margin: 0 auto;
+display: flex;
+justify-content: center;
+}
+#about-main .jumbotron .img-layer-container img {
+max-width: 95vw;
+}
+#about-main .jumbotron .img-layer-container .team-image {
+position: absolute;
+}
+#about-main .jumbotron .img-layer-container .team-image img {
+position: relative;
+z-index: 3;
+}
+#about-main .jumbotron .img-layer-container .circles-container {
+position: absolute;
+max-width: 1100px;
+margin: 0 auto;
+display: flex;
+justify-content: center;
+}
+#about-main .jumbotron .img-layer-container .circles-container .img-1 {
+position: absolute;
+z-index: 2;
+}
+#about-main .jumbotron .img-layer-container .circles-container .img-2 {
+position: absolute;
+z-index: 5;
+}
+#about-main .jumbotron .jumbotron-inner {
+max-width: 1350px;
+margin: 0 auto;
+}
+#about-main .jumbotron .jumbotron-inner a {
+text-decoration: none;
+}
+#about-main .jumbotron .jumbotron-inner .top-box {
+max-width: 950px;
+margin: 0 auto;
+}
+#about-main .jumbotron .jumbotron-inner .top-box .content-box {
+margin: 0 50px 35px;
+}
+#about-main .jumbotron .jumbotron-inner .top-box .content-box h1 {
+text-align: center;
+color: #fff;
+font-size: 40px;
+font-weight: bold;
+margin-bottom: 20px;
+}
+#about-main .jumbotron .jumbotron-inner .top-box .content-box p {
+text-align: center;
+color: rgb(205, 196, 196);
+font-size: 18px;
+font-weight: 500;
+margin: 0;
+margin-bottom: 15px;
+}
+@media (max-width: 1401px) {
+#about-main .jumbotron {
+height: 595px !important;
+}
+#about-main .jumbotron .jumbotron-inner {
+max-width: 900px;
+}
+#about-main .jumbotron .jumbotron-inner .top-box {
+max-width: 900px;
+}
+#about-main .jumbotron .jumbotron-inner .top-box .content-box {
+margin-top: 30px;
+margin-bottom: 50px;
+}
+#about-main .jumbotron .jumbotron-inner .top-box .content-box h3 {
+font-size: 35px;
+margin: 5px 0px 20px 0px;
+color: #6f7782;
+font-weight: 300;
+}
+}
+@media (max-width: 1000px) {
+#about-main .jumbotron .img-layer-container {
+width: 100%;
+}
+}
+@media (max-width: 815px) {
+#about-main .jumbotron .jumbotron-inner {
+max-width: 600px;
+}
+}
+@media (max-width: 640px) {
+#about-main .jumbotron {
+height: 400px !important;
+}
+#about-main .jumbotron .jumbotron-inner {
+max-width: 550px;
+padding: 0 20px;
+}
+#about-main .jumbotron .img-1, #about-main .jumbotron .img-2, #about-main .jumbotron .team-image {
+display: none;
+}
+}
+@media (max-width: 420px) {
+#about-main .jumbotron .jumbotron-inner {
+max-width: 600px;
+padding: 0 20px;
+}
+}
+@media (max-width: 400px) {
+#about-main .jumbotron .jumbotron-inner .top-box .content-box {
+margin: 30px 0;
+}
+#about-main .jumbotron .jumbotron-inner .top-box .content-box h1 {
+font-size: 35px;
+}
+#about-main .jumbotron .jumbotron-inner .top-box .content-box p {
+font-size: 16px;
+}
+}
+#about-main .story-container {
+height: 100%;
+width: 100%;
+margin-top: 150px;
+}
+@media (max-width: 640px) {
+#about-main .story-container {
+margin-top: 80px;
+}
+}
+#about-main .story-container .container-divider {
+margin-top: 100px;
+}
+@media (max-width: 640px) {
+#about-main .story-container .container-divider {
+margin-top: 50px;
+}
+}
+#about-main .story-container .need-for-dx-container, #about-main .story-container .our-tech-container, #about-main .story-container .origin-story-container, #about-main .story-container .today-container {
+max-width: 950px;
+margin: 0 auto;
+padding: 0 20px;
+}
+@media (max-width: 815px) {
+#about-main .story-container .need-for-dx-container, #about-main .story-container .our-tech-container, #about-main .story-container .origin-story-container, #about-main .story-container .today-container {
+width: 100%;
+}
+}
+#about-main .story-container .need-for-dx-container .img-container, #about-main .story-container .our-tech-container .img-container, #about-main .story-container .origin-story-container .img-container, #about-main .story-container .today-container .img-container {
+width: 100%;
+display: flex;
+justify-content: center;
+}
+#about-main .story-container .need-for-dx-container .img-container img, #about-main .story-container .our-tech-container .img-container img, #about-main .story-container .origin-story-container .img-container img, #about-main .story-container .today-container .img-container img {
+margin: 50px auto;
+}
+#about-main .story-container .need-for-dx-container h3, #about-main .story-container .our-tech-container h3, #about-main .story-container .origin-story-container h3, #about-main .story-container .today-container h3 {
+color: #074e8c;
+}
+#about-main .story-container .need-for-dx-container p, #about-main .story-container .our-tech-container p, #about-main .story-container .origin-story-container p, #about-main .story-container .today-container p {
+font-size: 15px;
+margin-top: 20px;
+color: #676a6c;
+}
+@media (max-width: 640px) {
+#about-main .story-container .need-for-dx-container p, #about-main .story-container .our-tech-container p, #about-main .story-container .origin-story-container p, #about-main .story-container .today-container p {
+font-size: 13px;
+}
+}
+#about-main .story-container .need-for-dx-container ul, #about-main .story-container .our-tech-container ul, #about-main .story-container .origin-story-container ul, #about-main .story-container .today-container ul {
+margin-top: 30px;
+list-style-image: url("https://apimatic.io/img/theme/aboutUs/bullet.svg");
+}
+#about-main .story-container .need-for-dx-container ul li, #about-main .story-container .our-tech-container ul li, #about-main .story-container .origin-story-container ul li, #about-main .story-container .today-container ul li {
+line-height: 25px;
+padding-left: 5px;
+color: #676a6c;
+}
+
+.twl-logo{
+height: 40px;
+width: 200px
+}
+.img-container img{
+    height:500px;
+}
+    </style>
+
+
+
+
 </head>
 <body>
     <div class="product-navbar" >
         <div class="product-navbar-centered" >
             <ul>
                 <li>
-                    <a href="#" class="">
+                    <a href="{% url 'index' %}" class="">
                         <span>
-                            LINK                            
+                            Home                           
                         </span>
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="">
-                        LINK
+                    <a href="{% url 'steps' %}" class="">
+                        Steps
                     </a>
                 </li>
             </ul>
@@ -56,31 +321,59 @@
                     </div>
                 </div>
             </div>
-            <div class="img-layer-container">
+            <!-- <div class="img-layer-container">
                 <div class="team-image" id="team-image">
-                    <!-- <img src="broom.png" /> -->
+                    <img src="/static/collections/cook logo.png" /> 
                 </div>
 
                 <div class="circles-container">
                     <div class="img-1">
-                        <!-- <img src="baby sit.png" />                         -->
+                        <img src="/static/collections/homecleaning.png" />
                     </div>
                     <div class="img-2">
                         <img src="cook logo.png" />                        
                     </div>                    
                 </div>           
-            </div>
+            </div> -->
         </div>
         <div class="story-container">
             <div class="need-for-dx-container">
                 <h3 class="text-center">
                     Need for TWL
                 </h3>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam rem, temporibus, tempore labore autem odio aliquam amet atque accusantium expedita eius facere animi sit ab corporis molestias placeat, neque eaque sunt. Animi non hic impedit, distinctio officiis dolorum ipsam at veritatis ea accusantium deleniti ullam eum recusandae nam voluptates dolores labore nisi quisquam! Eius neque maxime laboriosam quas saepe accusantium molestiae aperiam optio dignissimos assumenda dolore, deleniti itaque dolores earum tempora odit suscipit delectus eos. Quae, ratione. Voluptatum maiores quasi cum commodi aliquid nesciunt ab distinctio odio ratione architecto neque quod omnis nostrum deserunt, dolor ipsam. Rem architecto obcaecati nulla ea quaerat labore vero ipsum enim quisquam asperiores cumque laborum eos exercitationem voluptatem amet quibusdam tempore reprehenderit illo porro provident, repellendus voluptas laudantium hic. Quas, molestiae dolor qui quam repellat optio soluta! Voluptatem eius unde eaque quibusdam suscipit assumenda voluptatum. Architecto qui, dicta earum illo ratione illum consequuntur ullam assumenda itaque accusamus. Qui omnis, enim itaque voluptates suscipit veritatis accusantium ipsa dolorum ullam illo corrupti laudantium officiis voluptas. Nostrum fuga id numquam deleniti, eaque maiores accusantium! Ut dignissimos dolorum corrupti voluptatem culpa vitae sint nisi iste voluptas quam aliquid sed nihil saepe, ipsa asperiores illo deserunt expedita molestiae ad velit.
-                </p>
+                <p>In today's fast-paced world, finding reliable domestic help or securing a fulfilling domestic job can be a daunting task. This is where "The Working Lady" (TWL) steps in, revolutionizing the way job seekers and employers connect in the domestic job market.</p>
+
+                <h2>For Job Seekers:</h2>
+                
+                <ol>
+                  <li><strong>Access to Verified Opportunities:</strong> TWL ensures that all job listings are verified, providing job seekers with authentic and trustworthy employment opportunities.</li>
+                  <li><strong>Effortless Application Process:</strong> With TWL, job seekers can easily create profiles and apply to multiple job listings with just a few clicks, saving time and effort.</li>
+                  <li><strong>Flexible Work Options:</strong> Whether you're seeking full-time, part-time, or freelance work, TWL offers flexible job options to suit your schedule and preferences.</li>
+                  <li><strong>Direct Communication:</strong> Connect directly with employers through TWL's secure messaging system, facilitating clear communication and job negotiations.</li>
+                </ol>
+                
+                <h2>For Employers:</h2>
+                
+                <ol>
+                  <li><strong>Efficient Hiring Process:</strong> Post job listings on TWL and receive applications from qualified candidates quickly, streamlining the hiring process.</li>
+                  <li><strong>Candidate Screening:</strong> Review job seeker profiles, resumes, and credentials to make informed hiring decisions and find the perfect match for your needs.</li>
+                  <li><strong>Customized Filters:</strong> Utilize TWL's advanced search filters to narrow down candidates based on specific job requirements, ensuring quality matches.</li>
+                  <li><strong>Transparent Communication:</strong> Communicate directly with job seekers to discuss job details, expectations, and ensure a smooth hiring experience.</li>
+                </ol>
+                
+                <h2>Why TWL is Essential:</h2>
+                
+                <ul>
+                  <li><strong>Trust and Reliability:</strong> TWL verifies both job listings and job seekers, fostering a trustworthy environment for all parties involved.</li>
+                  <li><strong>Time and Effort Saving:</strong> TWL's user-friendly platform saves time and effort for both job seekers and employers, making the job search and hiring process efficient.</li>
+                  <li><strong>Quality Matches:</strong> TWL's intelligent matching system ensures that job seekers find suitable opportunities, and employers find qualified candidates, leading to successful and fulfilling job connections.</li>
+                  <li><strong>Supportive Environment:</strong> TWL's dedicated support team provides assistance and guidance throughout the job search and hiring journey, offering a supportive environment for all users.</li>
+                </ul>
+                
+                <p>In conclusion, TWL fills a crucial need in the domestic job market by providing a reliable, efficient, and supportive platform for job seekers and employers alike. Join TWL today and experience the difference in your domestic job search or hiring process!</p>
+                
                 <div class="img-container">
-                    <img src="maid2-transformed.jpeg" alt="apimatic developer experience process" class="img-responsive"/>
+                    <img src="/static/collections/indian patient care2.jpg" alt="apimatic developer experience process" class="img-responsive"/>
                 </div>
             </div>
             <div class="container-divider"></div>
@@ -88,11 +381,45 @@
                 <h3 class="text-center">
                     Our Process
                 </h3>
-                <p>
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam aliquid, sit earum illum illo reprehenderit et tempore repellendus rerum dolore nobis sapiente tempora quaerat dolores ratione hic in dolorum nisi maiores itaque nam! Eius harum dicta ex quae optio, porro, odit asperiores delectus id cum architecto iste velit, deserunt tenetur. Quasi, voluptatum? Voluptas, perspiciatis. Voluptates, praesentium est commodi voluptatum pariatur harum esse, suscipit aut natus voluptate sequi libero assumenda dolorum ipsam a architecto accusantium? Ullam architecto culpa est voluptatem tempore, fuga mollitia quasi quibusdam, labore libero nam distinctio omnis quam alias totam, placeat perferendis? Ea recusandae corrupti vitae quidem maxime sed sunt dolores, eius hic non assumenda qui numquam a dolorem repudiandae, inventore, odio voluptate similique optio ut. Aliquam, esse.
-                </p>
+                
+<h4>Step 1: Applicant Registration</h4>
+<ol>
+  <li>Applicants visit The Working Lady website and fill out a registration form with their personal details, contact information, and job preferences.</li>
+  <li>Upon successful registration, applicants receive a confirmation email with login credentials to access their dashboard.</li>
+</ol>
+
+<h4>Step 2: Recruiter Registration and Login</h4>
+<ol start="3">
+  <li>Recruiters sign up by providing company information and contact details on The Working Lady platform.</li>
+  <li>After registration, recruiters log in to their dashboard using their credentials.</li>
+</ol>
+
+<h4>Step 3: Recruiter Dashboard</h4>
+<ol start="5">
+  <li>Recruiters access their dashboard, where they can post job listings with specific requirements, including job descriptions, qualifications, experience levels, and any other necessary details.</li>
+  <li>Recruiters can also view applications submitted by applicants, review resumes, and shortlist candidates based on their criteria.</li>
+</ol>
+
+<h4>Step 4: TWL Connection</h4>
+<ol start="7">
+  <li>The Working Lady platform facilitates connections between recruiters and applicants by notifying shortlisted candidates about job opportunities.</li>
+  <li>Applicants receive notifications about job matches and can communicate with recruiters through the platform.</li>
+</ol>
+
+<h4>Step 5: Interview and Hiring</h4>
+<ol start="9">
+  <li>Recruiters and applicants conduct interviews and assessments through TWL's messaging system or other preferred communication methods.</li>
+  <li>Upon successful interviews, recruiters make hiring decisions and extend job offers to selected candidates.</li>
+</ol>
+
+<h4>Step 6: Onboarding and Support</h4>
+<ol start="11">
+  <li>The Working Lady provides onboarding support to help newly hired candidates integrate smoothly into their roles.</li>
+  <li>Recruiters and candidates can access ongoing support from TWL's customer service team for any assistance or inquiries.</li>
+</ol>
+
                 <div class="img-container">
-                    <img src="" alt="apimatic code generation engine" class="img-responsive"/>
+                    <img src="/static/collections/bai cleaning.jpg" alt="apimatic code generation engine" class="img-responsive"/>
                 </div>
             </div>
             <div class="container-divider"></div>
@@ -100,29 +427,44 @@
                 <h3 class="text-center">
                     Origin Story
                 </h3>
-                <p>
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae aliquam incidunt beatae culpa omnis dolores quam, consequatur a fugit ipsum voluptas ullam eligendi. Eos natus eligendi, animi corporis alias quis ratione omnis illum, totam esse accusamus dolor ad aspernatur dolorem voluptatibus tempore laborum? Eius obcaecati quibusdam nesciunt a magnam possimus.                </p>
-                <p>
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae delectus, ipsum et, in reiciendis nulla dicta corrupti necessitatibus porro nam dolorum accusantium. Tempora, fuga iste. Quis rem eaque nihil quos nam animi maxime eius. Quas libero soluta laboriosam distinctio praesentium.                </p>
-                <p>
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse pariatur inventore quos consequuntur nostrum debitis porro facilis, enim vitae omnis? Perferendis perspiciatis, deleniti culpa impedit temporibus expedita illo aut atque.                </p>
+                <p>Founded with a vision to transform the domestic job market, "The Working Lady" (TWL) has a unique origin story that drives our mission and values.</p>
+
+<p>It all began with a simple idea – to create a platform that connects job seekers and employers in the domestic sector seamlessly. Recognizing the challenges faced by both parties in finding the right matches and opportunities, TWL was born out of a passion for making a meaningful impact in people's lives.</p>
+
+<p>From humble beginnings to a thriving community, TWL has evolved into a trusted and reliable resource for those seeking domestic employment solutions. Our commitment to quality, reliability, and innovation has set us apart in the industry, earning the trust of job seekers and employers alike.</p>
+
+<p>As we continue to grow and expand our reach, our origin story remains at the heart of everything we do. Every connection made, every job filled, and every success story shared reinforces our dedication to empowering individuals and transforming the way domestic employment is approached.</p>
+
+<p>Join us on this journey as we write the next chapter of success together!</p>
+
             </div>
             <div class="container-divider"></div>
             <div class="today-container">
                 <h3 class="text-center">
                     Flash Forward Today
                 </h3>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magni aut quo minima beatae sint eaque recusandae ut quas cumque voluptates nemo, maiores consectetur expedita non, velit nisi esse at. Rem expedita, tempora fugiat quod similique nisi iusto nihil vel nobis at explicabo commodi soluta fugit veniam blanditiis, eos eius sint ipsa consequatur! Unde veritatis consequuntur quibusdam, deserunt nemo enim ullam?
-                </p>
-                <ul>
-                    <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, rerum.</li>
-                    <li>Lorem ipsum dolor sit, amet consectetur adipisicing.</li>
-                    <li>Lorem ipsum dolor sit amet consectetur adipisicing.</li>
-                    <li>Lorem ipsum dolor sit amet.</li>
-                    <li>Lorem ipsum dolor sit amet consectetur.</li>
-                    <li>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</li>
-                </ul>
+                <p>In today's fast-paced world, "The Working Lady" (TWL) continues to revolutionize the domestic job market, providing seamless connections between job seekers and employers. Here's how TWL is shaping the future of domestic employment:</p>
+
+                <h5>1. Advanced Matching Technology</h5>
+                <p>TWL utilizes cutting-edge algorithms to match qualified candidates with job listings that align with their skills, experience, and preferences. This ensures efficient and accurate job matches for both job seekers and employers.</p>
+                
+                <h5>2. Streamlined Communication</h5>
+                <p>With TWL's integrated messaging system, communication between job seekers and employers is streamlined. From initial inquiries to interview scheduling and job offers, TWL facilitates transparent and efficient communication throughout the hiring process.</p>
+                
+                <h5>3. Comprehensive Job Listings</h5>
+                <p>Employers can create detailed job listings on TWL, including job descriptions, requirements, responsibilities, and benefits. This comprehensive approach helps attract qualified candidates who are well-informed about the job opportunities.</p>
+                
+                <h5>4. User-Friendly Interface</h5>
+                <p>TWL's user-friendly interface makes navigation and usage simple for both job seekers and employers. Intuitive dashboards, easy-to-use features, and responsive design ensure a smooth and enjoyable experience for all users.</p>
+                
+                <h5>5. Personalized Support</h5>
+                <p>At TWL, customer satisfaction is paramount. Our dedicated support team is available to assist job seekers and employers with any questions, issues, or guidance they may need throughout their journey on the platform.</p>
+                
+                <h5>6. Future Innovations</h5>
+                <p>Looking ahead, TWL is committed to continuous improvement and innovation. We're constantly exploring new features, tools, and partnerships to enhance the domestic employment ecosystem and provide even greater value to our users.</p>
+                
+                <p>Experience the future of domestic employment with "The Working Lady" today!</p>
+                
             </div>
             <div class="container-divider"></div>
         </div>

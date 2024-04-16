@@ -285,8 +285,10 @@ def create_job(request):
             preffered_location = request.POST.get('preffered_location')
             timing = request.POST.get('timing')
             jobs = request.POST.getlist('job[]')
-
+            pin_code = request.POST.get('pin_code')
             selected_jobs = Work.objects.filter(work__in=jobs)
+
+
             if request.user.is_authenticated:
                 user_obj = User_Recruiter.objects.get(user=request.user)
                 obj = Recruiter.objects.create(
@@ -305,7 +307,8 @@ def create_job(request):
                     source=source,
                     timing=timing,
                     status=True,
-                    recruiter=user_obj
+                    recruiter=user_obj,
+                    pin_code = pin_code
                 )
                 obj.job.add(*selected_jobs)
                 obj.save()
@@ -330,6 +333,7 @@ def create_job(request):
                     'timing': timing,
                     'status': True,
                     'jobs': jobs,
+                    'pin_code' : pin_code
                 }
                 request.session.save()
                 messages.info(request, 'Job will be posted after signup')

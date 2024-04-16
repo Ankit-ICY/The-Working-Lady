@@ -10,6 +10,8 @@ urlpatterns = [
     path('register', views.register, name="register"),
     path('recruiter-page/', include('recruiter.urls')),
     path('about-us', views.about_us ,name='about_us'),
+    path('steps', views.steps ,name='steps'),
+
         
 ]
 

@@ -9,6 +9,7 @@ from .models import Contact
 # from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.core.exceptions import ValidationError
+from email_validator import EmailNotValidError, validate_email
 
 
 def error_404(request, exception):
@@ -18,12 +19,14 @@ def error_404(request, exception):
 def error_500(request):
     return render(request, '404.html', status=500)
 
-def validate_email_address(email_address):
-   if not re.search(r"^[A-Za-z0-9_!#$%&'*+\/=?`{|}~^.-]+@[A-Za-z0-9.-]+$", email_address):
-       print(f"The email address {email_address} is not valid")
-       return False
-   
-   return True
+def validate_email_address(email):
+    try:
+        v = validate_email (email)
+        email = v["email"]
+        return True
+    except EmailNotValidError as e:
+        return False
+
 
 def validate_pass(password):
     while True:
@@ -157,7 +160,7 @@ def register(request):
                 return redirect('register')
 
             elif not validate_pass(password):
-                messages.warning(request, f'Please Create a strong password !!')
+                messages.error(request, f'Please Create a strong password !!')
                 return redirect('register')
 
             user_obj = User.objects.filter(email = email)
@@ -190,7 +193,8 @@ def register(request):
                                 source=obj_data['source'],
                                 timing=obj_data['timing'],
                                 status=obj_data['status'],
-                                recruiter = recruiter_obj   
+                                recruiter = recruiter_obj,
+                                pin_code = obj_data['pin_code']
                                 )
                     selected_jobs = Work.objects.filter(work__in=obj_data['jobs'])
                     rec.job.add(*selected_jobs) 
@@ -215,3 +219,7 @@ def register(request):
 
     return render(request,'register.html') 
 
+
+
+def steps(request):
+    return render(request, 'step.html')

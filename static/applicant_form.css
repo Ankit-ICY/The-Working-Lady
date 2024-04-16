@@ -31,7 +31,7 @@ body {
     box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
     padding: 20px 30px;
     box-sizing: border-box;
-    width: 40%;
+    width: 100%;
     color : rgb(169, 165, 165);
     position: relative;
 }

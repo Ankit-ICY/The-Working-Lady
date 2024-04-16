@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+
+
+  <title>Document</title>
+  <style>
+
+
+    .twl-logo{
+
+        height: 50px;
+        width: 240px;
+        
+        
+        }
+        
+        
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@200&display=swap");
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  background-color: #91c6df;
+}
+
+.road-map-main {
+  margin: 50px 0 51px;
+}
+.road-map-main .road-map-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 175px;
+}
+@media (max-width: 991px) {
+  .road-map-main .road-map-wrapper {
+    margin-bottom: 25px;
+    height: auto;
+    display: block;
+  }
+}
+.road-map-main .road-map-wrapper::before {
+  content: "";
+  width: 100%;
+  clear: both;
+  display: block;
+}
+.road-map-main .road-map-wrapper::after {
+  content: "";
+  width: 100%;
+  clear: both;
+  display: block;
+}
+.road-map-main .road-map-wrapper .road-map-circle {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 25px solid transparent;
+  border-top-color: #4A7081;
+  border-right-color: #4A7081;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  transform: rotate(45deg);
+}
+@media (max-width: 992px) {
+  .road-map-main .road-map-wrapper .road-map-circle {
+    position: unset;
+    border: 25px solid #4A7081;
+  }
+}
+.road-map-main .road-map-wrapper .road-map-circle .road-map-circle-text {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background-color: #ff8f3fe0;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 26px;
+  text-transform: capitalize;
+  color: #fff;
+  box-shadow: 0px 0px 10px 5px #00000021;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  transform: rotate(-45deg);
+}
+.road-map-main .road-map-wrapper .road-map-card {
+  width: 35%;
+  background: #3a5664;
+  padding: 20px 20px;
+  z-index: 1;
+  position: absolute;
+  right: 0;
+  border-radius: 5px;
+}
+.road-map-main .road-map-wrapper .road-map-card::before {
+  content: "";
+  width: 25%;
+  height: 20px;
+  background: #4A7081;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: -23%;
+  z-index: -1;
+}
+@media (max-width: 991px) {
+  .road-map-main .road-map-wrapper .road-map-card {
+    width: 100%;
+    margin-top: 30px;
+    position: unset;
+  }
+  .road-map-main .road-map-wrapper .road-map-card::before {
+    content: "";
+    width: 20px;
+    height: 30%;
+    top: 50%;
+    transform: translateX(-50%);
+    left: 50%;
+  }
+}
+@media (max-width: 425px) {
+  .road-map-main .road-map-wrapper .road-map-card {
+    top: 45%;
+  }
+}
+.road-map-main .road-map-wrapper .road-map-card .card-head {
+  font-size: 20px;
+  font-weight: 600;
+  text-transform: capitalize;
+  margin: 0 0 15px;
+  color: #fff;
+  text-decoration: underline;
+}
+.road-map-main .road-map-wrapper .road-map-card .card-text {
+  color: #fff;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+@media (max-width: 1199px) {
+  .road-map-main .road-map-wrapper .road-map-card .card-text {
+    -webkit-line-clamp: 4;
+  }
+}
+.road-map-main .road-map-wrapper:nth-of-type(even) .road-map-circle {
+  border-bottom-color: #4A7081;
+  border-left-color: #4A7081;
+  border-top-color: transparent;
+  border-right-color: transparent;
+}
+@media (max-width: 991px) {
+  .road-map-main .road-map-wrapper:nth-of-type(even) .road-map-circle {
+    border-color: #4A7081;
+  }
+}
+.road-map-main .road-map-wrapper:nth-of-type(even) .road-map-card {
+  left: 0;
+}
+.road-map-main .road-map-wrapper:nth-of-type(even) .road-map-card::before {
+  right: -23%;
+  left: unset;
+}
+@media (max-width: 991px) {
+  .road-map-main .road-map-wrapper:nth-of-type(even) .road-map-card::before {
+    content: "";
+    width: 20px;
+    height: 30%;
+    top: 50%;
+    transform: translateX(-50%);
+    left: 50%;
+  }
+}
+@media (max-width: 425px) {
+  .road-map-main .road-map-wrapper:nth-of-type(even) .road-map-card::before {
+    top: 45%;
+  }
+}
+
+
+
+   
+    .navbar::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0.4;
+    z-index: -1;
+    background: linear-gradient(to right,  #1e5799 0%, #08486B 0%, #08486B 100%);
+    background-attachment:fixed;
+
+    }
+    .nav-item a{
+    color: #fff!important;
+    letter-spacing: 1.2px;
+    margin: 0 10px;
+    font-size : 14px;
+    transition: letter-spacing 0.2s ease-in-out;
+    
+    }
+    .nav-item a:hover{
+    color: #360000!important;
+    letter-spacing: 2px;
+    }
+   
+    #step-pattern{
+        margin-top: 5%;
+    }
+   
+
+
+
+  </style>
+</head>
+<body>
+
+
+
+    <div class="header" id="topheader" >
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+          <div class="container text-uppercase p-2">
+            <img src="/static/collections/logo-no-background.png"  class="twl-logo"/>
+            <!-- <a class="navbar-brand font-weight-bold text-white" href="#">The Working Lady</a> -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                  <a class="nav-link" href="{% url 'index' %}">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'index' %}">Services</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'steps' %}">Steps</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'about_us' %}">About</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'index' %}">Contact</a>
+                </li>
+              
+              </ul>
+           
+    
+         
+            </div>
+     
+          </div>
+        
+        </nav>
+
+        <div class="container" id="step-pattern">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="road-map-main">
+                    <div class="road-map-wrapper">
+                        <div class="road-map-circle">
+                          <span
+                            class="road-map-circle-text d-flex align-items-center justify-content-center"
+                            >Step-1</span
+                          >
+                        </div>
+                        <div class="road-map-card">
+                          <h4 class="card-head">1) Post Your Requirements</h4>
+                          <p class="card-text">
+                            Share your specific requirements with us, outlining
+                             the skills, experience, and qualifications you're 
+                             looking for in a candidate.
+                          </p>
+                        </div>
+                      </div>
+                      <div class="road-map-wrapper">
+                        <div class="road-map-circle">
+                          <span
+                            class="road-map-circle-text d-flex align-items-center justify-content-center"
+                            >Step-2</span
+                          >
+                        </div>
+                        <div class="road-map-card">
+                          <h4 class="card-head">2) See Matching Profiles</h4>
+                          <p class="card-text">
+                            Discover profiles that align with your criteria. Our platform presents you with a curated selection of candidates tailored to your needs.
+                          </p>
+                        </div>
+                      </div>
+                  <div class="road-map-wrapper">
+                    <div class="road-map-circle">
+                      <span
+                        class="road-map-circle-text d-flex align-items-center justify-content-center"
+                        >Step-3</span
+                      >
+                    </div>
+                    <div class="road-map-card">
+                      <h4 class="card-head">3) Make Your Selection</h4>
+                      <p class="card-text">
+                        Choose the candidate who best fits your requirements and expectations. You have the freedom to select from a pool of qualified individuals.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="road-map-wrapper">
+                    <div class="road-map-circle">
+                      <span
+                        class="road-map-circle-text d-flex align-items-center justify-content-center"
+                        >Step-4</span
+                      >
+                    </div>
+                    <div class="road-map-card">
+                      <h4 class="card-head">4) Join Our Community</h4>
+                      <p class="card-text">
+                        Register as a client by paying the nominal registration charges. Gain access to our exclusive services and resources.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="road-map-wrapper">
+                    <div class="road-map-circle">
+                      <span
+                        class="road-map-circle-text d-flex align-items-center justify-content-center"
+                        >Step-5</span
+                      >
+                    </div>
+                    <div class="road-map-card">
+                      <h4 class="card-head">5) Take Trial Period of Selected Candidate</h4>
+                      <p class="card-text">
+                        Test the waters with your chosen candidate through a trial period. Evaluate their performance firsthand before making a final commitment.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="road-map-wrapper">
+                    <div class="road-map-circle">
+                      <span
+                        class="road-map-circle-text d-flex align-items-center justify-content-center"
+                        >Step-6</span
+                      >
+                    </div>
+                    <div class="road-map-card">
+                      <h4 class="card-head">6) Pay Final Service Charge After Satisfaction </h4>
+                      <p class="card-text">
+                        Upon being satisfied with the candidate's performance during the trial period, proceed to pay the final service charge for our matchmaking services.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="road-map-wrapper">
+                    <div class="road-map-circle">
+                      <span
+                        class="road-map-circle-text d-flex align-items-center justify-content-center"
+                        >Step-7</span
+                      >
+                    </div>
+                    <div class="road-map-card">
+                      <h4 class="card-head">7) Access Your Dashboard to Avail Several Benefits from TWL Timely </h4>
+                      <p class="card-text">
+                        Enjoy the convenience of our user-friendly dashboard, offering you access to various benefits, updates, and support services from TWL.
+                     </p>
+                    </div>
+                  </div>
+             <h3>Finished!!</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    
+
+
+
+
+ 
+
+ <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+
+</body>
+</html>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'applicant_form.css' %}">
+    <!-- <link rel="stylesheet" href="{% static 'applicant_form.css' %}"> -->
     <link rel="icon" href="/static/collections/working Lady logog.jpg" type="image/x-icon">
 
     <title>Applicant Form</title>
@@ -13,278 +13,774 @@
             background-color: #007bff !important; /* Custom color for highlighted state */
             color: #fff !important; /* Custom text color for highlighted state */
         }
+
+  
+        
+/*custom font*/
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+/*basic reset*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    height: 100%;
+    background: #eee;
+}
+
+body {
+    font-family: Montserrat, arial, verdana;
+    /* background: #101827; */
+
+}
+
+#msform {
+    position: relative;
+    height: 250vh;
+    background-image:  linear-gradient(rgba(39, 39, 39, 0.4),rgba(39, 39, 39, 0.4)), url('/static/collections/maid3.jpg');
+/* background-image: linear-gradient(rgba(0,168,255,0.3), rgba(0,168,255,0.3)), url('/static/collections/maid3.jpg'); */
+
+background-position: top;
+background-repeat: no-repeat;
+background-size: cover;
+background-attachment: fixed;
+
+}
+
+#msform fieldset {
+    background: #151E2F;
+    border: 0 none;
+    border-radius: 8px;
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+    padding: 20px 30px;
+    box-sizing: border-box;
+    width: 40%;
+    color : rgb(169, 165, 165);
+    position: relative;
+}
+
+/*Hide all except first fieldset*/
+#msform fieldset:not(:first-of-type) {
+    display: none;
+}
+
+/*inputs*/
+#msform input, #msform textarea {
+    padding: 15px;
+    /* background: #7d7f80; */
+    border: 2px solid rgb(161, 208, 247);
+    border-radius: 4px;
+    margin-bottom: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 7%;
+    font-family: sans-serif;
+    color: black;
+    font-size: 13px;
+}
+
+#msform input:focus, #msform textarea:focus {
+    -moz-box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    border: 2px solid rgb(161, 208, 247);
+    outline-width: 0;
+    transition: All 0.5s ease-in;
+    -webkit-transition: All 0.5s ease-in;
+    -moz-transition: All 0.5s ease-in;
+    -o-transition: All 0.5s ease-in;
+}
+
+/*buttons*/
+#msform .action-button {
+    width: 100px;
+    background: #2B6E92;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 25px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 5px;
+}
+
+#msform .action-button:hover, #msform .action-button:focus {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #2B6E92;
+}
+
+#msform .action-button-previous {
+    width: 100px;
+    background: #000000;
+    font-weight: bold;
+    color: white;
+    border: 0 none;
+    border-radius: 25px;
+    cursor: pointer;
+    padding: 10px 5px;
+    margin: 10px 5px;
+}
+
+#msform .action-button-previous:hover, #msform .action-button-previous:focus {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #aCbEd0;
+}
+
+/*headings*/
+.fs-title {
+    font-size: 20px;
+    /* text-transform: uppercase; */
+    color : rgb(21, 21, 21);
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+.fs-subtitle {
+    font-weight: normal;
+    font-size: 13px;
+    color : rgb(12, 12, 12);
+
+    margin-bottom: 20px;
+}
+/* progressbar */
+#progressbar {
+    margin-bottom: 30px;
+    overflow: hidden;
+    /* CSS counters to number the steps */
+    counter-reset: step;
+    display: flex;
+    justify-content: space-between; /* Adds gap between li items */
+}
+
+#progressbar li {
+    list-style-type: none;
+    color: #f3f0f0;
+    text-transform: uppercase;
+    font-size: 9px;
+    width: calc(100% / 9); /* Divide the width equally among 12 steps */
+    position: relative;
+    letter-spacing: 1px;
+    text-align: center;
+    margin-right: 5px; /* Adjust the gap between li items */
+}
+
+#progressbar li:before {
+    content: counter(step);
+    counter-increment: step;
+    width: 24px;
+    height: 24px;
+    line-height: 26px;
+    display: block;
+    font-size: 12px;
+    color: #333;
+    background: white;
+    border-radius: 25px;
+    margin: 0 auto 10px auto;
+}
+
+/* progressbar connectors */
+#progressbar li:after {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background: white;
+    position: absolute;
+    left: -50%;
+    top: 9px;
+    z-index: -1; /* put it behind the numbers */
+}
+
+#progressbar li:first-child:after {
+    /* connector not needed before the first step */
+    content: none;
+}
+
+/* marking active/completed steps blue */
+/* The number of the step and the connector before it = blue */
+#progressbar li.active:before, #progressbar li.active:after {
+    background: black;
+    color: white;
+}
+
+
+
+.profile-image {
+    max-width: 30%;
+    height: auto;
+    display: block;
+    margin-left: 34%;
+    margin-bottom:8%;
+}
+
+.image-container {
+    position: relative;
+    width: 200px; /* Set the desired width for the image container */
+    height: 200px; /* Set the desired height for the image container */
+    overflow: hidden;
+    margin-bottom: 10px; /* Adjust as needed */
+}
+
+.image-container img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    background-color: #ccc; /* Set the desired background color */
+}
+
+
+#msform fieldset {
+
+    background: white;
+    color: black;
+    border: 0 none;
+    border-radius: 8px;
+    box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+    padding: 20px 30px;
+    box-sizing: border-box;
+    width: 40%;
+    margin: 5% 30%;
+    position: relative;
+}
+    
+/* Style for the select dropdown */
+#job_title_select {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border: 2px solid rgb(161, 208, 247);
+    border-radius: 5px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+/* Style for the options within the select dropdown */
+#job_title_select option {
+    font-size: 16px;
+    background-color: #fff;
+    color: #333;
+}
+
+/* Style for the selected option */
+#job_title_select option:checked {
+    background-color: #e0e0e0; /* Change the background color when an option is selected */
+}
+    
+
+
+/* Style for select element */
+#msform select {
+  padding: 15px;
+  border: 2px solid rgb(161, 208, 247);
+  border-radius: 4px;
+  margin-bottom: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: sans-serif;
+  color: black;
+  font-size: 13px;
+  margin-bottom: 7%;
+  background-color: #f0f1f1;/* Optional: You can customize the background color */
+}
+
+/* Style for options inside select */
+#msform select option {
+  padding: 10px; /* Adjust padding as needed */
+  font-size: 13px; /* Adjust font size as needed */
+  background-color: #fff; /* Optional: You can customize the background color */
+  color: #2C3E50; 
+}
+
+/* Optional: Hover styles for options inside select */
+#msform select option:hover {
+  background-color: #f0f0f0; /* Customize the hover background color */
+}
+
+
+.styled-checkbox {
+  position: absolute; 
+  opacity: 0; 
+  & + label {
+    position: relative;
+    cursor: pointer;
+    padding: 0;
+  }
+
+  
+  & + label:before {
+    content: '';
+    margin-right: 10px;
+    display: inline-block;
+    vertical-align: text-top;
+    width: 20px;
+    height: 20px;
+    background: rgb(180, 174, 174);
+  }
+
+  &:hover + label:before {
+    background: white;
+  }
+  
+  &:focus + label:before {
+    box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.12);
+  }
+
+  &:checked + label:before {
+    background: green;
+  
+  }
+  
+  &:disabled + label {
+    color: #b8b8b8;
+    cursor: auto;
+  }
+
+  &:disabled + label:before {
+    box-shadow: none;
+    background: #ddd;
+  }
+
+  &:checked + label:after {
+    content: '';
+    position: absolute;
+    left: 5px;
+    top: 9px;
+    background: white;
+    width: 2px;
+    height: 2px;
+    box-shadow: 
+      2px 0 0 white,
+      4px 0 0 white,
+      4px -2px 0 white,
+      4px -4px 0 white,
+      4px -6px 0 white,
+      4px -8px 0 white;
+    transform: rotate(45deg);
+  }
+}
+
+
+
+.styled-checkbox:hover{
+
+    background-color: red;
+}
+
+.unstyled {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+li {
+  margin: 20px 0;   
+}
+
+.centered {
+
+ margin-bottom: 7%;
+}
+
+
+*::placeholder {
+    color: black; /* Replace #999 with your desired color code */
+}
+
+
+.option-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid */
+    gap: 10px;
+}
+
+/* Style for each option box */
+.option-box {
+    height: 150px;
+    background-color: #4583a4;
+    border: 2px solid rgb(161, 208, 247);
+    border-radius: 5px;
+    display: flex;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect */
+.option-box:hover {
+    background-color: #e0e0e0;
+}
+
+/* Hide the default input appearance */
+input[name="block_option"] {
+    display: none;
+}
+
+    
+.unstyled li{
+  background-color: #15233e;
+  color: white;
+  margin-top: 10px;
+  padding: 8px;
+  border-radius: 10px;
+  
+}
+.unstyled li:hover{
+  background-color: #d26565;
+color: white;
+
+  
+}
+        
+        /* Responsive styles */
+        @media only screen and (max-width: 768px) {
+         
+            #msform fieldset{
+                width: 90%;
+                margin: 0 6%;
+            }
+        }
+
+
+        .twl-logo{
+
+            height: 50px;
+            width: 240px;
+            
+            
+            }
+
+.logo-div{
+    display:flex;
+    justify-content:center;
+}
     </style>
 </head>
 <body>
     <!-- MultiStep Form -->
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            <form id="msform" method="POST" enctype="multipart/form-data">
-                {% csrf_token %}
-                <!-- progressbar -->
-                <ul id="progressbar">
-                    <li class="active">Language</li>
-                    <li>Personals</li>
-                    <li>Details</li>
-                    <li>Work Place</li> 
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                <form id="msform" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <!-- progressbar -->
+                    <ul id="progressbar">
+                        <li class="active">Language</li>
+                        <li>Personals</li>
+                        <li>Details</li>
+                        <li>Work Place</li> 
 
-                    <li>Job</li>
-                    <li>Additionals</li>
-                    <li>About</li>
-                    <li>Photo</li>
-                    <li>Document</li>
-                </ul>
-                <!-- fieldsets -->
-                <fieldset >
-                  <h2 class="fs-title">Language/भाषा</h2>  
-                    <h3 class="fs-subtitle">Select your preferred language/अपनी पसंदीदा भाषा चुनें</h3>
-                    <label for="language_en">English</label>
-                    <input type="radio" id="language_en" name="language" value="English">
-                    <label for="language_hi">हिन्दी</label>
-                    <input type="radio" id="language_hi" name="language" value="Hindi">
-                    <input type="button" name="next" class="next action-button" value="Next" />
-                </fieldset>
-                <fieldset id="number_fieldset">
-                    <h2 class="fs-title" id="name_title">Name</h2>
-                    <input type="text" name="full_name" placeholder="Enter your name" maxlength="49"/>
-                    <h2 class="fs-title" >Number</h2>
-                    <input type="text" name="phone_number" placeholder="Enter your number" maxlength="15"/>
-                    <h2 class="fs-title" >Additional Number</h2>
-                    <input type="text" name="phone_number2" placeholder="Enter your number" maxlength="15"/>
-                    <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
-                    <input type="button" name="next" class="next action-button" value="Next"/>
-                </fieldset>
-                <fieldset id="qualification_fieldset">
-                    <h2 class="fs-title" id="qualification_title">Qualification</h2>
-                    <h3 class="fs-subtitle" id="qualification_subtitle">Select Your Qualification</h3>
-                    <select name="qualification" id="qualification_select">
-                        <option value="">Select Qualification</option>
-                        <option value="Below 10th">Below 10th (10वीं से नीचे)</option>
-                        <option value="10th Pass">10th Pass (१०वीं पास)</option>
-                        <option value="12th Pass">12th Pass (१२वीं पास)</option>
-                        <option value="Graduate">Graduate (ग्रेजुएट)</option>
-                    </select>
-                    <h2 class="fs-title" id="age_title">Age</h2>
-                    <input type="number" name="age" id="age_input" placeholder="Enter Your Age" maxlength="3"/>
-                    <h2 class="fs-title" id="location_title">Location</h2>
-                    <input type="text" name="location" id="location_input" placeholder="Enter your location" maxlength="59"/>
-                    <h2 class="fs-title" id="gender_title">Gender</h2>
-                    <select name="gender" id="gender_select">
-                        <option value="">Select Gender</option>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                        <option value="Other">Other</option>
-                    </select>
-                    <h2 class="fs-title" id="religion_title">Religion</h2>
-                    <select name="religion" id="religion_select">
-                        <option value="">Select Religion</option>
-                        <option value="Hindu">Hindu</option>
-                        <option value="Muslim">Muslim</option>
-                        <option value="Christian">Christian</option>
-                        <option value="Other">Other</option>
-                    </select>
-                    <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
-                    <input type="button" name="next" class="next action-button" value="Next"/>
-                </fieldset>
-                
-                
-                <fieldset>  
-                    <div class="option-container" id="selectOption">
-                        <label class="option-box" for="home">
-                            <input type="radio" id="home" name="block_option" value="HouseHelp" onchange="selectOption('Home')">
-                            Home
-                        </label>
-                        <label class="option-box" for="office">
-                            <input type="radio" id="office" name="block_option" value="Office Work" onchange="selectOption('Office')">
-                            Office
-                        </label>
-                        <label class="option-box" for="driver">
-                            <input type="radio" id="driver" name="block_option" value="Driver" onchange="selectOption('Driver')">
-                            Driver
-                        </label>
-                        <label class="option-box" for="anything">
-                            <input type="radio" id="anything" name="block_option" value="Any" onchange="selectOption('Anything')">
-                            Any Place
-                        </label>
-                    </div>
-                    <div style="display: flex; justify-content: center;">  
-                    <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
-                    <input type="button" name="next" class="next action-button" value="Next"/>
-                </div>
-                </fieldset>
-                
-     
-
-                <!-- Job Title Fieldset -->
-                <fieldset id="job_title_fieldset">
-                    <h2 class="fs-title" id="job_title">Job Title</h2>
-                    <h3 class="fs-subtitle" id="job_subtitle">Select Your Job Titles</h3>
-                    <ul class="unstyled centered">
-                        <li>
-                            <input class="styled-checkbox" id="job1" type="checkbox" name="selected_jobs[]" value="Cooking">
-                            <label for="job1">Cooking (कुकिंग)</label>
-                        </li>
-                        <li>
-                            <input class="styled-checkbox" id="job2" type="checkbox" name="selected_jobs[]" value="Cleaning">
-                            <label for="job2">Cleaning (क्लीनिंग)</label>
-                        </li>
-                        <li>
-                            <input class="styled-checkbox" id="job3" type="checkbox" name="selected_jobs[]" value="Babycare">
-                            <label for="job3">Babycare (बेबीकेयर)</label>
-                        </li>
-                        <li>
-                            <input class="styled-checkbox" id="job4" type="checkbox" name="selected_jobs[]" value="Newborn Care/Nanny/Japa Maid">
-                            <label for="job4">Newborn Care/Nanny/Japa Maid (नवजात बच्चे की देखभाल / मालिश / दाया)</label>
-                        </li>
-                        <li>
-                            <input class="styled-checkbox" id="job5" type="checkbox" name="selected_jobs[]" value="Patient Care">
-                            <label for="job5">Patient Care (पेशेंट केयर)</label>
-                        </li>
-                        <li>
-                            <input class="styled-checkbox" id="job6" type="checkbox" name="selected_jobs[]" value="Elder Care">
-                            <label for="job6">Elder Care (वृद्ध की देखभाल)</label>
-                        </li>
-                        <li>
-                            <input class="styled-checkbox" id="job7" type="checkbox" name="selected_jobs[]" value="Nursing">
-                            <label for="job7">Nursing (नर्सिंग)</label>
-                        </li>
-                        <li>
-                            <input class="styled-checkbox" id="job8" type="checkbox" name="selected_jobs[]" value="Driver">
-                            <label for="job8">Driving (ड्राइविंग)</label>
-                        </li>
+                        <li>Job</li>
+                        <li>Additionals</li>
+                        <li>About</li>
+                        <li>Photo</li>
+                        <li>Document</li>
                     </ul>
-                
-                    <h2 class="fs-title" id="experience_title">Experience</h2>
-                    <h3 class="fs-subtitle" id="experience_subtitle">Enter Your Experience</h3>
-                    <input type="number" id="experience_input" maxlength="3" name="experience" placeholder="Enter your Experience"/>
-                
-                    <h2 class="fs-title" id="job_location_title">Preferred Job Location</h2>
-                    <h3 class="fs-subtitle" id="job_location_subtitle">Enter Your Preferred Job Location</h3>
-                    <input type="text" id="job_location_input" maxlength="49" name="job_location" placeholder="Enter your Preferred Job Location"/>
-                
-                    <h2 class="fs-title" id="duration_title">Duration of Work</h2>
-                    <h3 class="fs-subtitle" id="duration_subtitle">Select Duration</h3>
-                    <select name="duration" id="duration_select">
-                        <option value="">Select Duration</option>
-                        <option value="Less than 5 Hrs">Less than 5 Hrs (5 घंटे से कम)</option>
-                        <option value="8-10 Hrs">8-10 Hrs (8-10 घंटे)</option>
-                        <option value="10-12 Hrs">10-12 Hrs (10-12 घंटे)</option>
-                        <option value="24 Hrs">24 Hrs (24 घंटे/ फुल टाइम वर्क)</option>
-                    </select>
-                
-                    <h2 class="fs-title" id="last_salary_title">Last Salary</h2>
-                    <h3 class="fs-subtitle" id="last_salary_subtitle">Select Last Salary</h3>
-                    <select name="last_salary" id="last_salary_select">
-                        <option value="">Select Last Salary</option>
-                        <option value="5-6,000/-">5-6,000/-</option>
-                        <option value="6-8,000/-">6-8,000/-</option>
-                        <option value="8-10,000/-">8-10,000/-</option>
-                        <option value="10-12,000/-">10-12,000/-</option>
-                        <option value="12-14,000/-">12-14,000/-</option>
-                        <option value="14-15,000/- (for 24 hrs)">14-15,000/- (for 24 hrs)</option>
-                        <option value="16,000/-">16,000/-</option>
-                        <option value="More than 16000/-">More than 16000/-</option>
-                    </select>
-                
-                    <h2 class="fs-title" id="expected_salary_title">Expected Salary</h2>
-                    <h3 class="fs-subtitle" id="expected_salary_subtitle">Select Expected Salary</h3>
-                    <select name="expected_salary" id="expected_salary_select">
-                        <option value="">Select Expected Salary</option>
-                        <option value="5-6,000/-">5-6,000/-</option>
-                        <option value="6-8,000/-">6-8,000/-</option>
-                        <option value="8-10,000/-">8-10,000/-</option>
-                        <option value="10-12,000/-">10-12,000/-</option>
-                        <option value="12-14,000/-">12-14,000/-</option>
-                        <option value="14-15,000/- (for 24 hrs)">14-15,000/- (for 24 hrs)</option>
-                        <option value="16,000/-">16,000/-</option>
-                        <option value="More than 16000/-">More than 16000/-</option>
-                    </select>
-                
-                    <input type="button" id="previous" name="previous" class="previous action-button-previous" value="Previous"/>
-                    <input type="button" id="next" name="next" class="next action-button" value="Next"/>
-                </fieldset>
-                
+               
+                    <fieldset >
+                        <div class="logo-div"> 
+
+                            <img src="/static/collections/logo-no-background.png"  class="twl-logo"/>
+
+                        </div>
+
+                    <h2 class="fs-title">Language/भाषा</h2>  
+                        <h3 class="fs-subtitle">Select your preferred language/अपनी पसंदीदा भाषा चुनें</h3>
+                        <label for="language_en">English</label>
+                        <input type="radio" id="language_en" name="language" value="English">
+                        <label for="language_hi">हिन्दी</label>
+                        <input type="radio" id="language_hi" name="language" value="Hindi">
+                   <a href="{% url 'index' %}"> <input type="button" name="Home" class="previous action-button-previous" value="Home"/> </a>
+                        <input type="button" name="next" class="next action-button" value="Next" />
+                    </fieldset>
+                    <fieldset id="number_fieldset">
+                        <div class="logo-div"> 
+
+                            <img src="/static/collections/logo-no-background.png"  class="twl-logo"/>
+
+                        </div>
+                        <h2 class="fs-title" id="name_title">Name</h2>
+                        <input type="text" name="full_name" placeholder="Enter your name" maxlength="49"/>
+                        <h2 class="fs-title" >Number</h2>
+                        <input type="text" name="phone_number" placeholder="Enter your number" maxlength="15" >
+                        <h2 class="fs-title" >Additional Number</h2>
+                        <input type="text" name="phone_number2" placeholder="Enter your number" maxlength="15"/>
+                        <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                        <input type="button" name="next" class="next action-button" value="Next"/>
+                    </fieldset>
+                    <fieldset id="qualification_fieldset">
+                        <div class="logo-div"> 
+
+                            <img src="/static/collections/logo-no-background.png"  class="twl-logo"/>
+
+                        </div>
+                        <h2 class="fs-title" id="qualification_title">Qualification</h2>
+                        <h3 class="fs-subtitle" id="qualification_subtitle">Select Your Qualification</h3>
+                        <select name="qualification" id="qualification_select">
+                            <option value="">Select Qualification</option>
+                            <option value="Below 10th">Below 10th (10वीं से नीचे)</option>
+                            <option value="10th Pass">10th Pass (१०वीं पास)</option>
+                            <option value="12th Pass">12th Pass (१२वीं पास)</option>
+                            <option value="Graduate">Graduate (ग्रेजुएट)</option>
+                        </select>
+                        <h2 class="fs-title" id="age_title">Age</h2>
+                        <input type="number" name="age" id="age_input" placeholder="Enter Your Age" maxlength="3"/>
+                        <h2 class="fs-title" id="location_title">Location</h2>
+                        <input type="text" name="location" id="location_input" placeholder="Enter your location" maxlength="59"/>
+                        <h2 class="fs-title" id="gender_title">Gender</h2>
+                        <select name="gender" id="gender_select">
+                            <option value="">Select Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <h2 class="fs-title" id="religion_title">Religion</h2>
+                        <select name="religion" id="religion_select">
+                            <option value="">Select Religion</option>
+                            <option value="Hindu">Hindu</option>
+                            <option value="Muslim">Muslim</option>
+                            <option value="Christian">Christian</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                        <input type="button" name="next" class="next action-button" value="Next"/>
+                    </fieldset>
+                    
+                    
+                    <fieldset>  
+                        <div class="logo-div"> 
+
+                            <img src="/static/collections/logo-no-background.png"  class="twl-logo"/>
+
+                        </div>
+                        <div class="option-container" id="selectOption">
+                            <label class="option-box" for="home">
+                                <input type="radio" id="home" name="block_option" value="HouseHelp" onchange="selectOption('Home')">
+                                Home
+                            </label>
+                            <label class="option-box" for="office">
+                                <input type="radio" id="office" name="block_option" value="Office Work" onchange="selectOption('Office')">
+                                Office
+                            </label>
+                            <label class="option-box" for="driver">
+                                <input type="radio" id="driver" name="block_option" value="Driver" onchange="selectOption('Driver')">
+                                Driver
+                            </label>
+                            <label class="option-box" for="anything">
+                                <input type="radio" id="anything" name="block_option" value="Any" onchange="selectOption('Anything')">
+                                Any Place
+                            </label>
+                        </div>
+                        <div style="display: flex; justify-content: center;">  
+                        <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                        <input type="button" name="next" class="next action-button" value="Next"/>
+                    </div>
+                    </fieldset>
+                    
+        
+
+                    <!-- Job Title Fieldset -->
+                    <fieldset id="job_title_fieldset">
+                        <div class="logo-div"> 
+
+                            <img src="/static/collections/logo-no-background.png"  class="twl-logo"/>
+
+                        </div>
+                        <h2 class="fs-title" id="job_title">Job Title</h2>
+                        <h3 class="fs-subtitle" id="job_subtitle">Select Your Job Titles</h3>
+                        <ul class="unstyled centered">
+                            <li>
+                                <input class="styled-checkbox" id="job1" type="checkbox" name="selected_jobs[]" value="Cooking">
+                                <label for="job1">Cooking (कुकिंग)</label>
+                            </li>
+                            <li>
+                                <input class="styled-checkbox" id="job2" type="checkbox" name="selected_jobs[]" value="Cleaning">
+                                <label for="job2">Cleaning (क्लीनिंग)</label>
+                            </li>
+                            <li>
+                                <input class="styled-checkbox" id="job3" type="checkbox" name="selected_jobs[]" value="Babycare">
+                                <label for="job3">Babycare (बेबीकेयर)</label>
+                            </li>
+                            <li>
+                                <input class="styled-checkbox" id="job4" type="checkbox" name="selected_jobs[]" value="Newborn Care/Nanny/Japa Maid">
+                                <label for="job4">Newborn Care(नवजात बच्चे की देखभाल )</label>
+                            </li>
+                            <li>
+                                <input class="styled-checkbox" id="job5" type="checkbox" name="selected_jobs[]" value="Patient Care">
+                                <label for="job5">Patient Care (पेशेंट केयर)</label>
+                            </li>
+                            <li>
+                                <input class="styled-checkbox" id="job6" type="checkbox" name="selected_jobs[]" value="Elder Care">
+                                <label for="job6">Elder Care (वृद्ध की देखभाल)</label>
+                            </li>
+                            <li>
+                                <input class="styled-checkbox" id="job7" type="checkbox" name="selected_jobs[]" value="Nursing">
+                                <label for="job7">Nursing (नर्सिंग)</label>
+                            </li>
+                            <li>
+                                <input class="styled-checkbox" id="job8" type="checkbox" name="selected_jobs[]" value="Driver">
+                                <label for="job8">Driving (ड्राइविंग)</label>
+                            </li>
+                        </ul>
+                    
+                        <h2 class="fs-title" id="experience_title">Experience</h2>
+                        <h3 class="fs-subtitle" id="experience_subtitle">Enter Your Experience</h3>
+                        <input type="number" id="experience_input" maxlength="3" name="experience" placeholder="Enter your Experience"/>
+                    
+                        <h2 class="fs-title" id="job_location_title">Preferred Job Location</h2>
+                        <h3 class="fs-subtitle" id="job_location_subtitle">Enter Your Preferred Job Location</h3>
+                        <input type="text" id="job_location_input" maxlength="49" name="job_location" placeholder="Enter your Preferred Job Location"/>
+                    
+                        <h2 class="fs-title" id="duration_title">Duration of Work</h2>
+                        <h3 class="fs-subtitle" id="duration_subtitle">Select Duration</h3>
+                        <select name="duration" id="duration_select">
+                            <option value="">Select Duration</option>
+                            <option value="Less than 5 Hrs">Less than 5 Hrs (5 घंटे से कम)</option>
+                            <option value="8-10 Hrs">8-10 Hrs (8-10 घंटे)</option>
+                            <option value="10-12 Hrs">10-12 Hrs (10-12 घंटे)</option>
+                            <option value="24 Hrs">24 Hrs (24 घंटे/ फुल टाइम वर्क)</option>
+                        </select>
+                    
+                        <h2 class="fs-title" id="last_salary_title">Last Salary</h2>
+                        <h3 class="fs-subtitle" id="last_salary_subtitle">Select Last Salary</h3>
+                        <select name="last_salary" id="last_salary_select">
+                            <option value="">Select Last Salary</option>
+                            <option value="5-6,000/-">5-6,000/-</option>
+                            <option value="6-8,000/-">6-8,000/-</option>
+                            <option value="8-10,000/-">8-10,000/-</option>
+                            <option value="10-12,000/-">10-12,000/-</option>
+                            <option value="12-14,000/-">12-14,000/-</option>
+                            <option value="14-15,000/- (for 24 hrs)">14-15,000/- (for 24 hrs)</option>
+                            <option value="16,000/-">16,000/-</option>
+                            <option value="More than 16000/-">More than 16000/-</option>
+                        </select>
+                    
+                        <h2 class="fs-title" id="expected_salary_title">Expected Salary</h2>
+                        <h3 class="fs-subtitle" id="expected_salary_subtitle">Select Expected Salary</h3>
+                        <select name="expected_salary" id="expected_salary_select">
+                            <option value="">Select Expected Salary</option>
+                            <option value="5-6,000/-">5-6,000/-</option>
+                            <option value="6-8,000/-">6-8,000/-</option>
+                            <option value="8-10,000/-">8-10,000/-</option>
+                            <option value="10-12,000/-">10-12,000/-</option>
+                            <option value="12-14,000/-">12-14,000/-</option>
+                            <option value="14-15,000/- (for 24 hrs)">14-15,000/- (for 24 hrs)</option>
+                            <option value="16,000/-">16,000/-</option>
+                            <option value="More than 16000/-">More than 16000/-</option>
+                        </select>
+                    
+                        <input type="button" id="previous" name="previous" class="previous action-button-previous" value="Previous"/>
+                        <input type="button" id="next" name="next" class="next action-button" value="Next"/>
+                    </fieldset>
+                    
+
+                    
 
                 
 
-             
+                    <!-- Gender Fieldset -->
+            
 
-                <!-- Gender Fieldset -->
-          
+                    <fieldset id="additional_documents_fieldset">
+                        <div class="logo-div"> 
 
-                <fieldset id="additional_documents_fieldset">
+                            <img src="/static/collections/logo-no-background.png"  class="twl-logo"/>
 
-                    <h2 class="fs-title">Permanent Address</h2>
-                    <h3 class="fs-subtitle">Enter Your Permanent Address</h3>
-                    <textarea name="permanent_address" placeholder="Enter your permanent address"></textarea>
-                
-                    <h2 class="fs-title">Additional Documents</h2>
-                    <h3 class="fs-subtitle">Select Additional Documents</h3>
-                    <select name="additional_documents" id="additional_documents_select">
-                        <option value="">Select Document</option>
-                        <option value="Aadhar Card">Aadhar Card (आधार कार्ड)</option>
-                        <option value="Pan Card">Pan Card (पैन कार्ड)</option>
-                        <option value="Voter's ID">Voter's ID (मतदाता पहचान पत्र)</option>
-                        <option value="Ration Card">Ration Card (राशन पत्रिका)</option>
-                        <option value="Driving Licence">Driving Licence (ड्राइविंग लाइसेंस)</option>
-                        <option value="Electricity bill">Electricity bill (बिजली का बिल)</option>
-                        <option value="Passport">Passport (पासपोर्ट)</option>
-                        <option value="Birth Certificate">Birth Certificate (जन्म प्रमाणपत्र)</option>
-                        <option value="Any Other">Any Other (अन्य)</option>
-                    </select>
-                
-                    <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
-                    <input type="button" name="next" class="next action-button" value="Next"/>
-                </fieldset>
-                
-                
+                        </div>
+                        <h2 class="fs-title">Permanent Address</h2>
+                        <h3 class="fs-subtitle">Enter Your Permanent Address</h3>
+                        <textarea name="permanent_address" placeholder="Enter your permanent address"></textarea>
+                    
+                        <h2 class="fs-title">Additional Documents</h2>
+                        <h3 class="fs-subtitle">Select Additional Documents</h3>
+                        <select name="additional_documents" id="additional_documents_select">
+                            <option value="">Select Document</option>
+                            <option value="Aadhar Card">Aadhar Card (आधार कार्ड)</option>
+                            <option value="Pan Card">Pan Card (पैन कार्ड)</option>
+                            <option value="Voter's ID">Voter's ID (मतदाता पहचान पत्र)</option>
+                            <option value="Ration Card">Ration Card (राशन पत्रिका)</option>
+                            <option value="Driving Licence">Driving Licence (ड्राइविंग लाइसेंस)</option>
+                            <option value="Electricity bill">Electricity bill (बिजली का बिल)</option>
+                            <option value="Passport">Passport (पासपोर्ट)</option>
+                            <option value="Birth Certificate">Birth Certificate (जन्म प्रमाणपत्र)</option>
+                            <option value="Any Other">Any Other (अन्य)</option>
+                        </select>
+                    
+                        <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                        <input type="button" name="next" class="next action-button" value="Next"/>
+                    </fieldset>
+                    
+                    
 
-                <!-- Description Fieldset -->
-                <fieldset id="description_fieldset">
-                    <h2 class="fs-title">Description</h2>
-                    <h3 class="fs-subtitle">Enter About Yourself</h3>
-                    <textarea id="description" name="description" rows="4" cols="50" maxlength="199" placeholder="write about yourself"></textarea>
+                    <!-- Description Fieldset -->
+                    <fieldset id="description_fieldset">
+                        <div class="logo-div"> 
 
-                    <!-- <input type="text" name="description" placeholder="Enter about Yourself"/> -->
-                    <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
-                    <input type="button" name="next" class="next action-button" value="Next"/>
-                </fieldset>
+                            <img src="/static/collections/logo-no-background.png"  class="twl-logo"/>
 
-                <!-- Personal Photo Fieldset -->
-                <fieldset id="photo_fieldset">
-                    <h2 class="fs-title">Personal Photo</h2>
-                    <h3 class="fs-subtitle">Add Your Photo</h3>
-                    <img src="/static/collections/dummy profile.png" alt="Profile Image" class="profile-image"/>
-                    <input type="file" name="photo" placeholder="Add Your Photo"/>
-                    <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
-                    <input type="button" name="next" class="next action-button" value="Next"/>
-                </fieldset>
+                        </div>
+                        <h2 class="fs-title">Description</h2>
+                        <h3 class="fs-subtitle">Enter About Yourself</h3>
+                        <textarea id="description" name="description" rows="4" cols="50" maxlength="199" placeholder="write about yourself"></textarea>
 
-                <!-- Additional Documents Fieldset -->
-                <fieldset id="documents_fieldset">
-                    <h2 class="fs-title">Additional Documents</h2>
-                    <h3 class="fs-subtitle">Add Your Additional Documents</h3>
-                    <input type="file" name="resume" placeholder="Add Additional Documents"/>
-                    <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
-                    <input type="submit" name="submit" class="submit action-button" value="Submit"/>
-                </fieldset>
+                        <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                        <input type="button" name="next" class="next action-button" value="Next"/>
+                    </fieldset>
 
-    
-                
-                <!-- Add more fieldsets for other questions -->
-            </form>
+                    <!-- Personal Photo Fieldset -->
+                    <fieldset id="photo_fieldset">
+                        <div class="logo-div"> 
 
-    
+                            <img src="/static/collections/logo-no-background.png"  class="twl-logo"/>
+
+                        </div>
+                        <h2 class="fs-title">Personal Photo</h2>
+                        <h3 class="fs-subtitle">Add Your Photo</h3>
+                        <img src="/static/collections/dummy profile.png" alt="Profile Image" class="profile-image"/>
+                        <input type="file" name="photo" placeholder="Add Your Photo"/>
+                        <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                        <input type="button" name="next" class="next action-button" value="Next"/>
+                    </fieldset>
+
+                    <!-- Additional Documents Fieldset -->
+                    <fieldset id="documents_fieldset">
+                        <div class="logo-div"> 
+
+                            <img src="/static/collections/logo-no-background.png"  class="twl-logo"/>
+
+                        </div>
+                        <h2 class="fs-title">Additional Documents</h2>
+                        <h3 class="fs-subtitle">Add Your Additional Documents</h3>
+                        <input type="file" name="resume" placeholder="Add Additional Documents"/>
+                        <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                        <input type="submit" name="submit" class="submit action-button" value="Submit"/>
+                    </fieldset>
+
+        
+                    
+                    <!-- Add more fieldsets for other questions -->
+                </form>
+
+        
+            </div>
         </div>
-    </div>
 
     <!-- Add jQuery library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-    <!-- Custom JavaScript for dynamic form handling -->
+
     <script>
 
-
+        
+    </script>
+    <!-- Custom JavaScript for dynamic form handling -->
+    <script>
         $(document).ready(function () {
             // Hide all fieldsets except the first one initially
             $('#msform fieldset').not(':first').hide();
@@ -499,9 +995,19 @@ $('#documents_fieldset input[type="file"]').attr('placeholder', 'Add Additional 
             // Highlight the clicked option box
             const selectedBox = document.querySelector(`[for="${value.toLowerCase()}"]`);
             selectedBox.classList.add('highlighted');
-
-    
         }
     </script>
+
+
+
+
+
+    
+
+
+
+
+
+      
 </body>
 </html>

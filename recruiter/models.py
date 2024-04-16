@@ -19,6 +19,7 @@ class Recruiter(models.Model):
     phone_number2 = models.CharField(max_length=15, null= True, blank = True) 
     address = models.CharField(max_length = 100, null= True, blank = True )
     location = models.CharField(max_length = 60)
+    pin_code = models.CharField(max_length=15,null=True, blank=True)
     requirement = models.CharField(max_length = 60,default = False)
     full_name = models.CharField(max_length = 60)
     job = models.ManyToManyField(Work)

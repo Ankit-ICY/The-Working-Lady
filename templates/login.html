@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="style.css">
-    <title>Ludiflex | Login & Registration</title>
+    <title>Login</title>
     <style>
         /* POPPINS FONT */
   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
@@ -331,7 +331,31 @@ header{
         margin: 0; 
       }
 
+
+
       
+ @media only screen and (max-width: 768px) {
+    
+
+    .notification-info, .notification-success {
+    width: 90%; /* Adjust width further for smaller screens */
+    }
+
+    .notification-info h3, .notification-success h5 {
+    font-size: 1.2rem; /* Further increase font size for smaller screens */
+    }
+
+    .notification-info p {
+    font-size: 0.8rem; /* Further adjust font size for additional text */
+    }
+} 
+
+
+</style>
+
+
+<style>
+
 .twl-logo{
 
     height: 50px;
@@ -436,6 +460,48 @@ header{
   }, 2000);
 </script>
 
+
+<script>
+   
+    function myMenuFunction() {
+     var i = document.getElementById("navMenu");
+ 
+     if(i.className === "nav-menu") {
+         i.className += " responsive";
+     } else {
+         i.className = "nav-menu";
+     }
+    }
+  
+ </script>
+ 
+ <script>
+ 
+     var a = document.getElementById("loginBtn");
+     var b = document.getElementById("registerBtn");
+     var x = document.getElementById("login");
+     var y = document.getElementById("register");
+ 
+     function login() {
+         x.style.left = "4px";
+         y.style.right = "-520px";
+         a.className += " white-btn";
+         b.className = "btn";
+         x.style.opacity = 1;
+         y.style.opacity = 0;
+     }
+ 
+     function register() {
+         x.style.left = "-510px";
+         y.style.right = "5px";
+         a.className = "btn";
+         b.className += " white-btn";
+         x.style.opacity = 0;
+         y.style.opacity = 1;
+     }
+ 
+ </script>
+ 
 
 
 </body>

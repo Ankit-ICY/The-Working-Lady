@@ -16,6 +16,422 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 
 
+  <style>
+
+
+
+textarea {
+    resize: none;
+}
+
+.text {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  white-space: nowrap;
+}
+
+
+.svg-inline--fa {
+  vertical-align: -0.200em;
+}
+
+.rounded-social-buttons {
+  text-align: center;
+}
+
+.rounded-social-buttons .social-button {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  width: 3.125rem;
+  height: 3.125rem;
+  border: 0.125rem solid transparent;
+  padding: 0;
+  text-decoration: none;
+  text-align: center;
+  color: #fefefe;
+  font-size: 1.5625rem;
+  font-weight: normal;
+  line-height: 2em;
+  border-radius: 1.6875rem;
+  transition: all 0.5s ease;
+  margin-right: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.rounded-social-buttons .social-button:hover, .rounded-social-buttons .social-button:focus {
+  -webkit-transform: rotate(360deg);
+      -ms-transform: rotate(360deg);
+          transform: rotate(360deg);
+}
+
+.rounded-social-buttons .fa-twitter, .fa-facebook-f, .fa-linkedin, .fa-youtube, .fa-instagram {
+  font-size: 25px;
+}
+
+.rounded-social-buttons .social-button.facebook {
+  background: #3b5998;
+}
+
+.rounded-social-buttons .social-button.facebook:hover, .rounded-social-buttons .social-button.facebook:focus {
+  color: #3b5998;
+  background: #fefefe;
+  border-color: #3b5998;
+}
+
+.rounded-social-buttons .social-button.twitter {
+  background: #55acee;
+}
+
+.rounded-social-buttons .social-button.twitter:hover, .rounded-social-buttons .social-button.twitter:focus {
+  color: #55acee;
+  background: #fefefe;
+  border-color: #55acee;
+}
+
+.rounded-social-buttons .social-button.linkedin {
+  background: #007bb5;
+}
+
+.rounded-social-buttons .social-button.linkedin:hover, .rounded-social-buttons .social-button.linkedin:focus {
+  color: #007bb5;
+  background: #fefefe;
+  border-color: #007bb5;
+}
+
+.rounded-social-buttons .social-button.youtube {
+  background: #bb0000;
+}
+
+.rounded-social-buttons .social-button.youtube:hover, .rounded-social-buttons .social-button.youtube:focus {
+  color: #bb0000;
+  background: #fefefe;
+  border-color: #bb0000;
+}
+
+.rounded-social-buttons .social-button.instagram {
+  background: #125688;
+}
+
+.rounded-social-buttons .social-button.instagram:hover, .rounded-social-buttons .social-button.instagram:focus {
+  color: #125688;
+  background: #fefefe;
+  border-color: #125688;
+}
+
+
+    /*Estilos generales del boton whatsapp*/
+    .whatsapp-btn {
+  position: fixed;
+  bottom: 20px; /* Change to 'top: auto;' */
+  left: 20px; /* Change to 'right: auto;' */
+  z-index: 9999;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #25D366;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  animation: breathe 2s ease-in-out infinite;
+}
+
+/*Estilos solo al icono whatsapp*/
+.whatsapp-btn i {
+  color: #fff;
+  font-size: 24px;
+  animation: beat 2s ease-in-out infinite;
+  text-decoration: none;
+}
+
+/*Estilos con animation contorno respirando*/
+@keyframes breathe {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+}
+
+/*Estilos de animacion del icono latiendo*/
+@keyframes beat {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.job-persons{
+
+  text-decoration: underline;
+  color: rgb(75, 0, 0);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-family: system-ui;
+}
+body header3 {
+  text-align: center;
+}
+header3{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+
+
+}
+
+header3 p{
+  width: 85%;
+
+}
+body main2 {
+  max-width: 120ch;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+.slider {
+  -webkit-backdrop-filter: invert(5%);
+          backdrop-filter: invert(5%);
+  padding: 1rem;
+  -ms-scroll-snap-type: x proximity;
+      scroll-snap-type: x proximity;
+  scroll-padding: 1rem;
+  display: flex;
+  gap: 1rem;
+  overflow-x: scroll;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 2ex, #000 calc(100% - 2ex), transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 2ex, #000 calc(100% - 2ex), transparent);
+}
+.slider .slide {
+  flex: 1 0 35ch;
+  background: #fafafa;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.133), 2px 2px 3px 2px rgba(0,0,0,0.2);
+  scroll-snap-align: start;
+}
+.slider .slide__image-container {
+  margin: 0;
+}
+.slider .slide__image-container img {
+  width: 100%;
+  height: 250px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.slider .slide__text {
+  padding: 1rem;
+}
+.slider .slide__text h2 {
+  margin-block: 0 0.5rem;
+  line-height: 1.1;
+}
+
+.option-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 2fr)); 
+  gap: 10px;
+}
+
+/* Style for each option box */
+.option-box {
+  height: 150px;
+  background-color: #2b6e92;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: flex;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover effect */
+.option-box:hover {
+  background-color: #e0e0e0;
+}
+
+/* Hide the default input appearance */
+input[name="block_option"] {
+  display: none;
+}
+
+
+.highlighted {
+background-color: #330000 !important; /* Custom color for highlighted state */
+color: #fff !important; /* Custom text color for highlighted state */
+}
+
+.job-logos{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+gap: 7px;
+i{
+color: white;
+}
+}
+
+
+
+.notification-container {
+position: absolute;
+top: 0;
+left: 50%;
+transform: translateX(-50%);
+display: flex;
+justify-content: center;
+align-items: center;
+width: 100%;
+height: 100%;
+position: fixed;
+z-index: 999; /* Ensure the notification appears above other content */
+}
+
+
+    .notification-info{
+      height: 100px;
+      width: 40%;
+      border-radius: 8px;
+      margin-top: 10px;
+      display: flex;
+      flex-direction : column;
+      justify-content: center;
+      padding-bottom :  20px;
+      align-items: center;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      background-color: #4b90b2;
+      color:white;
+      font-size: 1rem;
+      
+      }
+      
+      
+      .notification-success{
+      height: 150px;
+      width: 40%;
+      border-radius: 8px;
+      padding: 10px;
+      text-align: center;
+      display: flex;
+      flex-direction : column;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      background-color: #54a1c8;
+      color:white;
+      
+      }
+      
+      
+      #notification p {
+      text-align: center;
+      letter-spacing: 1px;
+      margin: 0; 
+      }
+    
+
+
+ @media only screen and (max-width: 768px) {
+      .popup {
+          max-width: 100%;
+          padding: 10px;
+      }
+  
+      .form-group {
+          margin-bottom: 10px;
+      }
+  
+      .btn {
+          margin-right: 10px;
+      }
+
+      .option-container {
+        width: 100%;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Adjusted grid layout for smaller screens */
+        padding :20px
+      }
+    
+      .option-box {
+        height: 90px; /* Reduced height for smaller screens */
+        font-size: 10px; /* Adjusted font size for smaller screens */
+
+      }
+    
+      .job-logos {
+        gap: 5px; /* Reduced gap between elements for smaller screens */
+      }
+
+      .notification-info, .notification-success {
+    width: 90%; /* Adjust width further for smaller screens */
+  }
+  
+  .notification-info h3, .notification-success h5 {
+    font-size: 1.2rem; /* Further increase font size for smaller screens */
+  }
+  
+  .notification-info p {
+    font-size: 0.8rem; /* Further adjust font size for additional text */
+  }
+  } 
+
+  .name-dashboard{
+    display: flex;
+    gap:20px;
+    align-items: center;
+  }
+
+
+  
+  .name-dashboard span{
+    color : black;
+  }
+
+  .name-dashboard button{
+    width: 120px;
+  }
+
+
+#dashboard-btn{
+  color : white;
+  border-radius: 10px;
+  border: 1px solid white;
+}
+
+
+
+#dashboard-btn:hover{
+background-color: white;
+color:black;
+}
+
+  
+  </style>
   
 </head>
 
@@ -46,7 +462,7 @@
 
   <!-- -----------------------------------MODAL---------------------------------------------------- -->
 
-  <div id="myModal" class="modal fade" role="dialog" >
+ <div id="myModal" class="modal fade" role="dialog" >
     
     <div class="modal-dialog" >
       <div class="modal-content" style="border-radius: 10px;">
@@ -57,9 +473,8 @@
         </div>
     
         <div class="modal-body text-center">
-          <h3>Searching for a job?</h3>
-          <h3>नौकरी खोज रहे हैं?</h3>
-
+          <h3>Want to post a job ?</h3>
+          <label>For</label>
           <div class="modal-work">
             <div>
             <img src="/static/collections/broom.png" />
@@ -80,19 +495,26 @@
   
           </div>
           <div style="margin-top: 7%;">           
-          <span>Please Click here/ </span>
-          <span>कृपया यहां क्लिक करें</span>
-
+          <span>Please Click here</span>
         </div>
 
 
-          <a class="pre-order-btn" href="{% url 'applicant_form' %}">क्लिक करें</a>
+          <a class="pre-order-btn" onclick="openPopup()">Post a Job</a>
         </div>
    
       </div>
   
     </div>
-  </div>
+  </div> 
+
+
+
+
+
+
+
+  
+
 
 
 
@@ -212,7 +634,7 @@
               <a class="nav-link" href="#servicediv">Services</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#pricingdiv">Price</a>
+              <a class="nav-link" href="{% url 'steps' %}">Steps</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'about_us' %}">About</a>
@@ -228,10 +650,20 @@
         </div>
  
       </div>
+
+      {% if request.user.is_authenticated %}
+
+      <div class="name-dashboard">
+        <span>Hello, {{request.user}} <i class="fa-solid fa-user" style="color: #511f1f;"></i> </span>
+        <a href="{% url 'recruiter_home' %}">    <button class="btn"  id="dashboard-btn" >Dashboard</button></a> 
+    </div>
+      {%else%}
       <div class="nav-button">
         <a href="{% url 'login_user' %}">    <button class="btn white-btn" id="loginBtn" onclick="login()">Sign In</button></a> 
         <a href="{% url 'register' %}">    <button class="btn" id="registerBtn" onclick="register()">Sign Up</button></a> 
     </div>
+
+    {% endif %}
       
     
     </nav>
@@ -412,63 +844,79 @@
 
   <!-- ********************* our pricing start ****************************** -->
 
-  <section class="pricing animated-section" id="pricingdiv">
-    <div class="container headings text-center">
-      <h1 class="text-center font-weight-bold text-white">OUR BEST PRICING</h1>
-    </div>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-4 col-12  animate__animated animate__fadeInLeft">
-          <div class="card text-center">
-            <div class="card-header">BASIC</div>
-            <div class="card-body">
-              <li>$<span class="money">20</span>/5 Calls</li>
-              <li>Trustworthy Candidates</li>
-              <li>Skilled Employees</li>
-              <li>Customer Satifaction</li>
-              <li>Working Support</li>
-              <li>Customer Support 24/7</li>
-            </div>
-            <div class="card-footer">
-              <a href="{% url 'register' %}">Purchase</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-12 animate__animated animate__fadeInUp">
-          <div class="card text-center">
-            <div class="card-header">STANDARD</div>
-            <div class="card-body">
-              <li>$<span class="money">40</span>/20 Calls</li>
-              <li>Trustworthy Candidates</li>
-              <li>Skilled Employees</li>
-              <li>Customer Satifaction</li>
-              <li>Working Support</li>
-              <li>Customer Support 24/7</li>
-            </div>
-            <div class="card-footer">
-              <a href="{% url 'register' %}">Purchase</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-12 animate__animated animate__fadeInRight">
-          <div class="card text-center">
-            <div class="card-header">UNLIMITED</div>
-            <div class="card-body">
-              <li>$<span class="money">60</span>/UNLIMITED</li>
-              <li>Trustworthy Candidates</li>
-              <li>Skilled Employees</li>
-              <li>Customer Satifaction</li>
-              <li>Working Support</li>
-              <li>Customer Support 24/7</li>
-            </div>
-            <div class="card-footer">
-              <a href="{% url 'register' %}">Purchase</a>
-            </div>
-          </div>
-        </div>
+  <main2>
+    <header3>
+      <h1>Our Services</h1>
+      <p >At "The Working Lady," we take pride in delivering high-quality services that enhance the lives of our clients and their families. Experience the convenience, comfort, and peace of mind that come with choosing our trusted caregiving and support services.</p>
+    </header3>
+  
+    <section class="slider">
+      <div class="slide">
+        <figure class="slide__image-container">
+          <img src="/static/collections/bai cleaning.jpg" width="300" height="300" alt="">
+        </figure>
+        <article class="slide__text">
+          <h4 class="job-persons">Expert Cleaners</h4>
+          <p>A clean and organized space is essential for a comfortable and stress-free environment. Our professional cleaners are meticulous in their work, ensuring every corner of your home or office sparkles. From regular cleaning schedules to deep-cleaning sessions, we handle everything with care and attention to detail. Experience the joy of coming home to a pristine space without lifting a finger – leave the cleaning to us.</p>
+        </article>
       </div>
-    </div>
-  </section>
+      <div class="slide">
+        <figure class="slide__image-container">
+          <img src="/static/collections/indian cook.jpg" width="300" height="300" alt="">
+        </figure>
+        <article class="slide__text">
+          <h4 class="job-persons">Experienced Cooks</h4>
+          <p>Let selected applicants of talented cooks take the hassle out of meal preparation. Whether you're looking for daily meals, special occasions, or dietary-specific dishes, our culinary experts craft delicious and nutritious meals tailored to your preferences. Enjoy restaurant-quality food in the comfort of your own home, with menus designed to satisfy your taste buds and nourish your body. Say goodbye to cooking stress and hello to culinary delight with our cook services.
+          </p>
+        </article>
+      </div>
+
+      <div class="slide">
+        <figure class="slide__image-container">
+          <img src="/static/collections/indian elder care.jpg" width="300" height="300" alt="">
+        </figure>
+        <article class="slide__text">
+          <h4 class="job-persons">Elder Care</h4>
+          <p>Caring for aging loved ones requires compassion, patience, and expertise. Our elder care services are designed to support seniors in maintaining their independence and quality of life. Our caregivers offer assistance with daily activities, medication reminders, companionship, and more. We understand the unique needs of seniors and provide personalized care that fosters comfort, dignity, and a sense of well-being.</p>
+        </article>
+      </div>
+  
+      <div class="slide">
+        <figure class="slide__image-container">
+          <img src="/static/collections/indian patient care2.jpg" width="300" height="300" alt="">
+        </figure>
+        <article class="slide__text">
+          <h4 class="job-persons">Patient Care</h4>
+          <p>"Recovering from an illness or managing a chronic condition can be challenging, but TWL is here to assist. We provide compassionate and professional support tailored to each individual's needs. Leveraging our platform, we connect you with skilled caregivers who are experienced in patient care. From monitoring health indicators to providing assistance with mobility and personal care, our carefully filtered applicants ensure a safe and comfortable recovery process. Let us be your trusted partners in health and wellness."</p>
+        </article>
+      </div>
+  
+      <div class="slide">
+        <figure class="slide__image-container">
+          <img src="/static/collections/indian Driver.webp" alt="" width="300" height="300">
+        </figure>
+        <article class="slide__text">
+          <h4 class="job-persons">Experienced Drivers</h4>
+          <p>"Getting where you need to go is crucial, and our selected experienced drivers are dedicated to providing smooth and comfortable journeys. Whether it's medical appointments, social events, or daily errands, our courteous and punctual drivers are here to serve you. With our reliable transportation solutions, you can sit back, relax, and enjoy the ride knowing you're in good hands."
+          </p>
+        </article>
+      </div>
+
+        
+      <div class="slide">
+        <figure class="slide__image-container">
+          <img src="/static/collections/indian baby.jpg" width="300" height="300" alt="">
+        </figure>
+        <article class="slide__text">
+          <h4 class="job-persons">Trustworthy Babysitters</h4>
+          <p>"Discover exceptional childcare through our carefully curated pool of applicants. We match you with experienced babysitters dedicated to providing top-notch care for your children. From ensuring safety and well-being to organizing engaging activities, our selected caregivers offer peace of mind for busy parents. Whether you need occasional evening care or regular daytime supervision, trust us to filter and present the best applicants who will make your child's time away enjoyable and enriching."</p>
+        </article>
+      </div>
+  
+  
+    </section>
+  </main2>
+
   <!-- ********************* our pricing end ****************************** -->
 
   <!-- ********************* our happy clients starts ****************************** -->
@@ -694,6 +1142,14 @@
             </div>
           </div>
         </div>
+
+        <div class="rounded-social-buttons">
+          <a class="social-button facebook" href="https://www.facebook.com/theworkinglady.MumbaiHousemaids/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a class="social-button twitter" href="https://www.twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
+          <a class="social-button linkedin" href="https://www.linkedin.com/in/the-working-lady-0545381b8" target="_blank"><i class="fab fa-linkedin"></i></a>
+          <a class="social-button youtube" href="https://www.youtube.com/" target="_blank"><i class="fab fa-youtube"></i></a>
+          <a class="social-button instagram" href="https://www.instagram.com/theworkinglady2020?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank"><i class="fab fa-instagram"></i></a>
+      </div>
       </div>
     
       <div class="scrolltop float-right">
@@ -701,6 +1157,14 @@
       </div>
     </div>
   </footer>
+
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+  <a href="https://wa.me/+918855055049?text=Hello" target=”_blank” class="whatsapp-btn">
+    <i class="bi bi-whatsapp"></i>
+  </a>
+
 
   <!-- ********************* footer ends ****************************** -->
 
@@ -930,506 +1394,7 @@ document.getElementById('overlay').addEventListener('click', function() {
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.0/jquery.easing.js" type="text/javascript"></script>
 
-    <script>
 
-var current_slide, next_slide, previous_slide;
-var left, opacity, scale;
-var animation;
-
-var error = false;
-
-// email validation
-$("#email").keyup(function() {
-    var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
-    if (!emailReg.test($("#email").val())) {
-        $("#error-email").text('Please enter an Email addres.');
-        $("#email").addClass("box_error");
-        error = true;
-    } else {
-        $("#error-email").text('');
-        error = false;
-        $("#email").removeClass("box_error");
-    }
-});
-// password validation
-$("#pass").keyup(function() {
-    var pass = $("#pass").val();
-    var cpass = $("#cpass").val();
-
-    if (pass != '') {
-        $("#error-pass").text('');
-        error = false;
-        $("#pass").removeClass("box_error");
-    }
-    if (pass != cpass && cpass != '') {
-        $("#error-cpass").text('Password and Confirm Password is not matched.');
-        error = true;
-    } else {
-        $("#error-cpass").text('');
-        error = false;
-    }
-});
-// confirm password validation
-$("#cpass").keyup(function() {
-    var pass = $("#pass").val();
-    var cpass = $("#cpass").val();
-
-    if (pass != cpass) {
-        $("#error-cpass").text('Please enter the same Password as above.');
-        $("#cpass").addClass("box_error");
-        error = true;
-    } else {
-        $("#error-cpass").text('');
-        error = false;
-        $("#cpass").removeClass("box_error");
-    }
-});
-// twitter
-$("#twitter").keyup(function() {
-    var twitterReg = /https?:\/\/twitter\.com\/(#!\/)?[a-z0-9_]+$/;
-    if (!twitterReg.test($("#twitter").val())) {
-        $("#error-twitter").text('Twitter link is not valid.');
-        $("#twitter").addClass("box_error");
-        error = true;
-    } else {
-        $("#error-twitter").text('');
-        error = false;
-        $("#twitter").removeClass("box_error");
-    }
-});
-// facebook
-$("#facebook").keyup(function() {
-    var facebookReg = /^(https?:\/\/)?(www\.)?facebook.com\/[a-zA-Z0-9(\.\?)?]/;
-    if (!facebookReg.test($("#facebook").val())) {
-        $("#error-facebook").text('Facebook link is not valid.');
-        $("#facebook").addClass("box_error");
-        error = true;
-    } else {
-        $("#error-facebook").text('');
-        error = false;
-        $("#facebook").removeClass("box_error");
-    }
-});
-// linkedin
-$("#linkedin").keyup(function() {
-    var linkedinReg = /(ftp|http|https):\/\/?(?:www\.)?linkedin.com(\w+:{0,1}\w*@)?(\S+)(:([0-9])+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
-    if (!linkedinReg.test($("#linkedin").val())) {
-        $("#error-linkedin").text('Linkedin link is not valid.');
-        $("#linkedin").addClass("box_error");
-        error = true;
-    } else {
-        $("#error-linkedin").text('');
-        error = false;
-        $("#linkedin").removeClass("box_error");
-    }
-});
-// first name
-$("#fname").keyup(function() {
-    var fname = $("#fname").val();
-    if (fname == '') {
-        $("#error-fname").text('Enter your First name.');
-        $("#fname").addClass("box_error");
-        error = true;
-    } else {
-        $("#error-fname").text('');
-        error = false;
-    }
-    if ((fname.length <= 2) || (fname.length > 20)) {
-        $("#error-fname").text("User length must be between 2 and 20 Characters.");
-        $("#fname").addClass("box_error");
-        error = true;
-    }
-    if (!isNaN(fname)) {
-        $("#error-fname").text("Only Characters are allowed.");
-        $("#fname").addClass("box_error");
-        error = true;
-    } else {
-        $("#fname").removeClass("box_error");
-    }
-});
-// last name
-$("#lname").keyup(function() {
-    var lname = $("#lname").val();
-    if (lname != lname) {
-        $("#error-lname").text('Enter your Last name.');
-        $("#lname").addClass("box_error");
-        error = true;
-    } else {
-        $("#error-lname").text('');
-        error = false;
-    }
-    if ((lname.length <= 2) || (lname.length > 20)) {
-        $("#error-lname").text("User length must be between 2 and 20 Characters.");
-        $("#lname").addClass("box_error");
-        error = true;
-    }
-    if (!isNaN(lname)) {
-        $("#error-lname").text("Only Characters are allowed.");
-        $("#lname").addClass("box_error");
-        error = true;
-    } else {
-        $("#lname").removeClass("box_error");
-    }
-});
-// phone
-$("#phone").keyup(function() {
-    var phone = $("#phone").val();
-    if (phone != phone) {
-        $("#error-phone").text('Enter your Phone number.');
-        $("#phone").addClass("box_error");
-        error = true;
-    } else {
-        $("#error-phone").text('');
-        error = false;
-    }
-    if (phone.length != 10) {
-        $("#error-phone").text("Mobile number must be of 10 Digits only.");
-        $("#phone").addClass("box_error");
-        error = true;
-    } else {
-        $("#phone").removeClass("box_error");
-    }
-});
-// address
-$("#address").keyup(function() {
-    var address = $("#address").val();
-    if (address != address) {
-        $("#error-address").text('Enter your Address.');
-        $("#address").addClass("box_error");
-        error = true;
-    } else {
-        $("#error-address").text('');
-        error = false;
-        $("#address").removeClass("box_error");
-    }
-});
-
-// first step validation
-$(".fs_next_btn").click(function() {
-    // email
-    if ($("#email").val() == '') {
-        $("#error-email").text('Please enter an email address.');
-        $("#email").addClass("box_error");
-        error = true;
-    } else {
-        var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
-        if (!emailReg.test($("#email").val())) {
-            $("#error-email").text('Please insert a valid email address.');
-            error = true;
-        } else {
-            $("#error-email").text('');
-            $("#email").removeClass("box_error");
-        }
-    }
-    // password
-    if ($("#pass").val() == '') {
-        $("#error-pass").text('Please enter a password.');
-        $("#pass").addClass("box_error");
-        error = true;
-    }
-    if ($("#cpass").val() == '') {
-        $("#error-cpass").text('Please enter a Confirm password.');
-        $("#cpass").addClass("box_error");
-        error = true;
-    } else {
-        var pass = $("#pass").val();
-        var cpass = $("#cpass").val();
-
-        if (pass != cpass) {
-            $("#error-cpass").text('Please enter the same password as above.');
-            error = true;
-        } else {
-            $("#error-cpass").text('');
-            $("#pass").removeClass("box_error");
-            $("#cpass").removeClass("box_error");
-        }
-    }
-    // animation
-    if (!error) {
-        if (animation) return false;
-        animation = true;
-
-        current_slide = $(this).parent().parent();
-        next_slide = $(this).parent().parent().next();
-
-        $("#progress_header li").eq($(".multistep-box").index(next_slide)).addClass("active");
-
-        next_slide.show();
-        current_slide.animate({
-            opacity: 0
-        }, {
-            step: function(now, mx) {
-                scale = 1 - (1 - now) * 0.2;
-                left = (now * 50) + "%";
-                opacity = 1 - now;
-                current_slide.css({
-                    'transform': 'scale(' + scale + ')'
-                });
-                next_slide.css({
-                    'left': left,
-                    'opacity': opacity
-                });
-            },
-            duration: 800,
-            complete: function() {
-                current_slide.hide();
-                animation = false;
-            },
-            easing: 'easeInOutBack'
-        });
-    }
-});
-// second step validation
-$(".ss_next_btn").click(function() {
-    // twitter
-    if ($("#twitter").val() == '') {
-        $("#error-twitter").text('twitter link is required.');
-        $("#twitter").addClass("box_error");
-        error = true;
-    } else {
-        var twitterReg = /https?:\/\/twitter\.com\/(#!\/)?[a-z0-9_]+$/;
-        if (!twitterReg.test($("#twitter").val())) {
-            $("#error-twitter").text('Twitter link is not valid.');
-            error = true;
-        } else {
-            $("#error-twitter").text('');
-            $("#twitter").removeClass("box_error");
-        }
-    }
-    // facebook
-    if ($("#facebook").val() == '') {
-        $("#error-facebook").text('Facebook link is required.');
-        $("#facebook").addClass("box_error");
-        error = true;
-    } else {
-        var facebookReg = /^(https?:\/\/)?(www\.)?facebook.com\/[a-zA-Z0-9(\.\?)?]/;
-        if (!facebookReg.test($("#facebook").val())) {
-            $("#error-facebook").text('Facebook link is not valid.');
-            error = true;
-            $("#facebook").addClass("box_error");
-        } else {
-            $("#error-facebook").text('');
-        }
-    }
-    // linkedin
-    if ($("#linkedin").val() == '') {
-        $("#error-linkedin").text('Linkedin link is required.');
-        $("#linkedin").addClass("box_error");
-        error = true;
-    } else {
-        var linkedinReg = /(ftp|http|https):\/\/?(?:www\.)?linkedin.com(\w+:{0,1}\w*@)?(\S+)(:([0-9])+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
-        if (!linkedinReg.test($("#linkedin").val())) {
-            $("#error-linkedin").text('Linkedin link is not valid.');
-            error = true;
-        } else {
-            $("#error-linkedin").text('');
-            $("#linkedin").removeClass("box_error");
-        }
-    }
-
-    if (!error) {
-        if (animation) return false;
-        animation = true;
-
-        current_slide = $(this).parent().parent();
-        next_slide = $(this).parent().parent().next();
-
-        $("#progress_header li").eq($(".multistep-box").index(next_slide)).addClass("active");
-
-        next_slide.show();
-        current_slide.animate({
-            opacity: 0
-        }, {
-            step: function(now, mx) {
-                scale = 1 - (1 - now) * 0.2;
-                left = (now * 50) + "%";
-                opacity = 1 - now;
-                current_slide.css({
-                    'transform': 'scale(' + scale + ')'
-                });
-                next_slide.css({
-                    'left': left,
-                    'opacity': opacity
-                });
-            },
-            duration: 800,
-            complete: function() {
-                current_slide.hide();
-                animation = false;
-            },
-            easing: 'easeInOutBack'
-        });
-    }
-
-});
-
-// third step validation
-$(".ts_next_btn").click(function() {
-    // first name
-    if ($("#fname").val() == '') {
-        $("#error-fname").text('Enter your First name.');
-        $("#fname").addClass("box_error");
-        error = true;
-    } else {
-        var fname = $("#fname").val();
-        if (fname != fname) {
-            $("#error-fname").text('First name is required.');
-            error = true;
-        } else {
-            $("#error-fname").text('');
-            error = false;
-            $("#fname").removeClass("box_error");
-        }
-        if ((fname.length <= 2) || (fname.length > 20)) {
-            $("#error-fname").text("User length must be between 2 and 20 Characters.");
-            error = true;
-        }
-        if (!isNaN(fname)) {
-            $("#error-fname").text("Only Characters are allowed.");
-            error = true;
-        } else {
-            $("#fname").removeClass("box_error");
-        }
-    }
-    // last name
-    if ($("#lname").val() == '') {
-        $("#error-lname").text('Enter your Last name.');
-        $("#lname").addClass("box_error");
-        error = true;
-    } else {
-        var lname = $("#lname").val();
-        if (lname != lname) {
-            $("#error-lname").text('Last name is required.');
-            error = true;
-        } else {
-            $("#error-lname").text('');
-            error = false;
-        }
-        if ((lname.length <= 2) || (lname.length > 20)) {
-            $("#error-lname").text("User length must be between 2 and 20 Characters.");
-            error = true;
-        } 
-        if (!isNaN(lname)) {
-            $("#error-lname").text("Only Characters are allowed.");
-            error = true;
-        } else {
-            $("#lname").removeClass("box_error");
-        }
-    }
-    // phone
-    if ($("#phone").val() == '') {
-        $("#error-phone").text('Enter your Phone number.');
-        $("#phone").addClass("box_error");
-        error = true;
-    } else {
-        var phone = $("#phone").val();
-        if (phone != phone) {
-            $("#error-phone").text('Phone number is required.');
-            error = true;
-        } else {
-            $("#error-phone").text('');
-            error = false;
-        }
-        if (phone.length != 10) {
-            $("#error-phone").text("Mobile number must be of 10 Digits only.");
-            error = true;
-        } else {
-            $("#phone").removeClass("box_error");
-        }
-    }
-    // address
-    if ($("#address").val() == '') {
-        $("#error-address").text('Enter your Address.');
-        $("#address").addClass("box_error");
-        error = true;
-    } else {
-        var address = $("#address").val();
-        if (address != address) {
-            $("#error-address").text('Address is required.');
-            error = true;
-        } else {
-            $("#error-address").text('');
-            $("#address").removeClass("box_error");
-            error = false;
-        }
-    }
-
-    if (!error) {
-        if (animation) return false;
-        animation = true;
-
-        current_slide = $(this).parent().parent();
-        next_slide = $(this).parent().parent().next();
-
-        $("#progress_header li").eq($(".multistep-box").index(next_slide)).addClass("active");
-
-        next_slide.show();
-        current_slide.animate({
-            opacity: 0
-        }, {
-            step: function(now, mx) {
-                scale = 1 - (1 - now) * 0.2;
-                left = (now * 50) + "%";
-                opacity = 1 - now;
-                current_slide.css({
-                    'transform': 'scale(' + scale + ')'
-                });
-                next_slide.css({
-                    'left': left,
-                    'opacity': opacity
-                });
-            },
-            duration: 800,
-            complete: function() {
-                current_slide.hide();
-                animation = false;
-            },
-            easing: 'easeInOutBack'
-        });
-    }
-});
-// previous
-$(".previous").click(function() {
-    if (animation) return false;
-    animation = true;
-
-    current_slide = $(this).parent().parent();
-    previous_slide = $(this).parent().parent().prev();
-
-    $("#progress_header li").eq($(".multistep-box").index(current_slide)).removeClass("active");
-
-    previous_slide.show();
-    current_slide.animate({
-        opacity: 0
-    }, {
-        step: function(now, mx) {
-            scale = 0.8 + (1 - now) * 0.2;
-            left = ((1 - now) * 50) + "%";
-            opacity = 1 - now;
-            current_slide.css({
-                'left': left
-            });
-            previous_slide.css({
-                'transform': 'scale(' + scale + ')',
-                'opacity': opacity
-            });
-        },
-        duration: 800,
-        complete: function() {
-            current_slide.hide();
-            animation = false;
-        },
-        easing: 'easeInOutBack'
-    });
-});
-
-$(".submit_btn").click(function() {
-    if (!error){
-        $(".main").addClass("form_submited");
-    }
-    return false;
-})
-    </script>
 
 
 
@@ -1438,6 +1403,8 @@ $(".submit_btn").click(function() {
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js" integrity="sha256-JtQPj/3xub8oapVMaIijPNoM0DHoAtgh/gwFYuN5rik=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
 <script type="text/javascript">
             $('.count').counterUp({
             delay:10,
@@ -1501,11 +1468,29 @@ function validateForm() {
     document.getElementById("popup").style.display = "none";
   }
 
+  function validateStep(currentStep) {
+    const inputs = currentStep.querySelectorAll('input[required]');
+    let isValid = true;
+
+    inputs.forEach(input => {
+      if (!input.value.trim()) {
+        isValid = false;
+      }
+    });
+
+    return isValid;
+  }
+
   function nextStep() {
     var currentStep = document.querySelector('.step-content.active');
     var nextStep = currentStep.nextElementSibling;
-    currentStep.classList.remove('active');
-    nextStep.classList.add('active');
+
+    if (validateStep(currentStep)) {
+      currentStep.classList.remove('active');
+      nextStep.classList.add('active');
+    } else {
+      alert('Please fill in all required fields before proceeding.');
+    }
   }
 
   function prevStep() {
@@ -1515,6 +1500,7 @@ function validateForm() {
     prevStep.classList.add('active');
   }
 </script>
+
 
 <script>
   // Function to handle selection of option
@@ -1597,9 +1583,42 @@ function validateForm() {
   
   </script>
 
+
+<script>
+
+  
+document.addEventListener("DOMContentLoaded", function () {
+    const restaurantContainer = document.querySelector(".card-slider3");
+    const leftRButton = document.querySelector(".restaurant-arrow-left");
+    const rightRButton = document.querySelector(".restaurant-arrow-right");
+  
+    function updateButtonState() {
+      leftRButton.disabled = restaurantContainer.scrollLeft <= 0;
+      rightRButton.disabled =
+        restaurantContainer.scrollLeft + restaurantContainer.offsetWidth >=
+        restaurantContainer.scrollWidth;
+    }
+  
+    leftRButton.onclick = function () {
+      restaurantContainer.scrollBy({
+        left: -restaurantContainer.offsetWidth / 2,
+        behavior: "smooth",
+      });
+    };
+  
+    rightRButton.onclick = function () {
+      restaurantContainer.scrollBy({
+        left: restaurantContainer.offsetWidth / 2,
+        behavior: "smooth",
+      });
+    };
+  
+    restaurantContainer.addEventListener("scroll", updateButtonState);
+    updateButtonState();
+  });
+
+</script>
 </body>
-
-
 
 
 </html>

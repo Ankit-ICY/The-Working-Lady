@@ -4,8 +4,348 @@
   <head>
     <meta charset="utf8" />
     <meta name="viewport" content="width=device-width, initial-scal=1.0" />
-    <link rel="stylesheet" href="{% static 'create_job.css' %}">
+    <!-- <link rel="stylesheet" href="{% static 'create_job.css' %}">  -->
+   
 
+    <style>
+
+      .post-job-list{
+        color :rgb(53, 1, 1);
+        margin: 10px;
+        li{
+          margin: 10px;
+        }
+      }      
+
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family:sans-serif;
+      }
+      .formbold-mb-3 {
+        margin-bottom: 15px;
+      }
+      .formbold-relative {
+        position: relative;
+      }
+      .formbold-opacity-0 {
+        opacity: 0;
+      }
+      .formbold-stroke-current {
+        stroke: currentColor;
+      }
+      #supportCheckbox:checked ~ div span {
+        opacity: 1;
+      }
+
+      .formbold-main-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .formbold-form-wrapper {
+        margin: 0 auto;
+        /* max-width: 570px; */
+        width: 80%;
+        background: white;
+        padding: 30px;
+      }
+
+
+      .formbold-form-title {
+        margin-bottom: 30px;
+      }
+      .formbold-form-title h2 {
+        font-weight: 600;
+        font-size: 28px;
+        line-height: 34px;
+        color: #07074d;
+      }
+      .formbold-form-title p {
+        font-size: 16px;
+        line-height: 24px;
+        color: #536387;
+        margin-top: 12px;
+      }
+
+      .formbold-input-flex {
+        display: flex;
+        gap: 20px;
+        margin-bottom: 15px;
+      }
+      .formbold-input-flex > div {
+        width: 50%;
+      }
+      .formbold-form-input {
+        text-align: center;
+        width: 100%;
+        padding: 13px 22px;
+        border-radius: 5px;
+        border: 1px solid #dde3ec;
+        background: #ffffff;
+        font-weight: 500;
+        font-size: 16px;
+        color: #536387;
+        outline: none;
+        resize: none;
+      }
+      .formbold-form-input:focus {
+        border-color: #6a64f1;
+        box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+      }
+      .formbold-form-label {
+        color: #536387;
+        font-size: 14px;
+        line-height: 24px;
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      .formbold-checkbox-label {
+        display: flex;
+        cursor: pointer;
+        user-select: none;
+        font-size: 16px;
+        line-height: 24px;
+        color: #536387;
+      }
+      .formbold-checkbox-label a {
+        margin-left: 5px;
+        color: #6a64f1;
+      }
+      .formbold-input-checkbox {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+      }
+      .formbold-checkbox-inner {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 20px;
+        height: 20px;
+        margin-right: 16px;
+        margin-top: 2px;
+        border: 0.7px solid #dde3ec;
+        border-radius: 3px;
+      }
+
+      .formbold-btn {
+        font-size: 16px;
+        border-radius: 5px;
+        padding: 14px 25px;
+        border: none;
+        font-weight: 500;
+        background-color: green;
+        color: white;
+        cursor: pointer;
+        margin-top: 25px;
+      }
+      .formbold-btn:hover {
+        box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+      }
+
+      .checkbox-label {
+      display: block;
+      margin-bottom: 10px;
+      }
+
+      .checkbox-input {
+      margin-right: 10px;
+      }
+
+      label{
+      font-weight: bold
+      }
+
+
+
+      .formbold-form-select {
+            width: 100%;
+            padding: 12px 22px;
+            border-radius: 5px;
+            border: 1px solid #dde3ec;
+            background: #ffffff;
+            font-size: 16px;
+            color: #536387;
+            outline: none;
+            resize: none;
+          }
+        
+          .formbold-input-radio-wrapper {
+            margin-bottom: 25px;
+          }
+          .formbold-radio-flex {
+            display: flex;    
+            flex-direction: column;
+            gap: 15px;
+          }
+          .formbold-radio-label {
+            font-size: 14px;
+            line-height: 24px;
+            color: #07074d;
+            position: relative;
+            padding-left: 25px;
+            cursor: pointer;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+          }
+          .formbold-input-radio {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+          }
+          .formbold-radio-checkmark {
+            position: absolute;
+            top: -1px;
+            left: 0;
+            height: 18px;
+            width: 18px;
+            background-color: #ffffff;
+            border: 1px solid #dde3ec;
+            border-radius: 50%;
+          }
+          .formbold-radio-label
+            .formbold-input-radio:checked
+            ~ .formbold-radio-checkmark {
+            background-color: #4d0015;
+          }
+          .formbold-radio-checkmark:after {
+            content: '';
+            position: absolute;
+            display: none;
+          }
+
+
+          .job-details{
+              margin: 4% 0 ;
+              border-radius:4px ;
+              text-align: center;
+              color: white;
+              padding : 9px;
+              background-color: #420000;
+          }
+
+          .formbold-input-group{
+              margin-bottom: 2.5%;
+          }
+
+
+
+          .formbold-input-flex input{
+            border: 2px solid rgb(65, 0, 3);
+          }
+
+          .formbold-mb-3 input{
+            border: 2px solid rgb(65, 0, 3);
+
+          }
+          .formbold-input-group select {
+            border: 2px solid rgb(65, 0, 3);
+
+          }
+          .formbold-mb-3 textarea {
+            border: 2px solid rgb(65, 0, 3);
+
+          }
+
+          
+      .twl-logo{
+
+      height: 50px;
+      width: 240px;
+
+      }
+
+
+      .notification-container {
+          position: absolute;
+          top: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          height: 100%;
+          position: fixed;
+          z-index: 999; 
+        }
+        
+
+        
+        .notification-success {
+          height: 90px;
+          width: 40%;
+          border-radius: 8px;
+          margin-top: 10px;
+          display: flex;
+          flex-direction : column;
+          justify-content: center;
+          align-items: center;
+          box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+          background-color: #3d7a96;
+          color: white;
+        }
+
+
+      @media only screen and (max-width: 768px) {
+            .formbold-form-wrapper{
+              width: 100%;
+              padding: 20px;
+            }
+            
+        }
+
+
+
+        
+      @media only screen and (max-width: 768px) {
+          
+
+        .notification-success {
+            width: 90%; 
+            }
+
+
+      .notification-success h3  {
+          font-size: 1.2rem; 
+          }
+
+
+      }
+
+
+      #back{
+        width: 100px;
+        padding: 13px;
+        border: 1.6px solid black;
+        color: black;
+        letter-spacing: 1.2px;
+        border-radius: 10px;
+        text-decoration: none;
+      }
+
+      #back:hover{
+        background-color: rgb(65, 0, 3);
+        color : white;
+      }
+
+
+    </style>
   </head>
 
   <body>
@@ -15,7 +355,7 @@
     {% if message %}
     <div id="notification-container" class="notification-container">
       <div id="notification" class="notification-success">
-        {% if request.user %}
+        {% if request.user.is_authenticated %}
           <h3>Welcome Back {{request.user}}</h3>
         {% else %}
           <h3>Welcome Recruiter</h3>
@@ -32,20 +372,26 @@
     <div class="formbold-main-wrapper">
       
         <div class="formbold-form-wrapper">
+          <div style="display: flex; justify-content: center;"> 
           <img src="/static/collections/logo-no-background.png"  class="twl-logo"/>
-                
-          <form method="POST">
+        </div>
+          <form onsubmit="return validateExperience()" method="POST">
             {% csrf_token %}
             <div class="formbold-form-title">              
-              <h2 class="">Post a job</h2>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt.
-              </p>
+              <h3 class="">POST YOUR JOB</h3>
+              <ul class='post-job-list'> 
+              <li>Welcome to "The Working Lady" job posting platform! Whether you're looking for a full-time maid, a part-time house help, a reliable driver, or a compassionate caregiver, you've come to the right place.</li>
+
+              <li>Posting a job on our platform is easy and effective. Simply provide details about the job requirements, responsibilities, qualifications, and any other relevant information. Our advanced matching technology ensures that your job listing reaches qualified candidates who meet your specific criteria.</li>
+
+              <li>By posting your job on "The Working Lady," you gain access to a diverse pool of talented individuals who are eager to contribute their skills and expertise to your household or business. Join thousands of satisfied employers who have found their ideal domestic staff through our platform!</li>
+
+              <li>Get started today and find the perfect match for your job needs!</li>
+            </ul>
             </div>
       
 
-            <h2 class="job-details" > Recruiter Details</h2>
+            <h2 class="job-details" > Personal Details</h2>
 
             <div class="formbold-input-flex">
               <div>
@@ -61,6 +407,8 @@
                   maxlength="50"
                   class="formbold-form-input"
                   placeholder="Enter your full name"
+                  required
+
                 />
 
                 {% else %}
@@ -71,6 +419,8 @@
                   maxlength="50"
                   class="formbold-form-input"
                   placeholder="Enter your full name"
+                  required
+
                 />
 
                 {% endif %}
@@ -85,6 +435,8 @@
                   id="email"
                   class="formbold-form-input"
                   placeholder="Enter your email"
+                  required
+
 
                 />
                 {%else%}
@@ -94,6 +446,8 @@
                 id="email"
                 class="formbold-form-input"
                 placeholder="Enter your email"
+                required
+
               />
 
                 {%endif%}
@@ -113,6 +467,7 @@
                       value="{{ phone_number }}"
                       class="formbold-form-input"
                   placeholder="Enter your phone number"
+                  required
                     />
                   {%else %}
                     <label for="phone" class="formbold-form-label"> Phone number </label>
@@ -123,6 +478,7 @@
                       maxlength="14"
                       class="formbold-form-input"
                   placeholder="Enter your phone number"
+                    required
                     />
 
                     {% endif %}
@@ -157,19 +513,44 @@
 
             </div>
       
-            <div class="formbold-mb-3">
-              <label for="address2" class="formbold-form-label">
-                Location/City
-              </label>
+     
+
+
+            <div class="formbold-input-flex">
+              <div>
+         
+                  <label for="phone" class="formbold-form-label"> Location/City </label>
+                  <input
+                    type="text"
+                    name="location"
+                    id="location"
+                    maxlength="50"
+                    class="formbold-form-input"
+                placeholder="Location/City"
+                  required
+                  />
+                </div>
+            <div>
+              <label for="phone" class="formbold-form-label"> Pin Code<span></span></label>
               <input
                 type="text"
-                name="location"
-                id="location"
-                maxlength="50"
+                name="pin_code"
+                id="pin_code"
+                maxlength="15"
+                required
                 class="formbold-form-input"
-                placeholder="Location/city"
+                placeholder="Pin code"
               />
             </div>
+          </div>
+
+
+
+
+
+
+
+
       
             <div class="formbold-input-flex">
               <div>
@@ -178,7 +559,7 @@
                   type="text"
                   name="state"
                   id="state"
-                  
+                  required
                   class="formbold-form-input"
                   placeholder="Enter your state"
                 />
@@ -192,7 +573,7 @@
                   value="India"
                   class="formbold-form-input"
                   placeholder="Enter your country"
-
+                  required
                 />
               </div>
             </div>
@@ -200,7 +581,7 @@
 
             <h2 class="job-details" > Job Details</h2>
             
-            <div class="job-checkbox">
+            <div class="job-checkbox" id="jobCheckboxGroup">
                 <label for="preffered_location" class="formbold-form-label">
                     Select work you want : 
                   </label>
@@ -368,7 +749,7 @@
                   type="text"
                   name="provided_salary"
                   maxlength="10"
-
+                  required
                   id="provided_salary"
                   class="formbold-form-input"
                   placeholder="Salary Offered"
@@ -407,12 +788,15 @@
 
                 </select>
               </div>
-
-
+              <a href="{% url 'recruiter_home' %} " id="back"> Go Back</a>
               <button class="formbold-btn" type="submit">Post Job</button>
 
+
+
           </form>
+
         </div>
+
       </div>
     
 
@@ -425,6 +809,29 @@
             notificationContainer.style.display = 'none';
         }, 3000);
       </script>
+
+      <script>
+        function validateExperience() {
+            var experienceRadios = document.querySelectorAll('input[name="experience"]');
+            var experienceSelected = Array.from(experienceRadios).some(radio => radio.checked);
+    
+            var checkboxes = document.querySelectorAll('.checkbox-input');
+            var checkboxChecked = Array.from(checkboxes).some(checkbox => checkbox.checked);
+    
+            if (!experienceSelected) {
+                alert('Please select an experience level.');
+                return false;
+            }
+    
+            if (!checkboxChecked) {
+                alert('Please select at least one job.');
+                return false; // Prevent form submission
+            }
+    
+            return true;
+        }
+    </script>
+    
 
   </body>
 </html>

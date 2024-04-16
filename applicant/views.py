@@ -47,7 +47,7 @@ def applicant_form(request):
         
         except Exception as e:
 
-            messages.info(request, f"Something Went Wrong!! {str(e)}")
+            messages.warning(request, f"Something Went Wrong!! ")
             return redirect('index')
     
     return render(request,'applicant_form.html')
