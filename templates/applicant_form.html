@@ -508,9 +508,9 @@ color: white;
                         <h2 class="fs-title" id="name_title">Name</h2>
                         <input type="text" name="full_name" placeholder="Enter your name" maxlength="49"/>
                         <h2 class="fs-title" >Number</h2>
-                        <input type="text" name="phone_number" placeholder="Enter your number" maxlength="15" >
+                        <input type="number" name="phone_number" placeholder="Enter your number" maxlength="15" >
                         <h2 class="fs-title" >Additional Number</h2>
-                        <input type="text" name="phone_number2" placeholder="Enter your number" maxlength="15"/>
+                        <input type="number" name="phone_number2" placeholder="Enter your number" maxlength="15"/>
                         <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
                         <input type="button" name="next" class="next action-button" value="Next"/>
                     </fieldset>
@@ -553,11 +553,9 @@ color: white;
                     </fieldset>
                     
                     
-                    <fieldset>  
+                    <fieldset id="selectOptionFieldset">  
                         <div class="logo-div"> 
-
-                            <img src="/static/collections/logo-no-background.png"  class="twl-logo"/>
-
+                            <img src="/static/collections/logo-no-background.png" class="twl-logo"/>
                         </div>
                         <div class="option-container" id="selectOption">
                             <label class="option-box" for="home">
@@ -578,57 +576,24 @@ color: white;
                             </label>
                         </div>
                         <div style="display: flex; justify-content: center;">  
-                        <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
-                        <input type="button" name="next" class="next action-button" value="Next"/>
-                    </div>
+                            <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                            <input type="button" name="next" class="next action-button" value="Next"/>
+                        </div>
                     </fieldset>
-                    
         
 
                     <!-- Job Title Fieldset -->
-                    <fieldset id="job_title_fieldset">
-                        <div class="logo-div"> 
-
-                            <img src="/static/collections/logo-no-background.png"  class="twl-logo"/>
-
+                    <fieldset id="job_title_fieldset" style="display: none;">
+                        <div class="logo-div">
+                            <img src="/static/collections/logo-no-background.png" class="twl-logo"/>
                         </div>
                         <h2 class="fs-title" id="job_title">Job Title</h2>
                         <h3 class="fs-subtitle" id="job_subtitle">Select Your Job Titles</h3>
-                        <ul class="unstyled centered">
-                            <li>
-                                <input class="styled-checkbox" id="job1" type="checkbox" name="selected_jobs[]" value="Cooking">
-                                <label for="job1">Cooking (कुकिंग)</label>
-                            </li>
-                            <li>
-                                <input class="styled-checkbox" id="job2" type="checkbox" name="selected_jobs[]" value="Cleaning">
-                                <label for="job2">Cleaning (क्लीनिंग)</label>
-                            </li>
-                            <li>
-                                <input class="styled-checkbox" id="job3" type="checkbox" name="selected_jobs[]" value="Babycare">
-                                <label for="job3">Babycare (बेबीकेयर)</label>
-                            </li>
-                            <li>
-                                <input class="styled-checkbox" id="job4" type="checkbox" name="selected_jobs[]" value="Newborn Care/Nanny/Japa Maid">
-                                <label for="job4">Newborn Care(नवजात बच्चे की देखभाल )</label>
-                            </li>
-                            <li>
-                                <input class="styled-checkbox" id="job5" type="checkbox" name="selected_jobs[]" value="Patient Care">
-                                <label for="job5">Patient Care (पेशेंट केयर)</label>
-                            </li>
-                            <li>
-                                <input class="styled-checkbox" id="job6" type="checkbox" name="selected_jobs[]" value="Elder Care">
-                                <label for="job6">Elder Care (वृद्ध की देखभाल)</label>
-                            </li>
-                            <li>
-                                <input class="styled-checkbox" id="job7" type="checkbox" name="selected_jobs[]" value="Nursing">
-                                <label for="job7">Nursing (नर्सिंग)</label>
-                            </li>
-                            <li>
-                                <input class="styled-checkbox" id="job8" type="checkbox" name="selected_jobs[]" value="Driver">
-                                <label for="job8">Driving (ड्राइविंग)</label>
-                            </li>
+                        <ul class="unstyled centered" id="job_title_options">
+                            <!-- Job title options will be dynamically added here -->
                         </ul>
                     
+                        <!-- Other input fields -->
                         <h2 class="fs-title" id="experience_title">Experience</h2>
                         <h3 class="fs-subtitle" id="experience_subtitle">Enter Your Experience</h3>
                         <input type="number" id="experience_input" maxlength="3" name="experience" placeholder="Enter your Experience"/>
@@ -678,6 +643,7 @@ color: white;
                         <input type="button" id="previous" name="previous" class="previous action-button-previous" value="Previous"/>
                         <input type="button" id="next" name="next" class="next action-button" value="Next"/>
                     </fieldset>
+                    
                     
 
                     
@@ -1031,11 +997,65 @@ $('#documents_fieldset input[type="file"]').attr('placeholder', 'Add Additional 
         }
     </script>
 
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const selectOption = document.getElementById("selectOption");
+        const jobTitleOptions = document.getElementById("job_title_options");
 
+        selectOption.addEventListener("change", function(event) {
+            const selectedOption = event.target.value;
+            updateJobTitleOptions(selectedOption);
+        });
 
+        function updateJobTitleOptions(selectedOption) {
+            // Clear existing options
+            jobTitleOptions.innerHTML = "";
 
+            if (selectedOption === "HouseHelp") {
+                addJobOption("Cooking", "job1");
+                addJobOption("Cleaning", "job2");
+                addJobOption("Babycare", "job3");
+                addJobOption("Newborn Care/Nanny/Japa Maid", "job4");
+                addJobOption("Patient Care", "job5");
+                addJobOption("Elder Care", "job6");
+                addJobOption("Nursing", "job7");
+                addJobOption("Driver", "job8");
+            } else if (selectedOption === "Office Work") {
+                addJobOption("Cooking", "job1");
+                addJobOption("Cleaning", "job2");
+                addJobOption("Driver", "job8");
+            } else if (selectedOption === "Driver") {
+                addJobOption("Driver", "job8");
+            } else if (selectedOption === "Any") {
+                addJobOption("Cooking", "job1");
+                addJobOption("Cleaning", "job2");
+                addJobOption("Babycare", "job3");
+                addJobOption("Newborn Care/Nanny/Japa Maid", "job4");
+                addJobOption("Patient Care", "job5");
+                addJobOption("Elder Care", "job6");
+                addJobOption("Nursing", "job7");
+                addJobOption("Driver", "job8");
+            }
+        }
 
-    
+        function addJobOption(optionText, checkboxId) {
+            const li = document.createElement("li");
+            const checkbox = document.createElement("input");
+            checkbox.type = "checkbox";
+            checkbox.name = "selected_jobs[]";
+            checkbox.value = optionText;
+            checkbox.id = checkboxId; // Set the checkbox id
+            checkbox.className = "styled-checkbox";
+            const label = document.createElement("label");
+            label.htmlFor = checkbox.id; // Associate the label with the checkbox id
+            label.appendChild(document.createTextNode(optionText));
+            li.appendChild(checkbox);
+            li.appendChild(label);
+            jobTitleOptions.appendChild(li);
+        }
+    });
+</script>
+
 
 
 
