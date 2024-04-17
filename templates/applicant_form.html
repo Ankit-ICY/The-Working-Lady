@@ -14,7 +14,7 @@
             color: #fff !important; /* Custom text color for highlighted state */
         }
 
-  
+
         
 /*custom font*/
 @import url(https://fonts.googleapis.com/css?family=Montserrat);
@@ -439,7 +439,7 @@ color: white;
   
 }
         
-        /* Responsive styles */
+
         @media only screen and (max-width: 768px) {
          
             #msform fieldset{
@@ -447,7 +447,6 @@ color: white;
                 margin: 0 6%;
             }
         }
-
 
         .twl-logo{
 
@@ -461,6 +460,7 @@ color: white;
     display:flex;
     justify-content:center;
 }
+
     </style>
 </head>
 <body>
@@ -782,44 +782,77 @@ color: white;
     <!-- Custom JavaScript for dynamic form handling -->
     <script>
         $(document).ready(function () {
-            // Hide all fieldsets except the first one initially
-            $('#msform fieldset').not(':first').hide();
+            $(document).ready(function () {
+    // Hide all fieldsets except the first one initially
+    $('#msform fieldset').not(':first').hide();
 
-            // Handle next button click
-            $('.next').click(function () {
-                var currentFieldset = $(this).closest('fieldset');
-                var nextFieldset = currentFieldset.next('fieldset');
+    // Handle next button click
+    $('.next').click(function () {
+        var currentFieldset = $(this).closest('fieldset');
+        var nextFieldset = currentFieldset.next('fieldset');
 
-                // Show the next fieldset
-                currentFieldset.hide();
-                nextFieldset.show();
+        // Check if all inputs in the current fieldset are filled
+        if (validateInputs(currentFieldset)) {
+            // Show the next fieldset
+            currentFieldset.hide();
+            nextFieldset.show();
 
-                // Update progressbar (optional)
-                $('#progressbar li').eq($('fieldset').index(nextFieldset)).addClass('active');
+            // Update progressbar (optional)
+            $('#progressbar li').eq($('fieldset').index(nextFieldset)).addClass('active');
 
-                // Scroll to top of form (optional)
-                $('html, body').animate({
-                    scrollTop: $('#msform').offset().top
-                }, 'slow');
+            // Scroll to top of form (optional)
+            $('html, body').animate({
+                scrollTop: $('#msform').offset().top
+            }, 'slow');
+        } else {
+            // Show an alert or error message indicating that some fields are missing
+            alert('Please fill in all fields before proceeding.');
+        }
+    });
+
+    // Handle previous button click (optional)
+    $('.previous').click(function () {
+        var currentFieldset = $(this).closest('fieldset');
+        var prevFieldset = currentFieldset.prev('fieldset');
+
+        // Show the previous fieldset
+        currentFieldset.hide();
+        prevFieldset.show();
+
+        // Update progressbar (optional)
+        $('#progressbar li').eq($('fieldset').index(currentFieldset)).removeClass('active');
+
+        // Scroll to top of form (optional)
+        $('html, body').animate({
+            scrollTop: $('#msform').offset().top
+        }, 'slow');
+    });
+
+    // Function to validate inputs in a fieldset
+
+    // Function to validate inputs in a fieldset
+        function validateInputs(fieldset) {
+            var inputs = fieldset.find('input[type="text"], input[type="number"], input[type="radio"]:checked, input[type="checkbox"]:checked, select, textarea');
+            var checkboxes = fieldset.find('input[type="checkbox"]');
+            var isValid = true;
+
+            inputs.each(function () {
+                if ($(this).val() === '' || ($(this).is(':checkbox') && !$(this).is(':checked'))) {
+                    isValid = false;
+                    return false; 
+                }
             });
 
-            // Handle previous button click (optional)
-            $('.previous').click(function () {
-                var currentFieldset = $(this).closest('fieldset');
-                var prevFieldset = currentFieldset.prev('fieldset');
+            if (checkboxes.length > 0 && checkboxes.filter(':checked').length === 0) {
+                isValid = false;
+            }
 
-                // Show the previous fieldset
-                currentFieldset.hide();
-                prevFieldset.show();
+            return isValid;
+        }
 
-                // Update progressbar (optional)
-                $('#progressbar li').eq($('fieldset').index(currentFieldset)).removeClass('active');
+});
 
-                // Scroll to top of form (optional)
-                $('html, body').animate({
-                    scrollTop: $('#msform').offset().top
-                }, 'slow');
-            });
+           
 
             // Handle language selection
             $('input[type="radio"][name="language"]').change(function () {
