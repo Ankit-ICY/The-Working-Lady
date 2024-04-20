@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Police Verification</title>
+<link rel="icon" href="/static/collections/working Lady logog.jpg" type="image/x-icon">
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+      }
+      
+      .container {
+        max-width: 600px;
+        margin: 50px auto;
+        background: linear-gradient(to bottom, #C2C6C9, #D6D7DB, #f0f0f0);
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+      
+      h1 {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+      
+      p {
+        text-align: center;
+      }
+      
+      .options {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+      }
+      
+      .btn {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+      }
+      
+      .yes-btn {
+        background-color: #4CAF50;
+        color: #fff;
+        margin-right: 10px;
+      }
+      
+      .no-btn {
+        background-color: #f44336;
+        color: #fff;
+      }
+      
+      .btn:hover {
+        background-color: #333;
+      }
+      
+      .police-points{
+        display:flex;
+        flex-direction:column;
+        align-items: center;
+
+      }
+
+
+      .police-points h2{
+        background : rgb(54, 0, 0);
+        color: white;
+        padding: 10px;
+        border-radius: 10px;
+        width: 54%;
+        text-align: center;
+      }
+
+      ul {
+        list-style-type: disc; /* Remove default list style */
+        padding: 0; /* Remove default padding */
+    }
+    
+    li {
+        margin-bottom: 10px; /* Add margin between list items */
+        line-height: 1.5; /* Increase line height for better readability */
+    }
+    
+    strong {
+        font-weight: bold; /* Set the font weight to bold for <strong> elements */
+    }
+
+    .police-img{
+      display: flex;
+      justify-content: center;
+
+    }
+
+    /* .police-img img{
+      border: 1px solid white; 
+    } */
+    
+</style>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="container">
+  <div class="police-img"> 
+  <img  src="/static/collections/police.jpg" />
+</div>
+  <h1>Police Verification/पुलिस सत्यापन</h1>
+  <p>क्या आप पुलिस सत्यापन के लिए तैयार हैं?</p>
+  <div class="options">
+    <a href="{% url 'applicant_form'%}"><button class="btn yes-btn" onclick="confirmVerification(true)">हाँ    </button> </a> 
+    <a href="{% url 'index'%}">  <button class="btn no-btn" onclick="confirmVerification(false)">नहीं    </button> </a>
+  </div>
+</div>
+
+<div class="police-points">
+  <h2>सत्यापन के पीछे कारण  </h2>
+
+  <ul>
+    <li><strong>क्लीन रिकॉर्ड की पुष्टि:</strong> यह सत्यापन करेगा कि आपका कोई क्रिमिनल रिकॉर्ड नहीं है और कोई मुकदमा पेंडिंग नहीं है।</li>
+    <li><strong>मासूमीता की पुष्टि:</strong> पुलिस सत्यापन आपकी मासूमीता और कानूनी स्थिति की पुष्टि करने के लिए है।</li>
+    <li><strong>सुरक्षा बनाये रखना:</strong> उपयोगकर्ताओं की सत्यापन से सभी के लिए एक सुरक्षित और सुरक्षित वातावरण सुनिश्चित होता है।</li>
+    <li><strong>कानूनी अनुपालन:</strong> ट्रांसपेरेंसी और सुरक्षा के लिए कानूनी आवश्यकताओं का पालन करें।</li>
+    <li><strong>उपयोगकर्ता जिम्मेदारी:</strong> यह आपकी जिम्मेदारी है कि आप अपनी मासूमीता की पुष्टि सच्चाई से करें।</li>
+    <li><strong>गलत जानकारी के परिणाम:</strong> गलत जानकारी प्रदान करने से कानूनी परिणाम हो सकते हैं।</li>
+    <li><strong>उपयोगकर्ता सहमति:</strong> हाँ को पुष्टि करके, आप सत्यापन प्रक्रिया के साथ सहयोग करने के लिए सहमत होते हैं।</li>
+    <li><strong>भविष्य के प्रभाव:</strong> किसी भी कानूनी स्थिति में परिवर्तन होने पर उसे मॉनिटर किया जाएगा और उस पर उचित कार्रवाई की जाएगी।</li>
+</ul>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

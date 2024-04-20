@@ -1,4 +1,4 @@
-
+       
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700,400italic);
 .product-navbar {
 height: 40px;
@@ -254,7 +254,7 @@ height: 40px;
 width: 200px
 }
 .img-container img{
-    height:500px;
+    height:32rem;
+    width: 90%;
 }
-
 

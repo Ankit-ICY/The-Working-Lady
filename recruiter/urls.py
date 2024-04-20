@@ -22,6 +22,10 @@ urlpatterns = [
    path('payment/success/', views.payment_success_view, name='payment_success'),
    path('log_off/', views.log_off, name='log_off'),
    path('checkout/<int:id>', views.checkout, name='checkout'),
+   path('profile', views.user_profile, name='user_profile'),
+   path('remove_photo/<int:id>', views.remove_photo, name='remove_photo'),
+
+
 
 
 

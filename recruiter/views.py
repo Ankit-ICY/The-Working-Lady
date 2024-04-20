@@ -12,6 +12,9 @@ from django.http import HttpResponseBadRequest
 import razorpay  
 from django.contrib.auth import logout
 import re
+from django.contrib.auth.models import User
+from users.views import validate_email_address, validate_mobile_number, validate_pass
+from django.contrib.auth import update_session_auth_hash
 
 # Create your views here.
 from applicant.models import Applicants, Work_Category
@@ -413,3 +416,80 @@ def checkout(request,id):
     pack = Price.objects.get(price_id = id)
     context = {'pack' : pack}
     return render(request , 'checkout.html', context )
+
+
+def user_profile(request):
+    recruiter = User_Recruiter.objects.get(user__username=request.user)
+    
+    if request.method == "POST":
+
+        if  'profile_submit' in request.POST:
+            username = request.POST.get('username')
+            email = request.POST.get('email')
+            number = request.POST.get('number')
+            password = request.POST.get('password')
+            confirm_pass = request.POST.get('confirm_pass')
+            
+            if password!=confirm_pass:
+                messages.warning(request,'Password Does not match')
+                print('pass_wrong')
+                return redirect('user_profile')
+            
+            elif User.objects.filter(username=username).exclude(id=recruiter.user.id).exists():
+                messages.info(request, f'Username {username} Already Exists, Try using another')
+                return redirect('user_profile')
+            
+    
+            elif not validate_mobile_number(number):
+                messages.info(request,f"{number} is not a valid mobile number")
+                return redirect('user_profile')
+            
+                  
+            elif not validate_email_address(email):
+                messages.info(request,f"{email} is not a valid")
+                return redirect('user_profile')
+
+
+            elif not validate_pass(password):
+                messages.error(request, f'Please Create a strong password !!')
+                return redirect('user_profile')
+            
+            elif User.objects.filter(email=email).exclude(id=recruiter.user.id).exists():
+                messages.info(request, f'{email} Already linked with an account')
+                return redirect('user_profile')
+            
+            else:
+                user = User.objects.get(username=recruiter.user.username)
+                user.username = username
+                user.email = email
+                user.set_password(password)
+                user.save()
+                update_session_auth_hash(request, user)
+                
+                recruiter.user = user
+                recruiter.number = number
+                recruiter.save()
+                messages.success(request, 'Profile updated successfully!')
+                return redirect('user_profile')
+
+
+        else:
+            image = request.FILES.get('photo')
+            print(image)  # Debugging: Print the uploaded image to check if it's received
+            
+            if image:  # Check if image is not None
+                recruiter.photo = image
+                recruiter.save()
+              # Redirect to profile page after successful upload
+    
+    context = {'recruiter': recruiter}
+    return render(request, 'user_profile.html', context)
+
+
+
+def remove_photo(request, id):
+    obj = User_Recruiter.objects.filter(user__id =id).first()
+    obj.photo = None
+    obj.save()
+    return redirect('user_profile')
+

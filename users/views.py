@@ -215,11 +215,14 @@ def register(request):
             messages.error(request, 'An error occurred while processing your request.')
             return redirect('register')
 
-        
-
     return render(request,'register.html') 
 
 
 
 def steps(request):
     return render(request, 'step.html')
+
+
+
+def police_verification(request):
+    return render(request, 'police_verification.html')

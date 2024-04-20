@@ -508,11 +508,11 @@ color: white;
                         <h2 class="fs-title" id="name_title">Name</h2>
                         <input type="text" name="full_name" placeholder="Enter your name" maxlength="49"/>
                         <h2 class="fs-title" >Number</h2>
-                        <input type="number" name="phone_number" placeholder="Enter your number" maxlength="15" >
+                        <input type="number"  class="phone_numbers" name="phone_number" placeholder="Enter your number" maxlength="15" >
                         <h2 class="fs-title" >Additional Number</h2>
-                        <input type="number" name="phone_number2" placeholder="Enter your number" maxlength="15"/>
+                        <input type="number" class="phone_numbers" name="phone_number2" placeholder="Enter your number" maxlength="15"/>
                         <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
-                        <input type="button" name="next" class="next action-button" value="Next"/>
+                        <input type="button"  name="next" class="next action-button" value="Next" />
                     </fieldset>
                     <fieldset id="qualification_fieldset">
                         <div class="logo-div"> 
@@ -972,7 +972,7 @@ $('#description_fieldset textarea[name="description"]').attr('placeholder', 'Wri
 $('#photo_fieldset h2.fs-title').text('Personal Photo');
 $('#photo_fieldset h3.fs-subtitle').text('Add Your Photo');
 $('#photo_fieldset input[type="file"]').attr('placeholder', 'Add Your Photo');
-
+ 
 // Additional Documents Fieldset
 $('#documents_fieldset h2.fs-title').text('Additional Documents');
 $('#documents_fieldset h3.fs-subtitle').text('Add Your Additional Documents');
@@ -1010,7 +1010,7 @@ $('#documents_fieldset input[type="file"]').attr('placeholder', 'Add Additional 
         function updateJobTitleOptions(selectedOption) {
             // Clear existing options
             jobTitleOptions.innerHTML = "";
-
+        
             if (selectedOption === "HouseHelp") {
                 addJobOption("Cooking", "job1");
                 addJobOption("Cleaning", "job2");
@@ -1058,9 +1058,7 @@ $('#documents_fieldset input[type="file"]').attr('placeholder', 'Add Additional 
 
 
 
-
-
-
+    
       
 </body>
 </html>

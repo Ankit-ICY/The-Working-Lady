@@ -15,10 +15,12 @@
            
             <div class="user-info">
                 <div class="user-avatar">
-                    {% if applicant.photo %}
-                    <img src="{{applicant.photo.url}}" alt="User Avatar">
+
+                  
+                     {% if applicant.photo %}
+                        <img src="{{applicant.photo.url}}" alt="User Avatar">
                     {%else%}
-                    <img src="/static/collections/dummy profile.png" alt="User Avatar">
+                        <img src="/static/collections/dummy profile.png" alt="User Avatar">
 
                     {%endif %}
                     <h1 class="app-content-headerText">{{ applicant.full_name }}</h1>

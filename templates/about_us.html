@@ -6,273 +6,227 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="/static/collections/working Lady logog.jpg" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.2/css/bootstrap.min.css" />
-    <!-- <link rel="stylesheet" href="{% static 'about.css' %}"> -->
-    <title>About Us</title>
+<link rel="stylesheet" href="{% static 'about.css' %}"> 
+    <title>About TWL</title>
   
 
     <style>
-        
-@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700,400italic);
-.product-navbar {
-height: 40px;
-width: 100%;
-background: #1a3d4f;
-border-bottom: 1px solid #2D5C74;
-font-family: "Open Sans", sans-serif;
-font-size: 14px;
-line-height: 1.42857143;
-color: #333;
+ 
+      
+.road-map-main {
+  margin: 50px 0 51px;
 }
-.product-navbar .product-navbar-centered {
-max-width: 90vw;
-height: 20px;
-margin: 0 5vw;
+.road-map-main .road-map-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 175px;
 }
-.product-navbar .product-navbar-centered ul {
-margin: 0;
-padding: 0;
+@media (max-width: 991px) {
+  .road-map-main .road-map-wrapper {
+    margin-bottom: 25px;
+    height: auto;
+    display: block;
+  }
 }
-.product-navbar .product-navbar-centered ul li {
-float: left;
-list-style: none;
-margin-right: 30px;
-padding-top: 9px;
+.road-map-main .road-map-wrapper::before {
+  content: "";
+  width: 100%;
+  clear: both;
+  display: block;
 }
-.product-navbar .product-navbar-centered ul li a {
-color: #bac2ce;
-font-size: 12px;
-font-weight: 700;
-text-decoration: none;
-text-transform: uppercase;
-text-shadow: none !important;
+.road-map-main .road-map-wrapper::after {
+  content: "";
+  width: 100%;
+  clear: both;
+  display: block;
 }
-
-.hero {
-background: #2D5C74;
-padding-left: 0;
-padding-right: 0;
+.road-map-main .road-map-wrapper .road-map-circle {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 25px solid transparent;
+  border-top-color: #4A7081;
+  border-right-color: #4A7081;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  transform: rotate(45deg);
 }
-.hero .container {
-margin: 0 5vw;
-padding: 0 0vw;
-max-width: 90vw;
+@media (max-width: 992px) {
+  .road-map-main .road-map-wrapper .road-map-circle {
+    position: unset;
+    border: 25px solid #4A7081;
+  }
 }
-.hero .navbar-brand {
-color: #fff;
+.road-map-main .road-map-wrapper .road-map-circle .road-map-circle-text {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background-color: #ff8f3fe0;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 26px;
+  text-transform: capitalize;
+  color: #fff;
+  box-shadow: 0px 0px 10px 5px #00000021;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  transform: rotate(-45deg);
 }
-.hero .navbar-brand img {
-margin-right: 7px;
-margin-top: -7px;
+.road-map-main .road-map-wrapper .road-map-card {
+  width: 35%;
+  background: #320007;
+  padding: 20px 20px;
+  z-index: 1;
+  position: absolute;
+  right: 0;
+  border-radius: 5px;
 }
-
-#about-main {
-font-family: "Open Sans", sans-serif;
-margin: 0 auto;
+.road-map-main .road-map-wrapper .road-map-card::before {
+  content: "";
+  width: 25%;
+  height: 20px;
+  background: #4A7081;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: -23%;
+  z-index: -1;
 }
-#about-main .row {
-margin-left: 0;
-margin-right: 0;
+@media (max-width: 991px) {
+  .road-map-main .road-map-wrapper .road-map-card {
+    width: 100%;
+    margin-top: 30px;
+    position: unset;
+  }
+  .road-map-main .road-map-wrapper .road-map-card::before {
+    content: "";
+    width: 20px;
+    height: 30%;
+    top: 50%;
+    transform: translateX(-50%);
+    left: 50%;
+  }
 }
-#about-main .jumbotron {
-width: 100%;
-height: 530px;
-background: #507887;
-position: relative;
-margin: 0;
-z-index: 3;
-border-radius: 0px;
+@media (max-width: 425px) {
+  .road-map-main .road-map-wrapper .road-map-card {
+    top: 45%;
+  }
 }
-#about-main .jumbotron .img-layer-container {
-position: relative;
-max-width: 1100px;
-margin: 0 auto;
-display: flex;
-justify-content: center;
+.road-map-main .road-map-wrapper .road-map-card .card-head {
+  font-size: 20px;
+  font-weight: 600;
+  text-transform: capitalize;
+  margin: 0 0 15px;
+  color: #fff;
+  text-decoration: underline;
 }
-#about-main .jumbotron .img-layer-container img {
-max-width: 95vw;
+.road-map-main .road-map-wrapper .road-map-card .card-text {
+  color: #fff;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
-#about-main .jumbotron .img-layer-container .team-image {
-position: absolute;
+@media (max-width: 1199px) {
+  .road-map-main .road-map-wrapper .road-map-card .card-text {
+    -webkit-line-clamp: 4;
+  }
 }
-#about-main .jumbotron .img-layer-container .team-image img {
-position: relative;
-z-index: 3;
+.road-map-main .road-map-wrapper:nth-of-type(even) .road-map-circle {
+  border-bottom-color: #4A7081;
+  border-left-color: #4A7081;
+  border-top-color: transparent;
+  border-right-color: transparent;
 }
-#about-main .jumbotron .img-layer-container .circles-container {
-position: absolute;
-max-width: 1100px;
-margin: 0 auto;
-display: flex;
-justify-content: center;
+@media (max-width: 991px) {
+  .road-map-main .road-map-wrapper:nth-of-type(even) .road-map-circle {
+    border-color: #4A7081;
+  }
 }
-#about-main .jumbotron .img-layer-container .circles-container .img-1 {
-position: absolute;
-z-index: 2;
+.road-map-main .road-map-wrapper:nth-of-type(even) .road-map-card {
+  left: 0;
 }
-#about-main .jumbotron .img-layer-container .circles-container .img-2 {
-position: absolute;
-z-index: 5;
+.road-map-main .road-map-wrapper:nth-of-type(even) .road-map-card::before {
+  right: -23%;
+  left: unset;
 }
-#about-main .jumbotron .jumbotron-inner {
-max-width: 1350px;
-margin: 0 auto;
+@media (max-width: 991px) {
+  .road-map-main .road-map-wrapper:nth-of-type(even) .road-map-card::before {
+    content: "";
+    width: 20px;
+    height: 30%;
+    top: 50%;
+    transform: translateX(-50%);
+    left: 50%;
+  }
 }
-#about-main .jumbotron .jumbotron-inner a {
-text-decoration: none;
-}
-#about-main .jumbotron .jumbotron-inner .top-box {
-max-width: 950px;
-margin: 0 auto;
-}
-#about-main .jumbotron .jumbotron-inner .top-box .content-box {
-margin: 0 50px 35px;
-}
-#about-main .jumbotron .jumbotron-inner .top-box .content-box h1 {
-text-align: center;
-color: #fff;
-font-size: 40px;
-font-weight: bold;
-margin-bottom: 20px;
-}
-#about-main .jumbotron .jumbotron-inner .top-box .content-box p {
-text-align: center;
-color: rgb(205, 196, 196);
-font-size: 18px;
-font-weight: 500;
-margin: 0;
-margin-bottom: 15px;
-}
-@media (max-width: 1401px) {
-#about-main .jumbotron {
-height: 595px !important;
-}
-#about-main .jumbotron .jumbotron-inner {
-max-width: 900px;
-}
-#about-main .jumbotron .jumbotron-inner .top-box {
-max-width: 900px;
-}
-#about-main .jumbotron .jumbotron-inner .top-box .content-box {
-margin-top: 30px;
-margin-bottom: 50px;
-}
-#about-main .jumbotron .jumbotron-inner .top-box .content-box h3 {
-font-size: 35px;
-margin: 5px 0px 20px 0px;
-color: #6f7782;
-font-weight: 300;
-}
-}
-@media (max-width: 1000px) {
-#about-main .jumbotron .img-layer-container {
-width: 100%;
-}
-}
-@media (max-width: 815px) {
-#about-main .jumbotron .jumbotron-inner {
-max-width: 600px;
-}
-}
-@media (max-width: 640px) {
-#about-main .jumbotron {
-height: 400px !important;
-}
-#about-main .jumbotron .jumbotron-inner {
-max-width: 550px;
-padding: 0 20px;
-}
-#about-main .jumbotron .img-1, #about-main .jumbotron .img-2, #about-main .jumbotron .team-image {
-display: none;
-}
-}
-@media (max-width: 420px) {
-#about-main .jumbotron .jumbotron-inner {
-max-width: 600px;
-padding: 0 20px;
-}
-}
-@media (max-width: 400px) {
-#about-main .jumbotron .jumbotron-inner .top-box .content-box {
-margin: 30px 0;
-}
-#about-main .jumbotron .jumbotron-inner .top-box .content-box h1 {
-font-size: 35px;
-}
-#about-main .jumbotron .jumbotron-inner .top-box .content-box p {
-font-size: 16px;
-}
-}
-#about-main .story-container {
-height: 100%;
-width: 100%;
-margin-top: 150px;
-}
-@media (max-width: 640px) {
-#about-main .story-container {
-margin-top: 80px;
-}
-}
-#about-main .story-container .container-divider {
-margin-top: 100px;
-}
-@media (max-width: 640px) {
-#about-main .story-container .container-divider {
-margin-top: 50px;
-}
-}
-#about-main .story-container .need-for-dx-container, #about-main .story-container .our-tech-container, #about-main .story-container .origin-story-container, #about-main .story-container .today-container {
-max-width: 950px;
-margin: 0 auto;
-padding: 0 20px;
-}
-@media (max-width: 815px) {
-#about-main .story-container .need-for-dx-container, #about-main .story-container .our-tech-container, #about-main .story-container .origin-story-container, #about-main .story-container .today-container {
-width: 100%;
-}
-}
-#about-main .story-container .need-for-dx-container .img-container, #about-main .story-container .our-tech-container .img-container, #about-main .story-container .origin-story-container .img-container, #about-main .story-container .today-container .img-container {
-width: 100%;
-display: flex;
-justify-content: center;
-}
-#about-main .story-container .need-for-dx-container .img-container img, #about-main .story-container .our-tech-container .img-container img, #about-main .story-container .origin-story-container .img-container img, #about-main .story-container .today-container .img-container img {
-margin: 50px auto;
-}
-#about-main .story-container .need-for-dx-container h3, #about-main .story-container .our-tech-container h3, #about-main .story-container .origin-story-container h3, #about-main .story-container .today-container h3 {
-color: #074e8c;
-}
-#about-main .story-container .need-for-dx-container p, #about-main .story-container .our-tech-container p, #about-main .story-container .origin-story-container p, #about-main .story-container .today-container p {
-font-size: 15px;
-margin-top: 20px;
-color: #676a6c;
-}
-@media (max-width: 640px) {
-#about-main .story-container .need-for-dx-container p, #about-main .story-container .our-tech-container p, #about-main .story-container .origin-story-container p, #about-main .story-container .today-container p {
-font-size: 13px;
-}
-}
-#about-main .story-container .need-for-dx-container ul, #about-main .story-container .our-tech-container ul, #about-main .story-container .origin-story-container ul, #about-main .story-container .today-container ul {
-margin-top: 30px;
-list-style-image: url("https://apimatic.io/img/theme/aboutUs/bullet.svg");
-}
-#about-main .story-container .need-for-dx-container ul li, #about-main .story-container .our-tech-container ul li, #about-main .story-container .origin-story-container ul li, #about-main .story-container .today-container ul li {
-line-height: 25px;
-padding-left: 5px;
-color: #676a6c;
+@media (max-width: 425px) {
+  .road-map-main .road-map-wrapper:nth-of-type(even) .road-map-card::before {
+    top: 45%;
+  }
 }
 
-.twl-logo{
-height: 40px;
-width: 200px
+
+/* CSS for content boxes */
+.content-box2 {
+  background-color: #fff; /* Background color of the box */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 30px; /* Padding inside the box */
+  margin-bottom: 20px; /* Spacing between boxes */
 }
-.img-container img{
-    height:500px;
+
+/* Optional: Style for headings inside content boxes */
+.content-box2 h2,
+.content-box2 h3 {
+  color: #333; /* Heading color */
+  margin-bottom: 10px; /* Spacing below headings */
 }
-    </style>
+
+/* Optional: Style for paragraphs inside content boxes */
+.content-box2 p {
+  color: #666; /* Paragraph text color */
+  line-height: 1.5; /* Line height for readability */
+}
+
+/* Optional: Style for ordered lists inside content boxes */
+.content-box2 ol {
+  margin-left: 20px; /* Left margin for ordered lists */
+}
 
 
+#origin-box{
+  width: 80%;
+  background-color: #e7ecef;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+
+#head-box{
+background:#edf2f4;
+padding: 10px;
+border-radius: 10px;
+box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+}
+</style>
+
+ 
 
 
 </head>
@@ -301,7 +255,7 @@ width: 200px
             <div class="navbar-header" >
                 <a href="#" class="navbar-brand">
                     <p>
-                      <img src="/static/collections/logo-no-background.png"  class="twl-logo"/>
+                     <a href="{% url 'index' %}"> <img  src="/static/collections/logo-no-background.png"  class="twl-logo"/></a>
                     </p>
                 </a>
             </div>
@@ -338,10 +292,12 @@ width: 200px
         </div>
         <div class="story-container">
             <div class="need-for-dx-container">
-                <h3 class="text-center">
+                <h3 class="text-center" id="head-box">
                     Need for TWL
                 </h3>
                 <p>In today's fast-paced world, finding reliable domestic help or securing a fulfilling domestic job can be a daunting task. This is where "The Working Lady" (TWL) steps in, revolutionizing the way job seekers and employers connect in the domestic job market.</p>
+
+                <div class="content-box2" style="background-color: #ffb3c6;">
 
                 <h2>For Job Seekers:</h2>
                 
@@ -351,7 +307,10 @@ width: 200px
                   <li><strong>Flexible Work Options:</strong> Whether you're seeking full-time, part-time, or freelance work, TWL offers flexible job options to suit your schedule and preferences.</li>
                   <li><strong>Direct Communication:</strong> Connect directly with employers through TWL's secure messaging system, facilitating clear communication and job negotiations.</li>
                 </ol>
+                </div>
                 
+                <div class="content-box2" style="background-color: #fed9b7;">
+
                 <h2>For Employers:</h2>
                 
                 <ol>
@@ -361,6 +320,10 @@ width: 200px
                   <li><strong>Transparent Communication:</strong> Communicate directly with job seekers to discuss job details, expectations, and ensure a smooth hiring experience.</li>
                 </ol>
                 
+                </div>
+
+                <div class="content-box2" style="background-color: #cce3de;">
+
                 <h2>Why TWL is Essential:</h2>
                 
                 <ul>
@@ -369,6 +332,7 @@ width: 200px
                   <li><strong>Quality Matches:</strong> TWL's intelligent matching system ensures that job seekers find suitable opportunities, and employers find qualified candidates, leading to successful and fulfilling job connections.</li>
                   <li><strong>Supportive Environment:</strong> TWL's dedicated support team provides assistance and guidance throughout the job search and hiring journey, offering a supportive environment for all users.</li>
                 </ul>
+                </div>
                 
                 <p>In conclusion, TWL fills a crucial need in the domestic job market by providing a reliable, efficient, and supportive platform for job seekers and employers alike. Join TWL today and experience the difference in your domestic job search or hiring process!</p>
                 
@@ -378,51 +342,129 @@ width: 200px
             </div>
             <div class="container-divider"></div>
             <div class="our-tech-container">
-                <h3 class="text-center">
+                <h3 class="text-center" id="head-box">
                     Our Process
                 </h3>
-                
-<h4>Step 1: Applicant Registration</h4>
-<ol>
-  <li>Applicants visit The Working Lady website and fill out a registration form with their personal details, contact information, and job preferences.</li>
-  <li>Upon successful registration, applicants receive a confirmation email with login credentials to access their dashboard.</li>
-</ol>
 
-<h4>Step 2: Recruiter Registration and Login</h4>
-<ol start="3">
-  <li>Recruiters sign up by providing company information and contact details on The Working Lady platform.</li>
-  <li>After registration, recruiters log in to their dashboard using their credentials.</li>
-</ol>
 
-<h4>Step 3: Recruiter Dashboard</h4>
-<ol start="5">
-  <li>Recruiters access their dashboard, where they can post job listings with specific requirements, including job descriptions, qualifications, experience levels, and any other necessary details.</li>
-  <li>Recruiters can also view applications submitted by applicants, review resumes, and shortlist candidates based on their criteria.</li>
-</ol>
+                <div class="container" id="step-pattern">
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="road-map-main">
+                            <div class="road-map-wrapper">
+                                <div class="road-map-circle">
+                                  <span
+                                    class="road-map-circle-text d-flex align-items-center justify-content-center"
+                                    >Step-1</span
+                                  >
+                                </div>
+                                <div class="road-map-card">
+                                  <h4 class="card-head">1) Post Your Requirements</h4>
+                                  <p class="card-text"  style="color: white;">
+                                    Share your specific requirements with us, outlining
+                                     the skills, experience, and qualifications you're 
+                                     looking for in a candidate.
+                                  </p>
+                                </div>
+                              </div>
+                              <div class="road-map-wrapper">
+                                <div class="road-map-circle">
+                                  <span
+                                    class="road-map-circle-text d-flex align-items-center justify-content-center"
+                                    >Step-2</span
+                                  >
+                                </div>
+                                <div class="road-map-card">
+                                  <h4 class="card-head">2) See Matching Profiles</h4>
+                                  <p class="card-text"  style="color: white;" >
+                                    Discover profiles that align with your criteria. Our platform presents you with a curated selection of candidates tailored to your needs.
+                                  </p>
+                                </div>
+                              </div>
+                          <div class="road-map-wrapper">
+                            <div class="road-map-circle">
+                              <span
+                                class="road-map-circle-text  d-flex align-items-center justify-content-center"
+                                >Step-3</span
+                              >
+                            </div>
+                            <div class="road-map-card">
+                              <h4 class="card-head">3) Make Your Selection</h4>
+                              <p class="card-text"  style="color: white;" >
+                                Choose the candidate who best fits your requirements and expectations. You have the freedom to select from a pool of qualified individuals.
+                              </p>
+                            </div>
+                          </div>
+                          <div class="road-map-wrapper">
+                            <div class="road-map-circle">
+                              <span
+                                class="road-map-circle-text  d-flex align-items-center justify-content-center"
+                                >Step-4</span
+                              >
+                            </div>
+                            <div class="road-map-card">
+                              <h4 class="card-head">4) Join Our Community</h4>
+                              <p class="card-text"  style="color: white;" >
+                                Register as a client by paying the nominal registration charges. Gain access to our exclusive services and resources.
+                              </p>
+                            </div>
+                          </div>
+                          <div class="road-map-wrapper">
+                            <div class="road-map-circle">
+                              <span
+                                class="road-map-circle-text  d-flex align-items-center justify-content-center"
+                                >Step-5</span
+                              >
+                            </div>
+                            <div class="road-map-card">
+                              <h4 class="card-head">5) Take Trial Period of Selected Candidate</h4>
+                              <p class="card-text"  style="color: white;" >
+                                Test the waters with your chosen candidate through a trial period. Evaluate their performance firsthand before making a final commitment.
+                              </p>
+                            </div>
+                          </div>
+                          <div class="road-map-wrapper">
+                            <div class="road-map-circle">
+                              <span
+                                class="road-map-circle-text d-flex align-items-center justify-content-center"
+                                >Step-6</span
+                              >
+                            </div>
+                            <div class="road-map-card">
+                              <h4 class="card-head">6) Pay Final Service Charge After Satisfaction </h4>
+                              <p class="card-text"  style="color: white;">
+                                Upon being satisfied with the candidate's performance during the trial period, proceed to pay the final service charge for our matchmaking services.
+                              </p>
+                            </div>
+                          </div>
+                          <div class="road-map-wrapper">
+                            <div class="road-map-circle">
+                              <span
+                                class="road-map-circle-text d-flex align-items-center justify-content-center"
+                                >Step-7</span
+                              >
+                            </div>
+                            <div class="road-map-card">
+                              <h4 class="card-head">7) Access Your Dashboard to Avail Several Benefits from TWL Timely </h4>
+                              <p class="card-text"  style="color: white;">
+                                Enjoy the convenience of our user-friendly dashboard, offering you access to various benefits, updates, and support services from TWL.
+                             </p>
+                            </div>
+                          </div>
+                     <h3>Finished!!</h3>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
 
-<h4>Step 4: TWL Connection</h4>
-<ol start="7">
-  <li>The Working Lady platform facilitates connections between recruiters and applicants by notifying shortlisted candidates about job opportunities.</li>
-  <li>Applicants receive notifications about job matches and can communicate with recruiters through the platform.</li>
-</ol>
-
-<h4>Step 5: Interview and Hiring</h4>
-<ol start="9">
-  <li>Recruiters and applicants conduct interviews and assessments through TWL's messaging system or other preferred communication methods.</li>
-  <li>Upon successful interviews, recruiters make hiring decisions and extend job offers to selected candidates.</li>
-</ol>
-
-<h4>Step 6: Onboarding and Support</h4>
-<ol start="11">
-  <li>The Working Lady provides onboarding support to help newly hired candidates integrate smoothly into their roles.</li>
-  <li>Recruiters and candidates can access ongoing support from TWL's customer service team for any assistance or inquiries.</li>
-</ol>
 
                 <div class="img-container">
                     <img src="/static/collections/bai cleaning.jpg" alt="apimatic code generation engine" class="img-responsive"/>
                 </div>
             </div>
             <div class="container-divider"></div>
+            <div style="display: flex; justify-content: center;"> 
+            <div class="content-box2" id="origin-box">
             <div class="origin-story-container">
                 <h3 class="text-center">
                     Origin Story
@@ -438,9 +480,13 @@ width: 200px
 <p>Join us on this journey as we write the next chapter of success together!</p>
 
             </div>
+        </div>
+    </div>
+
+
             <div class="container-divider"></div>
             <div class="today-container">
-                <h3 class="text-center">
+                <h3 class="text-center" id="head-box">
                     Flash Forward Today
                 </h3>
                 <p>In today's fast-paced world, "The Working Lady" (TWL) continues to revolutionize the domestic job market, providing seamless connections between job seekers and employers. Here's how TWL is shaping the future of domestic employment:</p>

@@ -5,7 +5,8 @@
   <meta charset="utf-8">
   <meta name="description" content="HTML/CSS">
   <meta name="author" content="Anil">
-  <title>Website -Template</title>
+  <title>Home</title>
+  <link rel="icon" href="/static/collections/working Lady logog.jpg" type="image/x-icon">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
@@ -14,11 +15,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="{% static 'index.css' %}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-
-
-  <style>
-
-
+<style>
 
 textarea {
     resize: none;
@@ -359,8 +356,8 @@ z-index: 999; /* Ensure the notification appears above other content */
 
  @media only screen and (max-width: 768px) {
       .popup {
-          max-width: 100%;
-          padding: 10px;
+          width: 95%;
+
       }
   
       .form-group {
@@ -372,15 +369,18 @@ z-index: 999; /* Ensure the notification appears above other content */
       }
 
       .option-container {
+        display: flex;
+        flex-direction: column;
+        /* justify-content: center; */
         width: 100%;
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Adjusted grid layout for smaller screens */
-        padding :20px
+        padding: 10px
+        
       }
     
       .option-box {
-        height: 90px; /* Reduced height for smaller screens */
-        font-size: 10px; /* Adjusted font size for smaller screens */
-
+        height: 90px; 
+        font-size: 10px; 
+        width: 60%;
       }
     
       .job-logos {
@@ -430,9 +430,19 @@ background-color: white;
 color:black;
 }
 
+
+.service-logo{
+  height: 45%;
+  width: 150%;
+}
   
   </style>
-  
+
+
+<style> 
+    
+
+</style>
 </head>
 
 <body>
@@ -461,7 +471,7 @@ color:black;
 
 
   <!-- -----------------------------------MODAL---------------------------------------------------- -->
-
+<!-- 
  <div id="myModal" class="modal fade" role="dialog" >
     
     <div class="modal-dialog" >
@@ -505,15 +515,9 @@ color:black;
       </div>
   
     </div>
-  </div> 
+  </div>  -->
 
 
-
-
-
-
-
-  
 
 
 
@@ -522,12 +526,12 @@ color:black;
 
 <div class="popup" id="popup">
   <button class="close-btn" onclick="closePopup()">x</button>
-  <form id="multi-step-form" method="post">
+  <form id="multi-step-form" method="post" onsubmit="return validateEmail()">
     {% csrf_token %}
 
   <div class="step-content active" id="step-1">
       <img src="/static/collections/logo-no-background.png"  class="twl-logo"/>
-
+      
       <div class="form-group" >
         <div class="option-container" id="selectOption">
           <label class="option-box" for="home">
@@ -587,11 +591,11 @@ color:black;
 
       <div class="form-group" >
         <label for="number" >Phone Number</label>
-        <input type="text" class="form-control lang" id="number" name="phone_number" placeholder="Enter your number" required>
+        <input type="number" class="form-control lang" id="number" name="phone_number" placeholder="Enter your number" required>
       </div> 
       <div class="next-prev-button">
       <button type="button" class="btn btn-info" onclick="prevStep()">Previous</button>
-      <button type="button" class="btn btn-outline-primary" onclick="nextStep()">Next</button>
+      <button type="button" class="btn btn-outline-primary" onclick="validatePhoneNumber() ? nextStep() : null">Next</button>
     </div>
     </div>
 
@@ -605,7 +609,7 @@ color:black;
       </div> 
       <div class="next-prev-button">
       <button type="button" class="btn btn-info" onclick="prevStep()">Previous</button>
-      <button type="submit" class="btn btn-success">Continue</button>
+      <button type="submit"  class="btn btn-success">Continue</button>
     </div>
     </div>
     
@@ -634,7 +638,7 @@ color:black;
               <a class="nav-link" href="#servicediv">Services</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'steps' %}">Steps</a>
+              <a class="nav-link" href="{% url 'steps' %}">Process</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'about_us' %}">About</a>
@@ -673,7 +677,7 @@ color:black;
         <p>"We're Here for You: Connecting Domestic Professionals and Employers"</p>
         <div class="header-buttons">
           <a  onclick="openPopup()" style="cursor:pointer;">Give a Job</a>
-          <a href="{% url 'applicant_form' %}">नौकरी पाएं"</a>
+          <a href="{% url 'police_verification' %}">नौकरी पाएं"</a>
           
         </div>
 
@@ -692,7 +696,7 @@ color:black;
   <section class="header-extradiv animated-section">
     <div class="container">
       <div class="row">
-        <div class="extradiv col-lg-4 col-md-4 col-12">
+        <div class="extradiv col-lg-4 col-md-4 col-12" style="background-color: #ffb3c6;">
           <a href="#"><i class="fa-3x fa fa-briefcase"></i></a>
           <h2>I need a Job/ मुझे नौकरी चाहिए</h2>
           <p>Submit your applications easily and stay updated on new job openings. Your next job could be just a click away. Join now!
@@ -701,7 +705,7 @@ color:black;
             हमसे जुड़ें और अपनी प्रोफ़ाइल बनाएं ताकि आपको अपनी क्षमताओं के अनुसार नौकरी के मौके मिल सकें। आपकी अगली नौकरी बस एक क्लिक दूर हो सकती है। अभी शामिल हों!
           </p>
         </div>
-        <div class="extradiv col-lg-4 col-md-4 col-12">
+        <div class="extradiv col-lg-4 col-md-4 col-12" style="background-color: #fed9b7;">
             <a href="#"><i class="fa-3x fa fa-desktop"></i></a>
             <h2>I'm Hiring/ मैं नियुक्ति कर रहा हूँ</h2>
             <p>Post job listings and connect with skilled professionals who match your requirements. Make informed hiring decisions and find the right candidate for your needs.
@@ -710,7 +714,7 @@ color:black;
                 नौकरी की लिस्टिंग पोस्ट करें और उन्हें देखें जो आपकी आवश्यकताओं से मेल खाते हैं। सही उम्मीदवार चुनने में सहायक हों और अपनी जरूरतों के लिए सही उम्मीदवार खोजें।
             </p>
         </div>
-        <div class="extradiv col-lg-4 col-md-4 col-12">
+        <div class="extradiv col-lg-4 col-md-4 col-12" style="background-color: #cce3de;">
             <a href="#"><i class="fa-3x fa fa-user"></i></a>
             <h2>Explore Opportunities/ अवसरों की खोज करें</h2>
             <p>Discover a wide range of job listings and explore opportunities that match your skills and interests. Whether you're looking for a job or hiring, our platform has something for everyone.
@@ -730,16 +734,16 @@ color:black;
 
   <section class="serviceoffers" id="servicediv">
     <div class="container headings text-center">
-      <h1 class="text-center font-weight-bold">WHAT DO WE OFFER</h1>
-      <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+      <h1 class="text-center font-weight-bold">WHAT DO WE OFFER FOR OUR CLIENTS</h1>
+      <p class="text-center">"Explore Our Range of Tailored Domestic Staffing Solutions and Services"</p>
     </div>
     <div class="container">
       <div class="row">
         <div class="col-lg-6 col-md-12 col-12 servicediv">
-          <h3 style="text-align: center">For Clients</h3>
+          <!-- <h3 style="text-align: center">For Clients</h3> -->
             <div class="row">
               <div class="col-lg-2 col-2 service-icons">
-               <img class="servive-logo" src="/static/collections/cook logo.png" />
+               <img class="service-logo" src="/static/collections/cook logo.png" />
               </div>
               <div class="col-lg-10 col-10">
                 <h2>Cook</h2>
@@ -748,7 +752,7 @@ color:black;
             </div>
             <div class="row">
               <div class="col-lg-2 col-2 service-icons">
-                <img class="servive-logo" src="/static/collections/homecleaning.png" />
+                <img class="service-logo" src="/static/collections/homecleaning.png" />
               </div>
               <div class="col-lg-10 col-10">
                 <h2>Househelp</h2>
@@ -758,7 +762,7 @@ color:black;
             </div>
             <div class="row">
               <div class="col-lg-2 col-2 service-icons">
-                <img class="servive-logo" src="/static/collections/homebabysitter.png" />
+                <img class="service-logo" src="/static/collections/homebabysitter.png" />
 
               </div>
               <div class="col-lg-10 col-10">
@@ -768,11 +772,11 @@ color:black;
             </div>
           </div>
         <div class="col-lg-6 col-md-12 col-12 servicediv">
-          <h3 style="text-align: center">For Employees</h3>
+          <!-- <h3 style="text-align: center">For Employees</h3> -->
 
           <div class="row">
             <div class="col-lg-2 col-2 service-icons">
-              <i class="fa-solid fa-5x fa-car"></i>
+              <i class="fa-solid fa-3x fa-car"></i>
                             </div>
             <div class="col-lg-10 col-10">
               <h2>Drivers</h2>
@@ -782,17 +786,18 @@ color:black;
           </div>
           <div class="row">
             <div class="col-lg-2 col-2 service-icons">
-              <i class="fa-solid fa-5x fa-users"></i>
+              <i class="fa-solid fa-3x fa-users"></i>
             </div>
             <div class="col-lg-10 col-10">
-              <h2>Employement</h2>
+              <h2>Employers</h2>
               <p>
-                We offer employment opportunities to applicants applying as house helps. Our positions provide a rewarding work environment, competitive compensation, and the chance to contribute to creating a clean, organized, and comfortable living space for our clients.</p>
+                  We provide employers to our clients for various roles, including house help, office work, and more. Our positions offer a rewarding work environment, competitive compensation, and the opportunity to contribute to creating clean, organized, and comfortable spaces for our clients.
+              </p>
             </div>
           </div>
           <div class="row">
             <div class="col-lg-2 col-2 service-icons">
-              <i class="fa-5x fa fa-phone"></i>
+              <i class="fa-3x fa fa-phone"></i>
             </div>
             <div class="col-lg-10 col-10">
               <h2>Support 24/7</h2>
@@ -811,7 +816,8 @@ color:black;
 
   <section class="project-work">
     <div class="container headings text-center">
-      <p class="text-center font-weight-bold">Connected more than 500 Satisfied users</p>
+      <h5 class="text-center font-weight-bold">Connected more than 500 Satisfied users</h5>
+      <p class="text-center font-weight-bold" style="color: rgb(55, 0, 0);">"Though we may be less in numbers, our trust knows no bounds."</p>
     </div>
     <div class="container d-flex justify-content-around align-items-center text-center">
       <div>
@@ -833,6 +839,8 @@ color:black;
         <h1 class="count">50</h1>
         <p>Working On</p>
       </div>
+    </div>
+
   </section>
   <!-- ********************* project (completed) ends ****************************** -->
 
@@ -856,7 +864,7 @@ color:black;
           <img src="/static/collections/bai cleaning.jpg" width="300" height="300" alt="">
         </figure>
         <article class="slide__text">
-          <h4 class="job-persons">Expert Cleaners</h4>
+          <h4 class="job-persons">Expert HouseHelps</h4>
           <p>A clean and organized space is essential for a comfortable and stress-free environment. Our professional cleaners are meticulous in their work, ensuring every corner of your home or office sparkles. From regular cleaning schedules to deep-cleaning sessions, we handle everything with care and attention to detail. Experience the joy of coming home to a pristine space without lifting a finger – leave the cleaning to us.</p>
         </article>
       </div>
@@ -1086,9 +1094,13 @@ color:black;
 
   <section class="newsletter" id="newsletterdiv">
     <div class="container headings text-center">
-      <h1 class="text-center font-weight-bold">SUBSCRIBE TO OUR WORK AT TWL</h1>
+      <h2> Thankyou for visiting our page.</h2>
+
+        <img src="/static/collections/namaste2.png"/> 
+
+        <h2> हमारे पेज पर आने के लिए धन्यवाद ।</h2>
     </div>
-    <div class="container">
+    {% comment %} <div class="container">
       <div class="row">
         <div class="col-lg-8 offset-lg-2 col-12 ">
           <div class="input-group mb-3">
@@ -1099,7 +1111,7 @@ color:black;
           </div>
         </div>
       </div>
-    </div>
+    </div> {% endcomment %}
   </section>
   <!-- ********************* newsletter ends ****************************** -->
 
@@ -1441,19 +1453,30 @@ $(document).ready(function(){
 </script>
 
 <script>
-function validateForm() {
-  // Validate email
+  function validatePhoneNumber() {
+    var phoneNumber = document.getElementById("number").value;
+    var numberPattern = /^[6-9]\d{9}$/; // Regular expression for number validation
 
-  // Validate mobile number
-  var mobile = document.getElementById("mobile").value;
-  var mobilePattern = /^[0-9]{10}$/;
-  if (!mobilePattern.test(mobile)) {
-      alert("Please enter a valid 10-digit mobile number");
-      return false;
+    if (!numberPattern.test(phoneNumber)) {
+      alert("Please enter a valid 10-digit phone number.");
+      return false; // Prevent form submission
+    }
+    return true; // Allow form submission if validation passes
   }
+</script>
 
-  return true; // Form is valid
-}
+
+<script>
+  function validateEmail() {
+    var email = document.getElementById("email").value;
+    var emailPattern =  /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/; 
+    if (!emailPattern.test(email)) {
+      alert("Please enter a valid email address.");
+      return false; 
+    }
+
+    return true; 
+  }
 </script>
 
 

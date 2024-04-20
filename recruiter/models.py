@@ -7,6 +7,8 @@ from django.contrib.auth.models import User
 class User_Recruiter(models.Model):
     user  = models.OneToOneField(User , on_delete=models.CASCADE)
     number = models.CharField(max_length = 20)
+    photo= models.ImageField(upload_to='user_photo', null= True, blank = True)
+    
 
     def __str__(self) -> str:
         return self.user.username

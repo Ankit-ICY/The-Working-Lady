@@ -1,0 +1,234 @@
+{% extends "recruiter_base.html" %}
+{% load static %}
+{% block title%}<title>User Profile</title> {% endblock %}
+<link rel="stylesheet" href="{% static 'profile.css' %}">
+
+
+{% block content %}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+
+<style>
+
+
+.sidebar ul{
+    margin-top : 16px;
+
+}
+
+
+.sidebar-list-item a {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 10px 16px;
+  color: var(--sidebar-link);
+  text-decoration: none;
+  font-size: 14px;
+  line-height: 24px;
+}
+    .avatar{
+        width: 100%;
+        height: 80%;
+    }
+
+
+    .price-points{
+        list-style-type:disc;
+         margin-top: 10px;
+        color : rgb(91, 1, 1);
+        font-size: medium;
+      }
+
+      .encrypt-img{
+        height: 300px;
+        width: 400px;
+      }
+
+      .policy{
+
+         display: flex;
+          gap:5%; 
+       padding: 0 7%;
+
+      }
+
+      .title-box{
+        background-color: #1C2941;
+        padding: 13px;
+        color: rgb(218, 216, 216);
+        border-radius: 8px;
+        width: 100%;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      }
+      
+
+      @media only screen and (max-width: 768px) {
+
+        .policy{
+            display: flex;
+            flex-direction: column;
+        }
+        
+      }
+      
+</style>
+
+
+<div class ="app-content" > 
+
+<div class="container">
+    <h2 class="title-box">Personal Info</h2>
+  	<hr>
+	<div class="row">
+      <!-- left column -->
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="col-md-3">
+            <div class="text-center">
+                {% if recruiter.photo %}
+                    <img src="{{ recruiter.photo.url }}" class="avatar img-circle" alt="avatar">
+                    <h6>Upload a different photo...</h6>
+                    <a href="{% url 'remove_photo' recruiter.user.id %}" class="btn btn-danger"> Remove</a>
+
+                {% else %}
+                    <img src="/static/collections/dummy profile.png" class="avatar img-circle" alt="avatar">
+                    <h6>Upload a photo</h6>
+                    <label for="photo_input" class="btn btn-primary">Choose a photo</label>
+                    <input type="file" id="photo_input" name="photo" class="form-control" style="display: none;">
+                    <button type="submit" class="btn btn-success">Apply</button>
+
+                {% endif %}
+
+            
+
+            </div>
+        </div>
+    </form>
+      <!-- edit form column -->
+      <div class="col-md-9 personal-info">
+
+        {% if messages %}
+        <div class="alert alert-info alert-dismissable">
+          <a class="panel-close close" data-dismiss="alert">×</a> 
+          <i class="fa fa-coffee"></i>
+          {% for message in messages %}
+          This is an <strong>.alert</strong>. {{message}}
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        <h3>Edit Profile</h3>
+        
+        <form class="form-horizontal" role="form" method="post">
+            {%csrf_token%}
+            <div class="form-group">
+            <label class="col-md-3 control-label">Username:</label>
+            <div class="col-md-8">
+              <input class="form-control" name="username" type="text" value="{{recruiter.user.username}}" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Email:</label>
+            <div class="col-lg-8">
+              <input class="form-control" name="email" type="text" value="{{recruiter.user.email}}" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="col-lg-3 control-label">Number</label>
+            <div class="col-lg-8">
+              <input class="form-control" name="number" type="number" value="{{recruiter.number}}" required>
+            </div>
+          </div>
+ 
+          <div class="form-group">
+            <label class="col-md-3 control-label">Password:</label>
+            <div class="col-md-8">
+              <input class="form-control" name="password" type="password" value="{{recruiter.user.password}}" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-3 control-label">Confirm password:</label>
+            <div class="col-md-8">
+              <input class="form-control" name="confirm_pass"  type="password" value="{{recruiter.user.password}}" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-3 control-label"></label>
+            <div class="col-md-8">
+              <input type="submit" name="profile_submit"  class="btn btn-primary" value="Save Changes">
+              <span></span>
+              <input type="reset" class="btn btn-default" value="Cancel">
+            </div>
+          </div>
+        </form>
+      </div>
+  </div>
+</div>
+<hr>
+
+<div class="policy"> 
+   
+    <div> 
+        <h3 class="title-box">TWL Credential Policy</h3> 
+            
+        <ul class="price-points">
+            
+            <li><strong>Consistent Credentials:</strong> Maintain consistent login details for a seamless experience.</li>
+            <li><strong>Secure Editing:</strong> Your details are securely stored and edited to ensure privacy.</li>
+            <li><strong>Avoid Frequent Changes:</strong> Changing credentials too often can lead to confusion.</li>
+            <li><strong>Trustworthy Platform:</strong> TWL values trust and reliability, providing a secure environment.</li>
+            <li><strong>Data Protection:</strong> We employ measures like encryption to protect your data.</li>
+            <li><strong>Password Strength:</strong> Create strong passwords to enhance account security.</li>
+            <li><strong>Verify Changes:</strong> Double-check any edits to ensure accuracy.</li>
+            <li><strong>Contact Support:</strong> Reach out for help with profile editing or any concerns.</li>
+            <li><strong>Feedback Welcome:</strong> Share your thoughts to help us improve your experience.</li>
+            <li><strong>Transparent Policies:</strong> Review our policies on data, privacy, and security.</li>
+            </ul>
+            
+        
+    </div>
+
+
+<img class="encrypt-img" src="/static/collections/—Pngtree—2 5d privacy internet encryption_5773925.png" />
+
+</div>
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"> </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script>
+
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", function() {
+        // Find the "Applicants" link within the sidebar
+        var applicantsLink = document.querySelector('.sidebar-list-item a[href="{% url 'user_profile' %}"]');
+    
+        // Check if the link is found
+        if (applicantsLink) {
+            // Remove the 'active' class from all sidebar list items
+            var sidebarListItems = document.querySelectorAll('.sidebar-list-item');
+            sidebarListItems.forEach(function(item) {
+                item.classList.remove('active');
+            });
+    
+            // Add the 'active' class to the parent list item of the "Applicants" link
+            var parentListItem = applicantsLink.closest('.sidebar-list-item');
+            if (parentListItem) {
+                parentListItem.classList.add('active');
+            }
+        }
+    });
+
+
+    document.querySelector(".jsFilter").addEventListener("click", function () {
+        document.querySelector(".filter-menu").classList.toggle("active");
+      });
+      
+  
+
+    </script>
+{% endblock %}

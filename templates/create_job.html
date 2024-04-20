@@ -9,6 +9,13 @@
 
     <style>
 
+.compulsion-star{
+  letter-spacing: 2px;
+  color: #420000;
+  font-size: large;
+  font-weight: bold;
+
+}
       .post-job-list{
         color :rgb(53, 1, 1);
         margin: 10px;
@@ -261,6 +268,9 @@
             border: 2px solid rgb(65, 0, 3);
 
           }
+          .formbold-input-flex select{
+            border: 2px solid rgb(65, 0, 3);
+          }
 
           
       .twl-logo{
@@ -344,6 +354,15 @@
         color : white;
       }
 
+      textarea#message::placeholder {
+  /* Style the placeholder text for the specific textarea */
+  text-align: left;
+  /* font-style: italic; */
+  color: #706f6f; /* Placeholder text color */
+  line-height: 1.5; /* Adjust line height for readability */
+  padding-right: 10px; /* Add right padding for better alignment */
+}
+
 
     </style>
   </head>
@@ -391,12 +410,11 @@
             </div>
       
 
-            <h2 class="job-details" > Personal Details</h2>
-
+            <h2 class="job-details" > User personal details</h2>
             <div class="formbold-input-flex">
               <div>
                 <label for="firstname" class="formbold-form-label">
-                  Full Name
+                  Full Name <span class="compulsion-star">*</span> 
                 </label>
                 {% if full_name %}
                 <input
@@ -426,7 +444,7 @@
                 {% endif %}
               </div>
               <div>
-                <label for="email" class="formbold-form-label"> Email </label>
+                <label for="email" class="formbold-form-label"> Email<span class="compulsion-star"> *</span>  </label>
                 {% if email %}
                 <input
                   type="email"
@@ -458,7 +476,7 @@
             <div class="formbold-input-flex">
                 <div>
                 {% if phone_number %}
-                    <label for="phone" class="formbold-form-label"> Phone number </label>
+                    <label for="phone" class="formbold-form-label"> Phone number <span class="compulsion-star">*</span> </label>
                     <input
                       type="text"
                       name="phone_number"
@@ -470,10 +488,11 @@
                   required
                     />
                   {%else %}
-                    <label for="phone" class="formbold-form-label"> Phone number </label>
+                    <label for="phone" class="formbold-form-label"> Phone number <span class="compulsion-star">*</span> </label>
                     <input
                       type="text"
                       name="phone_number"
+                      minlength="10"
                       id="phone"
                       maxlength="14"
                       class="formbold-form-input"
@@ -489,6 +508,7 @@
                   type="text"
                   name="phone_number2"
                   id="phone"
+                  minlength="10"
                   maxlength="14"
                   class="formbold-form-input"
                   placeholder="Additional Number"
@@ -499,16 +519,16 @@
       
             <div class="formbold-mb-3">
               <label for="address" class="formbold-form-label">
-                Street Address
+                Permanent Address
               </label>
               <textarea
                 type="text"
                 name="address"
+                minlength="10"
                 maxlength="99"
                 id="address"
                 class="formbold-form-input"
-                placeholder="Street Address"
-
+                placeholder="Permanent Address"
               ></textarea>
 
             </div>
@@ -518,24 +538,23 @@
 
             <div class="formbold-input-flex">
               <div>
-         
-                  <label for="phone" class="formbold-form-label"> Location/City </label>
-                  <input
-                    type="text"
-                    name="location"
-                    id="location"
-                    maxlength="50"
-                    class="formbold-form-input"
-                placeholder="Location/City"
-                  required
-                  />
-                </div>
+                <label for="location" class="formbold-form-label">Location/City <span class="compulsion-star">*</span> </label>
+                <select class="formbold-form-select" name="location" id="location" required>
+                  <option value="" disabled selected>Select Your City</option>
+                  <option value="MUMBAI">MUMBAI</option>
+                  <option value="PUNE">PUNE</option>
+                  <option value="DELHI">DELHI</option>
+                  <option value="INDORE">INDORE</option>
+                  <option value="BHOPAL">BHOPAL</option>
+                </select>
+              </div>
             <div>
-              <label for="phone" class="formbold-form-label"> Pin Code<span></span></label>
+              <label for="phone" class="formbold-form-label"> Pin Code<span class="compulsion-star"> *</span> </label>
               <input
-                type="text"
+                type="number"
                 name="pin_code"
                 id="pin_code"
+                minlength="6"
                 maxlength="15"
                 required
                 class="formbold-form-input"
@@ -554,18 +573,19 @@
       
             <div class="formbold-input-flex">
               <div>
-                <label for="state" class="formbold-form-label"> State/Prvince </label>
-                <input
-                  type="text"
-                  name="state"
-                  id="state"
-                  required
-                  class="formbold-form-input"
-                  placeholder="Enter your state"
-                />
+                <label for="state" class="formbold-form-label"> State/Province<span class="compulsion-star"> *</span> </label>
+
+                <select class="formbold-form-select" name="location" id="location" required>
+                  <option value="" disabled selected>Select Your state </option>
+                  <option value="Mahrashtra">Mahrashtra</option>
+                  <option value="Delhi">Delhi</option>
+                  <option value="Madhya Pradesh">Madhya Pradesh</option>
+                </select>
+
+     
               </div>
               <div>
-                <label for="country" class="formbold-form-label"> Country </label>
+                <label for="country" class="formbold-form-label"> Country <span class="compulsion-star">*</span>  </label>
                 <input
                   type="text"
                   name="country"
@@ -579,7 +599,7 @@
             </div>
 
 
-            <h2 class="job-details" > Job Details</h2>
+            <h2 class="job-details" > User job details</h2>
             
             <div class="job-checkbox" id="jobCheckboxGroup">
                 <label for="preffered_location" class="formbold-form-label">
@@ -629,7 +649,7 @@
 
             <div class="formbold-mb-3" >
                 <label for="preffered_location" class="formbold-form-label">
-                  Preffered Location 
+                Location <span class="compulsion-star">*</span> 
                 </label>
                 <input
                   required
@@ -646,10 +666,11 @@
 
             <div class="formbold-input-group">
                 <label class="formbold-form-label">
-                  Urgency
+                  Urgency <span class="compulsion-star">*</span> 
                 </label>
 
                 <select class="formbold-form-select" name="urgency" id="occupation" required>
+                  <option value="" disabled selected>Select the urgency</option>
                   <option value="Very Urgent">Very Urgent</option>
                   <option value="In 2-3 Working days">In 2-3 Working days</option>
                   <option value="In a week">In a week</option>
@@ -659,10 +680,11 @@
 
             <div class="formbold-input-group">
                 <label class="formbold-form-label">
-                  What are your job timings
+                  What are your job timings <span class="compulsion-star">*</span> 
                 </label>
 
                 <select class="formbold-form-select" name="requirement" id="occupation" required>
+                  <option value="" disabled selected>Select the job timing</option>
                   <option value="24 Hrs/ Live-in HouseHelp">24 Hrs/ Live-in HouseHelp</option>
                   <option value="12 Hrs HouseHelp">12 Hrs HouseHelp</option>
                   <option value="10 Hrs HouseHelp">10 Hrs HouseHelp</option>
@@ -674,12 +696,14 @@
 
               <div class="formbold-mb-3" >
                 <label for="timing" class="formbold-form-label">
-                  Time Range(in case req. is not for 24hrs)
+                  Time Range(in case req. is not for 24hrs) <span class="compulsion-star">*</span> 
                 </label>
                 <input
                   required
                   type="text"
                   name="timing"
+                  minlength="3"
+                  maxlength="18"
                   id="timing"
                   class="formbold-form-input"
                   placeholder="Specify the time range of work"
@@ -691,7 +715,7 @@
       
               <div class="formbold-input-radio-wrapper">
                 <label for="ans" class="formbold-form-label">
-                What experience do you expect
+                What experience do you expect <span class="compulsion-star">*</span> 
                 </label>
         
                 <div class="formbold-radio-flex">
@@ -742,7 +766,7 @@
 
               <div class="formbold-mb-3" >
                 <label for="salary" class="formbold-form-label">
-                  Salary Offered
+                  Salary Offered <span class="compulsion-star">*</span> 
                 </label>
                 <input
                   required
@@ -757,7 +781,6 @@
                 />
               </div>
         
-        
               <div>
                 <label for="message" class="formbold-form-label">
                   Any description for the job
@@ -767,19 +790,23 @@
                   name="description"
                   id="message"
                   maxlength="199"
-                  placeholder="Any additionals"
+                  placeholder="Example:      - Age of Baby (if Babycare chosen)
+              - Number of Meals (if Cooking chosen)
+              - Total members in family (In case you need a househelp)
+              - Anything else you want to mention"
                   class="formbold-form-input"
                 ></textarea>
               </div>
-
+              
               <h2 class="job-details">Admin Info</h2>
 
 
               <div class="formbold-input-group">
                 <label class="formbold-form-label">
-                  Source 
+                  Source <span class="compulsion-star"> *</span>
                 </label>
                 <select class="formbold-form-select" name="source" id="occupation" required>
+                  <option value="" disabled selected>How do you get to know about us</option>
                   <option value="Facebook">Facebook</option>
                   <option value="Website Form">Website Form</option>
                   <option value="Personal Reference">Personal Reference</option>

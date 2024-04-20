@@ -11,8 +11,8 @@ urlpatterns = [
     path('recruiter-page/', include('recruiter.urls')),
     path('about-us', views.about_us ,name='about_us'),
     path('steps', views.steps ,name='steps'),
+    path('police_verification', views.police_verification ,name='police_verification'),
 
-        
 ]
 
  
