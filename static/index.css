@@ -711,32 +711,31 @@ width: 240px;
 
 .modal-body { 
 
-h1 { 
-font-weight:900; 
-font-size:2.3em;
-text-transform:uppercase;
-}
+  h1 { 
+  font-weight:900; 
+  font-size:2.3em;
+  text-transform:uppercase;
+  }
 border-radius: 10px;
 
-a.pre-order-btn { 
-color:white;
-background-color:#08486B;
-border-radius:1em;
-padding:10px;
-display: block;
-margin: 2em auto;
-width:30%;
-height: 5%;
-font-size:1.25em;
-font-weight:6600;
-&:hover { 
-background-color:#000;
-  text-decoration:none;
-  color:white;
-}
-}
 
-
+.pre-order-btn { 
+    color:white;
+    background-color:#08486B;
+    border-radius:1em;
+    padding:10px;
+    display: block;
+    margin: 2em auto;
+    width:30%;
+    height: 5%;
+    font-size:1rem;
+    font-weight:6600;
+        &:hover { 
+        background-color:#000;
+          text-decoration:none;
+          color:white;
+        }
+  }
 }
 
 .modal-work{
@@ -981,10 +980,10 @@ opacity: 0;
 /*  */
 
 .next-prev-button{
-display: flex;
-justify-content: center;
-align-items: center;
-gap: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
 
 .gender-religion{

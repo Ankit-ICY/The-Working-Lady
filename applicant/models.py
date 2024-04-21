@@ -13,7 +13,7 @@ class Work(models.Model):
     Work_id = models.AutoField(primary_key=True)
     work = models.CharField(max_length = 50)
     work_category = models.ManyToManyField(Work_Category)
-    def __str__(self) -> str:
+    def __str__(self) -> str: 
         return self.work   
 
 class Applicants(models.Model):

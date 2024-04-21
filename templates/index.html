@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 <style>
 
+
 textarea {
     resize: none;
 }
@@ -356,32 +357,42 @@ z-index: 999; /* Ensure the notification appears above other content */
 
  @media only screen and (max-width: 768px) {
       .popup {
-          width: 95%;
+          width: 96%;
 
       }
   
       .form-group {
           margin-bottom: 10px;
+          
       }
   
       .btn {
           margin-right: 10px;
       }
-
-      .option-container {
-        display: flex;
-        flex-direction: column;
-        /* justify-content: center; */
-        width: 100%;
-        padding: 10px
-        
-      }
-    
       .option-box {
         height: 90px; 
         font-size: 10px; 
-        width: 60%;
+        width: 100%;
+
       }
+
+      .step-content{
+        width: 100%;
+      }
+      .option-container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 10px;        
+      }
+   
+
+      .form-group input{
+        width: 100%;
+      }
+    
+    
+   
     
       .job-logos {
         gap: 5px; /* Reduced gap between elements for smaller screens */
@@ -398,6 +409,22 @@ z-index: 999; /* Ensure the notification appears above other content */
   .notification-info p {
     font-size: 0.8rem; /* Further adjust font size for additional text */
   }
+
+
+    .next-prev-button{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-header i{
+      display: none;
+    }
+
+    .pre-order-btn{
+      width: 50%;
+    }
+
   } 
 
   .name-dashboard{
@@ -426,17 +453,20 @@ z-index: 999; /* Ensure the notification appears above other content */
 
 
 #dashboard-btn:hover{
-background-color: white;
-color:black;
-}
+  background-color: white;
+  color:black;
+  }
 
 
 .service-logo{
   height: 45%;
   width: 150%;
 }
-  
-  </style>
+
+
+
+
+</style>
 
 
 <style> 
@@ -471,8 +501,8 @@ color:black;
 
 
   <!-- -----------------------------------MODAL---------------------------------------------------- -->
-<!-- 
- <div id="myModal" class="modal fade" role="dialog" >
+
+ <!-- <div id="myModal" class="modal fade" role="dialog" >
     
     <div class="modal-dialog" >
       <div class="modal-content" style="border-radius: 10px;">
@@ -506,10 +536,10 @@ color:black;
           </div>
           <div style="margin-top: 7%;">           
           <span>Please Click here</span>
-        </div>
-
-
-          <a class="pre-order-btn" onclick="openPopup()">Post a Job</a>
+           </div>
+           <div class="post_job"> 
+              <a class="pre-order-btn"  onclick="openPopup()">Post job</a>
+            </div>
         </div>
    
       </div>
@@ -593,7 +623,7 @@ color:black;
         <label for="number" >Phone Number</label>
         <input type="number" class="form-control lang" id="number" name="phone_number" placeholder="Enter your number" required>
       </div> 
-      <div class="next-prev-button">
+      <div class="next-prev-button" >
       <button type="button" class="btn btn-info" onclick="prevStep()">Previous</button>
       <button type="button" class="btn btn-outline-primary" onclick="validatePhoneNumber() ? nextStep() : null">Next</button>
     </div>
@@ -681,7 +711,7 @@ color:black;
           
         </div>
 
-      </div>
+      </div>  
       <span class="animated bounce" ></span>
 
     </section>
