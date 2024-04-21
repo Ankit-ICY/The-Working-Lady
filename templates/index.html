@@ -356,32 +356,42 @@ z-index: 999; /* Ensure the notification appears above other content */
 
  @media only screen and (max-width: 768px) {
       .popup {
-          width: 95%;
+          width: 96%;
 
       }
   
       .form-group {
           margin-bottom: 10px;
+          
       }
   
       .btn {
           margin-right: 10px;
       }
-
-      .option-container {
-        display: flex;
-        flex-direction: column;
-        /* justify-content: center; */
-        width: 100%;
-        padding: 10px
-        
-      }
-    
       .option-box {
         height: 90px; 
         font-size: 10px; 
-        width: 60%;
+        width: 100%;
+
       }
+
+      .step-content{
+        width: 100%;
+      }
+      .option-container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        padding: 10px;        
+      }
+   
+
+      .form-group input{
+        width: 100%;
+      }
+    
+    
+   
     
       .job-logos {
         gap: 5px; /* Reduced gap between elements for smaller screens */
@@ -398,6 +408,18 @@ z-index: 999; /* Ensure the notification appears above other content */
   .notification-info p {
     font-size: 0.8rem; /* Further adjust font size for additional text */
   }
+
+
+    .next-prev-button{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-header i{
+      display: none;
+    }
+
   } 
 
   .name-dashboard{
