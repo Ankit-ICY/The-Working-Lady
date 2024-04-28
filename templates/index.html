@@ -421,10 +421,6 @@ z-index: 999; /* Ensure the notification appears above other content */
       display: none;
     }
 
-    .pre-order-btn{
-      width: 50%;
-    }
-
   } 
 
   .name-dashboard{
@@ -703,7 +699,9 @@ z-index: 999; /* Ensure the notification appears above other content */
     </nav>
     <section class="header-section">
       <div class="center-div">
-        <h1 class="font-weight-bold">Welcome to The Working Lady</h1>
+        <h1 class="font-weight-bold" id="typewriter-text">
+          Welcome to <strong style="color: #ffb3c6 ;">The</strong> <strong style="color: #edb37d;">Working</strong> <strong style="color: #7fe5cf ;">Lady</strong>
+        </h1>
         <p>"We're Here for You: Connecting Domestic Professionals and Employers"</p>
         <div class="header-buttons">
           <a  onclick="openPopup()" style="cursor:pointer;">Give a Job</a>
@@ -1669,6 +1667,40 @@ document.addEventListener("DOMContentLoaded", function () {
     restaurantContainer.addEventListener("scroll", updateButtonState);
     updateButtonState();
   });
+
+</script>
+
+<script>
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Get the text element by its id
+  const textElement = document.getElementById('typewriter-text');
+
+  // Define the text to animate (extract text without HTML tags)
+  const textToAnimate = textElement.textContent.trim();
+
+  // Clear the text from the element
+  textElement.innerHTML = '';
+
+  // Define the index to track the current character being animated
+  let charIndex = 0;
+
+  // Define the typing speed (adjust as needed for desired effect)
+  const typingSpeed = 100; // in milliseconds
+
+  // Function to add characters to the element one by one
+  function typeText() {
+    if (charIndex < textToAnimate.length) {
+      textElement.innerHTML += textToAnimate.charAt(charIndex);
+      charIndex++;
+      setTimeout(typeText, typingSpeed);
+    }
+  }
+
+  // Start the typing animation
+  typeText();
+});
+
 
 </script>
 </body>

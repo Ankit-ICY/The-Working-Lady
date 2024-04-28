@@ -334,14 +334,14 @@ header{
         margin: 0; 
       }
 
-
+ 
 
       
  @media only screen and (max-width: 768px) {
     
 
     .notification-info, .notification-success {
-    width: 90%; /* Adjust width further for smaller screens */
+    width: 90%; 
     }
 
     .notification-info h3, .notification-success h5 {
@@ -406,7 +406,6 @@ header{
                 <p>Please try again </p>
             {% elif message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
                 <h3 class="success">{{ message }}</h3>
-                <p>Please login</p>
             {% else %}
                 <h3 class="info">{{ message }}</h3>
             {% endif %}
