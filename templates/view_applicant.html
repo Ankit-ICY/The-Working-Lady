@@ -31,7 +31,7 @@
 
                 <p class="user_detail"> <strong> Email :</strong>  <span class="detail_applicant">{{ applicant.email|default:"N/A" }}</span> </p>
                 <p class="user_detail"> <strong> Phone : </strong> <span class="detail_applicant"><a style="color:white;" href="{% url 'pricing' %}">Get our plan</a></span> </p>
-                <p class="user_detail"> <strong>Alternate Phone :</strong> <span class="detail_applicant">{{ applicant.phone_number2|default:"N/A" }}</span> </p>
+                <p class="user_detail"> <strong>Alternate Phone :</strong> <span class="detail_applicant"><a style="color:white;" href="{% url 'pricing' %}">Get our plan</a></span> </p>
                 <p class="user_detail"> <strong> Address :</strong><span class="detail_applicant"> {{ applicant.address|default:"N/A" }}</span> </p>
             </div>
                 <br>
