@@ -99,9 +99,52 @@
 
     }
 
-    /* .police-img img{
-      border: 1px solid white; 
-    } */
+   
+.modal {
+    display:none;
+    position: fixed; 
+    top: 50%; /* Center the modal vertically */
+    left: 50%; /* Center the modal horizontally */
+    transform: translate(-50%, -50%); /* Center the modal properly */
+    z-index: 1050;
+    background-color: #dee2e6;
+    border-radius:10px ;
+    width: 70%;
+    height: 70%;
+}
+
+.modal-content {
+    border-radius: 10px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    background-color: #dee2e6;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+}
+
+
+.modal-body {
+  
+}
+
+#countdownText {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#countdownValue {
+    font-size: 24px;
+    font-weight: bold;
+    color: #007bff;
+}
+
     
 </style>
 
@@ -117,9 +160,23 @@
   <p>क्या आप पुलिस सत्यापन के लिए तैयार हैं?</p>
   <div class="options">
     <a href="{% url 'applicant_form'%}"><button class="btn yes-btn" onclick="confirmVerification(true)">हाँ    </button> </a> 
-    <a href="{% url 'index'%}">  <button class="btn no-btn" onclick="confirmVerification(false)">नहीं    </button> </a>
+  <button class="btn no-btn" id="openModalButton"  data-toggle="modal" data-target="#timerModal">नहीं</button> 
   </div>
 </div>
+
+
+<div class="modal fade" id="timerModal" tabindex="-1" role="dialog" aria-labelledby="timerModalLabel" aria-hidden="true">
+      <div class="modal-content">
+              <p id="countdownText">Redirecting to home page in <span id="countdownValue">5</span> seconds...</p>
+
+                  <img src="/static/collections/namaste2.png"/> 
+                <h5> THANK YOU FOR YOUR INTEREST, WE DO NOT ONBOARD NON-VERIFIED CANDIDATES </h5>
+                <h5>आपकी रुचि के लिए धन्यवाद, हम गैर-सत्यापित उम्मीदवारों को शामिल नहीं करते हैं</h5>
+          </div>
+
+  
+</div>
+
 
 <div class="police-points">
   <h2>सत्यापन के पीछे कारण  </h2>
@@ -135,6 +192,28 @@
     <li><strong>भविष्य के प्रभाव:</strong> किसी भी कानूनी स्थिति में परिवर्तन होने पर उसे मॉनिटर किया जाएगा और उस पर उचित कार्रवाई की जाएगी।</li>
 </ul>
 </div>
+
+
+
+
+<!-- Include Bootstrap JS and your custom script -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+  document.getElementById('openModalButton').addEventListener('click', function() {
+      var countdown = 5;
+      var timerDisplay = document.getElementById('countdownValue');
+      var timer = setInterval(function() {
+          timerDisplay.textContent = countdown;
+          countdown--;
+          if (countdown < 0) {
+              clearInterval(timer);
+              window.location.href = '/';  // Redirect to the home page
+          }
+      }, 1000);
+  });
+</script>
 <script src="script.js"></script>
 </body>
 </html>

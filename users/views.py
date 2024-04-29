@@ -226,3 +226,14 @@ def steps(request):
 
 def police_verification(request):
     return render(request, 'police_verification.html')
+
+
+def privacy_policy(request):
+    return render(request, 'privacypolicy.html')
+
+def termsofuse(request):
+    return render(request, 'termsofuse.html')
+    
+
+def pricing_page(request):
+    return render(request, 'pricing_page.html')

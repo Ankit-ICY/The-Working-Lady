@@ -6,7 +6,6 @@
   <meta name="description" content="HTML/CSS">
   <meta name="author" content="Anil">
   <title>Home</title>
-  <meta name="google-site-verification" content="P2wyjFskvWZ16UysqMnu0TIQWeZu3Ce89Ko_qG2o2C4" />
   <link rel="icon" href="/static/collections/working Lady logog.jpg" type="image/x-icon">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -17,6 +16,18 @@
   <link rel="stylesheet" href="{% static 'index.css' %}">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 <style>
+
+
+.address-li{
+  color: white;
+  width: 480px;
+
+}
+
+.address-li li{
+  margin-top: 20px;
+}
+
 
 
 textarea {
@@ -361,6 +372,10 @@ z-index: 999; /* Ensure the notification appears above other content */
           width: 96%;
 
       }
+      .address-li{
+
+        width: 100%;
+      }
   
       .form-group {
           margin-bottom: 10px;
@@ -499,11 +514,7 @@ z-index: 999; /* Ensure the notification appears above other content */
 
   <!-- -----------------------------------MODAL---------------------------------------------------- -->
 
-<<<<<<< HEAD
- <!-- <div id="myModal" class="modal fade" role="dialog" >
-=======
  <div id="myModal" class="modal fade" role="dialog" >
->>>>>>> 59432ba35be0770752a8471ec6f74d87f1f9d7fa
     
     <div class="modal-dialog" >
       <div class="modal-content" style="border-radius: 10px;">
@@ -672,6 +683,10 @@ z-index: 999; /* Ensure the notification appears above other content */
               <a class="nav-link" href="{% url 'steps' %}">Process</a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="{% url 'pricing_page' %}">Price</a>
+            </li>
+          
+            <li class="nav-item">
               <a class="nav-link" href="{% url 'about_us' %}">About</a>
             </li>
             <li class="nav-item">
@@ -704,9 +719,7 @@ z-index: 999; /* Ensure the notification appears above other content */
     </nav>
     <section class="header-section">
       <div class="center-div">
-        <h1 class="font-weight-bold" id="typewriter-text">
-          Welcome to <strong style="color: #ffb3c6 ;">The</strong> <strong style="color: #edb37d;">Working</strong> <strong style="color: #7fe5cf ;">Lady</strong>
-        </h1>
+        <h1 class="font-weight-bold"> Welcome to The Working Lady </h1>
         <p>"We're Here for You: Connecting Domestic Professionals and Employers"</p>
         <div class="header-buttons">
           <a  onclick="openPopup()" style="cursor:pointer;">Give a Job</a>
@@ -850,7 +863,7 @@ z-index: 999; /* Ensure the notification appears above other content */
   <section class="project-work">
     <div class="container headings text-center">
       <h5 class="text-center font-weight-bold">Connected more than 500 Satisfied users</h5>
-      <p class="text-center font-weight-bold" style="color: rgb(55, 0, 0);">"Though we may be less in numbers, our trust knows no bounds."</p>
+      <p class="text-center font-weight-bold" style="color: rgb(55, 0, 0);">"we may be low in numbers, but we’re HIGH ON TRUST"</p>
     </div>
     <div class="container d-flex justify-content-around align-items-center text-center">
       <div>
@@ -914,6 +927,29 @@ z-index: 999; /* Ensure the notification appears above other content */
 
       <div class="slide">
         <figure class="slide__image-container">
+          <img src="/static/collections/baby .jpg" width="300" height="300" alt="">
+        </figure>
+        <article class="slide__text">
+          <h4 class="job-persons">Trustworthy Babysitters</h4>
+          <p>"Discover exceptional childcare through our carefully curated pool of applicants. We match you with experienced babysitters dedicated to providing top-notch care for your children. From ensuring safety and well-being to organizing engaging activities, our selected caregivers offer peace of mind for busy parents. Whether you need occasional evening care or regular daytime supervision, trust us to filter and present the best applicants who will make your child's time away enjoyable and enriching."</p>
+        </article>
+      </div>
+
+
+      <div class="slide">
+        <figure class="slide__image-container">
+          <img src="/static/collections/indian baby.jpg" width="300" height="300" alt="">
+        </figure>
+        <article class="slide__text">
+          <h4 class="job-persons">Newborn Care</h4>
+          <p style="display: inline;"> we provide expert   <p style="display: inline; text-decoration: underline; font-weight: bold;">Newborn Care, Japa Maid, and Nanny </p> services tailored to meet the unique needs of new parents and growing families. Our experienced caregivers offer personalized assistance with love, expertise, and reliability. Choose us for dedicated caregivers, flexible scheduling options, and peace of mind knowing your little ones are in capable hands. Contact us today to experience professional care!</p>
+        </article>
+      </div>
+  
+  
+
+      <div class="slide">
+        <figure class="slide__image-container">
           <img src="/static/collections/indian elder care.jpg" width="300" height="300" alt="">
         </figure>
         <article class="slide__text">
@@ -944,16 +980,7 @@ z-index: 999; /* Ensure the notification appears above other content */
       </div>
 
         
-      <div class="slide">
-        <figure class="slide__image-container">
-          <img src="/static/collections/indian baby.jpg" width="300" height="300" alt="">
-        </figure>
-        <article class="slide__text">
-          <h4 class="job-persons">Trustworthy Babysitters</h4>
-          <p>"Discover exceptional childcare through our carefully curated pool of applicants. We match you with experienced babysitters dedicated to providing top-notch care for your children. From ensuring safety and well-being to organizing engaging activities, our selected caregivers offer peace of mind for busy parents. Whether you need occasional evening care or regular daytime supervision, trust us to filter and present the best applicants who will make your child's time away enjoyable and enriching."</p>
-        </article>
-      </div>
-  
+
   
     </section>
   </main2>
@@ -1133,18 +1160,7 @@ z-index: 999; /* Ensure the notification appears above other content */
 
         <h2> हमारे पेज पर आने के लिए धन्यवाद ।</h2>
     </div>
-    {% comment %} <div class="container">
-      <div class="row">
-        <div class="col-lg-8 offset-lg-2 col-12 ">
-          <div class="input-group mb-3">
-            <input type="text" class="form-control newsletter-input" placeholder="Your Email">
-            <div class="input-group-append">
-              <span class="input-group-text">Subscribe</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> {% endcomment %}
+ 
   </section>
   <!-- ********************* newsletter ends ****************************** -->
 
@@ -1165,27 +1181,30 @@ z-index: 999; /* Ensure the notification appears above other content */
             <h3>NAVIGATION LINKS</h3>
             <li><a href="#">Home</a></li>
             <li><a href="#">Services</a></li>
-            <li><a href="#">Price</a></li>
+            <li><a href="{% url 'pricing_page' %}">Price</a></li>
             <li><a href="#">About</a></li>
+            <li><a href="{% url 'privacy_policy'%}">Privacy Policy</a></li>
+            <li><a href="{% url 'termsofuse'%}">Terms of Use</a></li>
           </div>
         </div>
-        <div class="col-lg-4 col-md-12 col-12 footer-div">
-          <div>
-            <h3>NEWSLETTER</h3>
-            <p>For business professionals caught between high OEM price and mediocre print and graphic output.</p>
-            <div class="container newsletter-main">
-              <div class="row">
-                <div class="col-lg-12 col-12 ">
-                  <div class="input-group mb-3">
-                    <input type="text" class="form-control newsletter-input" placeholder="Your Email">
-                    <div class="input-group-append">
-                      <span class="input-group-text">Subscribe</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="col-lg-4 col-md-12 col-12 footer-div" >
+          <h3>LOCATIONS</h3>
+          <ul class="address-li">
+            <li>
+              <i class="fa-solid fa-location-dot" style="color: #ffffff;"></i>
+              HO: Mumbai: D/3, Near Godrej Hills, Khadakpada l, Kalyan West, Maharashtra 421301
+              8855055049 / 7991770212 </li>
+            <li> 
+              <i class="fa-solid fa-location-dot" style="color: #ffffff;"></i>
+              Delhi: HOUSE NO. 15, RAILWAY ENCLAVE PHASE 2ND, Girdharpur Rd, near ANANT ENTERPRISES, Lal Kuan, Chhapraula, Ghaziabad, Uttar Pradesh 201009
+              7879589378 / 8130815132
+               </li>
+            <li>
+              <i class="fa-solid fa-location-dot" style="color: #ffffff;"></i>
+              Indore: AS 25/ MAHALAXMI NAGAR, Sector A, Vijay Nagar, Indore, Madhya Pradesh 452010
+8855055049 / 7991770212 / 7084906501
+            </li>
+          </ul>
         </div>
 
         <div class="rounded-social-buttons">
@@ -1215,141 +1234,6 @@ z-index: 999; /* Ensure the notification appears above other content */
 
 
 
-    <div class="formbold-form-wrapper"  id="formWrapper" >
-      <form  method="POST">
-          <div class="formbold-steps">
-              <ul>
-                  <li class="formbold-step-menu1 active">
-                      <span>1</span>
-                      Sign Up
-                  </li>
-                  <li class="formbold-step-menu2">
-                      <span>2</span>
-                      Message
-                  </li>
-                  <li class="formbold-step-menu3">
-                      <span>3</span>
-                      Confirm
-                  </li>
-              </ul>
-          </div>
-  
-          <div class="formbold-form-step-1 active">
-            <div class="formbold-input-flex">
-              <div>
-                  <label for="firstname" class="formbold-form-label"> Full Name</label>
-                  <input
-                  type="text"
-                  name="firstname"
-                  placeholder="Andrio"
-                  id="firstname"
-                  class="formbold-form-input"
-                  />
-              </div>
-              <div>
-                <label for="email" class="formbold-form-label"> Email Address </label>
-                <input
-                type="email"
-                name="email"
-                placeholder="Email"
-                id="email"
-                class="formbold-form-input"
-                />
-            </div>
-            </div>
-    
-            <div class="formbold-input-flex">
-           
-             
-            </div>
-    
-            <div>
-                <label for="number" class="formbold-form-label"> Phone Number </label>
-                <input
-                type="text"
-                name="phone_number"
-                id="address"
-                placeholder="Enter your number"
-                class="formbold-form-input"
-                />
-            </div>
-          </div>
-  
-          <div class="formbold-form-step-2">
-            <div>
-                <label for="number" class="formbold-form-label"> Create a password</label>
-                <input
-                type="password"
-                name="password"
-                id="address"
-                placeholder="Enter your password"
-                class="formbold-form-input"
-                />
-            </div>
-          </div>
-  
-          <div class="formbold-form-step-3">
-            <div class="formbold-form-confirm">
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
-              </p>
-  
-              <div>
-                <button class="formbold-confirm-btn active">
-                  <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="11" cy="11" r="10.5" fill="white" stroke="#DDE3EC"/>
-                  <g clip-path="url(#clip0_1667_1314)">
-                  <path d="M9.83343 12.8509L15.1954 7.48828L16.0208 8.31311L9.83343 14.5005L6.12109 10.7882L6.94593 9.96336L9.83343 12.8509Z" fill="#536387"/>
-                  </g>
-                  <defs>
-                  <clipPath id="clip0_1667_1314">
-                  <rect width="14" height="14" fill="white" transform="translate(4 4)"/>
-                  </clipPath>
-                  </defs>
-                  </svg>
-                  Yes! I want it.
-                </button>
-  
-                <button class="formbold-confirm-btn">
-                  <svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="11" cy="11" r="10.5" fill="white" stroke="#DDE3EC"/>
-                  <g clip-path="url(#clip0_1667_1314)">
-                  <path d="M9.83343 12.8509L15.1954 7.48828L16.0208 8.31311L9.83343 14.5005L6.12109 10.7882L6.94593 9.96336L9.83343 12.8509Z" fill="#536387"/>
-                  </g>
-                  <defs>
-                  <clipPath id="clip0_1667_1314">
-                  <rect width="14" height="14" fill="white" transform="translate(4 4)"/>
-                  </clipPath>
-                  </defs>
-                  </svg>
-                  No! I don’t want it.
-                </button>
-              </div>
-            </div>
-          </div>
-  
-          <div class="formbold-form-btn-wrapper">
-            <button class="formbold-back-btn">
-              Back
-            </button>
-  
-            <button class="formbold-btn">
-                Next Step
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <g clip-path="url(#clip0_1675_1807)">
-                <path d="M10.7814 7.33312L7.20541 3.75712L8.14808 2.81445L13.3334 7.99979L8.14808 13.1851L7.20541 12.2425L10.7814 8.66645H2.66675V7.33312H10.7814Z" fill="white"/>
-                </g>
-                <defs>
-                <clipPath id="clip0_1675_1807">
-                <rect width="16" height="16" fill="white"/>
-                </clipPath>
-                </defs>
-                </svg>
-            </button>
-          </div>
-      </form>
-    </div>
-  
 
   <script>
     const stepMenuOne = document.querySelector('.formbold-step-menu1')
@@ -1675,39 +1559,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 </script>
 
-<script>
 
-document.addEventListener('DOMContentLoaded', function() {
-  // Get the text element by its id
-  const textElement = document.getElementById('typewriter-text');
-
-  // Define the text to animate (extract text without HTML tags)
-  const textToAnimate = textElement.textContent.trim();
-
-  // Clear the text from the element
-  textElement.innerHTML = '';
-
-  // Define the index to track the current character being animated
-  let charIndex = 0;
-
-  // Define the typing speed (adjust as needed for desired effect)
-  const typingSpeed = 100; // in milliseconds
-
-  // Function to add characters to the element one by one
-  function typeText() {
-    if (charIndex < textToAnimate.length) {
-      textElement.innerHTML += textToAnimate.charAt(charIndex);
-      charIndex++;
-      setTimeout(typeText, typingSpeed);
-    }
-  }
-
-  // Start the typing animation
-  typeText();
-});
-
-
-</script>
 </body>
 
 
