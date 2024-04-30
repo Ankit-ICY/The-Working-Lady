@@ -224,6 +224,137 @@ border-radius: 10px;
 box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 
 }
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	line-height: 1.5;
+	font-family: 'Poppins', sans-serif;
+}
+
+.footer {
+	background-color: #08486B;
+	padding: 80px 0;
+}
+
+
+
+.row {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+ul {
+	list-style: none;
+}
+
+.footer-col {
+	width: 25%;
+	padding: 0 15px;
+}
+
+.footer-col h4 {
+	font-size: 18px;
+	color: white;
+	text-transform: capitalize;
+	margin-bottom: 35px;
+	font-weight: 500;
+	position: relative;
+}
+
+.footer-col h4::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	bottom: -10px;
+	background-color: #E91E63;
+	width: 50px;
+	height: 2px;
+}
+
+.footer-col ul li:not(:last-child) {
+	margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+	color: white;
+	display: block;
+	font-size: 1rem;
+	font-weight: 300;
+	text-transform: capitalize;
+	text-decoration: none;
+	transition: all 0.3s ease;
+}
+
+.footer-col ul li a:hover {
+	color: white;
+	padding-left: 7px;
+}
+
+.footer-col .social-links a {
+	color: white;
+	background-color: rgba(255, 255, 255, 0.2);
+	display: inline-block;
+	height: 40px;
+	width: 40px;
+	border-radius: 50%;
+	text-align: center;
+	margin: 0 10px 10px 0;
+	line-height: 40px;
+	transition: all 0.5s ease;
+}
+
+.footer-col .social-links a:hover {
+	color: #151515;
+	background-color: #FFF;
+}
+
+@media(max-width: 767px) {
+	.footer-col {
+		width: 50%;
+		margin-bottom: 30px;
+	}
+}
+
+@media(max-width: 574px) {
+	.footer-col {
+		width: 100%;
+	}
+}
+
+
+
+.address-li{
+  color: white;
+
+}
+
+.address-li li{
+  margin-top: 25px;
+  text-align: center;
+}
+
+
+
+.price-points{
+  list-style-type: disc;
+  margin-left: 4%;
+}
+
+
+
 </style>
 
  
@@ -242,10 +373,23 @@ box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
                     </a>
                 </li>
                 <li>
-                    <a href="{% url 'steps' %}" class="">
-                        Steps
+                    <a href="{% url 'pricing_page' %}" class="">
+                        Price
                     </a>
                 </li>
+
+                <li>
+                  <a href="{% url 'about_us' %}" class="">
+                      <span>
+                        About Us                  
+                      </span>
+                  </a>
+              </li>
+              <li>
+                  <a href="{% url 'steps' %}" class="">
+                      Process
+                  </a>
+              </li>
             </ul>
         </div>
     </div>
@@ -516,6 +660,59 @@ box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
         </div>
     </div>  
 
+
+    <footer class="footer" >
+      <div style=" display: flex; justify-content: center;" >
+      <div class="row" style=" width: 90%;">
+        <div class="footer-col">
+          <h4>NAVIGATIONS</h4>
+          <ul>
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="{% url 'pricing_page' %}">Prices</a></li>
+            <li><a href="{% url 'steps' %}">Hiring Process</a></li>
+            <li><a href="{% url 'about_us' %}">About</a></li>
+            <li><a href="{% url 'privacy_policy'%}">privacy policy</a></li>
+            <li><a href="{% url 'termsofuse'%}">Terms of Use</a></li>
+          </ul>
+        </div>
+      
+        <div class="footer-col" >
+          <div>
+            <h4>ABOUT THE WORKING LADY</h4>
+            <p style="color : white;">"The Working Lady" connects skilled house helps and maids with clients in need of their services. Our platform offers a seamless experience, providing employment opportunities for talented individuals while meeting the household needs of our valued clients.</p>
+            <div class="social-links">
+              <a href="https://www.facebook.com/theworkinglady.MumbaiHousemaids/"><i class="fa-brands fa-facebook-f"></i></a>
+              <a href="https://www.twitter.com/"><i class="fa-brands fa-x-twitter"></i></a>
+              <a href="https://www.instagram.com/theworkinglady2020?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i class="fa-brands fa-instagram"></i></a>
+              <a href="https://www.linkedin.com/in/the-working-lady-0545381b8"><i class="fa-brands fa-linkedin-in"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-col" style="width: 45%; margin-left: 3%;">
+          <h4>LOCATIONS</h4>
+        <ul class="address-li">
+          <li >
+            <i class="fa-solid fa-location-dot" style="color: #ffffff;"></i>
+            HO: Mumbai: D/3, Near Godrej Hills, Khadakpada l, Kalyan West, Maharashtra 421301
+            8855055049 / 7991770212 </li>
+          <li> 
+            <i class="fa-solid fa-location-dot" style="color: #ffffff;"></i>
+            Delhi: HOUSE NO. 15, RAILWAY ENCLAVE PHASE 2ND, Girdharpur Rd, near ANANT ENTERPRISES, Lal Kuan, Chhapraula, Ghaziabad, Uttar Pradesh 201009
+            7879589378 / 8130815132
+             </li>
+          <li>
+            <i class="fa-solid fa-location-dot" style="color: #ffffff;"></i>
+            Indore: AS 25/ MAHALAXMI NAGAR, Sector A, Vijay Nagar, Indore, Madhya Pradesh 452010
+8855055049 / 7991770212 / 7084906501
+          </li>
+        </ul>
+        </div>
+
+      </div>
+    </div>
+    </footer>
+
     <script>
 
 'use strict';
@@ -534,6 +731,7 @@ function parallaxScroll() {
 }
     </script>
 
+    <script src="https://kit.fontawesome.com/3b161c540c.js" crossorigin="anonymous"></script>
     
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </body>
