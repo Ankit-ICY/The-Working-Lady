@@ -1180,9 +1180,10 @@ z-index: 999; /* Ensure the notification appears above other content */
           <div class="footer-navlinks">
             <h3>NAVIGATION LINKS</h3>
             <li><a href="#">Home</a></li>
-            <li><a href="#">Services</a></li>
+            <li><a href="#servicediv">Services</a></li>
+            <li><a href="{% url 'steps' %}">Hiring Process</a></li>
             <li><a href="{% url 'pricing_page' %}">Price</a></li>
-            <li><a href="#">About</a></li>
+            <li><a href="{% url 'about_us' %}">About</a></li>
             <li><a href="{% url 'privacy_policy'%}">Privacy Policy</a></li>
             <li><a href="{% url 'termsofuse'%}">Terms of Use</a></li>
           </div>
