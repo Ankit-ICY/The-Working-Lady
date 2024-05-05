@@ -8,351 +8,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="/static/collections/working Lady logog.jpg" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.2/css/bootstrap.min.css" />
-<link rel="stylesheet" href="{% static 'about.css' %}"> 
+<!-- <link rel="stylesheet" href="{% static 'about.css' %}">  -->
+<link rel="stylesheet" href="{% static 'about_us.css' %}"> 
+
     <title>About TWL</title>
   
 
     <style>
- 
-      
-.road-map-main {
-  margin: 50px 0 51px;
-}
-.road-map-main .road-map-wrapper {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  height: 175px;
-}
-@media (max-width: 991px) {
-  .road-map-main .road-map-wrapper {
-    margin-bottom: 25px;
-    height: auto;
-    display: block;
+  .prof-cards{
+    height: 100%;
+    display: flex;
+    margin-top: 10%;
   }
-}
-.road-map-main .road-map-wrapper::before {
-  content: "";
-  width: 100%;
-  clear: both;
-  display: block;
-}
-.road-map-main .road-map-wrapper::after {
-  content: "";
-  width: 100%;
-  clear: both;
-  display: block;
-}
-.road-map-main .road-map-wrapper .road-map-circle {
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  border: 25px solid transparent;
-  border-top-color: #4A7081;
-  border-right-color: #4A7081;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-  transform: rotate(45deg);
-}
-@media (max-width: 992px) {
-  .road-map-main .road-map-wrapper .road-map-circle {
-    position: unset;
-    border: 25px solid #4A7081;
-  }
-}
-.road-map-main .road-map-wrapper .road-map-circle .road-map-circle-text {
-  width: 110px;
-  height: 110px;
-  border-radius: 50%;
-  background-color: #ff8f3fe0;
-  font-size: 20px;
-  font-weight: 600;
-  line-height: 26px;
-  text-transform: capitalize;
-  color: #fff;
-  box-shadow: 0px 0px 10px 5px #00000021;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-  transform: rotate(-45deg);
-}
-.road-map-main .road-map-wrapper .road-map-card {
-  width: 35%;
-  background: #320007;
-  padding: 20px 20px;
-  z-index: 1;
-  position: absolute;
-  right: 0;
-  border-radius: 5px;
-}
-.road-map-main .road-map-wrapper .road-map-card::before {
-  content: "";
-  width: 25%;
-  height: 20px;
-  background: #4A7081;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  left: -23%;
-  z-index: -1;
-}
-@media (max-width: 991px) {
-  .road-map-main .road-map-wrapper .road-map-card {
-    width: 100%;
-    margin-top: 30px;
-    position: unset;
-  }
-  .road-map-main .road-map-wrapper .road-map-card::before {
-    content: "";
-    width: 20px;
-    height: 30%;
-    top: 50%;
-    transform: translateX(-50%);
-    left: 50%;
-  }
-}
-@media (max-width: 425px) {
-  .road-map-main .road-map-wrapper .road-map-card {
-    top: 45%;
-  }
-}
-.road-map-main .road-map-wrapper .road-map-card .card-head {
-  font-size: 20px;
-  font-weight: 600;
-  text-transform: capitalize;
-  margin: 0 0 15px;
-  color: #fff;
-  text-decoration: underline;
-}
-.road-map-main .road-map-wrapper .road-map-card .card-text {
-  color: #fff;
-  margin: 0;
-  display: -webkit-box;
-  -webkit-line-clamp: 5;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-@media (max-width: 1199px) {
-  .road-map-main .road-map-wrapper .road-map-card .card-text {
-    -webkit-line-clamp: 4;
-  }
-}
-.road-map-main .road-map-wrapper:nth-of-type(even) .road-map-circle {
-  border-bottom-color: #4A7081;
-  border-left-color: #4A7081;
-  border-top-color: transparent;
-  border-right-color: transparent;
-}
-@media (max-width: 991px) {
-  .road-map-main .road-map-wrapper:nth-of-type(even) .road-map-circle {
-    border-color: #4A7081;
-  }
-}
-.road-map-main .road-map-wrapper:nth-of-type(even) .road-map-card {
-  left: 0;
-}
-.road-map-main .road-map-wrapper:nth-of-type(even) .road-map-card::before {
-  right: -23%;
-  left: unset;
-}
-@media (max-width: 991px) {
-  .road-map-main .road-map-wrapper:nth-of-type(even) .road-map-card::before {
-    content: "";
-    width: 20px;
-    height: 30%;
-    top: 50%;
-    transform: translateX(-50%);
-    left: 50%;
-  }
-}
-@media (max-width: 425px) {
-  .road-map-main .road-map-wrapper:nth-of-type(even) .road-map-card::before {
-    top: 45%;
-  }
-}
-
-
-/* CSS for content boxes */
-.content-box2 {
-  background-color: #fff; /* Background color of the box */
-  border-radius: 8px; /* Rounded corners */
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  padding: 30px; /* Padding inside the box */
-  margin-bottom: 20px; /* Spacing between boxes */
-}
-
-/* Optional: Style for headings inside content boxes */
-.content-box2 h2,
-.content-box2 h3 {
-  color: #333; /* Heading color */
-  margin-bottom: 10px; /* Spacing below headings */
-}
-
-/* Optional: Style for paragraphs inside content boxes */
-.content-box2 p {
-  color: #666; /* Paragraph text color */
-  line-height: 1.5; /* Line height for readability */
-}
-
-/* Optional: Style for ordered lists inside content boxes */
-.content-box2 ol {
-  margin-left: 20px; /* Left margin for ordered lists */
-}
-
-
-#origin-box{
-  width: 80%;
-  background-color: #e7ecef;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px;
-  height: 100%;
-  display: flex;
-  align-items: center;
-}
-
-
-#head-box{
-background:#edf2f4;
-padding: 10px;
-border-radius: 10px;
-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-
-}
-
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-
-*,
-*::before,
-*::after {
-	box-sizing: border-box;
-}
-
-* {
-	margin: 0;
-	padding: 0;
-}
-
-body {
-	line-height: 1.5;
-	font-family: 'Poppins', sans-serif;
-}
-
-.footer {
-	background-color: #08486B;
-	padding: 80px 0;
-}
-
-
-
-.row {
-	display: flex;
-	flex-wrap: wrap;
-}
-
-ul {
-	list-style: none;
-}
-
-.footer-col {
-	width: 25%;
-	padding: 0 15px;
-}
-
-.footer-col h4 {
-	font-size: 18px;
-	color: white;
-	text-transform: capitalize;
-	margin-bottom: 35px;
-	font-weight: 500;
-	position: relative;
-}
-
-.footer-col h4::before {
-	content: "";
-	position: absolute;
-	left: 0;
-	bottom: -10px;
-	background-color: #E91E63;
-	width: 50px;
-	height: 2px;
-}
-
-.footer-col ul li:not(:last-child) {
-	margin-bottom: 10px;
-}
-
-.footer-col ul li a {
-	color: white;
-	display: block;
-	font-size: 1rem;
-	font-weight: 300;
-	text-transform: capitalize;
-	text-decoration: none;
-	transition: all 0.3s ease;
-}
-
-.footer-col ul li a:hover {
-	color: white;
-	padding-left: 7px;
-}
-
-.footer-col .social-links a {
-	color: white;
-	background-color: rgba(255, 255, 255, 0.2);
-	display: inline-block;
-	height: 40px;
-	width: 40px;
-	border-radius: 50%;
-	text-align: center;
-	margin: 0 10px 10px 0;
-	line-height: 40px;
-	transition: all 0.5s ease;
-}
-
-.footer-col .social-links a:hover {
-	color: #151515;
-	background-color: #FFF;
-}
-
-@media(max-width: 767px) {
-	.footer-col {
-		width: 50%;
-		margin-bottom: 30px;
-	}
-}
-
-@media(max-width: 574px) {
-	.footer-col {
-		width: 100%;
-	}
-}
-
-
-
-.address-li{
-  color: white;
-
-}
-
-.address-li li{
-  margin-top: 25px;
-  text-align: center;
-}
-
-
-
-.price-points{
-  list-style-type: disc;
-  margin-left: 4%;
-}
-
 
 
 </style>
@@ -414,7 +81,7 @@ ul {
                         <h1>
                             About The Working Lady
                         </h1>
-                        <p>
+                        <p style="color: white;">
                             "The Working Lady" connects skilled house helps and maids with clients in need of their services. Our platform offers a seamless experience, providing employment opportunities for talented individuals while meeting the household needs of our valued clients.                        </p>
                     </div>
                 </div>
@@ -485,127 +152,81 @@ ul {
                 </div>
             </div>
             <div class="container-divider"></div>
-            <div class="our-tech-container">
+
+            <div class="our-tech-container"  >
                 <h3 class="text-center" id="head-box">
-                    Our Process
+                    Directors of TWL
                 </h3>
 
+                <div class="prof-cards">  
 
-                <div class="container" id="step-pattern">
-                    <div class="row">
-                      <div class="col-md-12">
-                        <div class="road-map-main">
-                            <div class="road-map-wrapper">
-                                <div class="road-map-circle">
-                                  <span
-                                    class="road-map-circle-text d-flex align-items-center justify-content-center"
-                                    >Step-1</span
-                                  >
-                                </div>
-                                <div class="road-map-card">
-                                  <h4 class="card-head">1) Post Your Requirements</h4>
-                                  <p class="card-text"  style="color: white;">
-                                    Share your specific requirements with us, outlining
-                                     the skills, experience, and qualifications you're 
-                                     looking for in a candidate.
-                                  </p>
-                                </div>
-                              </div>
-                              <div class="road-map-wrapper">
-                                <div class="road-map-circle">
-                                  <span
-                                    class="road-map-circle-text d-flex align-items-center justify-content-center"
-                                    >Step-2</span
-                                  >
-                                </div>
-                                <div class="road-map-card">
-                                  <h4 class="card-head">2) See Matching Profiles</h4>
-                                  <p class="card-text"  style="color: white;" >
-                                    Discover profiles that align with your criteria. Our platform presents you with a curated selection of candidates tailored to your needs.
-                                  </p>
-                                </div>
-                              </div>
-                          <div class="road-map-wrapper">
-                            <div class="road-map-circle">
-                              <span
-                                class="road-map-circle-text  d-flex align-items-center justify-content-center"
-                                >Step-3</span
-                              >
-                            </div>
-                            <div class="road-map-card">
-                              <h4 class="card-head">3) Make Your Selection</h4>
-                              <p class="card-text"  style="color: white;" >
-                                Choose the candidate who best fits your requirements and expectations. You have the freedom to select from a pool of qualified individuals.
-                              </p>
-                            </div>
-                          </div>
-                          <div class="road-map-wrapper">
-                            <div class="road-map-circle">
-                              <span
-                                class="road-map-circle-text  d-flex align-items-center justify-content-center"
-                                >Step-4</span
-                              >
-                            </div>
-                            <div class="road-map-card">
-                              <h4 class="card-head">4) Join Our Community</h4>
-                              <p class="card-text"  style="color: white;" >
-                                Register as a client by paying the nominal registration charges. Gain access to our exclusive services and resources.
-                              </p>
-                            </div>
-                          </div>
-                          <div class="road-map-wrapper">
-                            <div class="road-map-circle">
-                              <span
-                                class="road-map-circle-text  d-flex align-items-center justify-content-center"
-                                >Step-5</span
-                              >
-                            </div>
-                            <div class="road-map-card">
-                              <h4 class="card-head">5) Take Trial Period of Selected Candidate</h4>
-                              <p class="card-text"  style="color: white;" >
-                                Test the waters with your chosen candidate through a trial period. Evaluate their performance firsthand before making a final commitment.
-                              </p>
-                            </div>
-                          </div>
-                          <div class="road-map-wrapper">
-                            <div class="road-map-circle">
-                              <span
-                                class="road-map-circle-text d-flex align-items-center justify-content-center"
-                                >Step-6</span
-                              >
-                            </div>
-                            <div class="road-map-card">
-                              <h4 class="card-head">6) Pay Final Service Charge After Satisfaction </h4>
-                              <p class="card-text"  style="color: white;">
-                                Upon being satisfied with the candidate's performance during the trial period, proceed to pay the final service charge for our matchmaking services.
-                              </p>
-                            </div>
-                          </div>
-                          <div class="road-map-wrapper">
-                            <div class="road-map-circle">
-                              <span
-                                class="road-map-circle-text d-flex align-items-center justify-content-center"
-                                >Step-7</span
-                              >
-                            </div>
-                            <div class="road-map-card">
-                              <h4 class="card-head">7) Access Your Dashboard to Avail Several Benefits from TWL Timely </h4>
-                              <p class="card-text"  style="color: white;">
-                                Enjoy the convenience of our user-friendly dashboard, offering you access to various benefits, updates, and support services from TWL.
-                             </p>
-                            </div>
-                          </div>
-                     <h3>Finished!!</h3>
-                        </div>
-                      </div>
+                <div class="profile-cards" style="min-width : 100%;">
+
+                  <div> 
+                  <div class="card card-1">
+                    <img src="/static/collections/photo1.jpg">
+                
+                    <div class="card-details">
+                      <h3 class="card-details-title">Mr Diptendra Gupta</h3>
+                    <span style="font-weight: bold;">CEO (TWL)</span>
+<p>"Trust in 'The Working Lady'—a reputable maid agency ensuring reliability, professionalism, and safety. We match households with qualified help, saving time and effort. Count on us for ongoing support and issue resolution during employment."</p>
                     </div>
                   </div>
+                  <div class="prof-desc"> 
+                      <h5 class="">Mr Diptendra Gupta</h5>
+                      <span >CEO (TWL)</span>
+                </div>
+                </div>
+
+              <div>
+                  <div class="card card-2">
+                
+                    <img src="/static/collections/photo2.jpg">
+                
+                    <div class="card-details">
+                
+                      <h3 class="card-details-title">Mr Vineet Kumar Singh</h3>
+                      <span style="font-weight: bold;">CTO (TWL)</span>
+                      <p>
+                        "Househelpers are crucial for family support and functioning. They enable working parents' careers and contribute to community life. Their care for children, the elderly, and those with special needs greatly enhances their quality of life."</p>
+                
+                    </div>
+                
+                  </div>
+
+                  <div class="prof-desc"> 
+                    <h5 class="">Mr Vineet Kumar Singh</h5>
+                    <span >CTO (TWL)</span>
+              </div>
+            </div>
 
 
-                <div class="img-container">
-                    <img src="/static/collections/bai cleaning.jpg" alt="apimatic code generation engine" class="img-responsive"/>
+            <div>
+                  <div class="card card-3">
+                
+                    <img src="/static/collections/photo4.jpg">
+                
+                    <div class="card-details">
+                
+                      <h3 class="card-details-title">Mrs Bobby Jha</h3>
+                      <span style="font-weight: bold;">COO (TWL)</span>
+                      <p>"Househelpers make significant contributions but often face stigma and low social status due to societal attitudes, economic disparities, and migration issues. It's crucial to appreciate all forms of work, advocate for fair treatment, and recognize the dignity of domestic labor."</p>
+                      
+                    </div>
+                </div>
+
+                <div class="prof-desc"> 
+                  <h5 class="">Mrs Bobby Jha</h5>
+                  <span >COO (TWL)</span>
+            </div>
+
+           </div>
+                  </div>
                 </div>
             </div>
+
+
+
             <div class="container-divider"></div>
             <div style="display: flex; justify-content: center;"> 
             <div class="content-box2" id="origin-box">
