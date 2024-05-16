@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.2.0/tailwind.min.css">
+
+    <style>
+        * { padding:0;margin:0;}
+
+            body { 
+                
+                position:relative;width:100%;
+            
+            }
+
+            .parallax-container {
+            position:relative;
+            overflow:hidden;
+            height: 450px;
+            }
+
+            .parallax {
+            position:absolute;
+            top:0;
+            height:120%;
+            width:100%;
+            
+            background-image:url('{{blog.image.url}}');
+            background-size:cover;
+            background-position:top ;
+            }
+
+            h1,h3,p,h2,blockquote,li { font-family:'Merriweather', sans-serif;font-weight:300;}
+
+            .container { 
+                width:80%;
+                
+                position:relative;
+                top:-250px;
+            
+                background-color:#fff;
+                margin:0 auto;
+                
+                padding:50px;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1), 0 16px 48px rgba(0, 0, 0, 0.2);
+            }
+
+            /* h1 { font-size:50px;margin-bottom:10px;}
+            h3 { font-size:18px;margin-bottom:20px;}
+            h2 { font-size:34px;margin-bottom:10px;}
+            p,blockquote { font-size:19px;}
+            li { font-size:19px;}
+
+            p,ul { margin-bottom:20px;}
+            blockquote { margin-left:35px;}
+
+            ul li ul { margin-bottom:0;margin-left:35px;} */
+
+
+            body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #F3FBFB;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .blog-post {
+            margin-bottom: 40px;
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: #f9f9f9; /* Fallback color */
+            background-image: url('path_to_your_image.jpg'); /* Replace with your image path */
+            background-size: cover;
+            background-position: center;
+        }
+        .blog-content {
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white background for content */
+        }
+        .blog-content h1,h2,h3,h4,h5 {     
+            margin-bottom: 15px;
+        }
+     
+        .blog-post p {
+            margin-bottom: 8px;
+
+            line-height: 1.6;
+        }
+
+        
+.twl-logo{
+
+height: 50px;
+width: 240px;
+}
+
+
+  
+.footer {
+	background-color: #08486B;
+	padding: 80px 0;
+}
+
+
+
+.row {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+ul {
+	list-style: none;
+}
+
+.footer-col {
+	width: 25%;
+	padding: 0 15px;
+}
+
+.footer-col h4 {
+	font-size: 18px;
+	color: white;
+	text-transform: capitalize;
+	margin-bottom: 35px;
+	font-weight: 500;
+	position: relative;
+}
+
+.footer-col h4::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	bottom: -10px;
+	background-color: #E91E63;
+	width: 50px;
+	height: 2px;
+}
+
+.footer-col ul li:not(:last-child) {
+	margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+	color: white;
+	display: block;
+	font-size: 1rem;
+	font-weight: 300;
+	text-transform: capitalize;
+	text-decoration: none;
+	transition: all 0.3s ease;
+}
+
+.footer-col ul li a:hover {
+	color: white;
+	padding-left: 7px;
+}
+
+.footer-col .social-links a {
+	color: white;
+	background-color: rgba(255, 255, 255, 0.2);
+	display: inline-block;
+	height: 40px;
+	width: 40px;
+	border-radius: 50%;
+	text-align: center;
+	margin: 0 10px 10px 0;
+	line-height: 40px;
+	transition: all 0.5s ease;
+}
+
+.footer-col .social-links a:hover {
+	color: #151515;
+	background-color: #FFF;
+}
+
+@media(max-width: 767px) {
+	.footer-col {
+		width: 50%;
+		margin-bottom: 30px;
+	}
+}
+
+@media(max-width: 574px) {
+	.footer-col {
+		width: 100%;
+	}
+}
+
+
+
+.address-li{
+  color: white;
+
+}
+
+.address-li li{
+  margin-top: 25px;
+  text-align: center;
+}
+
+    </style>
+</head>
+<body>
+ 
+
+    <div class="parallax-container">
+        <div class="parallax" speed="1.5">
+            <header class="top-0 bg-white border-b border-gray-300" style="background-color: #F3FBFB;">
+                <nav class="containers mx-auto flex items-center p-6">
+                  <a class="inline-block h-8 mr-auto" href="{% url 'index' %}">
+                    <img class="inline-block h-full w-auto" src="/static/collections/TWL-logo.png" />
+                  </a>
+              
+                  <ul class="flex items-center">
+                    <li class="ml-6">
+                      <a class="text-blue-500 hover:text-blue-800" href="{% url 'index' %}">Home</a>
+                    </li>
+                    <li class="ml-6">
+                      <a class="text-blue-500 hover:text-blue-800" href="{% url 'blogs_page' %}">Blog</a>
+                    </li>
+                    <li class="ml-6">
+                      <a class="text-blue-500 hover:text-blue-800" href="{% url 'steps' %}">Process</a>
+                    </li>
+                    <li class="ml-6">
+                      <a class="text-blue-500 hover:text-blue-800" href="{% url 'blacklisted' %}">Blacklisted</a>
+                    </li>
+                    <li class="ml-6">
+                      <a class="text-blue-500 hover:text-blue-800" href="{% url 'pricing_page' %}">Pricing</a>
+                    </li>
+                    <li class="ml-6">
+                      <a class="text-blue-500 hover:text-blue-800" href="{% url 'about_us'%}">About</a>
+                    </li>
+                  </ul>
+                </nav>
+              </header>
+        </div>
+      </div>
+    <div class="container">
+        <div class="blog-post">
+            <div class="blog-content">
+                <h2>{{ blog.title }}</h2>
+                <p class="meta">By {{ blog.author }} | Published on {{ blog.date }}</p>
+                <p>{{ blog.content | safe }}</p>
+                <p>{{ blog.description }}</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer" >
+      <div style=" display: flex; justify-content: center;" >
+      <div class="row" style=" width: 90%;">
+        <div class="footer-col">
+          <h4>NAVIGATIONS</h4>
+          <ul>
+            <li><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="{% url 'pricing_page' %}">Prices</a></li>
+            <li><a href="{% url 'steps' %}">Hiring Process</a></li>
+            <li><a href="{% url 'blacklisted' %}">Blacklisted</a></li>
+            <li><a href="{% url 'blogs_page' %}">Blogs</a></li>
+            <li><a href="{% url 'about_us' %}">About</a></li>
+            <li><a href="{% url 'privacy_policy'%}">privacy policy</a></li>
+            <li><a href="{% url 'termsofuse'%}">Terms of Use</a></li>
+          </ul>
+        </div>
+      
+        <div class="footer-col" >
+          <div>
+            <h4>ABOUT THE WORKING LADY</h4>
+            <p style="color : white;">"The Working Lady" connects skilled house helps and maids with clients in need of their services. Our platform offers a seamless experience, providing employment opportunities for talented individuals while meeting the household needs of our valued clients.</p>
+            <div class="social-links">
+              <a href="https://www.facebook.com/theworkinglady.MumbaiHousemaids/"><i class="fa-brands fa-facebook-f"></i></a>
+              <a href="https://www.twitter.com/"><i class="fa-brands fa-x-twitter"></i></a>
+              <a href="https://www.instagram.com/theworkinglady2020?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i class="fa-brands fa-instagram"></i></a>
+              <a href="https://www.linkedin.com/in/the-working-lady-0545381b8"><i class="fa-brands fa-linkedin-in"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-col" style="width: 45%; margin-left: 3%;">
+          <h4>LOCATIONS</h4>
+        <ul class="address-li">
+          <li >
+            <i class="fa-solid fa-location-dot" style="color: #ffffff;"></i>
+            HO: Mumbai: D/3, Near Godrej Hills, Khadakpada l, Kalyan West, Maharashtra 421301
+            8855055049 / 7991770212 </li>
+          <li> 
+            <i class="fa-solid fa-location-dot" style="color: #ffffff;"></i>
+            Delhi: HOUSE NO. 15, RAILWAY ENCLAVE PHASE 2ND, Girdharpur Rd, near ANANT ENTERPRISES, Lal Kuan, Chhapraula, Ghaziabad, Uttar Pradesh 201009
+            7879589378 / 8130815132
+             </li>
+          <li>
+            <i class="fa-solid fa-location-dot" style="color: #ffffff;"></i>
+            Indore: AS 25/ MAHALAXMI NAGAR, Sector A, Vijay Nagar, Indore, Madhya Pradesh 452010
+8855055049 / 7991770212 / 7084906501
+          </li>
+        </ul>
+        </div>
+
+      </div>
+    </div>
+    </footer>
+
+    <script src="https://kit.fontawesome.com/3b161c540c.js" crossorigin="anonymous"></script>
+
+</body>
+</html>
