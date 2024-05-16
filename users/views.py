@@ -5,7 +5,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate,login
 from recruiter.models import Recruiter, Work
 import re
-from .models import Contact
+from .models import Contact ,Post
 # from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.core.exceptions import ValidationError
