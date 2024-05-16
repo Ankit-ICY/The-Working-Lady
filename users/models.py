@@ -30,7 +30,7 @@ class Blog(models.Model):
     title = models.CharField(max_length=100)
     content = RichTextField()
     author = models.CharField(max_length=30, default='',null= True, blank = True)
-    image = models.ImageField(upload_to='resumes', null= True, blank = True)
+    image = models.ImageField(upload_to='user_photo', null= True, blank = True)
     description = models.TextField(default='',null= True, blank = True)
     date = models.DateField(auto_now_add=True, null=True)
 
