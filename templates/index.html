@@ -31,8 +31,6 @@
     gtag('config', 'G-641DSRTHSR');
   </script>
 
-
-
 <style>
 
 
@@ -503,10 +501,6 @@ z-index: 999; /* Ensure the notification appears above other content */
 
 
 
-
-
-
-
 @media (min-width: 768px) and (max-width: 1500px) {
   /* Your styles for medium-sized devices go here */
   .address-li{
@@ -514,8 +508,6 @@ z-index: 999; /* Ensure the notification appears above other content */
 
   }
 }
-
-
 
 
 .header{
@@ -538,9 +530,6 @@ background-size: cover;
 
 <style> 
     
-
-
-
 
 
     
@@ -1601,9 +1590,6 @@ margin-top: 40px;
 
 
 </style>
-
-
-
 </head>
 
 <body>
@@ -1632,8 +1618,8 @@ margin-top: 40px;
 
 
   <!-- -----------------------------------MODAL---------------------------------------------------- -->
-<!-- 
-  <div id="myModal" class="modal fade" role="dialog" >
+
+ <!-- <div id="myModal" class="modal fade" role="dialog" >
     
     <div class="modal-dialog" >
       <div class="modal-content" style="border-radius: 10px;">
@@ -1676,7 +1662,8 @@ margin-top: 40px;
       </div>
   
     </div>
-  </div>  -->
+  </div> 
+ -->
 
 
 
@@ -1699,6 +1686,7 @@ margin-top: 40px;
     </div>
   </div>
 </div>
+
 
 
 
@@ -1816,7 +1804,10 @@ margin-top: 40px;
               <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#servicediv">Services</a>
+              <a class="nav-link" href="{% url 'blacklisted' %}">Blacklisted</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'blogs_page' %}">Blogs</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'steps' %}">Process</a>
