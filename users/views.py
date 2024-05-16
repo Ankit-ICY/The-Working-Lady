@@ -110,7 +110,17 @@ def index(request):
             messages.error(request, f"An error occurred: {e}")
             return redirect('index')
 
-    return render(request, 'index.html')
+
+    try:
+        latest_post = Post.objects.order_by('-id')[0]  # Assuming 'id' is the primary key field
+    except IndexError:
+        latest_post = None
+
+    context = {
+        'post': latest_post
+    }
+
+    return render(request, 'index.html' ,context)
 
 def login_user(request):
     if request.method == "POST":
