@@ -11,4 +11,13 @@ class Contact(models.Model):
 
     def __str__(self) -> str:
         return self.name
-    
+
+
+class Post(models.Model):
+    post_title = models.CharField(max_length=30)
+    post_image = models.ImageField(upload_to='resumes', null= True, blank = True)
+    post_para = models.TextField()
+
+    class Meta:
+        ordering = ['-id'] 
+
