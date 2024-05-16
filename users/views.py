@@ -5,7 +5,8 @@ from django.contrib import messages
 from django.contrib.auth import authenticate,login
 from recruiter.models import Recruiter, Work
 import re
-from .models import Contact ,Post
+from applicant.models import Applicants
+from .models import Contact , Post, Blog
 # from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.core.exceptions import ValidationError
@@ -110,7 +111,7 @@ def index(request):
             messages.error(request, f"An error occurred: {e}")
             return redirect('index')
 
-
+    
     try:
         latest_post = Post.objects.order_by('-id')[0]  # Assuming 'id' is the primary key field
     except IndexError:
@@ -120,7 +121,7 @@ def index(request):
         'post': latest_post
     }
 
-    return render(request, 'index.html' ,context)
+    return render(request, 'index.html', context)
 
 def login_user(request):
     if request.method == "POST":
@@ -247,3 +248,23 @@ def termsofuse(request):
 
 def pricing_page(request):
     return render(request, 'pricing_page.html')
+
+
+
+def blogs_page(request):
+    blogs = Blog.objects.all()
+    context = {'blogs' : blogs}
+    return render(request,'blogs_page.html' ,context)
+
+
+def blog(request,id):
+    blog = Blog.objects.get(id=id)
+    context = {'blog' : blog}
+    return render(request, 'blog.html', context)
+
+
+
+def blacklisted(request):
+    applicants = Applicants.objects.filter(blacklist = True)
+    context = {'applicants' : applicants}
+    return render(request, 'blacklisted.html', context)
