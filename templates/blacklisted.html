@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blacklisted Applicants</title>
+    <link rel="icon" href="/static/collections/working Lady logog.jpg" type="image/x-icon">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.2.0/tailwind.min.css">
+
+
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+    
+        article {
+            position: relative;
+            margin: 20px auto;
+            width: 80%;
+            max-width: 1000px;
+            border: 1px solid #ccc;
+            display: flex;
+            background-color: #F3FBFB;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: box-shadow 0.3s ease, transform 0.3s ease, max-height 0.3s ease; /* Add transition for smooth effect */
+            max-height: 200px; /* Initial collapsed height */
+        }
+
+        article.expanded {
+            max-height: 1000px; /* Expanded height */
+        }
+
+        article:hover {
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2); /* More prominent shadow */
+            transform: scale(1.02); /* Slightly scale up */
+        }
+
+        .article-image-container {
+            width: 30%;
+            height: auto;
+            margin: 16px;
+            overflow: hidden;
+        }
+
+        .article-image-container img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+        }
+
+        .content-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 70%;
+            padding: 0 15px;
+        }
+
+        .content-container .article-title {
+            text-align: center;
+            padding: 15px 0;
+            margin: 0;
+            font-size: 24px;
+            color: #333;
+            border-bottom: 2px solid #eee;
+        }
+
+        .content-container .article-content {
+            overflow: hidden;
+            text-align: justify;
+            color: #666;
+        }
+
+        .job-titles {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-bottom: 10px;
+            justify-content: center; /* Center the job titles */
+        }
+
+        .job-title {
+            color: rgb(139, 0, 0);
+        }
+
+        .details-container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .detail-item {
+            width: 50%;
+            padding: 5px 0;
+            box-sizing: border-box;
+        }
+
+        .read-more-btn {
+            position: absolute;
+            bottom: 7px;
+            right: 7px;
+            padding: 8px 20px;
+            background-color: rgba(0, 0, 0, 0.4);
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+
+        .read-more-btn:hover {
+            background-color: #4CAF50;
+            color: black;
+            border-radius: 30px;
+        }
+
+        /* Add this CSS at the end of your existing styles */
+
+/* Responsive adjustments for small devices */
+@media (max-width: 768px) {
+    article {
+        flex-direction: column;
+        max-height: 400px; /* Adjust initial collapsed height for small screens */
+    }
+
+    .article-image-container {
+        width: 100%;
+        margin: 0;
+    }
+
+    .article-image-container img {
+        width: 100%;
+        height: auto;
+    }
+
+    .content-container {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .read-more-btn {
+        position: static;
+        margin-top: 10px;
+        align-self: center;
+    }
+
+    article.expanded {
+        max-height: 1000px; /* Expanded height */
+    }
+}
+
+
+
+.heading {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 28px;
+            font-weight: 700;
+            background-color: rgb(0, 0, 0);
+            width: 65%;
+            color:white;
+            border-radius: 10px;
+            padding: 7px;
+        }
+
+        .points-list {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 16px;
+            line-height: 1.6;
+            color: rgb(63, 9, 0);
+
+
+        }
+
+        .points-list ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+        .points-list ul li {
+            margin-bottom: 10px;
+        }
+
+
+         
+.footer {
+	background-color: #08486B;
+	padding: 80px 0;
+}
+
+
+
+.row {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+ul {
+	list-style: none;
+}
+
+.footer-col {
+	width: 25%;
+	padding: 0 15px;
+}
+
+.footer-col h4 {
+	font-size: 18px;
+	color: white;
+	text-transform: capitalize;
+	margin-bottom: 35px;
+	font-weight: 500;
+	position: relative;
+}
+
+.footer-col h4::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	bottom: -10px;
+	background-color: #E91E63;
+	width: 50px;
+	height: 2px;
+}
+
+.footer-col ul li:not(:last-child) {
+	margin-bottom: 10px;
+}
+
+.footer-col ul li a {
+	color: white;
+	display: block;
+	font-size: 1rem;
+	font-weight: 300;
+	text-transform: capitalize;
+	text-decoration: none;
+	transition: all 0.3s ease;
+}
+
+.footer-col ul li a:hover {
+	color: white;
+	padding-left: 7px;
+}
+
+.footer-col .social-links a {
+	color: white;
+	background-color: rgba(255, 255, 255, 0.2);
+	display: inline-block;
+	height: 40px;
+	width: 40px;
+	border-radius: 50%;
+	text-align: center;
+	margin: 0 10px 10px 0;
+	line-height: 40px;
+	transition: all 0.5s ease;
+}
+
+.footer-col .social-links a:hover {
+	color: #151515;
+	background-color: #FFF;
+}
+
+@media(max-width: 767px) {
+	.footer-col {
+		width: 50%;
+		margin-bottom: 30px;
+	}
+
+    .heading{
+        width: 90%;
+
+    }
+    .points-list {
+            padding: 20px;
+
+        }
+}
+
+
+
+@media (min-width: 768px) and (max-width: 1500px) {
+  /* Your styles for medium-sized devices go here */
+  .heading{
+        width: 90%;
+
+    }
+    .points-list {
+            padding: 20px;
+
+        }
+}
+
+
+
+@media(max-width: 574px) {
+	.footer-col {
+		width: 100%;
+	}
+
+
+}
+
+
+
+.address-li{
+  color: white;
+
+}
+
+.address-li li{
+  margin-top: 25px;
+  text-align: center;
+}
+
+    </style>
+</head>
+<body>
+
+    
+  <header class="top-0 bg-white border-b border-gray-300" style="background-color: #F3FBFB;">
+    <nav class="containers mx-auto flex items-center p-6">
+      <a class="inline-block h-8 mr-auto" href="{% url 'index' %}">
+        <img class="inline-block h-full w-auto" src="/static/collections/TWL-logo.png" />
+      </a>
+  
+      <ul class="flex items-center">
+        <li class="ml-6">
+          <a class="text-blue-500 hover:text-blue-800" href="{% url 'index' %}">Home</a>
+        </li>
+        <li class="ml-6">
+          <a class="text-blue-500 hover:text-blue-800" href="{% url 'blogs_page' %}">Blog</a>
+        </li>
+        <li class="ml-6">
+          <a class="text-blue-500 hover:text-blue-800" href="{% url 'steps' %}">Process</a>
+        </li>
+        <li class="ml-6">
+            <a class="text-blue-500 hover:text-blue-800" href="{% url 'blacklisted' %}">Blacklisted</a>
+          </li>
+        <li class="ml-6">
+          <a class="text-blue-500 hover:text-blue-800" href="{% url 'pricing_page' %}">Pricing</a>
+        </li>
+        <li class="ml-6">
+          <a class="text-blue-500 hover:text-blue-800" href="{% url 'about_us'%}">About</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <div style="display: flex; flex-direction: column; align-items: center; margin-top: 3%;"> 
+    <div class="heading" >
+        <i class="fas fa-ban" style="color: rgb(204, 0, 0); margin-right: 1%;"></i>Blacklisted Applicants
+    </div>
+    <div class="points-list">
+        <p style="font-weight: bold;">These are the applicants who are Blacklisted by "The Working Lady" (TWL) and will not be provided the services:</p>
+        <ul>
+            <li>They are fraud users who have been blacklisted by TWL for engaging in wrongful activities or fraud.</li>
+            <li>Any user or applicant found engaging in such activities in the future will be banned from TWL services.</li>
+            <li>TWL aims to maintain a safe and trustworthy environment for all users and clients.</li>
+            <li>Blacklisted applicants have violated the terms and conditions set forth by TWL.</li>
+            <li>Continuous monitoring and strict measures are in place to prevent fraudulent activities.</li>
+        </ul>
+    </div>
+</div>
+
+
+    <div>
+        {% for a in applicants %}
+        <article class="collapsible-article">
+            <div class="article-image-container">
+                {% if a.photo %}
+                <img src="{{ a.photo.url }}" alt="Article Image">
+                {% else %}
+                <img src="/static/collections/dummy profile.png" alt="Article Image">
+                {% endif %}
+            </div>
+            <div class="content-container">
+                <h3 class="article-title">{{ a.full_name }}</h3>
+                <div class="job-titles">
+                    {% for j in a.job.all %}
+                    <span class="job-title">{{ j.work }}</span>{% if not forloop.last %},{% endif %}
+                    {% endfor %}
+                </div>
+                <div class="details-container">
+                    <div class="detail-item"><strong>Experience:</strong> {{ a.experience }} Yrs</div>
+                    <div class="detail-item"><strong>Location:</strong> {{ a.location }}</div>
+                    <div class="detail-item"><strong>Age:</strong> {{ a.age }}</div>
+                    <div class="detail-item"><strong>Job Duration:</strong> {{ a.job_duration }}</div>
+                    <div class="detail-item"><strong>Work Place:</strong> {{ a.work_place.category }}</div>
+                    <div class="detail-item"><strong>Religion:</strong> {{ a.religion }}</div>
+                </div>
+                  <p class="article-content">
+                    {{ a.description }}
+                </p>
+                
+                <button class="read-more-btn">View More</button>
+            </div>
+        </article>
+        {% endfor %}
+    </div>
+
+
+    <footer class="footer" >
+        <div style=" display: flex; justify-content: center;" >
+        <div class="row" style=" width: 90%;">
+          <div class="footer-col">
+            <h4>NAVIGATIONS</h4>
+            <ul>
+              <li><a href="{% url 'index' %}">Home</a></li>
+              <li><a href="{% url 'pricing_page' %}">Prices</a></li>
+              <li><a href="{% url 'steps' %}">Hiring Process</a></li>
+              <li><a href="{% url 'blacklisted' %}">Blacklisted</a></li>
+              <li><a href="{% url 'blogs_page' %}">Blogs</a></li>
+              <li><a href="{% url 'about_us' %}">About</a></li>
+              <li><a href="{% url 'privacy_policy'%}">privacy policy</a></li>
+              <li><a href="{% url 'termsofuse'%}">Terms of Use</a></li>
+            </ul>
+          </div>
+        
+          <div class="footer-col" >
+            <div>
+              <h4>ABOUT THE WORKING LADY</h4>
+              <p style="color : white;">"The Working Lady" connects skilled house helps and maids with clients in need of their services. Our platform offers a seamless experience, providing employment opportunities for talented individuals while meeting the household needs of our valued clients.</p>
+              <div class="social-links">
+                <a href="https://www.facebook.com/theworkinglady.MumbaiHousemaids/"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.twitter.com/"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://www.instagram.com/theworkinglady2020?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/in/the-working-lady-0545381b8"><i class="fa-brands fa-linkedin-in"></i></a>
+              </div>
+            </div>
+          </div>
+  
+          <div class="footer-col" style="width: 45%; margin-left: 3%;">
+            <h4>LOCATIONS</h4>
+          <ul class="address-li">
+            <li >
+              <i class="fa-solid fa-location-dot" style="color: #ffffff;"></i>
+              HO: Mumbai: D/3, Near Godrej Hills, Khadakpada l, Kalyan West, Maharashtra 421301
+              8855055049 / 7991770212 </li>
+            <li> 
+              <i class="fa-solid fa-location-dot" style="color: #ffffff;"></i>
+              Delhi: HOUSE NO. 15, RAILWAY ENCLAVE PHASE 2ND, Girdharpur Rd, near ANANT ENTERPRISES, Lal Kuan, Chhapraula, Ghaziabad, Uttar Pradesh 201009
+              7879589378 / 8130815132
+               </li>
+            <li>
+              <i class="fa-solid fa-location-dot" style="color: #ffffff;"></i>
+              Indore: AS 25/ MAHALAXMI NAGAR, Sector A, Vijay Nagar, Indore, Madhya Pradesh 452010
+  8855055049 / 7991770212 / 7084906501
+            </li>
+          </ul>
+          </div>
+  
+        </div>
+      </div>
+      </footer>
+    <script src="https://kit.fontawesome.com/3b161c540c.js" crossorigin="anonymous"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const articles = document.querySelectorAll('.collapsible-article');
+
+            articles.forEach(article => {
+                const readMoreBtn = article.querySelector('.read-more-btn');
+
+                readMoreBtn.addEventListener('click', function () {
+                    article.classList.toggle('expanded');
+                    readMoreBtn.textContent = article.classList.contains('expanded') ? 'View Less' : 'View More';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
