@@ -28,7 +28,7 @@ def log_off(request):
 def recruiter_home(request):
     
     jobs = Recruiter.objects.filter(recruiter__user = request.user)
-    applicants = Applicants.objects.filter(blacklist = False)
+    applicants = Applicants.objects.all()
     shortlisted_applicants = 0
     for job in jobs:
         shortlisted_applicants += job.selected_applicants.count()
@@ -120,7 +120,6 @@ def view_applicants(request):
           
 
                 applicants = Applicants.objects.filter(
-                    blacklist = False,
                     job__work__icontains=jobs[0]  # Using icontains for case-insensitive search for the first job
                 )
                 for job in jobs[1:]:  # Iterate through remaining jobs in the list
@@ -136,25 +135,25 @@ def view_applicants(request):
 
             elif cat and (cat=='All'  or cat=='All Categories'):
                 if exp and exp.isdigit():
-                    applicants = Applicants.objects.filter(blacklist = False, experience__gte=int(exp)) 
+                    applicants = Applicants.objects.filter(experience__gte=int(exp)) 
                 else:
-                    applicants = Applicants.objects.filter(blacklist = False)
+                    applicants = Applicants.objects.all()
 
             else:
                 if not search_job and not cat and not exp:
-                    applicants = Applicants.objects.filter(blacklist = False)
+                    applicants = Applicants.objects.all()
                 
                 elif exp and exp.isdigit():
                     specific_category = Work_Category.objects.get(category=cat)
-                    applicants = Applicants.objects.filter(blacklist = False, work_place=specific_category)
+                    applicants = Applicants.objects.filter(work_place=specific_category)
                     applicants = applicants.filter(experience__gte=int(exp)) 
                     message = f'Applicants with specific Category: {cat} and Experience: {int(exp)}'
                 else:
                     specific_category = Work_Category.objects.get(category=cat)
-                    applicants = Applicants.objects.filter(blacklist = False, work_place=specific_category)
+                    applicants = Applicants.objects.filter(work_place=specific_category)
                     message = f'Applicants with specific Category: {cat}'
         else:
-            applicants = Applicants.objects.filter(blacklist = False)
+            applicants = Applicants.objects.all()
 
 
         category = Work_Category.objects.all()
@@ -186,10 +185,8 @@ def view_requirements(request, id):
     try:        
         joby = Recruiter.objects.get(recruiterId=id)
         
-        applicants = Applicants.objects.filter(blacklist = False).annotate(
-            
+        applicants = Applicants.objects.annotate(
             num_matching_jobs=Count('job', filter=Q(job__in=joby.job.all()))  
-            
         ).order_by('-num_matching_jobs')  
         
         search_job = list(joby.job.values_list('work', flat=True))        
@@ -485,14 +482,7 @@ def user_profile(request):
                 recruiter.save()
               # Redirect to profile page after successful upload
     
-
-    jobs = Recruiter.objects.filter(recruiter = recruiter)
-    # selected_applicants_list = Applicants.objects.filter(recruiter__in=jobs).values_list('id', flat=True).distinct()
-    selected_applicants_list = []
-    for job in jobs:
-        selected_applicants_for_job = job.selected_applicants.all()
-        selected_applicants_list.extend(selected_applicants_for_job)
-    context = {'recruiter': recruiter, 'applicants' : selected_applicants_list}
+    context = {'recruiter': recruiter}
     return render(request, 'user_profile.html', context)
 
 
