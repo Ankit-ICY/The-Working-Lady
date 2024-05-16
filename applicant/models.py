@@ -39,6 +39,8 @@ class Applicants(models.Model):
     religion = models.CharField(max_length = 10,default = False)
     preffered_location = models.CharField(max_length = 50,default = False)
     work_place = models.ForeignKey(Work_Category, on_delete = models.CASCADE,default = False)
+    blacklist = models.BooleanField(default=False)
+
 
     def __str__(self) -> str:
         return self.full_name   
