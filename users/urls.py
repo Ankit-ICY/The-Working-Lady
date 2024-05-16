@@ -15,8 +15,9 @@ urlpatterns = [
     path('Privacy-Policy', views.privacy_policy ,name='privacy_policy'),
     path('Terms-of-Use', views.termsofuse ,name='termsofuse'),
     path('Pricing', views.pricing_page ,name='pricing_page'),
-
-
+    path('TWL-Blogs', views.blogs_page, name='blogs_page'),
+    path('Blog/<int:id>', views.blog, name='blog_post'),
+    path('TWL-Blacklist', views.blacklisted, name='blacklisted'),
 
 ]
 
