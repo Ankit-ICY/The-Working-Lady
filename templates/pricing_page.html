@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TWL Pricing</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.2.0/tailwind.min.css">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" >
   <link rel="icon" href="/static/collections/working Lady logog.jpg" type="image/x-icon">
 
@@ -427,11 +429,38 @@ ul {
 
 </head>
 <body>
-    
+  
+  <header class="top-0 bg-white border-b border-gray-300" style="background-color: #F3FBFB;">
+    <nav class="containers mx-auto flex items-center p-6">
+      <a class="inline-block h-8 mr-auto" href="{% url 'index' %}">
+        <img class="inline-block h-full w-auto" src="/static/collections/TWL-logo.png" />
+      </a>
+  
+      <ul class="flex items-center">
+        <li class="ml-6">
+          <a class="text-blue-500 hover:text-blue-800" href="{% url 'index' %}">Home</a>
+        </li>
+        <li class="ml-6">
+          <a class="text-blue-500 hover:text-blue-800" href="{% url 'blogs_page' %}">Blog</a>
+        </li>
+        <li class="ml-6">
+          <a class="text-blue-500 hover:text-blue-800" href="{% url 'steps' %}">Process</a>
+        </li>
+        <li class="ml-6">
+            <a class="text-blue-500 hover:text-blue-800" href="{% url 'blacklisted' %}">Blacklisted</a>
+          </li>
+        <li class="ml-6">
+          <a class="text-blue-500 hover:text-blue-800" href="{% url 'pricing_page' %}">Pricing</a>
+        </li>
+        <li class="ml-6">
+          <a class="text-blue-500 hover:text-blue-800" href="{% url 'about_us'%}">About</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
     <section class="price-area" id="price">
         <div class="container" style="margin-top: 2%;">
-            <a href="{% url 'index' %}">  <img src="/static/collections/TWL-logo.png"  class="twl-logo"/></a>
-
             <div class="row">
                 <div class="col-lg-12 text-center">
                     <div class="rt-section-title-wrapper">
@@ -537,6 +566,8 @@ ul {
                 <li><a href="{% url 'index' %}">Home</a></li>
                 <li><a href="{% url 'pricing_page' %}">Prices</a></li>
                 <li><a href="{% url 'steps' %}">Hiring Process</a></li>
+                <li><a href="{% url 'blacklisted' %}">Blacklisted</a></li>
+                <li><a href="{% url 'blogs_page' %}">Blogs</a></li>
                 <li><a href="{% url 'about_us' %}">About</a></li>
                 <li><a href="{% url 'privacy_policy'%}">privacy policy</a></li>
                 <li><a href="{% url 'termsofuse'%}">Terms of Use</a></li>
@@ -580,7 +611,7 @@ ul {
         </div>
         </footer>
   
-
+ 
      </section>
      <script src="https://kit.fontawesome.com/3b161c540c.js" crossorigin="anonymous"></script>
 
