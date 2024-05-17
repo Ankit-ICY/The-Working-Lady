@@ -30,8 +30,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    # 'ckeditor',
-    'tinymce',
+    'ckeditor',
     'users',
     'applicant',
     'recruiter',
