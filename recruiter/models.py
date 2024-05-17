@@ -34,7 +34,7 @@ class Recruiter(models.Model):
     preffered_location = models.CharField(max_length = 50,default = False)  
     source = models.CharField(max_length = 50 ,default= False)
     posted_on = models.DateField(auto_now_add=True,null= True, blank = True)
-    selected_applicants = models.ManyToManyField(Applicants, null=True,blank=True)
+    selected_applicants = models.ManyToManyField(Applicants)
 
     def __str__(self) -> str:
         return self.full_name   
