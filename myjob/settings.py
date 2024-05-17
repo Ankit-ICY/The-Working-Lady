@@ -140,3 +140,14 @@ MEDIA_ROOT = os.path.join(BASE_DIR , 'mediafiles')
 
 RAZOR_KEY_ID = 'rzp_test_bkUvdizg5rUdQj'
 RAZOR_KEY_SECRET = 'WbV54ypElH4ADchIRax9yAmt'
+
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'full',
+        'height': '100%',  # Set height to 100% to fill the available space vertically
+        'width': '100%',   # Set width to 100% to fill the available space horizontally
+        # Other CKEditor options can be configured here
+    },
+}
+
