@@ -314,7 +314,12 @@ ul {
     <div class="card-banner">
       <p class="category-tag popular">TWL</p>
       <a href="{% url 'blog_post' blog.id %}">
+        {% if blog.image %}
         <img class="banner-img" src='{{ blog.image.url }}' alt=''>
+        {% else %}
+        <img class="banner-img" src='/static/collections/flag.jpg' alt=''>
+        {% endif %}
+
       </a> 
     </div>
     <div class="card-body">
