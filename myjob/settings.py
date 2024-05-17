@@ -30,7 +30,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
-    'ckeditor',
+    'tinymce',
     'users',
     'applicant',
     'recruiter',
@@ -142,12 +142,58 @@ RAZOR_KEY_ID = 'rzp_test_bkUvdizg5rUdQj'
 RAZOR_KEY_SECRET = 'WbV54ypElH4ADchIRax9yAmt'
 
 
-CKEDITOR_CONFIGS = {
-    'default': {
-        'toolbar': 'full',
-        'height': '100%',  # Set height to 100% to fill the available space vertically
-        'width': '100%',   # Set width to 100% to fill the available space horizontally
-        # Other CKEditor options can be configured here
+# settings.py
+
+TINYMCE_DEFAULT_CONFIG = {
+    'height': 500,
+    'width': 800,
+    'menubar': True,
+    'plugins': '''
+        advlist autolink lists link image charmap print preview anchor
+        searchreplace visualblocks code fullscreen
+        insertdatetime media table contextmenu paste code help wordcount
+        textpattern nonbreaking save insertdatetime contextmenu directionality
+        template advlist autolink lists link image charmap print preview anchor
+        searchreplace visualblocks code fullscreen
+        insertdatetime media table contextmenu paste code help wordcount
+        textpattern nonbreaking save insertdatetime contextmenu directionality
+        template
+    ''',
+    'toolbar': '''
+        formatselect | bold italic strikethrough forecolor backcolor
+        | alignleft aligncenter alignright alignjustify
+        | bullist numlist outdent indent | removeformat
+        | image link | code fullscreen | media | table | paste
+        | searchreplace | preview | save | insertdatetime | code
+        | visualblocks | contextmenu | nonbreaking | wordcount
+        | textpattern | directionality | template | advlist
+        | styleselect | fontselect fontsizeselect | blockquote | subscript superscript
+    ''',
+    'contextmenu': 'link image inserttable | cell row column deletetable',
+    'visualblocks_default_state': True,
+    'paste_data_images': True,
+    'image_advtab': True,
+    'media_live_embeds': True,
+    'insertdatetime_formats': [
+        '%Y-%m-%d',    # Default format
+        '%H:%M:%S',    # Time format
+        '%I:%M:%S %p', # 12-hour time format with AM/PM
+    ],
+    'table_default_attributes': {
+        'class': 'table table-bordered',  # Bootstrap table classes
     },
+    'table_default_styles': {
+        'border-collapse': 'collapse',  # Collapse table borders
+        'width': '100%',                # Full width tables
+    },
+    'autosave_ask_before_unload': False,
+    'autosave_interval': '30s',
+    'powerpaste_allow_local_images': True,
+    'spellchecker_dialog': True,
+    'spellchecker_whitelist': ['Ephox', 'Moxiecode'],
+    'spellchecker_rpc_url': 'https://spellchecker.tinymce.com/ephox-spelling',
+    'spellchecker_languages': 'English=en,Danish=da,Dutch=nl,Finnish=fi,French=fr,German=de,Italian=it,Polish=pl,Portuguese=pt,Spanish=es,Swedish=sv',
+    'code_dialog_height': 600,
+    'code_dialog_width': 800,
 }
 
