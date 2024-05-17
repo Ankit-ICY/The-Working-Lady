@@ -27,7 +27,15 @@
             height:120%;
             width:100%;
             
+            {% if blog.image %}
             background-image:url('{{blog.image.url}}');
+
+            {% else %}
+            
+            background-image:url('/static/collections/flag.jpg');
+            {% endif %}
+
+
             background-size:cover;
             background-position:top ;
             }
