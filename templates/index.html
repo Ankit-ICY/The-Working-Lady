@@ -19,7 +19,7 @@
   <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="{% static 'index.css' %}">
+  <!-- <link rel="stylesheet" href="{% static 'index.css' %}"> -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-641DSRTHSR"></script>
@@ -503,10 +503,6 @@ z-index: 999; /* Ensure the notification appears above other content */
 
 
 
-
-
-
-
 @media (min-width: 768px) and (max-width: 1500px) {
   /* Your styles for medium-sized devices go here */
   .address-li{
@@ -514,8 +510,6 @@ z-index: 999; /* Ensure the notification appears above other content */
 
   }
 }
-
-
 
 
 .header{
@@ -538,9 +532,6 @@ background-size: cover;
 
 <style> 
     
-
-
-
 
 
     
@@ -1601,9 +1592,6 @@ margin-top: 40px;
 
 
 </style>
-
-
-
 </head>
 
 <body>
@@ -1633,7 +1621,7 @@ margin-top: 40px;
 
   <!-- -----------------------------------MODAL---------------------------------------------------- -->
 
-  <div id="myModal" class="modal fade" role="dialog" >
+ <!-- <div id="myModal" class="modal fade" role="dialog" >
     
     <div class="modal-dialog" >
       <div class="modal-content" style="border-radius: 10px;">
@@ -1677,7 +1665,31 @@ margin-top: 40px;
   
     </div>
   </div> 
- 
+ -->
+
+
+
+
+ <div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog" style="min-width: 50%; ">
+    <div class="modal-content" style="border-radius: 10px; ">
+      <div class="modal-header" style="background-color: #37657C; ">
+        <i class="fa-solid fa-2x fa-hands-praying" style="color: white; margin-right: 50px;"></i>
+        <img src="/static/collections/TWL-logo.png" class="twl-logo"/>
+        <button type="button" class="close" style="color: white;" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body text-center" style="background-color: #F3FBFB;">
+        <div class="text-overlay" >
+          <h2 class="text-overlay-heading" style="font-weight: bold;">{{post.post_title}}</h2>
+          <p class="text-overlay-description">{{ post.post_para }}</p>
+        </div>
+        <img src="{{ post.post_image.url }}" width="100%" height="100%" alt="">
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
 
 
@@ -1794,7 +1806,10 @@ margin-top: 40px;
               <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#servicediv">Services</a>
+              <a class="nav-link" href="{% url 'blacklisted' %}">Blacklisted</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'blogs_page' %}">Blogs</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'steps' %}">Process</a>
