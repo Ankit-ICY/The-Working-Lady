@@ -1,8 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
-from ckeditor.fields import RichTextField
+# from ckeditor.fields import RichTextField
 
-# from tinymce.models import HTMLField
+from tinymce.models import HTMLField
 
 
 class Contact(models.Model):
@@ -29,7 +29,7 @@ class Post(models.Model):
 class Blog(models.Model):
     id = models.AutoField(primary_key=True)
     title = models.CharField(max_length=100)
-    content = RichTextField()
+    content = HTMLField()
     author = models.CharField(max_length=30, default='',null= True, blank = True)
     image = models.ImageField(upload_to='user_photo', null= True, blank = True)
     description = models.TextField(default='',null= True, blank = True)
