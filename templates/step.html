@@ -1,301 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TWL Pricing</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" >
-  <link rel="icon" href="/static/collections/working Lady logog.jpg" type="image/x-icon">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-
-        .main-head{
-            background-color: #132150;
-            color: white;
-            padding: 10px;
-            border-radius: 5px;
-        }
-
-        
-        .spacer-80 {
-        height: 45px;
-        }
-
-.single-price-table {
-  position: relative;
-  z-index: 1;
-  overflow: hidden;
-  margin-bottom: 30px;
-  transition: all 0.24s ease-in-out;
-  border: 1px solid #e0e0e0;
-  border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-  
-}
-.single-price-table .price-design-elemnts {
-  position: absolute;
-  visibility: hidden;
-  transition: all 0.24s ease-in-out;
-  opacity: 0;
-  border-radius: 50%;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-  filter: alpha(opacity=0);
-
-}
-.single-price-table .price-design-elemnts.one {
-  line-height: 145px;
-  top: -30px;
-  left: -50px;
-  width: 145px;
-  height: 145px;
-  background-color: #346bf0;
-}
-.single-price-table .price-design-elemnts.two {
-  line-height: 86px;
-  bottom: 60px;
-  left: -30px;
-  width: 86px;
-  height: 86px;
-  background-color: #eea634;
-}
-.single-price-table .price-design-elemnts.three {
-  line-height: 145px;
-  right: -50px;
-  bottom: -30px;
-  width: 145px;
-  height: 145px;
-  background-color: #8543d6;
-}
-.single-price-table .price-design-elemnts.four {
-  line-height: 44px;
-  top: 50px;
-  right: 50px;
-  width: 44px;
-  height: 44px;
-  background-color: #31e1a1;
-}
-.single-price-table .price-header {
-  padding-top: 40px;
-  padding-bottom: 40px;
-  transition: all 0.24s ease-in-out;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  background-color: #e9ecef;
-}
-.single-price-table .price-header span.package-title {
-  font-size: 30px;
-  font-weight: 600;
-  display: block;
-  margin-bottom: 30px;
-  color: #132150;
-}
-.single-price-table .price-header span.package-amount {
-  font-size: 38px;
-  font-weight: 600;
-  color: #684ef6;
-}
-.single-price-table .price-header span.package-amount span {
-  font-weight: 400;
-  color: #494a54;
-}
-.single-price-table .price-header span.package-amount span:nth-child(1) {
-  font-size: 34px;
-}
-.single-price-table .price-header span.package-amount span:nth-child(2) {
-  font-size: 18px;
-}
-.single-price-table .price-body {
-  padding-top: 40px;
-  padding-bottom: 30px;
-}
-.single-price-table .price-body ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-.single-price-table .price-body ul li {
-  display: block;
-  padding: 0 0 8px;
-}
-.single-price-table .price-body ul li:last-child {
-  padding-bottom: 0;
-}
-.single-price-table .price-footer {
-  padding-bottom: 40px;
-}
-.single-price-table .price-footer a {
-  padding: 16px 48px;
-  text-transform: uppercase;
-}
-.single-price-table:hover {
-  background-color: #31348c;
-}
-.single-price-table:hover .price-header {
-  background-color: #31348c;
-}
-.single-price-table:hover .price-header span.package-title {
-  color: #fff;
-}
-.single-price-table:hover .price-header span.package-amount {
-  color: #fff;
-}
-.single-price-table:hover .price-header span.package-amount span {
-  color: #fff;
-}
-.single-price-table:hover .price-body ul li {
-  color: #fff;
-}
-.single-price-table:hover .price-design-elemnts {
-  visibility: visible;
-  opacity: 1;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-  filter: alpha(opacity=100);
-}
-.single-price-table:hover .price-design-elemnts.one {
-  transition-delay: 0.1s;
-  -webkit-animation: zoomIn 400ms ease-in-out;
-  animation: zoomIn 400ms ease-in-out;
-}
-.single-price-table:hover .price-design-elemnts.three {
-  transition-delay: 0.1s;
-  -webkit-animation: zoomIn 400ms ease-in-out;
-  animation: zoomIn 400ms ease-in-out;
-}
-.single-price-table:hover .price-design-elemnts.two {
-  transition-delay: 0.3s;
-  -webkit-animation: zoomIn 400ms ease-in-out;
-  animation: zoomIn 400ms ease-in-out;
-}
-.single-price-table:hover .price-design-elemnts.four {
-  transition-delay: 0.3s;
-  -webkit-animation: zoomIn 400ms ease-in-out;
-  animation: zoomIn 400ms ease-in-out;
-}
-
-.single-price-table.active {
-  background-color: #31348c;
-}
-.single-price-table.active .price-header {
-  background-color: #31348c;
-}
-.single-price-table.active .price-header span.package-title {
-  color: #fff;
-}
-.single-price-table.active .price-header span.package-amount {
-  color: #fff;
-}
-.single-price-table.active .price-header span.package-amount span {
-  color: #fff;
-}
-.single-price-table.active .price-body ul li {
-  color: #fff;
-}
-.single-price-table.active .price-design-elemnts {
-  visibility: visible;
-  opacity: 1;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-  filter: alpha(opacity=100);
-}
-.single-price-table.active .price-design-elemnts.one {
-  transition-delay: 0.1s;
-  -webkit-animation: zoomIn 400ms ease-in-out;
-  animation: zoomIn 400ms ease-in-out;
-}
-.single-price-table.active .price-design-elemnts.three {
-  transition-delay: 0.1s;
-  -webkit-animation: zoomIn 400ms ease-in-out;
-  animation: zoomIn 400ms ease-in-out;
-}
-.single-price-table.active .price-design-elemnts.two {
-  transition-delay: 0.3s;
-  -webkit-animation: zoomIn 400ms ease-in-out;
-  animation: zoomIn 400ms ease-in-out;
-}
-.single-price-table.active .price-design-elemnts.four {
-  transition-delay: 0.3s;
-  -webkit-animation: zoomIn 400ms ease-in-out;
-  animation: zoomIn 400ms ease-in-out;
-}
-
-.single-price-table.layout-two .price-header span.package-amount {
-  color: #0d9ce8;
-}
-.single-price-table.layout-two:hover {
-  background-color: transparent;
-  background-image: linear-gradient(-87deg, #8a8aec 0%, #b6d2f9 100%);
-}
-.single-price-table.layout-two:hover .price-header {
-  background-color: transparent;
-  background-image: linear-gradient(-87deg, #8a8aec 0%, #b6d2f9 100%);
-}
-.single-price-table.layout-two:hover .price-header span.package-amount {
-  color: #fff;
-}
-
-.single-price-table.layout-two.active {
-  background-color: transparent;
-  background-image: linear-gradient(-87deg, #8a8aec 0%, #b6d2f9 100%);
-}
-.single-price-table.layout-two.active .price-header {
-  background-color: transparent;
-  background-image: linear-gradient(-87deg, #8a8aec 0%, #b6d2f9 100%);
-}
-.single-price-table.layout-two.active .price-header span.package-amount {
-  color: #fff;
-}
-
-.single-price-table.layout-three .price-footer a {
-  border-radius: 999px;
-}
-.single-price-table.layout-three .price-footer a:after {
-  border-radius: 999px;
-}
-.single-price-table.layout-three .price-header span.package-amount {
-  color: #684ef6;
-}
-.single-price-table.layout-three:hover {
-  background-color: transparent;
-  background-image: linear-gradient(to left, #2923e6, #6b69fb);
-}
-.single-price-table.layout-three:hover .price-header {
-  background-color: transparent;
-  background-image: linear-gradient(to left, #2923e6, #6b69fb);
-}
-.single-price-table.layout-three:hover .price-header span.package-amount {
-  color: #fff;
-}
-
-.single-price-table.layout-three.active {
-  background-color: transparent;
-  background-image: linear-gradient(to left, #2923e6, #6b69fb);
-}
-.single-price-table.layout-three.active .price-header {
-  background-color: transparent;
-  background-image: linear-gradient(to left, #2923e6, #6b69fb);
-}
-.single-price-table.layout-three.active .price-header span.package-amount {
-  color: #fff;
-}
-
-@media (max-width: 991.98px) {
-  .price-space.spacer-150 {
-    height: 70px;
-  }
-
-  .price-area.home-two .spacer-80 {
-    height: 40pxs;
-  }
-}
-
-.twl-logo{
-
-height: 50px;
-width: 240px;
-}
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+<link rel="icon" href="/static/collections/working Lady logog.jpg" type="image/x-icon">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.2.0/tailwind.min.css">
 
 
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+  <title>Hiring Process</title>
+  <style>
+
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 *,
 *::before,
@@ -318,7 +39,10 @@ body {
 	padding: 80px 0;
 }
 
-
+.container {
+	max-width: 1170px;
+	margin: auto;
+}
 
 .row {
 	display: flex;
@@ -417,174 +141,402 @@ ul {
 
 
 
-.price-points{
-  list-style-type: disc;
-  margin-left: 4%;
+
+    .twl-logo{
+
+        height: 50px;
+        width: 240px;
+        
+        
+        }
+        
+        
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@200&display=swap");
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  background-color: #F3FBFB;
+}
+
+.road-map-main {
+  margin: 50px 0 51px;
+}
+.road-map-main .road-map-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 175px;
+}
+@media (max-width: 991px) {
+  .road-map-main .road-map-wrapper {
+    margin-bottom: 25px;
+    height: auto;
+    display: block;
+  }
+}
+.road-map-main .road-map-wrapper::before {
+  content: "";
+  width: 100%;
+  clear: both;
+  display: block;
+}
+.road-map-main .road-map-wrapper::after {
+  content: "";
+  width: 100%;
+  clear: both;
+  display: block;
+}
+.road-map-main .road-map-wrapper .road-map-circle {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  border: 25px solid transparent;
+  border-top-color: #4A7081;
+  border-right-color: #4A7081;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  transform: rotate(45deg);
+}
+@media (max-width: 992px) {
+  .road-map-main .road-map-wrapper .road-map-circle {
+    position: unset;
+    border: 25px solid #4A7081;
+  }
+}
+.road-map-main .road-map-wrapper .road-map-circle .road-map-circle-text {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background-color: #ff8f3fe0;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 26px;
+  text-transform: capitalize;
+  color: #fff;
+  box-shadow: 0px 0px 10px 5px #00000021;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  transform: rotate(-45deg);
+}
+.road-map-main .road-map-wrapper .road-map-card {
+  width: 35%;
+  background: #3a5664;
+  padding: 20px 20px;
+  z-index: 1;
+  position: absolute;
+  right: 0;
+  border-radius: 5px;
+}
+.road-map-main .road-map-wrapper .road-map-card::before {
+  content: "";
+  width: 25%;
+  height: 20px;
+  background: #4A7081;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: -23%;
+  z-index: -1;
+}
+@media (max-width: 991px) {
+  .road-map-main .road-map-wrapper .road-map-card {
+    width: 100%;
+    margin-top: 30px;
+    position: unset;
+  }
+  .road-map-main .road-map-wrapper .road-map-card::before {
+    content: "";
+    width: 20px;
+    height: 30%;
+    top: 50%;
+    transform: translateX(-50%);
+    left: 50%;
+  }
+}
+@media (max-width: 425px) {
+  .road-map-main .road-map-wrapper .road-map-card {
+    top: 45%;
+  }
+
+  
+}
+.road-map-main .road-map-wrapper .road-map-card .card-head {
+  font-size: 20px;
+  font-weight: 600;
+  text-transform: capitalize;
+  margin: 0 0 15px;
+  color: #fff;
+  text-decoration: underline;
+}
+.road-map-main .road-map-wrapper .road-map-card .card-text {
+  color: #fff;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+@media (max-width: 1199px) {
+  .road-map-main .road-map-wrapper .road-map-card .card-text {
+    -webkit-line-clamp: 4;
+  }
+}
+.road-map-main .road-map-wrapper:nth-of-type(even) .road-map-circle {
+  border-bottom-color: #4A7081;
+  border-left-color: #4A7081;
+  border-top-color: transparent;
+  border-right-color: transparent;
+}
+@media (max-width: 991px) {
+  .road-map-main .road-map-wrapper:nth-of-type(even) .road-map-circle {
+    border-color: #4A7081;
+  }
+}
+.road-map-main .road-map-wrapper:nth-of-type(even) .road-map-card {
+  left: 0;
+}
+.road-map-main .road-map-wrapper:nth-of-type(even) .road-map-card::before {
+  right: -23%;
+  left: unset;
+}
+@media (max-width: 991px) {
+  .road-map-main .road-map-wrapper:nth-of-type(even) .road-map-card::before {
+    content: "";
+    width: 20px;
+    height: 30%;
+    top: 50%;
+    transform: translateX(-50%);
+    left: 50%;
+  }
+}
+@media (max-width: 425px) {
+  .road-map-main .road-map-wrapper:nth-of-type(even) .road-map-card::before {
+    top: 45%;
+  }
 }
 
 
-    </style>
+   
+    
 
+   
+
+
+
+  </style>
 </head>
 <body>
-    
-    <section class="price-area" id="price">
-        <div class="container" style="margin-top: 2%;">
-            <a href="{% url 'index' %}">  <img src="/static/collections/TWL-logo.png"  class="twl-logo"/></a>
 
+  <header class="top-0 bg-white border-b border-gray-300" style="background-color: #F3FBFB;">
+    <nav class="containers mx-auto flex items-center p-6">
+      <a class="inline-block h-8 mr-auto" href="{% url 'index' %}">
+        <img class="inline-block h-full w-auto" src="/static/collections/TWL-logo.png" />
+      </a>
+  
+      <ul class="flex items-center">
+        <li class="ml-6">
+          <a class="text-blue-500 hover:text-blue-800" href="{% url 'index' %}">Home</a>
+        </li>
+        <li class="ml-6">
+          <a class="text-blue-500 hover:text-blue-800" href="{% url 'blogs_page' %}">Blog</a>
+        </li>
+        <li class="ml-6">
+          <a class="text-blue-500 hover:text-blue-800" href="{% url 'steps' %}">Process</a>
+        </li>
+        <li class="ml-6">
+            <a class="text-blue-500 hover:text-blue-800" href="{% url 'blacklisted' %}">Blacklisted</a>
+          </li>
+        <li class="ml-6">
+          <a class="text-blue-500 hover:text-blue-800" href="{% url 'pricing_page' %}">Pricing</a>
+        </li>
+        <li class="ml-6">
+          <a class="text-blue-500 hover:text-blue-800" href="{% url 'about_us'%}">About</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+   
+        <div class="container" id="step-pattern">
             <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="rt-section-title-wrapper">
-                        <h2 class="main-head" >TWL Affordable Pricing</h2>
-                        <p style="font-weight: bold; color: rgb(62, 0, 0);">"Choose the Plan That Fits Your Needs"</p>
-                    </div><!-- ./ section title  -->
-                </div><!-- ./column -->
-            </div><!-- ./row -->
-            <div class="spacer-80"></div><!-- ./ spacer -->
-            <div class="row">
-                <div class="col-lg-4 mx-auto text-center col-md-6">
-                    <div class="single-price-table">
-                        <div class="price-design-elemnts one"></div><!-- ./elemnts one -->
-                        <div class="price-design-elemnts two"></div><!-- ./elemnts two -->
-                        <div class="price-design-elemnts three"></div><!-- ./elemnts three -->
-                        <div class="price-design-elemnts four"></div><!-- ./elemnts four -->
-                        <div class="price-header">
-                            <span class="package-title">Basic Pack</span>
-                             <!-- <h5>For part-time maids</h5> -->
-                            <span class="package-amount">Rs 5000</span>
-                        </div><!-- ./ price header -->
-                        <div class="price-body">
-                            <ul>
-                                <li>Trustworthy Employees</li>
-                                <li>For Part Time Maid</li>
-                                <li> <strong>Time duration -</strong>  1-2 Hours/day</li>
-                                <li> <strong>Support -</strong> Only Mail</li>
-                            </ul>
-                        </div><!-- ./ price body -->
-                        <div class="price-footer">
-                            <a href="{% url 'register' %}">Get Started</a>
-                        </div><!-- ./price footer -->
-                    </div><!-- ./ prioce table -->
-                </div><!-- ./ column -->
-                <div class="col-lg-4 mx-auto text-center col-md-6">
-                    <div class="single-price-table">
-                        <div class="price-design-elemnts one"></div><!-- ./elemnts one -->
-                        <div class="price-design-elemnts two"></div><!-- ./elemnts two -->
-                        <div class="price-design-elemnts three"></div><!-- ./elemnts three -->
-                        <div class="price-design-elemnts four"></div><!-- ./elemnts four -->
-                        <div class="price-header">
-                            <span class="package-title">Standard Pack</span>
-                            <span class="package-amount">Maid Salary <span style="font-size: 14px;">(one month)</span>  </span>
-                        </div><!-- ./ price header -->
-                        <div class="price-body">
-                            <ul>
-                                <li>Trustworthy Employees</li>
-                                <li>Experienced full time maid</li>
-                                <li> <strong>Working hours - </strong>4/8/10/24 hrs </li>
-                                <li> <strong>Support</strong> Mail/Phone </li>
-                            </ul>
-                        </div><!-- ./ price body -->
-                        <div class="price-footer">
-                            <a href="{% url 'register' %}">Get Started</a>
-                        </div><!-- ./price footer -->
-                    </div><!-- ./ prioce table -->
-                </div><!-- ./ column -->
-                <div class="col-lg-4 mx-auto text-center col-md-6">
-                    <div class="single-price-table">
-                        <div class="price-design-elemnts one"></div><!-- ./elemnts one -->
-                        <div class="price-design-elemnts two"></div><!-- ./elemnts two -->
-                        <div class="price-design-elemnts three"></div><!-- ./elemnts three -->
-                        <div class="price-design-elemnts four"></div><!-- ./elemnts four -->
-                        <div class="price-header">
-                            <span class="package-title">Premium</span>
-                            <span class="package-amount">Rs 15000</span>
-                        </div><!-- ./ price header -->
-                        <div class="price-body">
-                            <ul>
-                                <li>Trustworthy Employees</li>
-                                <li>Fresher 24 hours maid Service</li>
-                                <li> <strong>Working hours - </strong>24hrs </li>
-                                <li> <strong>Support</strong> 24/7 </li>
-                                
-                            </ul>
+              <div class="col-md-12">
+                <div class="road-map-main">
+                    <div class="road-map-wrapper">
+                        <div class="road-map-circle">
+                          <span
+                            class="road-map-circle-text d-flex align-items-center justify-content-center"
+                            >Step-1</span
+                          >
                         </div>
-                        <div class="price-footer">
-                            <a href="{% url 'register' %}">Get Started</a>
-                        </div><!-- ./price footer -->
-                    </div><!-- ./ prioce table -->
-                </div><!-- ./ column -->
-            </div><!-- ./ row -->
-            <h2 class="main-head">Pricing process by TWL</h2>
-            <ul class="price-points">
-                  <li> You need to pay us a "one-time" placement fee for hiring you a maid. </li>
-                  <li> You need to pay a registration fee of 1000/- Rs. to us when you confirm and select the maid which covers candidate’stravelling charges and other handling charges.</li>
-                  <li>Final Charges to be paid after joining of the maid and a satisfactory trial period of 2 days </li>
-                  <li> The monthly salary of the maid needs to be given directly to the maid.</li>
-                  <li> 3 months replacement period - If the maid chooses to leave or you let the maid go, we will replace the maid for FREE. No questions asked!</li>
-                  <li>Experienced, document-verified - maids whom we’ve personally met and shortlisted </li>
-                  <li>Only those maids who pass our quality tests are listed </li>
-                  <li>Excellent customer service	</li>
-             </ul>
-        </div>
-      
-
-        <footer class="footer" >
-          <div style=" display: flex; justify-content: center;" >
-          <div class="row" style=" width: 90%;">
-            <div class="footer-col">
-              <h4>NAVIGATIONS</h4>
-              <ul>
-                <li><a href="{% url 'index' %}">Home</a></li>
-                <li><a href="{% url 'pricing_page' %}">Prices</a></li>
-                <li><a href="{% url 'steps' %}">Hiring Process</a></li>
-                <li><a href="{% url 'about_us' %}">About</a></li>
-                <li><a href="{% url 'privacy_policy'%}">privacy policy</a></li>
-                <li><a href="{% url 'termsofuse'%}">Terms of Use</a></li>
-              </ul>
-            </div>
-          
-            <div class="footer-col" >
-              <div>
-                <h4>ABOUT THE WORKING LADY</h4>
-                <p style="color : white;">"The Working Lady" connects skilled house helps and maids with clients in need of their services. Our platform offers a seamless experience, providing employment opportunities for talented individuals while meeting the household needs of our valued clients.</p>
-                <div class="social-links">
-                  <a href="https://www.facebook.com/theworkinglady.MumbaiHousemaids/"><i class="fa-brands fa-facebook-f"></i></a>
-                  <a href="https://www.twitter.com/"><i class="fa-brands fa-x-twitter"></i></a>
-                  <a href="https://www.instagram.com/theworkinglady2020?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i class="fa-brands fa-instagram"></i></a>
-                  <a href="https://www.linkedin.com/in/the-working-lady-0545381b8"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <div class="road-map-card">
+                          <h4 class="card-head">1) Post Your Requirements</h4>
+                          <p class="card-text">
+                            Share your specific requirements with us, outlining
+                             the skills, experience, and qualifications you're 
+                             looking for in a candidate.
+                          </p>
+                        </div>
+                      </div>
+                      <div class="road-map-wrapper">
+                        <div class="road-map-circle">
+                          <span
+                            class="road-map-circle-text d-flex align-items-center justify-content-center"
+                            >Step-2</span
+                          >
+                        </div>
+                        <div class="road-map-card">
+                          <h4 class="card-head">2) See Matching Profiles</h4>
+                          <p class="card-text">
+                            Discover profiles that align with your criteria. Our platform presents you with a curated selection of candidates tailored to your needs.
+                          </p>
+                        </div>
+                      </div>
+                  <div class="road-map-wrapper">
+                    <div class="road-map-circle">
+                      <span
+                        class="road-map-circle-text d-flex align-items-center justify-content-center"
+                        >Step-3</span
+                      >
+                    </div>
+                    <div class="road-map-card">
+                      <h4 class="card-head">3) Make Your Selection</h4>
+                      <p class="card-text">
+                        Choose the candidate who best fits your requirements and expectations. You have the freedom to select from a pool of qualified individuals.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="road-map-wrapper">
+                    <div class="road-map-circle">
+                      <span
+                        class="road-map-circle-text d-flex align-items-center justify-content-center"
+                        >Step-4</span
+                      >
+                    </div>
+                    <div class="road-map-card">
+                      <h4 class="card-head">4) Join Our Community</h4>
+                      <p class="card-text">
+                        Register as a client by paying the nominal registration charges. Gain access to our exclusive services and resources.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="road-map-wrapper">
+                    <div class="road-map-circle">
+                      <span
+                        class="road-map-circle-text d-flex align-items-center justify-content-center"
+                        >Step-5</span
+                      >
+                    </div>
+                    <div class="road-map-card">
+                      <h4 class="card-head">5) Take Trial Period of Selected Candidate</h4>
+                      <p class="card-text">
+                        Test the waters with your chosen candidate through a trial period. Evaluate their performance firsthand before making a final commitment.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="road-map-wrapper">
+                    <div class="road-map-circle">
+                      <span
+                        class="road-map-circle-text d-flex align-items-center justify-content-center"
+                        >Step-6</span
+                      >
+                    </div>
+                    <div class="road-map-card">
+                      <h4 class="card-head">6) Pay Final Service Charge After Satisfaction </h4>
+                      <p class="card-text">
+                        Upon being satisfied with the candidate's performance during the trial period, proceed to pay the final service charge for our matchmaking services.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="road-map-wrapper">
+                    <div class="road-map-circle">
+                      <span
+                        class="road-map-circle-text d-flex align-items-center justify-content-center"
+                        >Step-7</span
+                      >
+                    </div>
+                    <div class="road-map-card">
+                      <h4 class="card-head">7) Access Your Dashboard to Avail Several Benefits from TWL Timely </h4>
+                      <p class="card-text">
+                        Enjoy the convenience of our user-friendly dashboard, offering you access to various benefits, updates, and support services from TWL.
+                     </p>
+                    </div>
+                  </div>
+             <h3>Finished!!</h3>
                 </div>
               </div>
             </div>
-  
-            <div class="footer-col" style="width: 45%; margin-left: 3%;">
-              <h4>LOCATIONS</h4>
-            <ul class="address-li">
-              <li >
-                <i class="fa-solid fa-location-dot" style="color: #ffffff;"></i>
-                HO: Mumbai: D/3, Near Godrej Hills, Khadakpada l, Kalyan West, Maharashtra 421301
-                8855055049 / 7991770212 </li>
-              <li> 
-                <i class="fa-solid fa-location-dot" style="color: #ffffff;"></i>
-                Delhi: HOUSE NO. 15, RAILWAY ENCLAVE PHASE 2ND, Girdharpur Rd, near ANANT ENTERPRISES, Lal Kuan, Chhapraula, Ghaziabad, Uttar Pradesh 201009
-                7879589378 / 8130815132
-                 </li>
-              <li>
-                <i class="fa-solid fa-location-dot" style="color: #ffffff;"></i>
-                Indore: AS 25/ MAHALAXMI NAGAR, Sector A, Vijay Nagar, Indore, Madhya Pradesh 452010
-  8855055049 / 7991770212 / 7084906501
-              </li>
-            </ul>
-            </div>
-  
           </div>
+    
+      <footer class="footer" >
+        <div style=" display: flex; justify-content: center;" >
+        <div class="row" style=" width: 90%;">
+          <div class="footer-col">
+            <h4>NAVIGATIONS</h4>
+            <ul>
+              <li><a href="{% url 'index' %}">Home</a></li>
+              <li><a href="{% url 'pricing_page' %}">Prices</a></li>
+              <li><a href="{% url 'steps' %}">Hiring Process</a></li>
+              <li><a href="{% url 'blacklisted' %}">Blacklisted</a></li>
+              <li><a href="{% url 'blogs_page' %}">Blogs</a></li>
+              <li><a href="{% url 'about_us' %}">About</a></li>
+              <li><a href="{% url 'privacy_policy'%}">privacy policy</a></li>
+              <li><a href="{% url 'termsofuse'%}">Terms of Use</a></li>
+            </ul>
+          </div>
+        
+          <div class="footer-col" >
+            <div>
+              <h4>ABOUT THE WORKING LADY</h4>
+              <p style="color : white;">"The Working Lady" connects skilled house helps and maids with clients in need of their services. Our platform offers a seamless experience, providing employment opportunities for talented individuals while meeting the household needs of our valued clients.</p>
+              <div class="social-links">
+                <a href="https://www.facebook.com/theworkinglady.MumbaiHousemaids/"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.twitter.com/"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://www.instagram.com/theworkinglady2020?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.linkedin.com/in/the-working-lady-0545381b8"><i class="fa-brands fa-linkedin-in"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="footer-col" style="width: 50%;" id="location-list">
+            <h4>LOCATIONS</h4>
+          <ul class="address-li">
+            <li>
+              <i class="fa-solid fa-location-dot" style="color: #ffffff;"></i>
+              HO: Mumbai: D/3, Near Godrej Hills, Khadakpada l, Kalyan West, Maharashtra 421301
+              8855055049 / 7991770212 </li>
+            <li> 
+              <i class="fa-solid fa-location-dot" style="color: #ffffff;"></i>
+              Delhi: HOUSE NO. 15, RAILWAY ENCLAVE PHASE 2ND, Girdharpur Rd, near ANANT ENTERPRISES, Lal Kuan, Chhapraula, Ghaziabad, Uttar Pradesh 201009
+              7879589378 / 8130815132
+               </li>
+            <li>
+              <i class="fa-solid fa-location-dot" style="color: #ffffff;"></i>
+              Indore: AS 25/ MAHALAXMI NAGAR, Sector A, Vijay Nagar, Indore, Madhya Pradesh 452010
+8855055049 / 7991770212 / 7084906501
+            </li>
+          </ul>
+          </div>
+
         </div>
-        </footer>
-  
-
-     </section>
-     <script src="https://kit.fontawesome.com/3b161c540c.js" crossorigin="anonymous"></script>
+      </div>
+      </footer>
 
 
-     
+
+ 
+
+ <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/3b161c540c.js" crossorigin="anonymous"></script>
 </body>
 </html>
