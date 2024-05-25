@@ -3,7 +3,7 @@
 <html lang="en" dir="ltr">
 <head>
   <meta charset="utf-8">
- 
+  <meta name="description" content="HTML/CSS">
   <meta name="author" content="Anil">
   <title>Home</title>
   <link rel="icon" href="/static/collections/working Lady logog.jpg" type="image/x-icon">
@@ -483,16 +483,17 @@ z-index: 999; /* Ensure the notification appears above other content */
 
 
 #dashboard-btn{
-  color : white;
+  color : black;
   border-radius: 10px;
-  border: 1px solid white;
+  
+  border: 2px solid rgb(0, 0, 0);
 }
 
 
 
 #dashboard-btn:hover{
-  background-color: white;
-  color:black;
+  color:white;
+  background-color: black;
   }
 
 
@@ -806,11 +807,11 @@ content: "";
 position: absolute;
 top: 0;
 bottom: 0;
-left: 0;
+left: 0; 
 right: 0;
-opacity: 0.4;
+/* opacity: 0.4; */
 z-index: -1;
-background: linear-gradient(to right,  #1e5799 0%, #08486B 0%, #08486B 100%);
+/* background: linear-gradient(to right,  #1e5799 0%, #08486B 0%, #08486B 100%); */
 background: white;
 }
 .nav-item a{
@@ -1339,16 +1340,16 @@ width: 90px;
 height: 40px;
 font-weight: 500;
 background: transparent;
-border: 1px solid white;
-color: rgb(255, 255, 255);
+border: 2px solid black;
+color: black;
 border-radius: 30px;
 cursor: pointer;
 transition: .3s ease;
 }
 
 #loginBtn:hover{
-background-color: white;
-color: black;
+background-color: black;
+color: white;
 
 }
 
@@ -1357,9 +1358,9 @@ color: black;
 width: 90px;
 height: 40px;
 font-weight: 500;
-background: rgb(255, 255, 255, 0.5);
+background: black;
 border: 1px solid white;
-color: rgb(0, 0, 0);
+color: white;
 border-radius: 30px;
 cursor: pointer;
 transition: .3s ease;
@@ -1576,18 +1577,9 @@ color: #fff !important; /* Custom text color for highlighted state */
 }
 
 
-
-
 .form-group{
 margin-top: 40px;
 }
-
-
-
-
-
-
-
 
 
 
@@ -1688,7 +1680,7 @@ margin-top: 40px;
     </div>
   </div>
 </div>
-
+ 
 
 
 
@@ -1747,7 +1739,7 @@ margin-top: 40px;
     <div class="step-content " id="step-2">
       <img src="/static/collections/TWL-logo.png"  class="twl-logo"/>  
       <div class="form-group">
-        <label for="name" class="lang"  >Name:</label>
+        <label for="name" class="lang">Name:</label>
         <input  required type="text" class="form-control lang" id="name" name="full_name" placeholder="Enter your name"  />
       </div>
       <div class="next-prev-button">  
@@ -1755,7 +1747,6 @@ margin-top: 40px;
         <button type="button" class="btn btn-outline-primary" onclick="nextStep()">Next</button>
       </div>
     </div>
-
 
     <div class="step-content" id="step-3">
       <img src="/static/collections/TWL-logo.png"  class="twl-logo"/>
@@ -1796,9 +1787,8 @@ margin-top: 40px;
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
       <div class="container text-uppercase p-2">
         <img src="/static/collections/TWL-logo.png"  class="twl-logo"/>
-        <!-- <a class="navbar-brand font-weight-bold text-white" href="#">The Working Lady</a> -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon" style="background-color: rgb(85, 0, 0); border-radius: 5px;"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto">
@@ -1837,7 +1827,7 @@ margin-top: 40px;
 
       <div class="name-dashboard">
         <span>Hello, {{request.user}} <i class="fa-solid fa-user" style="color: #511f1f;"></i> </span>
-        <a href="{% url 'recruiter_home' %}">    <button class="btn"  id="dashboard-btn" >Dashboard</button></a> 
+        <a href="{% url 'recruiter_home' %}">   <button class="btn"  id="dashboard-btn" >Dashboard</button></a> 
     </div>
       {%else%}
       <div class="nav-button">
