@@ -15,6 +15,8 @@ import re
 from django.contrib.auth.models import User
 from users.views import validate_email_address, validate_mobile_number, validate_pass
 from django.contrib.auth import update_session_auth_hash
+from django.core.mail import send_mail
+from django.conf import settings
 
 # Create your views here.
 from applicant.models import Applicants, Work_Category
@@ -293,6 +295,12 @@ def create_job(request):
             jobs = request.POST.getlist('job[]')
             pin_code = request.POST.get('pin_code')
             selected_jobs = Work.objects.filter(work__in=jobs)
+
+            subject = 'New Job Notification'
+            message = 'This email is to notify you that '+ full_name+ "has posted a job. Email - "+email+" Mobile Number - "+phone_number
+            email_from = settings.EMAIL_HOST_USER
+            recipient_list = ['drockstar1508@gmail.com', 'rungtaaditya3@gmail.com']
+            send_mail(subject, message, email_from, recipient_list)
 
 
             if request.user.is_authenticated:
