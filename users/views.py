@@ -11,6 +11,10 @@ from .models import Contact , Post, Blog
 from django.template import RequestContext
 from django.core.exceptions import ValidationError
 from email_validator import EmailNotValidError, validate_email
+from django.core.mail import send_mail
+from django.conf import settings
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
 
 
 def error_404(request, exception):
@@ -150,63 +154,62 @@ def login_user(request):
 
 
 def register(request):
-
-    if request.method =="POST":
+    if request.method == "POST":
         try:
             username = request.POST.get('username')
             password = request.POST.get('password')
             number = request.POST.get('number')
             email = request.POST.get('email')
 
-            if  User.objects.filter(username = username):
+            if User.objects.filter(username=username):
                 messages.info(request, f'Username {username}  Already Exists, Try using another')
                 return redirect('register')
 
             elif not validate_mobile_number(number):
-                messages.info(request,f"{number} is not a valid mobile number")
+                messages.info(request, f"{number} is not a valid mobile number")
                 return redirect('register')
-            
+
             elif not validate_email_address(email):
-                messages.info(request,f"{email} is not a valid")
+                messages.info(request, f"{email} is not a valid email address")
                 return redirect('register')
 
             elif not validate_pass(password):
                 messages.error(request, f'Please Create a strong password !!')
                 return redirect('register')
 
-            user_obj = User.objects.filter(email = email)
+            user_obj = User.objects.filter(email=email)
 
             if user_obj:
                 messages.info(request, f'{email}  Already Exists, Try login or use another email')
                 return redirect('register')
 
             else:
-                user  = User(username= username , email=email)
+                user = User(username=username, email=email)
                 user.set_password(password)
                 user.save()
-                recruiter_obj = User_Recruiter.objects.create(user = user, number= number)
+                recruiter_obj = User_Recruiter.objects.create(user=user, number=number)
                 
                 obj_data = request.session.get('obj')
                 if obj_data:
                     rec = Recruiter.objects.create(
-                                full_name=obj_data['full_name'],
-                                phone_number=obj_data['phone_number'],
-                                phone_number2=obj_data['phone_number2'],
-                                email=obj_data['email'],
-                                address=obj_data['address'],
-                                location=obj_data['location'],
-                                urgency=obj_data['urgency'],
-                                requirement=obj_data['requirement'],
-                                description=obj_data['description'],
-                                preffered_location=obj_data['preffered_location'],
-                                provided_salary=obj_data['provided_salary'],
-                                experience=obj_data['experience'],
-                                source=obj_data['source'],
-                                timing=obj_data['timing'],
-                                status=obj_data['status'],
-                                recruiter = recruiter_obj,
-                                pin_code = obj_data['pin_code']
-                                )
+                        full_name=obj_data['full_name'],
+                        phone_number=obj_data['phone_number'],
+                        phone_number2=obj_data['phone_number2'],
+                        email=obj_data['email'],
+                        address=obj_data['address'],
+                        location=obj_data['location'],
+                        urgency=obj_data['urgency'],
+                        requirement=obj_data['requirement'],
+                        description=obj_data['description'],
+                        preffered_location=obj_data['preffered_location'],
+                        provided_salary=obj_data['provided_salary'],
+                        experience=obj_data['experience'],
+                        source=obj_data['source'],
+                        timing=obj_data['timing'],
+                        status=obj_data['status'],
+                        recruiter=recruiter_obj,
+                        pin_code=obj_data['pin_code']
+                    )
                     selected_jobs = Work.objects.filter(work__in=obj_data['jobs'])
                     rec.job.add(*selected_jobs) 
                     rec.save()
@@ -215,10 +218,17 @@ def register(request):
                     messages.success(request, f'Your job is successfully posted, Please Login !!')
                     return redirect('login_user')
 
+                # Send email to the owner
+                user_details = {
+                    'username': username,
+                    'email': email,
+                    'number': number
+                }
+                send_registration_email_to_owner(user_details)
 
                 messages.success(request, f'You are successfully registered. Please log in.')
                 return redirect('login_user')
-            
+
         except ValueError as e:
             messages.error(request, str(e))
             return redirect('register')
@@ -226,7 +236,8 @@ def register(request):
             messages.error(request, 'An error occurred while processing your request.')
             return redirect('register')
 
-    return render(request,'register.html') 
+    return render(request, 'register.html')
+
 
 
 
@@ -268,3 +279,16 @@ def blacklisted(request):
     applicants = Applicants.objects.filter(blacklist = True)
     context = {'applicants' : applicants}
     return render(request, 'blacklisted.html', context)
+
+
+def send_registration_email_to_owner(user_details):
+    print("EMAIL FUNCTION CALLED ")
+    
+    # HTML message template
+    html_message = render_to_string('email_template.html', {'user_details': user_details})
+    plain_message = strip_tags(html_message)  
+    
+    subject = f"New User Registered: {user_details['username']}"
+    
+    recipient_list = ['theworkinglady.org@gmail.com'] 
+    send_mail(subject, plain_message, settings.DEFAULT_FROM_EMAIL, recipient_list, html_message=html_message)
