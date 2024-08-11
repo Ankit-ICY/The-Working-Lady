@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f2f4f6;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .email-container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .email-header {
+            background-color: #001b39;
+            color: #ffffff;
+            padding: 20px;
+            text-align: center;
+        }
+        .email-header img {
+            max-width: 120px;
+            margin-bottom: 10px;
+        }
+        .email-header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .email-body {
+            padding: 20px;
+            color: #555555;
+        }
+        .email-body p {
+            line-height: 1.6;
+            margin: 0 0 20px;
+        }
+        .user-details-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .user-details-table th,
+        .user-details-table td {
+            padding: 12px;
+            border: 1px solid #dddddd;
+            text-align: left;
+        }
+        .user-details-table th {
+            background-color: #001b39;
+            color: #ffffff;
+        }
+        .user-details-table td {
+            background-color: #f9f9f9;
+        }
+        .email-footer {
+            background-color: #f2f4f6;
+            padding: 20px;
+            text-align: center;
+            color: #777777;
+            font-size: 12px;
+        }
+        .email-footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="email-container">
+        <div class="email-header">
+            <img src="/static/collections/TWL-logo.png" alt="The Working Lady Logo">
+            <h1>New User Registration</h1>
+        </div>
+        <div class="email-body">
+            <p>Hello Sir,</p>
+            <p>A new user has registered on your website. Here are the details of the user:</p>
+            <table class="user-details-table">
+                <tr>
+                    <th>Username</th>
+                    <td>{{ user_details.username }}</td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td>{{ user_details.email }}</td>
+                </tr>
+                <tr>
+                    <th>Mobile Number</th>
+                    <td>{{ user_details.number }}</td>
+                </tr>
+            </table>
+            <p>If you need to contact the user or have any concerns, please do so at your earliest convenience.</p>
+        </div>
+        <div class="email-footer">
+            <p>&copy; 2024 THE WORKING LADY. All rights reserved.</p>
+            <p>This is an automated email. Please do not reply to this message.</p>
+        </div>
+    </div>
+</body>
+</html>
